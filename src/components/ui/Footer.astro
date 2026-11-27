@@ -4,10 +4,11 @@ import { withBase } from '../../lib/paths';
 <footer>
   <div class="container">
     <p><strong>Proyecto no oficial.</strong> No está afiliado ni respaldado por Bandai ni por los titulares de ONE PIECE. No reemplaza al reglamento oficial ni el criterio de un juez.</p>
-    <p><a href={withBase('acerca/')}>Fuentes y metodología</a></p>
+    <p><a class="source" href={withBase('acerca/')}>Fuentes y metodología</a></p>
   </div>
 </footer>
 
 <style>
-  footer { border-top: 1px solid var(--border); padding-block: 1rem; color: var(--muted); }
+  .source { display: inline-flex; align-items: center; min-height: 44px; }
+  footer { border-top: 3px solid var(--accent); background: var(--surface); padding-block: 1rem; color: var(--muted); }
 </style>

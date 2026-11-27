@@ -1,0 +1,10 @@
+{
+  "term": "Once Per Turn",
+  "aliases": [
+    "Una vez por turno"
+  ],
+  "ruleId": "10-2-13",
+  "definition": "El efecto solo puede usarse una vez por turno y por carta.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

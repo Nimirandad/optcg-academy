@@ -1,9 +1,46 @@
 ---
-import UnderConstruction from '../components/ui/UnderConstruction.astro';
+import { getCollection } from 'astro:content';
+import Quiz from '../features/quizzes/Quiz.svelte';
 import Base from '../layouts/Base.astro';
+import { checkCases, levels } from '../lib/academy';
+import { inventory } from '../lib/inventory';
+import { withBase } from '../lib/paths';
+import { documents } from '../lib/qa';
+
+const cases = (await getCollection('cases')).map((entry) => entry.data);
+const qaDocument = new Map(documents.flatMap((d) => d.questions.map((question) => [question.id, d.slug])));
+const problems = checkCases(cases, new Set(inventory.rules.map((rule) => rule.ruleId)), new Set(qaDocument.keys()));
+if (problems.length) throw new Error(`Casos inconsistentes:\n${problems.join('\n')}`);
+
+const groups = Object.entries(levels)
+  .map(([level, name]) => ({
+    level: Number(level),
+    name,
+    cases: cases
+      .filter((item) => item.level === Number(level))
+      .sort((a, b) => a.id.localeCompare(b.id))
+      .map(({ qaIds, ...item }) => ({
+        ...item,
+        links: qaIds.map((id) => ({ href: withBase(`qa/${qaDocument.get(id)}/#${id}`), label: id })),
+      })),
+  }))
+  .filter((group) => group.cases.length > 0);
 ---
-<Base title="Casos prácticos" description="Situaciones de juego con resolución paso a paso.">
+<Base title="Casos" description="Situaciones prácticas con resolución paso a paso.">
   <h1>Casos prácticos</h1>
-  <p>Situaciones de juego con resolución paso a paso.</p>
-  <UnderConstruction />
+  <p class="notice">Situaciones inventadas para practicar. No reemplazan al reglamento ni a un juez.</p>
+  <ul class="index">
+    {groups.map((group) => <li><a href={`#nivel-${group.level}`}>Nivel {group.level}: {group.name}</a></li>)}
+  </ul>
+  {groups.map((group) => (
+    <section>
+      <h2 id={`nivel-${group.level}`}>Nivel {group.level}: {group.name}</h2>
+      <Quiz base={import.meta.env.BASE_URL} lessonId={`casos-nivel-${group.level}`} questions={group.cases} client:visible />
+    </section>
+  ))}
 </Base>
+
+<style>
+  .index { display: flex; flex-wrap: wrap; gap: 0 1.25rem; list-style: none; padding: 0; }
+  .index a { display: inline-flex; align-items: center; min-height: 44px; }
+</style>

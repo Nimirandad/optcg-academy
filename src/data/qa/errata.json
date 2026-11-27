@@ -1,0 +1,60 @@
+{
+  "listUrl": "https://en.onepiece-cardgame.com/rules/errata_card/",
+  "retrievedAt": "2026-11-27",
+  "notices": [
+    {
+      "url": "https://en.onepiece-cardgame.com/topics/notice_op13.php",
+      "publishedAt": "2025-10-24",
+      "cardIds": [
+        "OP13-077"
+      ],
+      "reviewStatus": "pending",
+      "summary": "El aumento de poder dura la batalla, no el turno."
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/topics/notice_op13-119.php",
+      "publishedAt": "2025-10-30",
+      "cardIds": [
+        "OP13-119"
+      ],
+      "reviewStatus": "pending",
+      "summary": "Cambia el efecto [On Play]; solo afecta la versión «Wanted Poster»."
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/topics/notice-op14-009.php",
+      "publishedAt": "2025-12-19",
+      "cardIds": [
+        "OP14-009"
+      ],
+      "reviewStatus": "pending",
+      "summary": "Se quita el tipo The Seven Warlords of the Sea."
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/topics/notice_op15-023.php",
+      "publishedAt": "2026-03-13",
+      "cardIds": [
+        "OP15-023"
+      ],
+      "reviewStatus": "pending",
+      "summary": "Su efecto ya no exige que el DON!! esté Rested."
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/news/notice-op16.html",
+      "publishedAt": "2026-05-29",
+      "cardIds": [
+        "OP16-081"
+      ],
+      "reviewStatus": "pending",
+      "summary": "La condición pasa de «si tienes» a «si hay» un Character de coste 8 o más."
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/news/notice_eb05.html",
+      "publishedAt": "2026-10-23",
+      "cardIds": [
+        "EB05-033"
+      ],
+      "reviewStatus": "pending",
+      "summary": "Corrige el nombre impreso a Nico Robin."
+    }
+  ]
+}

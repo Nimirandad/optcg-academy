@@ -1,0 +1,544 @@
+{
+  "mode": "red",
+  "ranAt": "2026-11-27T17:14:54.137Z",
+  "sources": [
+    {
+      "id": "format-restriction",
+      "url": "https://en.onepiece-cardgame.com/news/restriction.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:08.721Z"
+    },
+    {
+      "id": "format-blocks",
+      "url": "https://en.onepiece-cardgame.com/news/blockicon-card.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:10.457Z"
+    },
+    {
+      "id": "format-rotation",
+      "url": "https://en.onepiece-cardgame.com/topics/013.php",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:13.082Z"
+    },
+    {
+      "id": "format-archive",
+      "url": "https://en.onepiece-cardgame.com/news/restriction-archive.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:16.384Z"
+    },
+    {
+      "id": "qa-list",
+      "url": "https://en.onepiece-cardgame.com/rules/faq/",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:22.324Z"
+    },
+    {
+      "id": "rules-page",
+      "url": "https://en.onepiece-cardgame.com/rules/",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:23.191Z"
+    },
+    {
+      "id": "rules-errata",
+      "url": "https://en.onepiece-cardgame.com/rules/errata_card/",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:26.954Z"
+    },
+    {
+      "id": "cards-569001",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569001",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:29.562Z"
+    },
+    {
+      "id": "cards-569002",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569002",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:32.525Z"
+    },
+    {
+      "id": "cards-569003",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569003",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:35.451Z"
+    },
+    {
+      "id": "cards-569004",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569004",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:38.457Z"
+    },
+    {
+      "id": "cards-569005",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569005",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:41.512Z"
+    },
+    {
+      "id": "cards-569006",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569006",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:44.539Z"
+    },
+    {
+      "id": "cards-569007",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569007",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:47.445Z"
+    },
+    {
+      "id": "cards-569008",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569008",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:50.485Z"
+    },
+    {
+      "id": "cards-569009",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569009",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:53.567Z"
+    },
+    {
+      "id": "cards-569010",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569010",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:56.444Z"
+    },
+    {
+      "id": "cards-569011",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569011",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:11:59.427Z"
+    },
+    {
+      "id": "cards-569012",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569012",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:02.549Z"
+    },
+    {
+      "id": "cards-569013",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569013",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:05.533Z"
+    },
+    {
+      "id": "cards-569014",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569014",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:08.482Z"
+    },
+    {
+      "id": "cards-569015",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569015",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:11.559Z"
+    },
+    {
+      "id": "cards-569016",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569016",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:14.511Z"
+    },
+    {
+      "id": "cards-569017",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569017",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:17.451Z"
+    },
+    {
+      "id": "cards-569018",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569018",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:20.465Z"
+    },
+    {
+      "id": "cards-569019",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569019",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:23.525Z"
+    },
+    {
+      "id": "cards-569020",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569020",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:26.542Z"
+    },
+    {
+      "id": "cards-569021",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569021",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:29.466Z"
+    },
+    {
+      "id": "cards-569022",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569022",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:32.547Z"
+    },
+    {
+      "id": "cards-569023",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569023",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:36.259Z"
+    },
+    {
+      "id": "cards-569024",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569024",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:38.547Z"
+    },
+    {
+      "id": "cards-569025",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569025",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:41.476Z"
+    },
+    {
+      "id": "cards-569026",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569026",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:44.501Z"
+    },
+    {
+      "id": "cards-569027",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569027",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:47.546Z"
+    },
+    {
+      "id": "cards-569028",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569028",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:50.448Z"
+    },
+    {
+      "id": "cards-569029",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569029",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:53.454Z"
+    },
+    {
+      "id": "cards-569030",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569030",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:56.475Z"
+    },
+    {
+      "id": "cards-569031",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569031",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:12:59.534Z"
+    },
+    {
+      "id": "cards-569032",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569032",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:02.553Z"
+    },
+    {
+      "id": "cards-569033",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569033",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:05.464Z"
+    },
+    {
+      "id": "cards-569034",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569034",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:08.516Z"
+    },
+    {
+      "id": "cards-569035",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569035",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:11.461Z"
+    },
+    {
+      "id": "cards-569036",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569036",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:14.500Z"
+    },
+    {
+      "id": "cards-569101",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569101",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:18.110Z"
+    },
+    {
+      "id": "cards-569102",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569102",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:20.747Z"
+    },
+    {
+      "id": "cards-569103",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569103",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:23.766Z"
+    },
+    {
+      "id": "cards-569104",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569104",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:26.861Z"
+    },
+    {
+      "id": "cards-569105",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569105",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:29.534Z"
+    },
+    {
+      "id": "cards-569106",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569106",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:32.587Z"
+    },
+    {
+      "id": "cards-569107",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569107",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:35.511Z"
+    },
+    {
+      "id": "cards-569108",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569108",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:38.526Z"
+    },
+    {
+      "id": "cards-569109",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569109",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:41.579Z"
+    },
+    {
+      "id": "cards-569110",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569110",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:44.474Z"
+    },
+    {
+      "id": "cards-569111",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569111",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:47.570Z"
+    },
+    {
+      "id": "cards-569112",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569112",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:50.506Z"
+    },
+    {
+      "id": "cards-569113",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569113",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:53.596Z"
+    },
+    {
+      "id": "cards-569114",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569114",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:56.669Z"
+    },
+    {
+      "id": "cards-569115",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569115",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:13:59.552Z"
+    },
+    {
+      "id": "cards-569116",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569116",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:02.572Z"
+    },
+    {
+      "id": "cards-569117",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569117",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:05.577Z"
+    },
+    {
+      "id": "cards-569118",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569118",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:08.481Z"
+    },
+    {
+      "id": "cards-569201",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569201",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:11.346Z"
+    },
+    {
+      "id": "cards-569202",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569202",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:14.212Z"
+    },
+    {
+      "id": "cards-569203",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569203",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:17.250Z"
+    },
+    {
+      "id": "cards-569205",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569205",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:20.315Z"
+    },
+    {
+      "id": "cards-569301",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569301",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:23.810Z"
+    },
+    {
+      "id": "cards-569302",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569302",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:26.627Z"
+    },
+    {
+      "id": "cards-569801",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569801",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:29.494Z"
+    },
+    {
+      "id": "cards-569901",
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569901",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:32.923Z"
+    },
+    {
+      "id": "cards-products",
+      "url": "https://en.onepiece-cardgame.com/products/",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:35.269Z"
+    },
+    {
+      "id": "product /products/st31.html",
+      "url": "https://en.onepiece-cardgame.com/products/st31.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:39.237Z"
+    },
+    {
+      "id": "product /products/st32.html",
+      "url": "https://en.onepiece-cardgame.com/products/st32.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:42.141Z"
+    },
+    {
+      "id": "product /products/st33.html",
+      "url": "https://en.onepiece-cardgame.com/products/st33.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:45.134Z"
+    },
+    {
+      "id": "product /products/st34.html",
+      "url": "https://en.onepiece-cardgame.com/products/st34.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:48.095Z"
+    },
+    {
+      "id": "product /products/st35.html",
+      "url": "https://en.onepiece-cardgame.com/products/st35.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:51.227Z"
+    },
+    {
+      "id": "product /products/st36.html",
+      "url": "https://en.onepiece-cardgame.com/products/st36.html",
+      "ok": true,
+      "change": "new",
+      "checkedAt": "2026-11-27T17:14:54.130Z"
+    }
+  ],
+  "findings": [],
+  "notes": [
+    "Las listas se comparan por número de carta; las fechas efectivas de cada entrada se revisan a mano.",
+    "Las preguntas de un documento cambiado se extraen a mano en macOS (extract-qa.swift).",
+    "Del listado de productos solo se lee la primera página."
+  ]
+}

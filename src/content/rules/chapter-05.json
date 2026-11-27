@@ -1,0 +1,30 @@
+{
+  "chapter": 5,
+  "sourceVersion": "1.2.1",
+  "rules": [
+    {"id": "5", "title": "Preparación de la partida", "explanation": "Cómo construir el mazo y preparar la mesa.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1", "title": "Leader, mazo y mazo de DON!!", "explanation": "Requisitos de construcción.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-1", "explanation": "Antes de jugar, cada persona prepara con sus cartas un Leader, un mazo y un mazo de DON!!.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-2", "explanation": "Se necesita exactamente 1 Leader, un mazo de 50 cartas y un mazo de DON!! de 10.", "tip": "Cumplir la construcción no garantiza que el mazo sea legal en un formato: revisa rotación y restricciones vigentes.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-2-1", "explanation": "El mazo se compone de cartas Character, Event y Stage.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-2-2", "explanation": "Solo puedes incluir cartas de un color presente en tu Leader.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-2-3", "explanation": "No puedes tener más de 4 cartas con el mismo número.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-2-4", "explanation": "Los efectos sobre construcción de mazos se tratan como efectos permanentes que reemplazan las reglas anteriores.", "relatedIds": ["8-1-3-3", "8-1-3-4-3"], "reviewStatus": "reviewed", "note": "El original remite aquí a 8-1-3-4-3, que trata de efectos de reemplazo y no de permanentes.", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-2-4-1", "explanation": "Son los que indican que el mazo puede, o no puede, incluir cierta cantidad de cartas de una categoría.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-1-2-4-2", "explanation": "Esos efectos son válidos durante la construcción del mazo.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2", "title": "Preparativos", "explanation": "Los pasos antes del primer turno, en orden.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1", "explanation": "Antes de jugar, cada persona sigue este procedimiento.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-1", "explanation": "Presenta el mazo que usará; en ese momento debe cumplir las reglas de construcción.", "relatedIds": ["5-1-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-2", "explanation": "Baraja bien y deja el mazo boca abajo en su zona.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-3", "explanation": "Coloca su Leader boca arriba en la zona de Leader.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-4", "explanation": "Mediante piedra, papel o tijera u otro método, se decide quién escogerá ir primero o segundo.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-4-1", "explanation": "Nadie puede intervenir en esa elección.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-5", "explanation": "La persona designada declara si irá primero o segunda.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-5-1", "explanation": "Aquí se procesan los efectos «At the start of the game» de los Leaders. Si hay varios, primero los de quien eligió el orden, en el orden que prefiera, y luego los de la otra persona.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-5-2", "explanation": "Si uno de esos efectos modifica un mazo, su propietario lo baraja.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-6", "explanation": "Cada persona roba 5 cartas. Después, empezando por quien va primero, cada una puede cambiar su mano una sola vez.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-6-1", "explanation": "Para cambiarla: devuelve toda la mano al mazo, baraja y roba 5 cartas nuevas. No se cambian cartas sueltas.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-7", "explanation": "Cada persona coloca boca abajo en Life tantas cartas de arriba de su mazo como la Life de su Leader, dejando abajo en Life la que estaba arriba en el mazo.", "relatedIds": ["2-9-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "5-2-1-8", "explanation": "Quien va primero comienza su turno.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"}
+  ]
+}

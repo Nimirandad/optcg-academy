@@ -1,0 +1,42 @@
+{
+  "id": "defender",
+  "icon": "escudo",
+  "title": "Defender",
+  "question": "¿Cómo freno un ataque?",
+  "idea": "Tienes dos momentos para responder: primero bloquear, luego usar Counter.",
+  "steps": [
+    {
+      "title": "Blocker",
+      "text": "Gira una carta tuya con [Blocker] para que reciba el ataque en lugar de otra. Solo una activación por batalla.",
+      "ruleIds": [
+        "7-1-2-1",
+        "10-1-4-1"
+      ]
+    },
+    {
+      "title": "Counter de personaje",
+      "text": "Manda al Trash desde tu mano un Character con símbolo Counter y suma ese valor durante la batalla.",
+      "ruleIds": [
+        "7-1-3-1-1"
+      ]
+    },
+    {
+      "title": "Event Counter",
+      "text": "O paga un Event con [Counter] de tu mano y activa su efecto.",
+      "ruleIds": [
+        "7-1-3-1-2"
+      ]
+    }
+  ],
+  "tip": "Empatar no te salva: tu poder debe superar al del ataque.",
+  "tipRuleIds": [
+    "7-1-4-1",
+    "7-1-4-2"
+  ],
+  "lessons": [
+    "blocker",
+    "counter"
+  ],
+  "order": 7,
+  "reviewStatus": "pending"
+}

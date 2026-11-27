@@ -1,0 +1,87 @@
+{
+  "lesson": "colores",
+  "questions": [
+    {
+      "id": "colores-1",
+      "prompt": "¿Cuántos colores hay?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cinco.",
+          "rationale": "Falta uno: son rojo, verde, azul, morado, negro y amarillo."
+        },
+        {
+          "id": "b",
+          "text": "Seis.",
+          "rationale": "Son los seis colores del juego."
+        },
+        {
+          "id": "c",
+          "text": "Ocho.",
+          "rationale": "No hay más de seis."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "2-3-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "colores-2",
+      "prompt": "Tu Leader es azul. ¿Qué cartas puedes incluir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cartas azules.",
+          "rationale": "Su color está presente en el Leader."
+        },
+        {
+          "id": "b",
+          "text": "Cartas de cualquier color, hasta 4 por número.",
+          "rationale": "El límite de copias no reemplaza la restricción de color."
+        },
+        {
+          "id": "c",
+          "text": "Cartas azules y negras.",
+          "rationale": "El negro no está en un Leader solo azul."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "5-1-2-2"
+      ],
+      "assumption": "Ninguna carta modifica las reglas de construcción.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "colores-3",
+      "prompt": "Una carta es roja y verde. Un efecto busca cartas verdes. ¿Cuenta?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, porque es multicolor.",
+          "rationale": "Ser multicolor no le quita ninguno de sus colores."
+        },
+        {
+          "id": "b",
+          "text": "Solo si tu Leader es verde.",
+          "rationale": "El color de la carta no depende de tu Leader."
+        },
+        {
+          "id": "c",
+          "text": "Sí.",
+          "rationale": "Cuenta como carta de cada color que tiene."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "2-3-5"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

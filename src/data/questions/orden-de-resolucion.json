@@ -1,0 +1,87 @@
+{
+  "lesson": "orden-de-resolucion",
+  "questions": [
+    {
+      "id": "orden-de-resolucion-1",
+      "prompt": "Efectos de ambas personas se activan a la vez. ¿Quién resuelve primero?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El jugador de turno.",
+          "rationale": "Tiene prioridad."
+        },
+        {
+          "id": "b",
+          "text": "El que no tiene el turno.",
+          "rationale": "Va después."
+        },
+        {
+          "id": "c",
+          "text": "El último que se activó.",
+          "rationale": "No hay pila."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "8-6-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "orden-de-resolucion-2",
+      "prompt": "Un efecto automático se cumple mientras recibes daño. ¿Cuándo se activa, por regla general?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Interrumpiendo el daño.",
+          "rationale": "Solo [Trigger] tiene esa excepción."
+        },
+        {
+          "id": "b",
+          "text": "Después de procesar todo el daño.",
+          "rationale": "Es la regla general."
+        },
+        {
+          "id": "c",
+          "text": "Al final del turno.",
+          "rationale": "No hace falta esperar tanto."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "8-6-2"
+      ],
+      "assumption": "No es un [Trigger] de la carta de Life.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "orden-de-resolucion-3",
+      "prompt": "Un efecto ordena una acción y otro la prohíbe. ¿Cuál prevalece?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El más reciente.",
+          "rationale": "El orden no decide."
+        },
+        {
+          "id": "b",
+          "text": "El del jugador de turno.",
+          "rationale": "El turno no cambia la regla."
+        },
+        {
+          "id": "c",
+          "text": "La prohibición.",
+          "rationale": "Siempre tiene precedencia."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "1-3-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "term": "On Block",
+  "aliases": [
+    "Al bloquear"
+  ],
+  "ruleId": "10-2-15",
+  "definition": "Se activa en el Block Step cuando activas tu Blocker.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

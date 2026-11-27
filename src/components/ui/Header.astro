@@ -6,7 +6,12 @@ const current = Astro.url.pathname;
 ---
 <header>
   <div class="container bar">
-    <a class="brand" href={withBase('')}>OPTCG Academy</a>
+    <a class="brand" href={withBase('')}>
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M32 18a14 14 0 1 0 0 28 14 14 0 0 0 0-28Zm0 8a6 6 0 1 1 0 12 6 6 0 0 1 0-12ZM32 4v22M32 38v22M4 32h22M38 32h22M12 12l15 15M37 37l15 15M52 12 37 27M27 37 12 52" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      </svg>
+      OPTCG Academy
+    </a>
     <div class="actions">
       <a class="control" href={withBase('buscar/')}>Buscar</a>
       <button class="control js-only" type="button" id="theme-toggle" aria-pressed="false">Modo oscuro</button>
@@ -24,16 +29,20 @@ const current = Astro.url.pathname;
 </header>
 
 <style>
-  header { background: var(--header-bg); color: var(--header-text); border-bottom: 3px solid var(--accent); }
+  header { background: linear-gradient(180deg, var(--header-bg), #12355c); color: var(--header-text); border-bottom: 3px solid var(--accent); }
   .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; padding-block: 0.5rem; }
   a { color: var(--header-text); }
   .brand, .control, nav a { display: inline-flex; align-items: center; min-height: 44px; }
-  .brand { font-weight: 800; font-size: 1.15rem; color: var(--accent); text-decoration: none; }
+  .brand { gap: 0.5rem; font-weight: 900; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
+  .brand svg { width: 1.75rem; height: 1.75rem; transition: transform 0.6s; }
+  .brand:hover svg { transform: rotate(180deg); }
   .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .control { background: transparent; color: var(--header-text); border: 1px solid var(--accent); border-radius: 0.4rem; padding-inline: 0.7rem; font: inherit; text-decoration: none; cursor: pointer; }
+  .control { background: transparent; color: var(--header-text); border: 1px solid var(--accent); border-radius: 2rem; padding-inline: 0.9rem; font: inherit; text-decoration: none; cursor: pointer; }
   :global(html:not(.js)) .js-only { display: none; }
-  ul { display: flex; flex-wrap: wrap; gap: 0 1.25rem; list-style: none; margin: 0; padding: 0 0 0.25rem; }
-  nav a[aria-current='page'] { font-weight: 800; text-decoration-thickness: 3px; text-decoration-color: var(--accent); }
+  ul { display: flex; flex-wrap: wrap; gap: 0.25rem; list-style: none; margin: 0; padding: 0 0 0.5rem; }
+  nav a { padding-inline: 0.7rem; border-radius: 2rem; text-decoration: none; transition: background 0.2s; }
+  nav a:hover { background: rgb(255 255 255 / 0.12); }
+  nav a[aria-current='page'] { font-weight: 800; background: var(--accent); color: var(--header-bg); }
   .control[aria-pressed='true'], .control[aria-expanded='true'] { background: var(--accent); color: var(--header-bg); }
   .menu-button { display: none; }
   @media (max-width: 48rem) {

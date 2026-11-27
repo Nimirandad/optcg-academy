@@ -1,6 +1,8 @@
 {
   "title": "Lección ficticia de prueba",
+  "objective": "Objetivo ficticio.",
   "level": 1,
+  "order": 1,
   "ruleIds": ["1-1"],
   "reviewStatus": "pending"
 }

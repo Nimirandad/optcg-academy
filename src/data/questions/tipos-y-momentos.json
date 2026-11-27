@@ -1,0 +1,87 @@
+{
+  "lesson": "tipos-y-momentos",
+  "questions": [
+    {
+      "id": "tipos-y-momentos-1",
+      "prompt": "¿Qué palabra señala un efecto de reemplazo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "«instead».",
+          "rationale": "Es su marca."
+        },
+        {
+          "id": "b",
+          "text": "«then».",
+          "rationale": "«Then» encadena acciones."
+        },
+        {
+          "id": "c",
+          "text": "«up to».",
+          "rationale": "Indica una cantidad máxima."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "8-1-3-4"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "tipos-y-momentos-2",
+      "prompt": "¿Cuándo puedes usar un efecto [Activate: Main]?",
+      "options": [
+        {
+          "id": "a",
+          "text": "En el Counter Step rival.",
+          "rationale": "No se usa durante batallas."
+        },
+        {
+          "id": "b",
+          "text": "En tu Main Phase, fuera de batalla.",
+          "rationale": "Es su momento."
+        },
+        {
+          "id": "c",
+          "text": "En cualquier momento.",
+          "rationale": "Tiene un momento definido."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "8-1-3-2",
+        "10-2-2-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "tipos-y-momentos-3",
+      "prompt": "Un efecto automático no dice «puedes». ¿Qué haces?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decides si te conviene.",
+          "rationale": "Sin palabra de elección no hay opción."
+        },
+        {
+          "id": "b",
+          "text": "Lo guardas para después.",
+          "rationale": "Se activa en su momento."
+        },
+        {
+          "id": "c",
+          "text": "Lo activas y procesas hasta donde sea posible.",
+          "rationale": "Es obligatorio."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "8-1-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

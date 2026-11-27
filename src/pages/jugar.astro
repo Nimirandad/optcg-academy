@@ -1,0 +1,17 @@
+---
+import BattleLesson from '../features/combat/BattleLesson.svelte';
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/paths';
+---
+<Base title="Aprende a atacar jugando" description="Cinco retos jugables de combate de ONE PIECE Card Game.">
+  <h1>Aprende a atacar jugando</h1>
+  <div data-pagefind-ignore>
+    <BattleLesson base={import.meta.env.BASE_URL} next={{ href: withBase('aprende/ataques/'), label: 'Sigue con la lección de ataques' }} client:load />
+  </div>
+  <p class="notice">Material no oficial, sin revisión humana. Las cartas son inventadas y no reemplazan al reglamento ni a un juez.</p>
+  <p><a class="back" href={withBase('')}>← Volver al mapa</a></p>
+</Base>
+
+<style>
+  .back { display: inline-flex; align-items: center; min-height: 44px; }
+</style>

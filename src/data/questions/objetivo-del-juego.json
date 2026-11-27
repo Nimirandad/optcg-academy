@@ -1,0 +1,87 @@
+{
+  "lesson": "objetivo-del-juego",
+  "questions": [
+    {
+      "id": "objetivo-del-juego-1",
+      "prompt": "Te quedas con 0 cartas de Life. En ese momento, ¿qué pasa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pierdes de inmediato.",
+          "rationale": "Llegar a 0 de Life no basta: hace falta recibir daño estando en 0."
+        },
+        {
+          "id": "b",
+          "text": "Sigues jugando; pierdes si tu Leader recibe daño estando en 0.",
+          "rationale": "La condición de derrota combina 0 de Life y daño al Leader."
+        },
+        {
+          "id": "c",
+          "text": "Debes sacar cartas del mazo para reponer Life.",
+          "rationale": "No existe una reposición automática de Life."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "1-2-1-1-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "objetivo-del-juego-2",
+      "prompt": "¿Cuál de estas es una condición de derrota?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tener 0 cartas en tu mazo.",
+          "rationale": "Es una de las dos condiciones de derrota."
+        },
+        {
+          "id": "b",
+          "text": "Tener 0 cartas en tu mano.",
+          "rationale": "Quedarte sin cartas en la mano no hace perder."
+        },
+        {
+          "id": "c",
+          "text": "No tener Characters en el campo.",
+          "rationale": "Puedes jugar sin Characters; no es una derrota."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "1-2-1-1-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "objetivo-del-juego-3",
+      "prompt": "¿Se puede conceder en cualquier momento?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo durante tu turno.",
+          "rationale": "La concesión no depende de quién tenga el turno."
+        },
+        {
+          "id": "b",
+          "text": "Sí, pero una carta puede impedirlo.",
+          "rationale": "Ninguna carta afecta a una concesión."
+        },
+        {
+          "id": "c",
+          "text": "Sí, y la partida termina de inmediato.",
+          "rationale": "Cualquiera puede conceder y pierde en el acto."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "1-2-3",
+        "1-2-4"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

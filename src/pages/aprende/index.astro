@@ -1,15 +1,38 @@
 ---
 import { getCollection } from 'astro:content';
 import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import ProgressList from '../../features/quizzes/ProgressList.svelte';
+import VoyageMap from '../../features/voyage/VoyageMap.svelte';
+import { islandsOf } from '../../features/voyage/islands';
 import Base from '../../layouts/Base.astro';
+import { levels, sortLessons } from '../../lib/academy';
 import { withBase } from '../../lib/paths';
 
-const lessons = (await getCollection('lessons')).sort((a, b) => a.data.level - b.data.level);
+const lessons = sortLessons(await getCollection('lessons'));
+const grouped = Object.entries(levels)
+  .map(([level, name]) => ({
+    title: `Nivel ${level}: ${name}`,
+    lessons: lessons
+      .filter((lesson) => lesson.data.level === Number(level))
+      .map((lesson) => ({ id: lesson.id, title: lesson.data.title, href: withBase(`aprende/${lesson.id}/`) })),
+  }))
+  .filter((group) => group.lessons.length > 0);
+const missing = Object.entries(levels).filter(([level]) => !lessons.some((l) => l.data.level === Number(level)));
 ---
 <Base title="Aprende" description="Lecciones guiadas de ONE PIECE Card Game.">
   <h1>Aprende</h1>
-  <p>Cinco niveles: fundamentos, primera partida, combate, efectos y avanzado.</p>
-  {lessons.length === 0 ? <UnderConstruction /> : (
-    <ul>{lessons.map((lesson) => <li><a href={withBase(`aprende/${lesson.id}/`)}>{lesson.data.title}</a></li>)}</ul>
+  <p>Cinco niveles: fundamentos, primera partida, combate, efectos y avanzado. Puedes entrar en cualquier lección.</p>
+  {missing.length > 0 && (
+    <UnderConstruction>Pendientes: {missing.map(([level, name]) => `nivel ${level} (${name})`).join(', ')}.</UnderConstruction>
   )}
+  <p><a class="button primary" href={withBase('jugar/')}>⚔ Prueba un combate</a></p>
+  <div class="map" data-pagefind-ignore>
+    <VoyageMap islands={islandsOf(lessons)} client:load />
+  </div>
+  <ProgressList levels={grouped} client:load />
 </Base>
+
+<style>
+  .map { border-radius: 1.5rem; padding: 1.5rem clamp(0.75rem, 4vw, 2rem); background: radial-gradient(circle at 20% 10%, #1d5c88, #0b2440 70%); color: #fff; }
+  .map :global(:focus-visible) { outline: 3px solid #ffe08a; outline-offset: 3px; }
+</style>

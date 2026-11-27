@@ -1,0 +1,10 @@
+{
+  "term": "Rush: Character",
+  "aliases": [
+    "Ataque inmediato a personajes"
+  ],
+  "ruleId": "10-1-6",
+  "definition": "Permite atacar a Characters rivales el turno en que se juega; no al Leader.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

@@ -15,6 +15,11 @@
   --header-text: #f4efe6;
   --accent: #d8bc80;
   --notice: #8a3535;
+  --sea: linear-gradient(160deg, #0b1d38 15%, #1d5c88);
+  --sun: #ffd76a;
+  --sun-text: #2b1d00;
+  --sun-shadow: #9a7415;
+  --shadow: 0 0.75rem 2rem rgb(11 29 56 / 0.16);
   color-scheme: light;
 }
 
@@ -29,5 +34,6 @@
   --header-text: #f4efe6;
   --accent: #d8bc80;
   --notice: #f0b4b4;
+  --shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.4);
   color-scheme: dark;
 }

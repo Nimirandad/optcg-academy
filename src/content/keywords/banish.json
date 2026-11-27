@@ -1,0 +1,10 @@
+{
+  "term": "Banish",
+  "aliases": [
+    "Desterrar"
+  ],
+  "ruleId": "10-1-3",
+  "definition": "Al dañar al Leader rival, la carta de Life va al Trash y su Trigger no se activa.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "don",
+  "icon": "moneda",
+  "title": "Los DON!!",
+  "question": "¿Para qué sirven los DON!!?",
+  "idea": "Son tu energía: llegan cada turno y los repartes como quieras.",
+  "steps": [
+    {
+      "title": "Llegan",
+      "text": "En tu DON!! Phase pones 2 desde el mazo de DON!!, o los que queden.",
+      "ruleIds": [
+        "6-4-1",
+        "6-4-2",
+        "6-4-3"
+      ]
+    },
+    {
+      "title": "Dan fuerza",
+      "text": "Asigna un DON!! Active a tu Leader o a un Character: gana 1000 de poder por cada uno durante tu turno.",
+      "ruleIds": [
+        "6-5-5-1",
+        "6-5-5-2"
+      ]
+    },
+    {
+      "title": "Vuelven",
+      "text": "En tu siguiente Refresh Phase regresan a la zona de coste.",
+      "ruleIds": [
+        "6-2-3",
+        "6-2-4"
+      ]
+    }
+  ],
+  "tip": "Si una carta con DON!! asignados cambia de zona, esos DON!! van a la zona de coste en estado Rested.",
+  "tipRuleIds": [
+    "6-5-5-4"
+  ],
+  "lessons": [
+    "recursos-don",
+    "don-en-combate"
+  ],
+  "order": 5,
+  "reviewStatus": "pending"
+}

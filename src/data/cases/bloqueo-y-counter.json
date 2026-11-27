@@ -1,0 +1,42 @@
+{
+  "id": "bloqueo-y-counter",
+  "level": 3,
+  "title": "Bloquear y luego defender",
+  "mechanics": [
+    "Blocker",
+    "Counter"
+  ],
+  "prompt": "Bloqueas un ataque con tu Character. ¿Puedes después subir su poder con un Counter?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Sí.",
+      "rationale": "El Counter Step viene después del Block Step."
+    },
+    {
+      "id": "b",
+      "text": "No, solo el objetivo original admite Counter.",
+      "rationale": "El Counter puede subir tu Leader o un Character."
+    },
+    {
+      "id": "c",
+      "text": "No, porque quedó Rested.",
+      "rationale": "Estar Rested no impide recibir poder."
+    }
+  ],
+  "answer": "a",
+  "steps": [
+    "En el Block Step pones Rested el bloqueador, que pasa a ser el objetivo.",
+    "Empieza el Counter Step.",
+    "Puedes subir su poder con un Counter de tu mano."
+  ],
+  "ruleIds": [
+    "10-1-4-1",
+    "7-1-3-1-1"
+  ],
+  "qaIds": [
+    "rules-p5-2"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}

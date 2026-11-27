@@ -1,0 +1,10 @@
+{
+  "term": "When Attacking",
+  "aliases": [
+    "Al atacar"
+  ],
+  "ruleId": "10-2-5",
+  "definition": "Se activa cuando declaras un ataque.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

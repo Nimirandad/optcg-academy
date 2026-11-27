@@ -1,0 +1,86 @@
+{
+  "lesson": "procesamiento-de-reglas",
+  "questions": [
+    {
+      "id": "procesamiento-de-reglas-1",
+      "prompt": "¿Cuándo se resuelve el procesamiento de reglas?",
+      "options": [
+        {
+          "id": "a",
+          "text": "De inmediato al ocurrir su evento.",
+          "rationale": "Incluso durante otras acciones."
+        },
+        {
+          "id": "b",
+          "text": "Al final del turno.",
+          "rationale": "No espera."
+        },
+        {
+          "id": "c",
+          "text": "Cuando un jugador lo pide.",
+          "rationale": "Es automático."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "9-1-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "procesamiento-de-reglas-2",
+      "prompt": "Ambas personas cumplen condiciones de derrota al comenzar el procesamiento. ¿Qué ocurre?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gana quien tiene el turno.",
+          "rationale": "El turno no decide."
+        },
+        {
+          "id": "b",
+          "text": "Ambas pierden.",
+          "rationale": "La regla incluye a todas las que cumplan."
+        },
+        {
+          "id": "c",
+          "text": "La partida se repite.",
+          "rationale": "Las reglas no lo indican."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "9-2-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "procesamiento-de-reglas-3",
+      "prompt": "¿Se puede evitar con un efecto el descarte por el límite de 5 Characters?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, con uno que evite K.O.",
+          "rationale": "No es un K.O."
+        },
+        {
+          "id": "b",
+          "text": "Sí, con un reemplazo.",
+          "rationale": "No se le aplican efectos."
+        },
+        {
+          "id": "c",
+          "text": "No.",
+          "rationale": "Es procesamiento de una regla."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "3-7-6-1-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

@@ -1,9 +1,53 @@
 ---
-import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import PreferenceTest from '../../features/recommender/PreferenceTest.svelte';
+import { colorProfiles } from '../../features/recommender/colors';
 import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/paths';
+
+const rule = (id: string) => withBase(`reglas/${id.split('-')[0]}/#regla-${id}`);
 ---
-<Base title="Mazos" description="Colores, preferencias y mazos de entrada. No se recomienda ningún mazo hasta verificar su legalidad.">
+<Base title="Mazos" description="Colores y preferencias. No se recomienda ningún mazo hasta verificar su legalidad.">
   <h1>Mazos</h1>
-  <p>Colores, preferencias y mazos de entrada. No se recomienda ningún mazo hasta verificar su legalidad.</p>
-  <UnderConstruction />
+  <p class="notice">Todavía no hay mazos publicados: no se recomienda ninguno hasta verificar su lista y su legalidad.</p>
+
+  <h2 id="colores">Colores</h2>
+  <p>Son tendencias generales, no reglas: una carta concreta puede salirse de ellas. Textos editoriales sin revisión humana.</p>
+  <ul class="cards">
+    {colorProfiles.map((color) => (
+      <li>
+        <h3 id={`color-${color.id}`}>{color.name}</h3>
+        <p>{color.tendency}</p>
+        <dl>
+          <dt>Fortaleza</dt>
+          <dd>{color.strength}</dd>
+          <dt>Desafío</dt>
+          <dd>{color.challenge}</dd>
+          <dt>Reglas relacionadas</dt>
+          <dd>
+            {color.mechanics.map((mechanic) => (
+              <a href={rule(mechanic.ruleId)}>{mechanic.label} ({mechanic.ruleId})</a>
+            ))}
+          </dd>
+        </dl>
+      </li>
+    ))}
+  </ul>
+  <p>Ejemplos de Leaders vigentes: pendientes hasta tener datos de cartas verificados.</p>
+
+  <h3>Cartas multicolor</h3>
+  <p>
+    Una carta puede tener varios colores y cuenta como carta de cada uno (<a href={rule('2-3-5')}>2-3-5</a>). El mazo se
+    construye según los colores del Leader (<a href={rule('5-1-2-2')}>5-1-2-2</a>).
+  </p>
+
+  <h2 id="test">Test de preferencias</h2>
+  <PreferenceTest client:visible />
+  <noscript><p>El test necesita JavaScript.</p></noscript>
 </Base>
+
+<style>
+  h3 { margin-block: 0 0.25rem; }
+  dt { font-weight: 700; }
+  dd { margin: 0 0 0.5rem; }
+  dd a { display: flex; align-items: center; min-height: 44px; }
+</style>

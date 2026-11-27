@@ -1,9 +1,84 @@
 ---
-import UnderConstruction from '../components/ui/UnderConstruction.astro';
+import CombatSim from '../features/battle/CombatSim.svelte';
+import EffectsSim from '../features/effects/EffectsSim.svelte';
+import Playmat from '../features/playmat/Playmat.svelte';
+import TurnSim from '../features/turns/TurnSim.svelte';
 import Base from '../layouts/Base.astro';
+import '../features/shared/sim.css';
+
+const base = import.meta.env.BASE_URL;
+const parts = [
+  { id: 'combate', title: 'Combate', text: 'Elige atacante y objetivo y recorre los pasos de una batalla.' },
+  { id: 'turnos', title: 'Turnos', text: 'Avanza por las fases y prueba acciones fuera de momento.' },
+  { id: 'playmat', title: 'Playmat', text: 'Dos campos para jugar cartas, asignar DON!! y atacar.' },
+  { id: 'efectos', title: 'Efectos', text: 'Costes, condiciones, orden de resolución, reemplazo y Once Per Turn.' },
+];
 ---
 <Base title="Simuladores" description="Práctica de combate, turnos, playmat y efectos.">
   <h1>Simuladores</h1>
-  <p>Práctica de combate, turnos, playmat y efectos.</p>
-  <UnderConstruction />
+  <p class="notice">
+    Material educativo no oficial, pendiente de revisión. Usa cartas inventadas y solo modela lo que se indica: no es un
+    juego completo ni reemplaza al reglamento o a un juez.
+  </p>
+
+  <h2 id="alcance">Qué cubren y qué no</h2>
+  <div class="scope">
+    <div>
+      <h3>Incluido</h3>
+      <ul>
+        <li>Fases del turno y excepciones del primer turno.</li>
+        <li>Ataque, Block, Counter, daño y fin de la batalla.</li>
+        <li>[Rush], [Rush: Character], [Double Attack], [Banish], [Blocker], [Unblockable] y un [Trigger] de robo.</li>
+        <li>Límites de 5 Characters y 1 Stage; K.O. por batalla.</li>
+        <li>Derrota por daño sin Life o por mazo vacío, y concesión.</li>
+        <li>Escenarios de efectos activados, orden de resolución y reemplazo.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>No incluido</h3>
+      <ul>
+        <li>Cartas oficiales y sus textos.</li>
+        <li>Preparación, mulligan, barajado y validación de mazos.</li>
+        <li>Efectos automáticos de las cartas, como [On Play], [When Attacking] u [On K.O.].</li>
+        <li>Events [Main] y K.O. por efecto.</li>
+        <li>Cambios de zona del atacante o del objetivo durante una batalla.</li>
+        <li>Costes interrumpidos a mitad de pago, efectos permanentes y bucles.</li>
+        <li>Prioridad de reemplazo de la carta que lo generó.</li>
+        <li>Rival automático, partidas en línea y arrastrar cartas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <noscript><p>Los simuladores necesitan JavaScript. Las reglas se pueden leer sin él.</p></noscript>
+
+  <nav aria-label="Simuladores">
+    <ul class="jump">{parts.map((part) => <li><a href={`#${part.id}`}>{part.title}</a></li>)}</ul>
+  </nav>
+
+  <section>
+    <h2 id="combate">{parts[0]!.title}</h2>
+    <p>{parts[0]!.text}</p>
+    <CombatSim {base} client:visible />
+  </section>
+  <section>
+    <h2 id="turnos">{parts[1]!.title}</h2>
+    <p>{parts[1]!.text}</p>
+    <TurnSim {base} client:visible />
+  </section>
+  <section>
+    <h2 id="playmat">{parts[2]!.title}</h2>
+    <p>{parts[2]!.text}</p>
+    <Playmat {base} client:visible />
+  </section>
+  <section>
+    <h2 id="efectos">{parts[3]!.title}</h2>
+    <p>{parts[3]!.text}</p>
+    <EffectsSim {base} client:visible />
+  </section>
 </Base>
+
+<style>
+  .scope { display: grid; gap: 0 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+  .jump { display: flex; flex-wrap: wrap; gap: 0 1.25rem; list-style: none; padding: 0; }
+  .jump a { display: inline-flex; align-items: center; min-height: 44px; }
+</style>

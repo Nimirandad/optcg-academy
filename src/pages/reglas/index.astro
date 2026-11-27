@@ -1,13 +1,33 @@
 ---
-import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import { getCollection } from 'astro:content';
+import Emblem from '../../features/art/Emblem.svelte';
 import Base from '../../layouts/Base.astro';
 import { chapters } from '../../lib/chapters';
 import { inventory } from '../../lib/inventory';
 import { withBase } from '../../lib/paths';
+
+const topics = (await getCollection('topics')).map((entry) => entry.data).sort((a, b) => a.order - b.order);
 ---
-<Base title="Reglas" description="Índice del reglamento de ONE PIECE Card Game por capítulo y número.">
+<Base title="Reglas" description="Las reglas de ONE PIECE Card Game por temas y por número.">
   <h1>Reglas</h1>
-  <UnderConstruction>Los números de regla ya están disponibles; las explicaciones en español están pendientes.</UnderConstruction>
+  <p>
+    Empieza por tu duda: cada tema cabe en unos pocos pasos. Son explicaciones propias, indican su estado de revisión y
+    no reemplazan al reglamento oficial ni a un juez.
+  </p>
+  <ul class="topics">
+    {topics.map((topic) => (
+      <li>
+        <a href={withBase(`reglas/tema/${topic.id}/`)}>
+          <span class="icon" aria-hidden="true"><Emblem name={topic.icon} /></span>
+          <strong>{topic.question}</strong>
+          <span>{topic.title} · {topic.steps.length} pasos</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h2>Referencia numerada</h2>
+  <p>El reglamento completo, regla por regla, para buscar un número concreto.</p>
   <ol class="cards">
     {chapters.map((chapter) => (
       <li><a href={withBase(`reglas/${chapter.number}/`)}>{chapter.number}. <span lang="en">{chapter.title}</span></a></li>
@@ -15,3 +35,12 @@ import { withBase } from '../../lib/paths';
   </ol>
   <p>Fuente: <a href="https://en.onepiece-cardgame.com/rules/">reglamento oficial</a>, versión {inventory.source.version}.</p>
 </Base>
+
+<style>
+  .topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 1rem; list-style: none; padding: 0; }
+  .topics a { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; height: 100%; padding: 1.25rem 1rem; text-align: center; text-decoration: none; border-radius: 1.25rem; border: 2px solid #8fb4d4; background: var(--sea); color: #fff; box-shadow: var(--shadow); transition: transform 0.25s; }
+  .topics a:hover, .topics a:focus-visible { transform: translateY(-0.4rem) rotate(-0.6deg); outline: 3px solid var(--link); outline-offset: 2px; }
+  .icon { width: 4rem; height: 4rem; color: #ffe08a; transition: transform 0.4s; }
+  a:hover .icon { transform: scale(1.15) rotate(6deg); }
+  .topics strong { font-size: 1.25rem; line-height: 1.25; }
+</style>

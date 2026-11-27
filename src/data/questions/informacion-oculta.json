@@ -1,0 +1,86 @@
+{
+  "lesson": "informacion-oculta",
+  "questions": [
+    {
+      "id": "informacion-oculta-1",
+      "prompt": "Un efecto te deja mirar cartas de una zona secreta sin decir quién. ¿Quién mira?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tú, que usas el efecto.",
+          "rationale": "Es la regla por defecto."
+        },
+        {
+          "id": "b",
+          "text": "Ambos.",
+          "rationale": "Haría falta que el texto lo dijera."
+        },
+        {
+          "id": "c",
+          "text": "Solo el oponente.",
+          "rationale": "El efecto es tuyo."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "11-3-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "informacion-oculta-2",
+      "prompt": "Tras mirar cartas, el texto no dice qué hacer con ellas. ¿Qué haces?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Las barajas.",
+          "rationale": "No lo indica la regla."
+        },
+        {
+          "id": "b",
+          "text": "Las devuelves a su zona como estaban.",
+          "rationale": "Recuperan su estado original."
+        },
+        {
+          "id": "c",
+          "text": "Las añades a tu mano.",
+          "rationale": "Nada lo autoriza."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "11-3-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "informacion-oculta-3",
+      "prompt": "Buscas en tu mazo una carta de cierto tipo. Hay una. ¿Estás obligado a elegirla?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, siempre.",
+          "rationale": "En zonas secretas puedes no elegir."
+        },
+        {
+          "id": "b",
+          "text": "Sí, si el oponente la pide.",
+          "rationale": "No depende de ello."
+        },
+        {
+          "id": "c",
+          "text": "No.",
+          "rationale": "No se puede exigir que garantices el requisito."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "8-4-4-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

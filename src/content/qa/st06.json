@@ -1,0 +1,13 @@
+{
+  "document": "st06",
+  "entries": [
+    {"id": "st06-p1-1", "sourceHash": "ad86b65db864b4ee", "question": "ST06-002: sin cartas en la mano, ¿puedo jugarlo?", "answer": "Sí, pero no puedes activar su [On Play].", "ruleIds": ["8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st06-p1-2", "sourceHash": "b5b9611071035a82", "question": "ST06-004: ataca con [Double Attack] por su [DON!! x1] y un [Counter] retira el Character de coste 0. ¿Cuánto daño hace?", "answer": "Si antes del Damage Step no hay un coste 0, pierde [Double Attack] y hace 1 de daño.", "ruleIds": ["8-1-3-3-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st06-p1-3", "sourceHash": "b2c84c68c6a8462a", "question": "ST06-004: ¿puede causarle K.O. el [On Play] de OP01-094?", "answer": "No.", "ruleIds": ["1-3-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st06-p1-4", "sourceHash": "0208ee5f6ccd04c0", "question": "ST06-012: ¿su [Activate: Main] permite ponerlo Rested sin descartar, o descartar sin ponerlo Rested?", "answer": "No: todo lo previo a los dos puntos es coste y no puede pagarse en parte.", "ruleIds": ["8-3-1", "8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st06-p1-5", "sourceHash": "73f98ce062ac0314", "question": "ST06-015: si el rival no tiene cartas en mano, ¿puedo activar su [Trigger]?", "answer": "Sí, pero no ocurre nada.", "ruleIds": ["1-3-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st06-p1-6", "sourceHash": "de2468099fac4e0f", "question": "ST06-015: ¿puedo elegir el objetivo del −2 de coste después de robar con su [Main]?", "answer": "Sí: los efectos se procesan en el orden escrito.", "ruleIds": ["1-3-7", "8-4-4"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st06-p1-7", "sourceHash": "8aba07125124aaf5", "question": "ST06-016: ¿la protección contra K.O. de su [Trigger] vale para Characters que juegue después?", "answer": "No: solo para los que estaban al activarlo.", "ruleIds": ["8-1-4-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st06-p1-8", "sourceHash": "10d6b19793212a68", "question": "ST06-017: ¿su [On Play] y su [Activate: Main] pueden reducir el coste de Characters distintos?", "answer": "Sí.", "ruleIds": ["8-4-4"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

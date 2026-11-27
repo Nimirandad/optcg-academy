@@ -1,9 +1,31 @@
 ---
-import UnderConstruction from '../components/ui/UnderConstruction.astro';
+import { getCollection } from 'astro:content';
+import Quiz from '../features/quizzes/Quiz.svelte';
 import Base from '../layouts/Base.astro';
+import { levels, sortLessons } from '../lib/academy';
+
+const lessons = sortLessons(await getCollection('lessons'));
+const sets = (await getCollection('questions')).map((entry) => entry.data);
+const challenges = Object.entries(levels).map(([level, name]) => ({
+  level: Number(level),
+  name,
+  questions: lessons
+    .filter((lesson) => lesson.data.level === Number(level))
+    .flatMap((lesson) => sets.find((set) => set.lesson === lesson.id)?.questions ?? []),
+}));
 ---
-<Base title="Desafíos" description="Cuestionarios por nivel.">
+<Base title="Desafíos" description="Cuestionarios de repaso por nivel.">
   <h1>Desafíos</h1>
-  <p>Cuestionarios por nivel.</p>
-  <UnderConstruction />
+  <p>Cada desafío repasa todas las preguntas de las lecciones de un nivel. Repítelo cuantas veces quieras.</p>
+  {challenges.map((challenge) => (
+    <details>
+      <summary>Nivel {challenge.level}: {challenge.name} ({challenge.questions.length} preguntas)</summary>
+      <Quiz base={import.meta.env.BASE_URL} lessonId={`desafio-${challenge.level}`} questions={challenge.questions} client:visible />
+    </details>
+  ))}
 </Base>
+
+<style>
+  summary { cursor: pointer; min-height: 44px; align-content: center; font-weight: 700; }
+  details { border-bottom: 1px solid var(--border); }
+</style>

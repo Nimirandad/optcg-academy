@@ -1,0 +1,14 @@
+{
+  "chapter": 9,
+  "sourceVersion": "1.2.1",
+  "rules": [
+    {"id": "9", "title": "Procesamiento de reglas", "explanation": "Comprobaciones automáticas, como la derrota.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "9-1", "title": "Procesamiento fundamental", "explanation": "Qué es y cuándo ocurre.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "9-1-1", "explanation": "Es el procesamiento que las reglas realizan automáticamente cuando ocurren determinados hechos durante la partida.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "9-1-2", "explanation": "Se resuelve de inmediato cuando ocurre el hecho, incluso si hay otras acciones en curso.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "9-2", "title": "Juicio de derrota", "explanation": "Quién pierde.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "9-2-1", "explanation": "Cuando comienza el procesamiento de reglas, pierden la partida todas las personas que cumplan alguna condición de derrota.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "9-2-1-1", "explanation": "Cumple una condición quien tiene 0 cartas de Life y su Leader recibe daño.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "9-2-1-2", "explanation": "También la cumple quien tiene 0 cartas en su mazo.", "relatedIds": ["1-2-1-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"}
+  ]
+}

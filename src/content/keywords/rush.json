@@ -1,0 +1,10 @@
+{
+  "term": "Rush",
+  "aliases": [
+    "Ataque inmediato"
+  ],
+  "ruleId": "10-1-1",
+  "definition": "Un Character puede atacar el mismo turno en que se juega.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

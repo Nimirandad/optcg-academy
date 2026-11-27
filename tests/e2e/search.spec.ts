@@ -28,3 +28,8 @@ test('acepta la consulta en la dirección', async ({ page }) => {
   await page.goto('buscar/?q=8.4.');
   await expect(page.getByRole('link', { name: 'Ir a la regla 8-4' })).toBeVisible();
 });
+
+test('busca una carta y encuentra su documento de Q&A', async ({ page }) => {
+  const results = await search(page, 'OP18-001');
+  await expect(results.getByRole('link', { name: /Q&A: OP-18/ })).toBeVisible();
+});

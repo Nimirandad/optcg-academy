@@ -1,0 +1,42 @@
+{
+  "id": "primer-ataque",
+  "level": 2,
+  "title": "Ansias de atacar",
+  "mechanics": [
+    "Primer turno"
+  ],
+  "prompt": "Es tu primer turno como segundo jugador y juegas un Character con [Rush]. ¿Puede atacar?",
+  "options": [
+    {
+      "id": "a",
+      "text": "No.",
+      "rationale": "Nadie puede batallar en su primer turno."
+    },
+    {
+      "id": "b",
+      "text": "Sí, gracias a [Rush].",
+      "rationale": "[Rush] permite atacar el turno de entrada, pero no anula la prohibición del primer turno."
+    },
+    {
+      "id": "c",
+      "text": "Sí, pero solo a Characters.",
+      "rationale": "La prohibición abarca toda batalla."
+    }
+  ],
+  "answer": "a",
+  "steps": [
+    "[Rush] levanta la restricción de atacar el turno en que se juega.",
+    "Otra regla prohíbe batallar en el primer turno de cada persona.",
+    "La prohibición tiene precedencia."
+  ],
+  "ruleIds": [
+    "6-5-6-1",
+    "10-1-1-1",
+    "1-3-3"
+  ],
+  "qaIds": [
+    "prb01-p1-2"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "sexto-personaje",
+  "level": 1,
+  "title": "El sexto Character",
+  "mechanics": [
+    "Reemplazo por límite",
+    "On K.O."
+  ],
+  "prompt": "Tienes 5 Characters, uno con [On K.O.]. Juegas otro y descartas precisamente ese. ¿Se activa su [On K.O.]?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Sí, porque va al Trash.",
+      "rationale": "No toda salida al Trash es un K.O."
+    },
+    {
+      "id": "b",
+      "text": "Sí, y además se resuelve primero.",
+      "rationale": "No hay activación."
+    },
+    {
+      "id": "c",
+      "text": "No.",
+      "rationale": "El descarte por límite es una regla, no un K.O."
+    }
+  ],
+  "answer": "c",
+  "steps": [
+    "Revelas el Character nuevo.",
+    "Mandas al Trash uno de los 5: es procesamiento de una regla.",
+    "Como no es un K.O., [On K.O.] no se activa."
+  ],
+  "ruleIds": [
+    "3-7-6-1",
+    "3-7-6-1-1",
+    "10-2-1-3"
+  ],
+  "qaIds": [
+    "rules-p4-2"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}

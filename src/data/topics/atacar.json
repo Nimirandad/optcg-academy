@@ -1,0 +1,48 @@
+{
+  "id": "atacar",
+  "icon": "canon",
+  "title": "Atacar",
+  "question": "¿Cómo funciona un combate?",
+  "idea": "Gira una carta para atacar y compara poderes. El empate favorece a quien ataca.",
+  "steps": [
+    {
+      "title": "Ataca",
+      "text": "Pon Rested tu Leader o un Character que esté Active.",
+      "ruleIds": [
+        "7-1-1-1"
+      ]
+    },
+    {
+      "title": "Elige objetivo",
+      "text": "El Leader rival o un Character rival que esté Rested.",
+      "ruleIds": [
+        "7-1-1-2"
+      ]
+    },
+    {
+      "title": "Responden",
+      "text": "La otra persona puede bloquear y después usar Counter.",
+      "ruleIds": [
+        "7-1-2",
+        "7-1-3"
+      ]
+    },
+    {
+      "title": "Compara",
+      "text": "Si tu poder es igual o mayor, ganas la batalla. Un Leader recibe 1 de daño.",
+      "ruleIds": [
+        "7-1-4-1",
+        "7-1-4-1-1"
+      ]
+    }
+  ],
+  "tip": "Si tu poder es menor, el ataque falla.",
+  "tipRuleIds": [
+    "7-1-4-2"
+  ],
+  "lessons": [
+    "ataques"
+  ],
+  "order": 6,
+  "reviewStatus": "pending"
+}

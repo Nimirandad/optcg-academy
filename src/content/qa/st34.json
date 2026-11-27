@@ -1,0 +1,10 @@
+{
+  "document": "st34",
+  "entries": [
+    {"id": "st34-p1-1", "sourceHash": "ecf5478edb36a85f", "question": "ST34-001: con 2 copias, tras devolver 1 DON!! y usar una, ¿puedo devolver otro DON!! y usar la segunda para añadir otro?", "answer": "No.", "ruleIds": ["10-2-13-2", "8-3-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st34-p1-2", "sourceHash": "12985023112c31e7", "question": "ST34-002: si el rival no tiene Characters de coste 2 o menos, ¿su [On Play] añade igual 1 DON!! Rested?", "answer": "Sí.", "ruleIds": ["4-10-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st34-p1-3", "sourceHash": "f95aa6c811ddc97a", "question": "ST34-002: sin cartas en el mazo de DON!!, ¿su [On Play] puede causar K.O. a un Character rival de coste 2 o menos?", "answer": "Sí.", "ruleIds": ["1-3-2", "4-10-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st34-p1-4", "sourceHash": "ae953980e417372e", "question": "ST34-004: si otro efecto también cambia el poder base del Character elegido con su [On Play], ¿cuál queda?", "answer": "El valor más alto: por ejemplo, entre fijarlo en 0 y en 6000, queda en 6000.", "ruleIds": ["4-9-2-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st34-p1-5", "sourceHash": "b8e869b6c632c1b0", "question": "ST34-004: si es la única carta en mi mano, ¿puedo jugarla y activar su [On Play]?", "answer": "No: tampoco puedes pagar DON!! −4 ni resolver sus partes de Life y de poder base 0.", "ruleIds": ["8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

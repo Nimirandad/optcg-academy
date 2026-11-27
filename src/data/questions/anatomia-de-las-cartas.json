@@ -1,0 +1,87 @@
+{
+  "lesson": "anatomia-de-las-cartas",
+  "questions": [
+    {
+      "id": "anatomia-de-las-cartas-1",
+      "prompt": "¿Qué categorías tienen coste?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Character, Event y Stage.",
+          "rationale": "Son las tres categorías con coste."
+        },
+        {
+          "id": "b",
+          "text": "Leader y Character.",
+          "rationale": "El Leader no tiene coste; empieza en su zona."
+        },
+        {
+          "id": "c",
+          "text": "Todas, incluido DON!!.",
+          "rationale": "Ni Leader ni DON!! tienen coste."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "2-7-5"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "anatomia-de-las-cartas-2",
+      "prompt": "¿Qué cartas tienen un valor de Life?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Leader y Character.",
+          "rationale": "Los Characters no tienen Life."
+        },
+        {
+          "id": "b",
+          "text": "Solo Leader.",
+          "rationale": "Life es un dato exclusivo del Leader."
+        },
+        {
+          "id": "c",
+          "text": "Solo las que tienen [Trigger].",
+          "rationale": "[Trigger] es un efecto, no un valor de Life."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "2-9-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "anatomia-de-las-cartas-3",
+      "prompt": "Una carta tiene [Trigger]. ¿Cuándo permite activarlo esa marca?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cada vez que la robas.",
+          "rationale": "Robar la carta no activa [Trigger]."
+        },
+        {
+          "id": "b",
+          "text": "Cuando la juegas pagando su coste.",
+          "rationale": "Jugarla no es recibirla como daño."
+        },
+        {
+          "id": "c",
+          "text": "Al tomarla de tu Life por daño, en vez de añadirla a la mano.",
+          "rationale": "Ese es el momento propio de [Trigger]."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "2-11-1",
+        "10-1-5-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

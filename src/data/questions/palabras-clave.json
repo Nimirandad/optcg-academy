@@ -1,0 +1,89 @@
+{
+  "lesson": "palabras-clave",
+  "questions": [
+    {
+      "id": "palabras-clave-1",
+      "prompt": "¿Qué permite [Rush: Character] el turno en que se juega?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Atacar Characters rivales.",
+          "rationale": "No habilita atacar al Leader."
+        },
+        {
+          "id": "b",
+          "text": "Atacar al Leader.",
+          "rationale": "Eso lo permitiría [Rush]."
+        },
+        {
+          "id": "c",
+          "text": "Bloquear dos veces.",
+          "rationale": "No tiene relación con bloquear."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "10-1-6-1"
+      ],
+      "assumption": "No tiene además [Rush].",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "palabras-clave-2",
+      "prompt": "Un efecto manda tu Character al Trash sin decir K.O. ¿Se activa su [On K.O.]?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, siempre que vaya al Trash.",
+          "rationale": "Importa la forma en que salió."
+        },
+        {
+          "id": "b",
+          "text": "No.",
+          "rationale": "No fue K.O."
+        },
+        {
+          "id": "c",
+          "text": "Solo en el turno rival.",
+          "rationale": "El turno no lo convierte en K.O."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "10-2-1-3"
+      ],
+      "assumption": "La carta no indica otra cosa.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "palabras-clave-3",
+      "prompt": "Usaste un efecto [Once Per Turn], la carta salió y volvió al campo el mismo turno. ¿Puedes usarlo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, ya se usó ese turno.",
+          "rationale": "La carta que vuelve se trata como otra."
+        },
+        {
+          "id": "b",
+          "text": "Solo si pagas el doble.",
+          "rationale": "No existe esa regla."
+        },
+        {
+          "id": "c",
+          "text": "Sí: se trata como una carta distinta.",
+          "rationale": "Al cambiar de zona se reinicia."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "10-2-13-4",
+        "3-1-6"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

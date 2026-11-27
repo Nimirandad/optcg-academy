@@ -1,0 +1,50 @@
+{
+  "id": "mesa",
+  "icon": "mapa",
+  "title": "La mesa",
+  "question": "¿Dónde va cada carta?",
+  "idea": "Cada persona tiene sus propias zonas. Cuántas cartas hay en cada una siempre se puede comprobar.",
+  "steps": [
+    {
+      "title": "El campo",
+      "text": "Leader, Characters (máximo cinco), Stage (solo una) y la zona de coste forman el campo.",
+      "ruleIds": [
+        "3-1-2",
+        "3-7",
+        "3-8"
+      ]
+    },
+    {
+      "title": "Tus reservas",
+      "text": "El mazo, el mazo de DON!! y la mano: de ahí sale todo lo que juegas.",
+      "ruleIds": [
+        "3-2",
+        "3-3",
+        "3-4"
+      ]
+    },
+    {
+      "title": "Life",
+      "text": "Las cartas de vida de tu Leader.",
+      "ruleIds": [
+        "3-10"
+      ]
+    },
+    {
+      "title": "Trash",
+      "text": "La zona de descarte: ahí van los Characters con K.O. y los Events usados.",
+      "ruleIds": [
+        "3-5-1"
+      ]
+    }
+  ],
+  "tip": "Un Character o Stage que sale de su zona se trata como una carta nueva, salvo que se indique otra cosa.",
+  "tipRuleIds": [
+    "3-1-6"
+  ],
+  "lessons": [
+    "zonas-de-juego"
+  ],
+  "order": 3,
+  "reviewStatus": "pending"
+}

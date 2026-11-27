@@ -7,6 +7,7 @@ body {
   color: var(--text);
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
+  min-height: 100vh;
   overflow-wrap: break-word;
 }
 a { color: var(--link); text-underline-offset: 0.2em; }
@@ -15,9 +16,27 @@ header :focus-visible { outline-color: var(--accent); }
 .container { width: min(100% - 2rem, 62rem); margin-inline: auto; }
 main { padding-block: 1.5rem 3rem; }
 h1 { line-height: 1.2; font-size: clamp(1.6rem, 6vw, 2.4rem); }
-.notice { border-inline-start: 4px solid var(--notice); background: var(--surface); padding: 0.75rem 1rem; }
+.notice { border-inline-start: 6px solid var(--notice); border-radius: 0.75rem; background: var(--surface); padding: 0.75rem 1rem; }
+h2 { line-height: 1.25; margin-top: 2rem; }
+/* Las páginas de consulta comparten el mar de la portada en su título. */
+main > h1 { margin-top: 0; border-radius: 1.25rem; padding: 1rem clamp(1rem, 4vw, 2rem); background: var(--sea); color: #fff; box-shadow: var(--shadow); }
+/* Cabecera de página: mismo mar que la portada. */
+.banner { position: relative; overflow: hidden; border-radius: 1.5rem; padding: 1.25rem clamp(1rem, 4vw, 2rem) 2.25rem; background: var(--sea); color: #fff; box-shadow: var(--shadow); }
+.banner::after { content: ''; position: absolute; inset: auto 0 0 -80px; height: 1.1rem; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='18'%3E%3Cpath d='M0 9q20-12 40 0t40 0v9H0Z' fill='%238fd0ee' fill-opacity='.45'/%3E%3C/svg%3E") repeat-x; animation: tide 6s linear infinite; }
+.banner h1 { margin: 0; }
+.banner p { margin-block: 0.4rem 0; }
+.banner a { color: #fff; }
+.banner :focus-visible { outline-color: #ffe08a; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; font-weight: 800; color: #ffe08a; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0.4rem 1.3rem; border: 2px solid var(--sun); border-radius: 3rem; font-weight: 800; text-decoration: none; transition: transform 0.2s; }
+.button.primary { background: var(--sun); color: var(--sun-text); box-shadow: 0 0.3rem 0 var(--sun-shadow); }
+.banner a.button.primary { color: var(--sun-text); }
+.button:hover { transform: translateY(-3px); }
+/* Se anima `transform` para no repintar la página en cada fotograma. */
+@keyframes tide { to { transform: translateX(80px); } }
 .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); padding: 0; list-style: none; }
-.cards li { background: var(--surface); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem; }
+.cards li { background: var(--surface); border: 2px solid var(--border); border-radius: 1rem; padding: 1rem; transition: transform 0.2s, box-shadow 0.2s; }
+.cards li:hover, .cards li:focus-within { transform: translateY(-0.25rem); border-color: var(--link); box-shadow: var(--shadow); }
 .cards a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
 .cards p { margin: 0; color: var(--muted); }
 .skip { position: absolute; left: 1rem; top: -10rem; background: var(--surface); padding: 0.75rem 1rem; z-index: 10; }

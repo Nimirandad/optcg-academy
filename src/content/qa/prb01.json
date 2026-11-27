@@ -1,0 +1,11 @@
+{
+  "document": "prb01",
+  "entries": [
+    {"id": "prb01-p1-1", "sourceHash": "ae4a69c0827d4763", "question": "PRB01-001: ¿su [Activate: Main] puede dar [Rush] a un Character de coste 8 o menos que tiene [On Play] o [When Attacking]?", "answer": "No.", "ruleIds": ["10-1-1-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "prb01-p1-2", "sourceHash": "32b18f40e9db1179", "question": "PRB01-001: si en mi primer turno juego un Character de coste 8 o menos sin [On Play] y le doy [Rush], ¿puede atacar?", "answer": "No: nadie puede batallar en su primer turno.", "ruleIds": ["6-5-6-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "prb01-p1-3", "sourceHash": "98af5ea4242b57a1", "question": "PRB01-001: ¿puede dar [Rush] a OP05-005 aunque su [On Play] exige un Leader {Revolutionary Army} que no tengo?", "answer": "No: sigue teniendo [On Play].", "ruleIds": ["8-3-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "prb01-p1-4", "sourceHash": "3368cbf0b57a52c6", "question": "PRB01-001: si no pagué el coste de un [On Play] y no se activó, ¿ese Character puede recibir [Rush] con este Leader?", "answer": "No.", "ruleIds": ["8-3-1-4"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "prb01-p1-5", "sourceHash": "9ea40962252ef66d", "question": "PRB01-001: un Character con [On Play] afectado por «niega el efecto», ¿cuenta como Character sin [On Play]?", "answer": "Sí. Es distinto de un efecto que niega solo los [On Play].", "ruleIds": ["8-2-1-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "prb01-p1-6", "sourceHash": "f5a2f32390976214", "question": "PRB01-001: tras usar el rival su Leader OP09-081, que niega mis [On Play], ¿puedo dar [Rush] a un Character con [On Play] que juego en mi turno?", "answer": "No: aunque ese [On Play] esté negado, sigue contando como Character con [On Play].", "ruleIds": ["8-2-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "term": "End of Your Turn",
+  "aliases": [
+    "Fin de tu turno"
+  ],
+  "ruleId": "10-2-7",
+  "definition": "Se activa en la End Phase de tu turno.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

@@ -1,0 +1,10 @@
+{
+  "term": "Opponent’s Turn",
+  "aliases": [
+    "Turno rival"
+  ],
+  "ruleId": "10-2-12",
+  "definition": "Condición que se cumple durante el turno del rival.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "dos-copias",
+  "level": 4,
+  "title": "Dos copias, un límite",
+  "mechanics": [
+    "Once Per Turn"
+  ],
+  "prompt": "Tienes dos cartas iguales con [Once Per Turn] y ya usaste una. ¿Puedes usar la otra este turno?",
+  "options": [
+    {
+      "id": "a",
+      "text": "No, el límite es por nombre.",
+      "rationale": "El límite es por carta."
+    },
+    {
+      "id": "b",
+      "text": "Solo si la primera salió del campo.",
+      "rationale": "No hace falta."
+    },
+    {
+      "id": "c",
+      "text": "Sí.",
+      "rationale": "Cada carta tiene su propio uso."
+    }
+  ],
+  "answer": "c",
+  "steps": [
+    "[Once Per Turn] limita el efecto de cada carta.",
+    "La segunda copia no lo ha usado.",
+    "Puede activarlo si cumple sus condiciones."
+  ],
+  "ruleIds": [
+    "10-2-13-2"
+  ],
+  "qaIds": [
+    "rules-p4-4"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}

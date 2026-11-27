@@ -1,0 +1,7 @@
+{
+  "document": "st32",
+  "entries": [
+    {"id": "st32-p1-1", "sourceHash": "d5c494e8a4a4791d", "question": "ST32-003: ¿su [On Play] puede jugar un Character de coste 6 o más?", "answer": "No: permite jugar desde la mano hasta 1 [Perona] de coste 5 o menos, o hasta 1 Character <Slash> de coste 5 o menos.", "ruleIds": ["10-2-6-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st32-p1-2", "sourceHash": "887a2d45c872732f", "question": "ST32-005: ¿puede atacar Characters en mi primer turno?", "answer": "No.", "ruleIds": ["6-5-6-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

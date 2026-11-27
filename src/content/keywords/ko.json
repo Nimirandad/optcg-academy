@@ -1,0 +1,10 @@
+{
+  "term": "K.O.",
+  "aliases": [
+    "Fuera de combate"
+  ],
+  "ruleId": "10-2-1",
+  "definition": "Un Character va del campo al Trash por perder una batalla o por un efecto.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

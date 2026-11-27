@@ -1,0 +1,9 @@
+{
+  "document": "st31",
+  "entries": [
+    {"id": "st31-p1-1", "sourceHash": "4de58fef105932ef", "question": "ST31-002: ¿su [On Play] puede jugar ST31-005?", "answer": "Sí.", "ruleIds": ["10-2-6-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st31-p1-2", "sourceHash": "97b2d6c96751940a", "question": "ST31-003: ¿«3 o más DON!! asignados en total» cuenta los suyos y los de mis demás Characters y Leader?", "answer": "Sí, todos.", "ruleIds": ["6-5-5-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st31-p1-3", "sourceHash": "76f047072b8eec5a", "question": "ST31-003: si con 3 o más DON!! asignados me atacan y el [When Attacking] rival retira otro Character mío, bajando a 2 o menos, ¿puede usar [Blocker]?", "answer": "No.", "ruleIds": ["8-1-3-3-2", "7-1-2-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st31-p1-4", "sourceHash": "3621cceaa14520b6", "question": "ST31-004: ¿«3 o más DON!! asignados en total» cuenta los suyos y los de mis demás Characters y Leader?", "answer": "Sí, todos.", "ruleIds": ["6-5-5-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

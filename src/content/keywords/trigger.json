@@ -1,0 +1,10 @@
+{
+  "term": "Trigger",
+  "aliases": [
+    "Disparador"
+  ],
+  "ruleId": "10-1-5",
+  "definition": "Efecto que puedes activar, al recibir daño, en lugar de añadir la carta de Life a tu mano.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

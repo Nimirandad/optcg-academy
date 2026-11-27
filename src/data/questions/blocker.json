@@ -1,0 +1,89 @@
+{
+  "lesson": "blocker",
+  "questions": [
+    {
+      "id": "blocker-1",
+      "prompt": "¿Cuántas veces puedes activar [Blocker] en una batalla?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Una.",
+          "rationale": "Solo una activación por batalla."
+        },
+        {
+          "id": "b",
+          "text": "Una por cada carta con [Blocker].",
+          "rationale": "El límite es por batalla, no por carta."
+        },
+        {
+          "id": "c",
+          "text": "Las que quieras.",
+          "rationale": "Hay un límite."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "7-1-2-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "blocker-2",
+      "prompt": "Tienes un Character con [Blocker] en estado Rested. ¿Puede bloquear?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, sigue en el campo.",
+          "rationale": "Bloquear exige ponerlo Rested."
+        },
+        {
+          "id": "b",
+          "text": "No.",
+          "rationale": "Ya está Rested, así que no puede pagar esa acción."
+        },
+        {
+          "id": "c",
+          "text": "Solo si atacan a tu Leader.",
+          "rationale": "El objetivo no cambia la condición."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "10-1-4-1",
+        "1-3-2-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "blocker-3",
+      "prompt": "Un ataque con [Unblockable] va contra tu Leader. ¿Qué puedes hacer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Usar [Blocker] como siempre.",
+          "rationale": "[Unblockable] lo impide."
+        },
+        {
+          "id": "b",
+          "text": "Nada: el daño es automático.",
+          "rationale": "Todavía existe el Counter Step."
+        },
+        {
+          "id": "c",
+          "text": "No usar [Blocker], pero sí Counters.",
+          "rationale": "Solo se prohíbe el bloqueo."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "10-1-7-1",
+        "7-1-3-1"
+      ],
+      "assumption": "Ningún otro efecto restringe tus Counters.",
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

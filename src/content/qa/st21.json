@@ -1,0 +1,9 @@
+{
+  "document": "st21",
+  "entries": [
+    {"id": "st21-p1-1", "sourceHash": "e2fc086c6a2d2d78", "question": "ST21-003: tras atacar el Character elegido con su [On Play], si ataca otra carta ese turno, ¿el rival puede bloquear?", "answer": "Sí.", "ruleIds": ["7-1-2-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st21-p1-2", "sourceHash": "657fdef490797b95", "question": "ST21-015: ¿su [On K.O.] puede jugar otros [Roronoa Zoro], como OP01-025?", "answer": "No.", "ruleIds": ["2-1-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st21-p1-3", "sourceHash": "2482e8e743c886e2", "question": "ST21-015: en el turno rival juego OP09-013 con su [On K.O.] y su [On Play] da +1000 «hasta el final del próximo turno rival». ¿Vale hasta el final del turno actual?", "answer": "Sí: en ese caso se refiere al turno rival en curso.", "ruleIds": ["8-1-4-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st21-p1-4", "sourceHash": "9ad9365d959357b7", "question": "ST21-017: ¿su [Main] permite dar −5000 a un Character y causar K.O. a otro de 2000 o menos?", "answer": "Sí.", "ruleIds": ["8-4-4"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

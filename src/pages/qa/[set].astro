@@ -1,11 +1,97 @@
 ---
+import { getCollection } from 'astro:content';
+import RestrictionNotice from '../../components/ui/RestrictionNotice.astro';
+import RuleText from '../../components/ui/RuleText.astro';
 import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/paths';
+import { documents, documentTitle, statusLabel } from '../../lib/qa';
+import { rulePath } from '../../lib/rules';
 
-// Sin sets publicados hasta que se registren y revisen en la Fase 2.
-export function getStaticPaths() {
-  return [];
+export async function getStaticPaths() {
+  const notes = await getCollection('qa');
+  const keywords = await getCollection('keywords');
+  const terms = Object.fromEntries(keywords.map((keyword) => [keyword.id, keyword.data.term]));
+  return documents.map((document) => ({
+    params: { set: document.slug },
+    props: {
+      document,
+      terms,
+      entries: notes.find((note) => note.data.document === document.slug)?.data.entries ?? [],
+    },
+  }));
 }
+
+const { document, terms, entries } = Astro.props;
+const title = documentTitle(document);
+const byId = new Map(entries.map((entry) => [entry.id, entry]));
+const explained = document.questions.filter((question) => byId.has(question.id));
+const pending = document.questions.filter((question) => !byId.has(question.id));
+const source = (page: number) => `${document.sourceUrl}#page=${page}`;
+const mechanics = (list: string[]) => list.map((slug) => terms[slug] ?? slug).join(', ');
 ---
-<Base title="Q&A del set" description="Aclaraciones oficiales de un set.">
-  <h1>Q&A del set</h1>
+<Base title={`Q&A: ${title}`} description={`Aclaraciones oficiales de ${title}: ubicación en el documento y explicaciones disponibles.`}>
+  <h1>Q&A: {title}</h1>
+  <p class="notice">
+    <strong>Material no oficial.</strong> No se reproducen las preguntas ni las respuestas oficiales: consulta siempre el
+    <a href={document.sourceUrl}>documento oficial en inglés</a>, publicado con fecha {document.publishedAt} y
+    consultado el {document.retrievedAt}.
+  </p>
+  <p>
+    {document.questions.length} preguntas detectadas · {explained.length} con explicación propia ·
+    <a href={withBase('qa/#conflictos')}>observaciones sobre las fuentes</a>
+  </p>
+
+  {explained.length > 0 && (
+    <section>
+      <h2>Explicaciones</h2>
+      {explained.map((question) => {
+        const entry = byId.get(question.id)!;
+        return (
+          <article id={question.id}>
+            <h3>{entry.question}</h3>
+            <p><RuleText text={entry.answer} /></p>
+            <RestrictionNotice cardIds={question.cardIds} />
+            {entry.note && <p class="notice"><strong>Observación sobre la fuente:</strong> <RuleText text={entry.note} /></p>}
+            <p class="meta">
+              Reglas: {entry.ruleIds.map((id, index) => <>{index > 0 && ', '}<a href={withBase(rulePath(id))}>{id}</a></>)}
+              {question.cardIds.length > 0 && <> · Cartas: {question.cardIds.join(', ')}</>}
+              {question.mechanics.length > 0 && <> · <span lang="en">{mechanics(question.mechanics)}</span></>}
+            </p>
+            <p class="meta">
+              <a href={source(question.page)}>Documento oficial, p. {question.page}</a> · {statusLabel[entry.reviewStatus]}
+            </p>
+          </article>
+        );
+      })}
+    </section>
+  )}
+
+  {pending.length > 0 && (
+    <section>
+      <h2>Preguntas sin explicación</h2>
+      <p>Cartas y palabras clave se detectan automáticamente; comprueba el original.</p>
+      <ul>
+        {pending.map((question) => (
+          <li id={question.id}>
+            <strong>{question.cardIds.join(', ') || 'Sin carta indicada'}</strong>
+            {question.mechanics.length > 0 && <span lang="en"> · {mechanics(question.mechanics)}</span>}
+            {' · '}<a href={source(question.page)}>p. {question.page}</a>
+            {question.flags.length > 0 && ' · extracción por comprobar'}
+            <RestrictionNotice cardIds={question.cardIds} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <p><a href={withBase('qa/')}>Volver al índice de Q&A</a></p>
 </Base>
+
+<style>
+  article { border-top: 1px solid var(--border); padding-block: 0.5rem; }
+  article, li { scroll-margin-top: 1rem; }
+  h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+  p { margin-block: 0.4rem; }
+  .meta { color: var(--muted); font-size: 0.875rem; }
+  li { padding-block: 0.35rem; }
+</style>

@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import RuleText from '../../../components/ui/RuleText.astro';
+import TopicSteps from '../../../features/topics/TopicSteps.svelte';
+import Base from '../../../layouts/Base.astro';
+import { inventory } from '../../../lib/inventory';
+import { withBase } from '../../../lib/paths';
+import { rulePath } from '../../../lib/rules';
+import type { Topic } from '../../../lib/topic-schema';
+
+export async function getStaticPaths() {
+  const topics = (await getCollection('topics')).map((entry) => entry.data).sort((a, b) => a.order - b.order);
+  const lessons = await getCollection('lessons');
+  const known = new Set(inventory.rules.map((rule) => rule.ruleId));
+  return topics.map((topic, index) => {
+    const unknown = [...topic.steps.flatMap((step) => step.ruleIds), ...topic.tipRuleIds].filter((id) => !known.has(id));
+    const related = topic.lessons.map((id) => lessons.find((lesson) => lesson.id === id));
+    if (unknown.length || related.includes(undefined)) {
+      throw new Error(`Tema inconsistente (${topic.id}): ${unknown.join(', ') || 'lección inexistente'}`);
+    }
+    return {
+      params: { tema: topic.id },
+      props: { topic, next: topics[index + 1], related: related.map((lesson) => ({ id: lesson!.id, title: lesson!.data.title })) },
+    };
+  });
+}
+
+interface Props {
+  topic: Topic;
+  next?: Topic;
+  related: { id: string; title: string }[];
+}
+const { topic, next, related } = Astro.props;
+---
+<Base title={topic.question} description={topic.idea}>
+  <header class="banner">
+    <p class="eyebrow">Reglas · {topic.title}</p>
+    <h1>{topic.question}</h1>
+    <p class="idea">{topic.idea}</p>
+  </header>
+  <p class="notice">
+    {topic.reviewStatus === 'reviewed' ? 'Resumen revisado.' : 'Resumen no oficial, pendiente de revisión.'} Ante una
+    duda, manda la regla numerada y el <a href="https://en.onepiece-cardgame.com/rules/">reglamento oficial</a>.
+  </p>
+
+  <TopicSteps base={import.meta.env.BASE_URL} icon={topic.icon} steps={topic.steps} client:load />
+
+  <p class="tip">
+    <strong>Ojo:</strong> <RuleText text={topic.tip} />
+    {topic.tipRuleIds.map((id) => <a href={withBase(rulePath(id))}>Regla {id}</a>)}
+  </p>
+
+  <h2>Practícalo</h2>
+  <ul class="refs">
+    {related.map((lesson) => <li><a href={withBase(`aprende/${lesson.id}/`)}>Lección: {lesson.title}</a></li>)}
+  </ul>
+
+  <nav aria-label="Temas">
+    <a class="button" href={withBase('reglas/')}>Todos los temas</a>
+    {next && <a class="button primary" href={withBase(`reglas/tema/${next.id}/`)}>Siguiente tema: {next.title}</a>}
+  </nav>
+</Base>
+
+<style>
+  .idea { font-size: 1.15rem; }
+  .tip { border: 2px dashed var(--border); border-radius: 1rem; background: var(--surface); padding: 0.75rem 1rem; }
+  .tip a, .notice a { display: inline-block; padding: 0.25rem 0.1rem; margin-inline-start: 0.35rem; }
+  .refs { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; }
+  .refs a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 0.9rem; border: 2px solid var(--border); border-radius: 2rem; background: var(--surface); }
+  nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+</style>

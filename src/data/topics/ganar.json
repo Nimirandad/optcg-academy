@@ -1,0 +1,39 @@
+{
+  "id": "ganar",
+  "icon": "trofeo",
+  "title": "Cómo se gana",
+  "question": "¿Cuándo termina la partida?",
+  "idea": "Gana quien consigue que la otra persona cumpla una condición de derrota.",
+  "steps": [
+    {
+      "title": "Daño sin Life",
+      "text": "Pierdes si tu Leader recibe daño cuando ya no te quedan cartas de Life. Quedarte en 0 no basta: falta ese golpe.",
+      "ruleIds": [
+        "1-2-1-1-1"
+      ]
+    },
+    {
+      "title": "Mazo vacío",
+      "text": "También pierdes si tu mazo se queda sin cartas.",
+      "ruleIds": [
+        "1-2-1-1-2"
+      ]
+    },
+    {
+      "title": "Rendirse",
+      "text": "Puedes conceder en cualquier momento. La partida termina de inmediato.",
+      "ruleIds": [
+        "1-2-3"
+      ]
+    }
+  ],
+  "tip": "Algunas cartas hacen ganar o perder directamente.",
+  "tipRuleIds": [
+    "1-2-5"
+  ],
+  "lessons": [
+    "objetivo-del-juego"
+  ],
+  "order": 1,
+  "reviewStatus": "pending"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "preparar",
+  "icon": "cartas",
+  "title": "Antes de empezar",
+  "question": "¿Cómo preparo la partida?",
+  "idea": "Unos pocos pasos en orden y estás listo para jugar.",
+  "steps": [
+    {
+      "title": "Mazo y Leader",
+      "text": "Presenta tu mazo, barájalo y déjalo boca abajo. Pon tu Leader boca arriba.",
+      "ruleIds": [
+        "5-2-1-1",
+        "5-2-1-2",
+        "5-2-1-3"
+      ]
+    },
+    {
+      "title": "Quién empieza",
+      "text": "Un método como piedra, papel o tijera decide quién elige ir primero o segundo.",
+      "ruleIds": [
+        "5-2-1-4",
+        "5-2-1-5"
+      ]
+    },
+    {
+      "title": "Mano inicial",
+      "text": "Cada persona roba 5 cartas. Una sola vez puede devolver toda la mano, barajar y robar 5 nuevas.",
+      "ruleIds": [
+        "5-2-1-6",
+        "5-2-1-6-1"
+      ]
+    },
+    {
+      "title": "Cartas de Life",
+      "text": "Coloca boca abajo, desde arriba de tu mazo, tantas cartas como la Life de tu Leader.",
+      "ruleIds": [
+        "5-2-1-7"
+      ]
+    },
+    {
+      "title": "¡A jugar!",
+      "text": "Quien va primero comienza su turno.",
+      "ruleIds": [
+        "5-2-1-8"
+      ]
+    }
+  ],
+  "tip": "Los efectos de Leader que dicen «At the start of the game» se resuelven antes de robar.",
+  "tipRuleIds": [
+    "5-2-1-5-1"
+  ],
+  "lessons": [
+    "preparacion",
+    "mulligan"
+  ],
+  "order": 2,
+  "reviewStatus": "pending"
+}

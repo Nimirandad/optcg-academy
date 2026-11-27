@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const port = 4321;
+// `E2E_PORT` permite probar mientras `npm run dev` ocupa el puerto habitual.
+const port = Number(process.env.E2E_PORT) || 4321;
 const baseURL = `http://localhost:${port}/optcg-academy/`;
 
 export default defineConfig({

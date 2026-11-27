@@ -1,30 +1,112 @@
 ---
-import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import { getCollection } from 'astro:content';
+import RuleText from '../../components/ui/RuleText.astro';
 import Base from '../../layouts/Base.astro';
 import { chapters } from '../../lib/chapters';
 import { inventory } from '../../lib/inventory';
-import { ruleAnchor } from '../../lib/rules';
+import { withBase } from '../../lib/paths';
+import { ruleAnchor, rulePath } from '../../lib/rules';
 
-export function getStaticPaths() {
-  return chapters.map((chapter) => ({ params: { capitulo: String(chapter.number) }, props: chapter }));
+export async function getStaticPaths() {
+  const content = await getCollection('rules');
+  const notes = await getCollection('qa');
+  const clarifications = notes.flatMap((note) =>
+    note.data.entries.map((entry) => ({ path: `qa/${note.data.document}/#${entry.id}`, entry })),
+  );
+  return chapters.map((chapter) => ({
+    params: { capitulo: String(chapter.number) },
+    props: {
+      ...chapter,
+      clarifications,
+      texts: content.find((entry) => entry.data.chapter === chapter.number)?.data.rules ?? [],
+    },
+  }));
 }
 
-const { number, title } = Astro.props;
-const rules = inventory.rules.filter((rule) => rule.chapter === number && rule.parentId !== null);
+const { number, title, texts, clarifications } = Astro.props;
+const clarificationsFor = (id: string) => clarifications.filter(({ entry }) => entry.ruleIds.includes(id));
+const byId = new Map(texts.map((text) => [text.id, text]));
+const rules = inventory.rules
+  .filter((rule) => rule.chapter === number)
+  .map((rule) => ({ ...rule, text: byId.get(rule.ruleId), depth: rule.ruleId.split('-').length }));
+const sections = rules.filter((rule) => rule.depth === 2);
+const previous = chapters[number - 2];
+const next = chapters[number];
 ---
-<Base title={`Capítulo ${number}: ${title}`} description={`Identificadores del capítulo ${number} del reglamento.`}>
+<Base title={`Capítulo ${number}: ${title}`} description={`Explicación en español del capítulo ${number} del reglamento.`}>
   <h1>Capítulo {number}: <span lang="en">{title}</span></h1>
-  <UnderConstruction>Explicaciones pendientes. Se indica la página del PDF oficial para cada número.</UnderConstruction>
-  {rules.map((rule) => (
-    <section>
-      <h2 id={ruleAnchor(rule.ruleId)}>Regla {rule.ruleId}</h2>
-      <p>Página {rule.sourcePage} del reglamento v{inventory.source.version}. Explicación pendiente.</p>
-    </section>
-  ))}
+  <p class="notice">
+    <strong>Material no oficial.</strong> Las explicaciones son propias y las marcadas como pendientes no han sido
+    revisadas. No reemplazan al <a href="https://en.onepiece-cardgame.com/rules/">reglamento oficial</a>
+    (versión {inventory.source.version}, actualizado el {inventory.source.lastUpdated}) ni a un juez.
+  </p>
+
+  <p><a class="topics" href={withBase('reglas/')}>¿Prefieres verlo explicado por temas?</a></p>
+
+  <details>
+    <summary>En este capítulo</summary>
+    <ul>
+      {sections.map((rule) => (
+        <li><a href={`#${ruleAnchor(rule.ruleId)}`}>{rule.ruleId} {rule.text?.title}</a></li>
+      ))}
+    </ul>
+  </details>
+
+  {rules.map(({ ruleId, depth, sourcePage, text }) => {
+    const Heading = `h${Math.min(Math.max(depth, 2), 6)}` as 'h2';
+    return (
+      <section class={`rule depth-${depth}`}>
+        <Heading id={ruleAnchor(ruleId)}>
+          {depth === 1 ? 'Resumen del capítulo' : `Regla ${ruleId}`}{depth > 1 && text?.title ? ` · ${text.title}` : ''}
+        </Heading>
+        {text ? <p><RuleText text={text.explanation} /></p> : <p>Explicación pendiente.</p>}
+        {text?.example && <p class="aside"><strong>Ejemplo:</strong> <RuleText text={text.example} /></p>}
+        {text?.tip && <p class="aside"><strong>Consejo:</strong> <RuleText text={text.tip} /></p>}
+        {text?.note && <p class="aside"><strong>Observación sobre la fuente:</strong> <RuleText text={text.note} /></p>}
+        {text && text.relatedIds.length > 0 && (
+          <p class="meta">
+            Ver también: {text.relatedIds.map((id, index) => <>{index > 0 && ', '}<a href={withBase(rulePath(id))}>{id}</a></>)}
+          </p>
+        )}
+        {clarificationsFor(ruleId).length > 0 && (
+          <details class="meta" data-pagefind-ignore>
+            <summary>Aclaraciones oficiales relacionadas ({clarificationsFor(ruleId).length})</summary>
+            <ul>
+              {clarificationsFor(ruleId).map(({ path, entry }) => <li><a href={withBase(path)}>{entry.question}</a></li>)}
+            </ul>
+          </details>
+        )}
+        <p class="meta">
+          PDF, p. {sourcePage} · {text?.reviewStatus === 'reviewed' ? `Revisada por ${text.reviewedBy}` : text?.reviewStatus === 'conflict' ? 'En conflicto' : text?.reviewStatus === 'superseded' ? 'Reemplazada' : 'Pendiente de revisión'}
+        </p>
+      </section>
+    );
+  })}
+
+  <nav aria-label="Capítulos">
+    {previous && <a href={withBase(`reglas/${previous.number}/`)}>← Capítulo {previous.number}</a>}
+    <a href={withBase('reglas/')}>Índice</a>
+    {next && <a href={withBase(`reglas/${next.number}/`)}>Capítulo {next.number} →</a>}
+  </nav>
 </Base>
 
 <style>
-  h2 { font-size: 1.05rem; margin-bottom: 0; scroll-margin-top: 1rem; }
-  h2:target { background: var(--surface); outline: 2px solid var(--link); }
-  p { margin-top: 0.25rem; }
+  summary, details a, nav a, .topics { min-height: 44px; display: inline-flex; align-items: center; }
+  summary { cursor: pointer; font-weight: 700; display: list-item; align-content: center; }
+  details ul { list-style: none; padding: 0; }
+  .rule { margin-block: 0.75rem; border: 1px solid var(--border); border-radius: 0.9rem; background: var(--surface); padding: 0.5rem 0.9rem 0.75rem; }
+  .depth-1, .depth-2 { border-width: 2px; }
+  .depth-2 { margin-top: 2rem; border-inline-start: 0.5rem solid var(--accent); }
+  .rule p:not(.meta) { max-width: 70ch; }
+  .depth-3 { margin-inline-start: 0.75rem; }
+  .depth-4 { margin-inline-start: 1.5rem; }
+  .depth-5 { margin-inline-start: 2.25rem; }
+  h2, h3, h4, h5 { font-size: 1.05rem; margin-bottom: 0.25rem; scroll-margin-top: 1rem; }
+  h2 { font-size: 1.25rem; }
+  h2, h3, h4, h5 { margin-top: 0; }
+  h2:target, h3:target, h4:target, h5:target { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 0.25rem; }
+  p { margin-block: 0.25rem; }
+  .rule .aside { border-inline-start: 3px solid var(--border); padding-inline-start: 0.75rem; }
+  .meta { color: var(--muted); font-size: 0.875rem; }
+  nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
 </style>

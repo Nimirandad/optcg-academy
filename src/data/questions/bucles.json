@@ -1,0 +1,86 @@
+{
+  "lesson": "bucles",
+  "questions": [
+    {
+      "id": "bucles-1",
+      "prompt": "Nadie puede detener un bucle. ¿Resultado?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Empate.",
+          "rationale": "Es lo que indica la regla."
+        },
+        {
+          "id": "b",
+          "text": "Pierde quien lo empezó.",
+          "rationale": "No se asigna culpa."
+        },
+        {
+          "id": "c",
+          "text": "Gana quien tiene el turno.",
+          "rationale": "No hay ganador."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "11-1-1-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "bucles-2",
+      "prompt": "Ambos pueden detenerlo: el jugador de turno dice 5 y el otro 8. ¿Cuántas repeticiones?",
+      "options": [
+        {
+          "id": "a",
+          "text": "8.",
+          "rationale": "Se usa la cantidad menor."
+        },
+        {
+          "id": "b",
+          "text": "5.",
+          "rationale": "Es la menor de las dos."
+        },
+        {
+          "id": "c",
+          "text": "13.",
+          "rationale": "No se suman."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "11-1-1-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "bucles-3",
+      "prompt": "¿Quién declara primero cuando ambos pueden detenerlo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El que no tiene el turno.",
+          "rationale": "Declara después."
+        },
+        {
+          "id": "b",
+          "text": "Ambos a la vez.",
+          "rationale": "Hay un orden."
+        },
+        {
+          "id": "c",
+          "text": "El jugador de turno.",
+          "rationale": "Declara primero."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "11-1-1-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

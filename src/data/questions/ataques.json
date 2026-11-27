@@ -1,0 +1,87 @@
+{
+  "lesson": "ataques",
+  "questions": [
+    {
+      "id": "ataques-1",
+      "prompt": "¿Cuál puede ser objetivo de un ataque, sin otros efectos?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Un Character rival Active.",
+          "rationale": "Los Characters solo pueden ser atacados si están Rested."
+        },
+        {
+          "id": "b",
+          "text": "El Leader rival.",
+          "rationale": "El Leader puede ser atacado."
+        },
+        {
+          "id": "c",
+          "text": "La carta Stage rival.",
+          "rationale": "Un Stage no es objetivo de ataque."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "7-1-1-2"
+      ],
+      "assumption": "Ninguna carta tiene efectos que cambien los objetivos.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "ataques-2",
+      "prompt": "Atacante 5000 contra defensor 5000. ¿Quién gana?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El atacante.",
+          "rationale": "Con poder igual o mayor, gana quien ataca."
+        },
+        {
+          "id": "b",
+          "text": "El defensor.",
+          "rationale": "El empate no favorece a la defensa."
+        },
+        {
+          "id": "c",
+          "text": "Nadie: se anula.",
+          "rationale": "La batalla tiene ganador."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "7-1-4-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "ataques-3",
+      "prompt": "Tu atacante pierde la batalla. ¿Qué le pasa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sufre K.O.",
+          "rationale": "Perder atacando no causa K.O. al atacante."
+        },
+        {
+          "id": "b",
+          "text": "Vuelve a tu mano.",
+          "rationale": "No cambia de zona."
+        },
+        {
+          "id": "c",
+          "text": "Nada.",
+          "rationale": "La batalla termina sin efectos sobre la carta atacante."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "7-1-4-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}
