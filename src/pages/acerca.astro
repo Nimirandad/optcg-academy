@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+
+const sources = [
+  ['Reglas', 'https://en.onepiece-cardgame.com/rules/'],
+  ['Lista de cartas', 'https://en.onepiece-cardgame.com/cardlist/'],
+  ['Productos', 'https://en.onepiece-cardgame.com/products/'],
+  ['Noticias', 'https://en.onepiece-cardgame.com/'],
+];
+---
+<Base title="Acerca" description="Fuentes, metodología y aviso no oficial de OPTCG Academy.">
+  <h1>Acerca</h1>
+  <p class="notice">Proyecto educativo no oficial. No está afiliado ni respaldado por Bandai ni por los titulares de ONE PIECE. Las marcas pertenecen a sus propietarios.</p>
+  <h2>Metodología</h2>
+  <p>Las explicaciones serán propias y enlazarán a la fuente oficial. No se publican textos extensos, imágenes ni PDF oficiales. El contenido figura como pendiente hasta que una persona lo revise; esa revisión no equivale a la de un juez.</p>
+  <h2>Fuentes oficiales</h2>
+  <ul>{sources.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul>
+  <h2>Privacidad</h2>
+  <p>Sin cuentas ni rastreo. La preferencia de modo claro u oscuro se guarda solo en tu navegador.</p>
+</Base>

@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import UnderConstruction from '../components/ui/UnderConstruction.astro';
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/paths';
+import { rulePath } from '../lib/rules';
+
+const keywords = await getCollection('keywords');
+---
+<Base title="Glosario" description="Palabras clave y conceptos de ONE PIECE Card Game en inglés y español.">
+  <h1>Glosario</h1>
+  <UnderConstruction>Definiciones pendientes. Los nombres en español son propios y están sin revisar.</UnderConstruction>
+  <dl>
+    {keywords.map(({ data }) => (
+      <>
+        <dt><strong lang="en">{data.term}</strong> ({data.aliases.join(', ')})</dt>
+        <dd><a href={withBase(rulePath(data.ruleId))}>Regla {data.ruleId}</a>. Definición pendiente.</dd>
+      </>
+    ))}
+  </dl>
+</Base>

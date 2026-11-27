@@ -1,0 +1,3478 @@
+{
+ "source": {
+  "file": "references/rule_comprehensive.pdf",
+  "version": "1.2.1",
+  "lastUpdated": "2026-08-28",
+  "pdfPages": 28,
+  "sha256": "4709b6327b396ffa3cff9f773adfa560d4be66a3162aa4176b4523a552161bd0"
+ },
+ "pageConvention": "sourcePage = pagina fisica del PDF (1-28); coincide con el numero impreso",
+ "extraction": {
+  "date": "2026-11-26",
+  "method": "PDFKit (texto) + validacion de secuencia jerarquica de identificadores",
+  "humanReview": "pending"
+ },
+ "counts": {
+  "chapters": 11,
+  "subrules": 481,
+  "total": 492
+ },
+ "rules": [
+  {
+   "ruleId": "1",
+   "parentId": null,
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-1",
+   "parentId": "1",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-1-1",
+   "parentId": "1-1",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2",
+   "parentId": "1",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-1",
+   "parentId": "1-2",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-1-1",
+   "parentId": "1-2-1",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-1-1-1",
+   "parentId": "1-2-1-1",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-1-1-2",
+   "parentId": "1-2-1-1",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-2",
+   "parentId": "1-2",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-2-1",
+   "parentId": "1-2-2",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-2-2",
+   "parentId": "1-2-2",
+   "chapter": 1,
+   "sourcePage": 1,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-3",
+   "parentId": "1-2",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-4",
+   "parentId": "1-2",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-2-5",
+   "parentId": "1-2",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3",
+   "parentId": "1",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-1",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-2",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-2-1",
+   "parentId": "1-3-2",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-2-2",
+   "parentId": "1-3-2",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-3",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-4",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-5",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-5-1",
+   "parentId": "1-3-5",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-6",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-6-1",
+   "parentId": "1-3-6",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-6-1-1",
+   "parentId": "1-3-6-1",
+   "chapter": 1,
+   "sourcePage": 2,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-6-2",
+   "parentId": "1-3-6",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-6-2-1",
+   "parentId": "1-3-6-2",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-7",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-8",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-9",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-9-1",
+   "parentId": "1-3-9",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-9-2",
+   "parentId": "1-3-9",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "1-3-10",
+   "parentId": "1-3",
+   "chapter": 1,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2",
+   "parentId": null,
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-1",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-1-1",
+   "parentId": "2-1",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-1-2",
+   "parentId": "2-1",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-1-2-1",
+   "parentId": "2-1-2",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-1-3",
+   "parentId": "2-1",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-1",
+   "parentId": "2-2",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-2",
+   "parentId": "2-2",
+   "chapter": 2,
+   "sourcePage": 3,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-3",
+   "parentId": "2-2",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-3-1",
+   "parentId": "2-2-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-4",
+   "parentId": "2-2",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-4-1",
+   "parentId": "2-2-4",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-4-2",
+   "parentId": "2-2-4",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-4-3",
+   "parentId": "2-2-4",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-5",
+   "parentId": "2-2",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-5-1",
+   "parentId": "2-2-5",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-6",
+   "parentId": "2-2",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-6-1",
+   "parentId": "2-2-6",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-2-6-2",
+   "parentId": "2-2-6",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3-1",
+   "parentId": "2-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3-2",
+   "parentId": "2-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3-3",
+   "parentId": "2-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3-3-1",
+   "parentId": "2-3-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3-4",
+   "parentId": "2-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3-5",
+   "parentId": "2-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-3-6",
+   "parentId": "2-3",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-4",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-4-1",
+   "parentId": "2-4",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-4-2",
+   "parentId": "2-4",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-4-3",
+   "parentId": "2-4",
+   "chapter": 2,
+   "sourcePage": 4,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-4-3-1",
+   "parentId": "2-4-3",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-4-4",
+   "parentId": "2-4",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5-1",
+   "parentId": "2-5",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5-2",
+   "parentId": "2-5",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5-3",
+   "parentId": "2-5",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5-4",
+   "parentId": "2-5",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5-5",
+   "parentId": "2-5",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5-6",
+   "parentId": "2-5",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-5-7",
+   "parentId": "2-5",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-6",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-6-1",
+   "parentId": "2-6",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-6-2",
+   "parentId": "2-6",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-6-3",
+   "parentId": "2-6",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-7",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-7-1",
+   "parentId": "2-7",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-7-2",
+   "parentId": "2-7",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-7-3",
+   "parentId": "2-7",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending",
+   "sourceNote": "texto en rojo (parcial)"
+  },
+  {
+   "ruleId": "2-7-4",
+   "parentId": "2-7",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-7-5",
+   "parentId": "2-7",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-7-6",
+   "parentId": "2-7",
+   "chapter": 2,
+   "sourcePage": 5,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8-1",
+   "parentId": "2-8",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8-2",
+   "parentId": "2-8",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8-3",
+   "parentId": "2-8",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8-4",
+   "parentId": "2-8",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8-4-1",
+   "parentId": "2-8-4",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8-4-2",
+   "parentId": "2-8-4",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-8-5",
+   "parentId": "2-8",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-9",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-9-1",
+   "parentId": "2-9",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-9-2",
+   "parentId": "2-9",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-9-2-1",
+   "parentId": "2-9-2",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-9-3",
+   "parentId": "2-9",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-9-4",
+   "parentId": "2-9",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-10",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-10-1",
+   "parentId": "2-10",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-10-2",
+   "parentId": "2-10",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-10-3",
+   "parentId": "2-10",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending",
+   "sourceNote": "texto en rojo"
+  },
+  {
+   "ruleId": "2-10-4",
+   "parentId": "2-10",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending",
+   "sourceNote": "falta el punto final en el PDF; texto en rojo"
+  },
+  {
+   "ruleId": "2-11",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-11-1",
+   "parentId": "2-11",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-11-2",
+   "parentId": "2-11",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-12",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-12-1",
+   "parentId": "2-12",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-13",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 6,
+   "reviewStatus": "pending",
+   "sourceNote": "falta el punto final en el PDF"
+  },
+  {
+   "ruleId": "2-13-1",
+   "parentId": "2-13",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-14",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-14-1",
+   "parentId": "2-14",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-14-2",
+   "parentId": "2-14",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-14-3",
+   "parentId": "2-14",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-15",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-15-1",
+   "parentId": "2-15",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-16",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-16-1",
+   "parentId": "2-16",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-17",
+   "parentId": "2",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "2-17-1",
+   "parentId": "2-17",
+   "chapter": 2,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3",
+   "parentId": null,
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-1",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-2",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-2-1",
+   "parentId": "3-1-2",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending",
+   "sourceNote": "falta el punto final en el PDF; texto en rojo"
+  },
+  {
+   "ruleId": "3-1-3",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-4",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-5",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-6",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-6-1",
+   "parentId": "3-1-6",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-7",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 7,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-1-8",
+   "parentId": "3-1",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-2",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-2-1",
+   "parentId": "3-2",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-2-2",
+   "parentId": "3-2",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-2-3",
+   "parentId": "3-2",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-2-4",
+   "parentId": "3-2",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-3",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-3-1",
+   "parentId": "3-3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-3-2",
+   "parentId": "3-3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-3-3",
+   "parentId": "3-3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-4",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-4-1",
+   "parentId": "3-4",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-4-2",
+   "parentId": "3-4",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-4-3",
+   "parentId": "3-4",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-5",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-5-1",
+   "parentId": "3-5",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-5-2",
+   "parentId": "3-5",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-6",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-6-1",
+   "parentId": "3-6",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-6-2",
+   "parentId": "3-6",
+   "chapter": 3,
+   "sourcePage": 8,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-6-3",
+   "parentId": "3-6",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-1",
+   "parentId": "3-7",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-2",
+   "parentId": "3-7",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-3",
+   "parentId": "3-7",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-4",
+   "parentId": "3-7",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-5",
+   "parentId": "3-7",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-6",
+   "parentId": "3-7",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-6-1",
+   "parentId": "3-7-6",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-7-6-1-1",
+   "parentId": "3-7-6-1",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-8",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-8-1",
+   "parentId": "3-8",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-8-2",
+   "parentId": "3-8",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-8-3",
+   "parentId": "3-8",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-8-4",
+   "parentId": "3-8",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-8-5",
+   "parentId": "3-8",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-8-5-1",
+   "parentId": "3-8-5",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-9",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-9-1",
+   "parentId": "3-9",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-9-2",
+   "parentId": "3-9",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-9-3",
+   "parentId": "3-9",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-10",
+   "parentId": "3",
+   "chapter": 3,
+   "sourcePage": 9,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-10-1",
+   "parentId": "3-10",
+   "chapter": 3,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-10-2",
+   "parentId": "3-10",
+   "chapter": 3,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-10-2-1",
+   "parentId": "3-10-2",
+   "chapter": 3,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "3-10-3",
+   "parentId": "3-10",
+   "chapter": 3,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4",
+   "parentId": null,
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-1",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-1-1",
+   "parentId": "4-1",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-1-2",
+   "parentId": "4-1",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-2",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-2-1",
+   "parentId": "4-2",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-2-1-1",
+   "parentId": "4-2-1",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-2-2",
+   "parentId": "4-2",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-3",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-3-1",
+   "parentId": "4-3",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-3-2",
+   "parentId": "4-3",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-4",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-4-1",
+   "parentId": "4-4",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-4-1-1",
+   "parentId": "4-4-1",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-4-1-2",
+   "parentId": "4-4-1",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-4-2",
+   "parentId": "4-4",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5-1",
+   "parentId": "4-5",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5-2",
+   "parentId": "4-5",
+   "chapter": 4,
+   "sourcePage": 10,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5-3",
+   "parentId": "4-5",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5-4",
+   "parentId": "4-5",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5-4-1",
+   "parentId": "4-5-4",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5-4-2",
+   "parentId": "4-5-4",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-5-4-3",
+   "parentId": "4-5-4",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-6",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-6-1",
+   "parentId": "4-6",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-6-2",
+   "parentId": "4-6",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-6-2-1",
+   "parentId": "4-6-2",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-6-2-2",
+   "parentId": "4-6-2",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-6-3",
+   "parentId": "4-6",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-6-3-1",
+   "parentId": "4-6-3",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-7",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-7-1",
+   "parentId": "4-7",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-7-2",
+   "parentId": "4-7",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-8",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-8-1",
+   "parentId": "4-8",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-8-2",
+   "parentId": "4-8",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-9",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-9-1",
+   "parentId": "4-9",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-9-2",
+   "parentId": "4-9",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-9-2-1",
+   "parentId": "4-9-2",
+   "chapter": 4,
+   "sourcePage": 11,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-9-2-2",
+   "parentId": "4-9-2",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-10",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-10-1",
+   "parentId": "4-10",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-10-2",
+   "parentId": "4-10",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending",
+   "sourceNote": "texto en rojo (parcial)"
+  },
+  {
+   "ruleId": "4-11",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-11-1",
+   "parentId": "4-11",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-11-2",
+   "parentId": "4-11",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-12",
+   "parentId": "4",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-12-1",
+   "parentId": "4-12",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "4-12-2",
+   "parentId": "4-12",
+   "chapter": 4,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5",
+   "parentId": null,
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1",
+   "parentId": "5",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-1",
+   "parentId": "5-1",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-2",
+   "parentId": "5-1",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-2-1",
+   "parentId": "5-1-2",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-2-2",
+   "parentId": "5-1-2",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-2-3",
+   "parentId": "5-1-2",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-2-4",
+   "parentId": "5-1-2",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-2-4-1",
+   "parentId": "5-1-2-4",
+   "chapter": 5,
+   "sourcePage": 12,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-1-2-4-2",
+   "parentId": "5-1-2-4",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2",
+   "parentId": "5",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1",
+   "parentId": "5-2",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-1",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-2",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-3",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-4",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-4-1",
+   "parentId": "5-2-1-4",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-5",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-5-1",
+   "parentId": "5-2-1-5",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-5-2",
+   "parentId": "5-2-1-5",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-6",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-6-1",
+   "parentId": "5-2-1-6",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-7",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "5-2-1-8",
+   "parentId": "5-2-1",
+   "chapter": 5,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6",
+   "parentId": null,
+   "chapter": 6,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-1",
+   "parentId": "6",
+   "chapter": 6,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-1-1",
+   "parentId": "6-1",
+   "chapter": 6,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-1-2",
+   "parentId": "6-1",
+   "chapter": 6,
+   "sourcePage": 13,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-2",
+   "parentId": "6",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-2-1",
+   "parentId": "6-2",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-2-2",
+   "parentId": "6-2",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-2-3",
+   "parentId": "6-2",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-2-4",
+   "parentId": "6-2",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-3",
+   "parentId": "6",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-3-1",
+   "parentId": "6-3",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-4",
+   "parentId": "6",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-4-1",
+   "parentId": "6-4",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-4-2",
+   "parentId": "6-4",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-4-3",
+   "parentId": "6-4",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5",
+   "parentId": "6",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-1",
+   "parentId": "6-5",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-2",
+   "parentId": "6-5",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-2-1",
+   "parentId": "6-5-2",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-3",
+   "parentId": "6-5",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-3-1",
+   "parentId": "6-5-3",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-4",
+   "parentId": "6-5",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-4-1",
+   "parentId": "6-5-4",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-5",
+   "parentId": "6-5",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-5-1",
+   "parentId": "6-5-5",
+   "chapter": 6,
+   "sourcePage": 14,
+   "reviewStatus": "pending",
+   "sourceNote": "redaccion dudosa: ubicacion en cost area"
+  },
+  {
+   "ruleId": "6-5-5-2",
+   "parentId": "6-5-5",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-5-3",
+   "parentId": "6-5-5",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-5-4",
+   "parentId": "6-5-5",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-6",
+   "parentId": "6-5",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-6-1",
+   "parentId": "6-5-6",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-5-6-2",
+   "parentId": "6-5-6",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6",
+   "parentId": "6",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1",
+   "parentId": "6-6",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-1",
+   "parentId": "6-6-1",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-1-1",
+   "parentId": "6-6-1-1",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-1-2",
+   "parentId": "6-6-1-1",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-1-3",
+   "parentId": "6-6-1-1",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-1-4",
+   "parentId": "6-6-1-1",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-2",
+   "parentId": "6-6-1",
+   "chapter": 6,
+   "sourcePage": 15,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-3",
+   "parentId": "6-6-1",
+   "chapter": 6,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "6-6-1-4",
+   "parentId": "6-6-1",
+   "chapter": 6,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7",
+   "parentId": null,
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1",
+   "parentId": "7",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-1",
+   "parentId": "7-1",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-1-1",
+   "parentId": "7-1-1",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-1-2",
+   "parentId": "7-1-1",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-1-3",
+   "parentId": "7-1-1",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-1-4",
+   "parentId": "7-1-1",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-2",
+   "parentId": "7-1",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-2-1",
+   "parentId": "7-1-2",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-2-2",
+   "parentId": "7-1-2",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-2-3",
+   "parentId": "7-1-2",
+   "chapter": 7,
+   "sourcePage": 16,
+   "reviewStatus": "pending",
+   "sourceNote": "posible errata: falta \"to\""
+  },
+  {
+   "ruleId": "7-1-3",
+   "parentId": "7-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-3-1",
+   "parentId": "7-1-3",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-3-1-1",
+   "parentId": "7-1-3-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-3-1-2",
+   "parentId": "7-1-3-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-3-1-3",
+   "parentId": "7-1-3-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4",
+   "parentId": "7-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4-1",
+   "parentId": "7-1-4",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4-1-1",
+   "parentId": "7-1-4-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4-1-1-1",
+   "parentId": "7-1-4-1-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4-1-1-2",
+   "parentId": "7-1-4-1-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4-1-1-3",
+   "parentId": "7-1-4-1-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4-1-2",
+   "parentId": "7-1-4-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-4-2",
+   "parentId": "7-1-4",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-5",
+   "parentId": "7-1",
+   "chapter": 7,
+   "sourcePage": 17,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-5-1",
+   "parentId": "7-1-5",
+   "chapter": 7,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-5-2",
+   "parentId": "7-1-5",
+   "chapter": 7,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-5-3",
+   "parentId": "7-1-5",
+   "chapter": 7,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-5-4",
+   "parentId": "7-1-5",
+   "chapter": 7,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "7-1-5-5",
+   "parentId": "7-1-5",
+   "chapter": 7,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8",
+   "parentId": null,
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1",
+   "parentId": "8",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-1",
+   "parentId": "8-1",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-2",
+   "parentId": "8-1",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3",
+   "parentId": "8-1",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-1",
+   "parentId": "8-1-3",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-1-1",
+   "parentId": "8-1-3-1",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-1-2",
+   "parentId": "8-1-3-1",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-1-3",
+   "parentId": "8-1-3-1",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-2",
+   "parentId": "8-1-3",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-2-1",
+   "parentId": "8-1-3-2",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-2-2",
+   "parentId": "8-1-3-2",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-3",
+   "parentId": "8-1-3",
+   "chapter": 8,
+   "sourcePage": 18,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-3-1",
+   "parentId": "8-1-3-3",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-3-2",
+   "parentId": "8-1-3-3",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-3-3",
+   "parentId": "8-1-3-3",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-3-4",
+   "parentId": "8-1-3-3",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-3-5",
+   "parentId": "8-1-3-3",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4",
+   "parentId": "8-1-3",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-1",
+   "parentId": "8-1-3-4",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-2",
+   "parentId": "8-1-3-4",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-3",
+   "parentId": "8-1-3-4",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-4",
+   "parentId": "8-1-3-4",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-4-1",
+   "parentId": "8-1-3-4-4",
+   "chapter": 8,
+   "sourcePage": 19,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-5",
+   "parentId": "8-1-3-4",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-6",
+   "parentId": "8-1-3-4",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-3-4-7",
+   "parentId": "8-1-3-4",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-4",
+   "parentId": "8-1",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-4-1",
+   "parentId": "8-1-4",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-1-4-2",
+   "parentId": "8-1-4",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-2",
+   "parentId": "8",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-2-1",
+   "parentId": "8-2",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-2-1-1",
+   "parentId": "8-2-1",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-2-1-2",
+   "parentId": "8-2-1",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-2-2",
+   "parentId": "8-2",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-2-3",
+   "parentId": "8-2",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-2-4",
+   "parentId": "8-2",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3",
+   "parentId": "8",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1",
+   "parentId": "8-3",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-1",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-2",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 20,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-3",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-3-1",
+   "parentId": "8-3-1-3",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-4",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending",
+   "sourceNote": "texto en rojo (parcial)"
+  },
+  {
+   "ruleId": "8-3-1-5",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-6",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-7",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-1-8",
+   "parentId": "8-3-1",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-2",
+   "parentId": "8-3",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-2-1",
+   "parentId": "8-3-2",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-2-2",
+   "parentId": "8-3-2",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-2-3",
+   "parentId": "8-3-2",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-2-4",
+   "parentId": "8-3-2",
+   "chapter": 8,
+   "sourcePage": 21,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-2-5",
+   "parentId": "8-3-2",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-3-3",
+   "parentId": "8-3",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4",
+   "parentId": "8",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending",
+   "sourceNote": "impreso como \"8.4.\""
+  },
+  {
+   "ruleId": "8-4-1",
+   "parentId": "8-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-1-1",
+   "parentId": "8-4-1",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-1-2",
+   "parentId": "8-4-1",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-1-3",
+   "parentId": "8-4-1",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-1-4",
+   "parentId": "8-4-1",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-1-5",
+   "parentId": "8-4-1",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-2",
+   "parentId": "8-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-3",
+   "parentId": "8-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-4",
+   "parentId": "8-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-4-1",
+   "parentId": "8-4-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-4-2",
+   "parentId": "8-4-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-4-3",
+   "parentId": "8-4-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-4-4",
+   "parentId": "8-4-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-5",
+   "parentId": "8-4",
+   "chapter": 8,
+   "sourcePage": 22,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-4-6",
+   "parentId": "8-4",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-5",
+   "parentId": "8",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-5-1",
+   "parentId": "8-5",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-5-2",
+   "parentId": "8-5",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-5-3",
+   "parentId": "8-5",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-5-4",
+   "parentId": "8-5",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-6",
+   "parentId": "8",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-6-1",
+   "parentId": "8-6",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending",
+   "sourceNote": "texto en rojo"
+  },
+  {
+   "ruleId": "8-6-1-1",
+   "parentId": "8-6-1",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-6-2",
+   "parentId": "8-6",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-6-2-1",
+   "parentId": "8-6-2",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "8-6-3",
+   "parentId": "8-6",
+   "chapter": 8,
+   "sourcePage": 23,
+   "reviewStatus": "pending",
+   "sourceNote": "impreso como \"8.6.3.\""
+  },
+  {
+   "ruleId": "9",
+   "parentId": null,
+   "chapter": 9,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "9-1",
+   "parentId": "9",
+   "chapter": 9,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "9-1-1",
+   "parentId": "9-1",
+   "chapter": 9,
+   "sourcePage": 23,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "9-1-2",
+   "parentId": "9-1",
+   "chapter": 9,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "9-2",
+   "parentId": "9",
+   "chapter": 9,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "9-2-1",
+   "parentId": "9-2",
+   "chapter": 9,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "9-2-1-1",
+   "parentId": "9-2-1",
+   "chapter": 9,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "9-2-1-2",
+   "parentId": "9-2-1",
+   "chapter": 9,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10",
+   "parentId": null,
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1",
+   "parentId": "10",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-1",
+   "parentId": "10-1",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-1-1",
+   "parentId": "10-1-1",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-2",
+   "parentId": "10-1",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-2-1",
+   "parentId": "10-1-2",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-3",
+   "parentId": "10-1",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-3-1",
+   "parentId": "10-1-3",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-4",
+   "parentId": "10-1",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-4-1",
+   "parentId": "10-1-4",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-5",
+   "parentId": "10-1",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-5-1",
+   "parentId": "10-1-5",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-5-2",
+   "parentId": "10-1-5",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-5-3",
+   "parentId": "10-1-5",
+   "chapter": 10,
+   "sourcePage": 24,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-6",
+   "parentId": "10-1",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-6-1",
+   "parentId": "10-1-6",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-7",
+   "parentId": "10-1",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-1-7-1",
+   "parentId": "10-1-7",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2",
+   "parentId": "10",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-1",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-1-1",
+   "parentId": "10-2-1",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-1-2",
+   "parentId": "10-2-1",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-1-3",
+   "parentId": "10-2-1",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-2",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-2-1",
+   "parentId": "10-2-2",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-3",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-3-1",
+   "parentId": "10-2-3",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-3-1-1",
+   "parentId": "10-2-3-1",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-4",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-4-1",
+   "parentId": "10-2-4",
+   "chapter": 10,
+   "sourcePage": 25,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-4-1-1",
+   "parentId": "10-2-4-1",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-4-1-2",
+   "parentId": "10-2-4-1",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-5",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-5-1",
+   "parentId": "10-2-5",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-6",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-6-1",
+   "parentId": "10-2-6",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-7",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-7-1",
+   "parentId": "10-2-7",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-8",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-8-1",
+   "parentId": "10-2-8",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-9",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-9-1",
+   "parentId": "10-2-9",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-10",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-10-1",
+   "parentId": "10-2-10",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-11",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-11-1",
+   "parentId": "10-2-11",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-12",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-12-1",
+   "parentId": "10-2-12",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-13",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-13-1",
+   "parentId": "10-2-13",
+   "chapter": 10,
+   "sourcePage": 26,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-13-2",
+   "parentId": "10-2-13",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-13-3",
+   "parentId": "10-2-13",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-13-4",
+   "parentId": "10-2-13",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-13-5",
+   "parentId": "10-2-13",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-14",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-14-1",
+   "parentId": "10-2-14",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-15",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-15-1",
+   "parentId": "10-2-15",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-16",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-16-1",
+   "parentId": "10-2-16",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-17",
+   "parentId": "10-2",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-17-1",
+   "parentId": "10-2-17",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "10-2-17-2",
+   "parentId": "10-2-17",
+   "chapter": 10,
+   "sourcePage": 27,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11",
+   "parentId": null,
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-1",
+   "parentId": "11",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-1-1",
+   "parentId": "11-1",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-1-1-1",
+   "parentId": "11-1-1",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-1-1-2",
+   "parentId": "11-1-1",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-1-1-3",
+   "parentId": "11-1-1",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-2",
+   "parentId": "11",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-2-1",
+   "parentId": "11-2",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-2-2",
+   "parentId": "11-2",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-3",
+   "parentId": "11",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-3-1",
+   "parentId": "11-3",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-3-2",
+   "parentId": "11-3",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  },
+  {
+   "ruleId": "11-3-3",
+   "parentId": "11-3",
+   "chapter": 11,
+   "sourcePage": 28,
+   "reviewStatus": "pending"
+  }
+ ]
+}

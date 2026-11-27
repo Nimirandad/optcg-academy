@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { inventory } from '../lib/inventory';
+---
+<Base title="Actualizaciones" description="Versiones y estado de las fuentes.">
+  <h1>Actualizaciones</h1>
+  <dl>
+    <dt>Reglamento de referencia</dt>
+    <dd>Versión {inventory.source.version}, fechada el {inventory.source.lastUpdated}.</dd>
+    <dt>Última comparación con el PDF oficial</dt>
+    <dd>2026-11-26 (manual).</dd>
+    <dt>Revisión humana</dt>
+    <dd>Pendiente.</dd>
+    <dt>Sincronización automática</dt>
+    <dd>Todavía no existe.</dd>
+  </dl>
+  <p class="notice">Estos datos pueden quedar desactualizados. Confirma siempre en las fuentes oficiales.</p>
+</Base>

@@ -1,0 +1,17 @@
+---
+import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import Base from '../../layouts/Base.astro';
+import { chapters } from '../../lib/chapters';
+import { inventory } from '../../lib/inventory';
+import { withBase } from '../../lib/paths';
+---
+<Base title="Reglas" description="Índice del reglamento de ONE PIECE Card Game por capítulo y número.">
+  <h1>Reglas</h1>
+  <UnderConstruction>Los números de regla ya están disponibles; las explicaciones en español están pendientes.</UnderConstruction>
+  <ol class="cards">
+    {chapters.map((chapter) => (
+      <li><a href={withBase(`reglas/${chapter.number}/`)}>{chapter.number}. <span lang="en">{chapter.title}</span></a></li>
+    ))}
+  </ol>
+  <p>Fuente: <a href="https://en.onepiece-cardgame.com/rules/">reglamento oficial</a>, versión {inventory.source.version}.</p>
+</Base>

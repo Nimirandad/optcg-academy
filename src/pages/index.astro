@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { inventory } from '../lib/inventory';
+import { withBase } from '../lib/paths';
+import { sections } from '../lib/sections';
+---
+<Base title="OPTCG Academy" description="Plataforma educativa no oficial de ONE PIECE Card Game en español.">
+  <h1>OPTCG Academy</h1>
+  <p>Aprende ONE PIECE Card Game en español, desde tu primera partida hasta las reglas avanzadas.</p>
+  <ul class="cards">
+    {sections.map((section) => (
+      <li><a href={withBase(section.path)}>{section.label}</a><p>{section.summary}</p></li>
+    ))}
+  </ul>
+  <h2>Estado de actualización</h2>
+  <p class="notice">
+    Sitio en construcción. Reglamento de referencia: versión {inventory.source.version}, fechada el {inventory.source.lastUpdated} y comparada con el PDF oficial el 2026-11-26. Revisión humana pendiente. Todavía no hay sincronización automática.
+  </p>
+</Base>

@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/paths';
+
+const lessons = (await getCollection('lessons')).sort((a, b) => a.data.level - b.data.level);
+---
+<Base title="Aprende" description="Lecciones guiadas de ONE PIECE Card Game.">
+  <h1>Aprende</h1>
+  <p>Cinco niveles: fundamentos, primera partida, combate, efectos y avanzado.</p>
+  {lessons.length === 0 ? <UnderConstruction /> : (
+    <ul>{lessons.map((lesson) => <li><a href={withBase(`aprende/${lesson.id}/`)}>{lesson.data.title}</a></li>)}</ul>
+  )}
+</Base>

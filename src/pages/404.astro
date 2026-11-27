@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/paths';
+---
+<Base title="Página no encontrada" description="La página solicitada no existe." searchable={false}>
+  <h1>Página no encontrada</h1>
+  <p>La dirección no existe o cambió. <a href={withBase('')}>Volver al inicio</a>.</p>
+</Base>

@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+import Footer from '../components/ui/Footer.astro';
+import Header from '../components/ui/Header.astro';
+import { withBase } from '../lib/paths';
+import { THEME_KEY } from '../lib/theme';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Excluye la página del índice de búsqueda. */
+  searchable?: boolean;
+}
+
+const { title, description, searchable = true } = Astro.props;
+const fullTitle = title === 'OPTCG Academy' ? title : `${title} · OPTCG Academy`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href={withBase('sitemap-index.xml')} />
+    <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <script is:inline define:vars={{ key: THEME_KEY }}>
+      (() => {
+        const root = document.documentElement;
+        root.classList.add('js');
+        let saved = null;
+        try {
+          saved = localStorage.getItem(key);
+        } catch {
+          // Almacenamiento bloqueado: se usa la preferencia del sistema.
+        }
+        const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = saved === 'light' || saved === 'dark' ? saved : dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <Header />
+    <main id="contenido" class="container" tabindex="-1" data-pagefind-body={searchable ? true : undefined}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

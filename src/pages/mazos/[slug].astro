@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+
+// Sin fichas hasta la Fase 5: no se publican mazos sin validar.
+export function getStaticPaths() {
+  return [];
+}
+---
+<Base title="Mazo" description="Ficha de mazo.">
+  <h1>Mazo</h1>
+</Base>

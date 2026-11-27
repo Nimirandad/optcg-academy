@@ -1,0 +1,80 @@
+---
+import { withBase } from '../../lib/paths';
+import { sections } from '../../lib/sections';
+
+const current = Astro.url.pathname;
+---
+<header>
+  <div class="container bar">
+    <a class="brand" href={withBase('')}>OPTCG Academy</a>
+    <div class="actions">
+      <a class="control" href={withBase('buscar/')}>Buscar</a>
+      <button class="control js-only" type="button" id="theme-toggle" aria-pressed="false">Modo oscuro</button>
+      <button class="control js-only menu-button" type="button" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menú</button>
+    </div>
+  </div>
+  <nav id="main-nav" class="container" aria-label="Principal">
+    <ul>
+      {sections.map((section) => {
+        const href = withBase(section.path);
+        return <li><a href={href} aria-current={current.startsWith(href) ? 'page' : undefined}>{section.label}</a></li>;
+      })}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header { background: var(--header-bg); color: var(--header-text); border-bottom: 3px solid var(--accent); }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; padding-block: 0.5rem; }
+  a { color: var(--header-text); }
+  .brand, .control, nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  .brand { font-weight: 800; font-size: 1.15rem; color: var(--accent); text-decoration: none; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .control { background: transparent; color: var(--header-text); border: 1px solid var(--accent); border-radius: 0.4rem; padding-inline: 0.7rem; font: inherit; text-decoration: none; cursor: pointer; }
+  :global(html:not(.js)) .js-only { display: none; }
+  ul { display: flex; flex-wrap: wrap; gap: 0 1.25rem; list-style: none; margin: 0; padding: 0 0 0.25rem; }
+  nav a[aria-current='page'] { font-weight: 800; text-decoration-thickness: 3px; text-decoration-color: var(--accent); }
+  .control[aria-pressed='true'], .control[aria-expanded='true'] { background: var(--accent); color: var(--header-bg); }
+  .menu-button { display: none; }
+  @media (max-width: 48rem) {
+    :global(html.js) .menu-button { display: inline-flex; }
+    :global(html.js) nav:not([data-open]) { display: none; }
+    ul { flex-direction: column; }
+  }
+</style>
+
+<script>
+  import { nextTheme, THEME_KEY, type Theme } from '../../lib/theme';
+
+  const root = document.documentElement;
+  const themeButton = document.querySelector<HTMLButtonElement>('#theme-toggle');
+  const menuButton = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#main-nav');
+
+  const current = (): Theme => (root.dataset.theme === 'dark' ? 'dark' : 'light');
+  const sync = () => themeButton?.setAttribute('aria-pressed', String(current() === 'dark'));
+
+  themeButton?.addEventListener('click', () => {
+    const theme = nextTheme(current());
+    root.dataset.theme = theme;
+    sync();
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      // Sin almacenamiento disponible: el cambio dura solo esta página.
+    }
+  });
+  sync();
+
+  const setMenu = (open: boolean) => {
+    menuButton?.setAttribute('aria-expanded', String(open));
+    nav?.toggleAttribute('data-open', open);
+  };
+  menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      menuButton.focus();
+    }
+  });
+</script>

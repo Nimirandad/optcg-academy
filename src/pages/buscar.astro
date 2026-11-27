@@ -1,0 +1,12 @@
+---
+import Search from '../components/interactive/Search.svelte';
+import Base from '../layouts/Base.astro';
+import { inventory } from '../lib/inventory';
+
+const ruleIds = inventory.rules.map((rule) => rule.ruleId);
+---
+<Base title="Buscar" description="Busca por número de regla, término o título." searchable={false}>
+  <h1>Buscar</h1>
+  <noscript><p class="notice">La búsqueda necesita JavaScript. Puedes navegar desde el índice de reglas.</p></noscript>
+  <Search client:load base={import.meta.env.BASE_URL} {ruleIds} />
+</Base>

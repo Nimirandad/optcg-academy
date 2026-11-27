@@ -1,0 +1,30 @@
+---
+import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import Base from '../../layouts/Base.astro';
+import { chapters } from '../../lib/chapters';
+import { inventory } from '../../lib/inventory';
+import { ruleAnchor } from '../../lib/rules';
+
+export function getStaticPaths() {
+  return chapters.map((chapter) => ({ params: { capitulo: String(chapter.number) }, props: chapter }));
+}
+
+const { number, title } = Astro.props;
+const rules = inventory.rules.filter((rule) => rule.chapter === number && rule.parentId !== null);
+---
+<Base title={`Capítulo ${number}: ${title}`} description={`Identificadores del capítulo ${number} del reglamento.`}>
+  <h1>Capítulo {number}: <span lang="en">{title}</span></h1>
+  <UnderConstruction>Explicaciones pendientes. Se indica la página del PDF oficial para cada número.</UnderConstruction>
+  {rules.map((rule) => (
+    <section>
+      <h2 id={ruleAnchor(rule.ruleId)}>Regla {rule.ruleId}</h2>
+      <p>Página {rule.sourcePage} del reglamento v{inventory.source.version}. Explicación pendiente.</p>
+    </section>
+  ))}
+</Base>
+
+<style>
+  h2 { font-size: 1.05rem; margin-bottom: 0; scroll-margin-top: 1rem; }
+  h2:target { background: var(--surface); outline: 2px solid var(--link); }
+  p { margin-top: 0.25rem; }
+</style>
