@@ -1,0 +1,88 @@
+{
+  "lesson": "counter",
+  "questions": [
+    {
+      "id": "counter-1",
+      "prompt": "¿Qué cuesta usar el símbolo Counter de un Character en tu mano?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mandarlo al Trash.",
+          "rationale": "No se paga con DON!!."
+        },
+        {
+          "id": "b",
+          "text": "Pagar su coste en DON!!.",
+          "rationale": "Eso se hace al jugarlo o con Events."
+        },
+        {
+          "id": "c",
+          "text": "Poner Rested un Character del campo.",
+          "rationale": "El Counter sale de la mano."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "7-1-3-1-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "counter-2",
+      "prompt": "Atacan a tu Leader de 5000 con 6000. ¿Cuánto poder extra necesitas para no recibir daño?",
+      "options": [
+        {
+          "id": "a",
+          "text": "+1000.",
+          "rationale": "Empatarías en 6000 y gana el atacante."
+        },
+        {
+          "id": "b",
+          "text": "+2000.",
+          "rationale": "Llegas a 7000, más que el atacante."
+        },
+        {
+          "id": "c",
+          "text": "No se puede defender al Leader.",
+          "rationale": "Los Counters pueden subir su poder."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "7-1-4-1",
+        "7-1-4-2"
+      ],
+      "assumption": "No hay otros efectos.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "counter-3",
+      "prompt": "¿Puedes usar el Counter de un Character que está en el campo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, poniéndolo Rested.",
+          "rationale": "La regla pide una carta de la mano."
+        },
+        {
+          "id": "b",
+          "text": "Sí, una vez por turno.",
+          "rationale": "No hay esa opción."
+        },
+        {
+          "id": "c",
+          "text": "No: solo de cartas en tu mano.",
+          "rationale": "Se manda al Trash desde la mano."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "7-1-3-1-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

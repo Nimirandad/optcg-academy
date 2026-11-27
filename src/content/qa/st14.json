@@ -1,0 +1,14 @@
+{
+  "document": "st14",
+  "entries": [
+    {"id": "st14-p1-1", "sourceHash": "464d1ea142b03da3", "question": "ST14-001: ¿su [DON!! x1] da +1 de coste a cartas en la mano o el Trash?", "answer": "No: solo a Characters de tu campo.", "ruleIds": ["2-2-4-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p1-2", "sourceHash": "fc42078369177488", "question": "ST14-001: con +6000 por tener un Character de coste 8, si dejo de tener uno de 8 o más ese turno rival, ¿queda en 5000?", "answer": "Sí.", "ruleIds": ["8-1-3-3-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p1-3", "sourceHash": "de0e556e1327cf1e", "question": "ST14-002: con coste 8 o más, ¿su [When Attacking] causa K.O. a un rival de coste 4 o menos?", "answer": "Sí.", "ruleIds": ["8-3-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p1-4", "sourceHash": "41f5be32892feb7b", "question": "ST14-003: con coste 6 o más, ¿su [On Play] causa K.O. a un rival de coste 5 o menos?", "answer": "Sí.", "ruleIds": ["8-3-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p1-5", "sourceHash": "6d68418d0876ce75", "question": "ST14-003: con Leader ST14-001 con DON!! y sin Characters, ¿al jugarlo su [On Play] causa K.O. a un coste 5 o menos?", "answer": "Sí.", "ruleIds": ["8-4-6"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p1-6", "sourceHash": "f8bc8d464a8cf90a", "question": "ST14-007: con coste 8 o más, ¿su [On Play]/[When Attacking] da −5 de coste a un rival?", "answer": "Sí.", "ruleIds": ["8-3-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p2-1", "sourceHash": "408ff92fa65cd026", "question": "ST14-009: con coste 6 o más, ¿su [Opponent's Turn] impide su K.O. por efectos rivales y le da +2000?", "answer": "Sí.", "ruleIds": ["8-1-3-3-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p2-2", "sourceHash": "873a24df5748af80", "question": "ST14-012: con coste 10 o más, ¿obtiene [Rush]?", "answer": "Sí.", "ruleIds": ["8-1-3-3-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st14-p2-3", "sourceHash": "217a20be9d9ea436", "question": "ST14-017: ¿da +1 de coste a cartas en la mano o el Trash?", "answer": "No: solo a Characters {Straw Hat Crew} negros de tu campo.", "ruleIds": ["2-2-4-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

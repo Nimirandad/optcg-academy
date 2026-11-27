@@ -1,0 +1,10 @@
+{
+  "document": "st09",
+  "entries": [
+    {"id": "st09-p1-1", "sourceHash": "65fa4a258a4d7a34", "question": "ST09-001: con 3 de Life y [Double Attack] rival, si tras el primer daño quedo en 2, ¿qué pasa con el segundo?", "answer": "El Leader pasa a 6000 por su [Opponent's Turn], pero el segundo daño se procesa igualmente.", "ruleIds": ["7-1-4-1-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st09-p1-2", "sourceHash": "8958868052fd2362", "question": "ST09-002: si activo su [Trigger], ¿puedo no añadir la carta a la mano?", "answer": "No.", "ruleIds": ["8-1-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st09-p1-3", "sourceHash": "4fdb9bdf007c4430", "question": "ST09-008: si la carta de Life que tomo es un {Land of Wano} amarillo de coste 4 o menos, ¿puedo jugarla?", "answer": "Sí.", "ruleIds": ["4-10-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st09-p1-4", "sourceHash": "63879d465ffa97c4", "question": "ST09-009: si activo su [Trigger], ¿puedo no añadir la carta a la mano?", "answer": "No.", "ruleIds": ["8-1-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st09-p1-5", "sourceHash": "209904f85ffba312", "question": "ST09-010: sin Life, ¿puedo evitar su K.O. descartando de Life?", "answer": "No.", "ruleIds": ["8-1-3-4-5"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

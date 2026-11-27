@@ -1,0 +1,89 @@
+{
+  "lesson": "construccion-del-mazo",
+  "questions": [
+    {
+      "id": "construccion-del-mazo-1",
+      "prompt": "¿Cuántas cartas tiene el mazo, sin contar Leader ni DON!!?",
+      "options": [
+        {
+          "id": "a",
+          "text": "40.",
+          "rationale": "Faltan 10."
+        },
+        {
+          "id": "b",
+          "text": "50 exactas.",
+          "rationale": "La regla pide un mazo de 50."
+        },
+        {
+          "id": "c",
+          "text": "Al menos 50.",
+          "rationale": "Son 50, no un mínimo."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "5-1-2"
+      ],
+      "assumption": "Ninguna carta modifica las reglas de construcción.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "construccion-del-mazo-2",
+      "prompt": "¿Cuántas cartas con el mismo número puedes incluir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hasta 4.",
+          "rationale": "Es el límite general."
+        },
+        {
+          "id": "b",
+          "text": "Hasta 3.",
+          "rationale": "El límite general es 4."
+        },
+        {
+          "id": "c",
+          "text": "Las que quieras si son artes distintos.",
+          "rationale": "El arte no cambia el número de carta."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "5-1-2-3"
+      ],
+      "assumption": "Ninguna carta modifica el límite.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "construccion-del-mazo-3",
+      "prompt": "Tu mazo cumple las reglas de construcción. ¿Es legal en cualquier torneo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, siempre.",
+          "rationale": "El formato puede excluir cartas."
+        },
+        {
+          "id": "b",
+          "text": "Sí, si todas las cartas son de un color.",
+          "rationale": "El color no resuelve la legalidad de formato."
+        },
+        {
+          "id": "c",
+          "text": "No necesariamente: revisa rotación y cartas prohibidas.",
+          "rationale": "Son comprobaciones aparte de la construcción."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "5-1-2",
+        "1-3-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

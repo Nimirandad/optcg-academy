@@ -1,0 +1,19 @@
+{
+  "chapter": 11,
+  "sourceVersion": "1.2.1",
+  "rules": [
+    {"id": "11", "title": "Otros", "explanation": "Bucles, revelación de cartas y consulta de zonas secretas.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-1", "title": "Bucles infinitos", "explanation": "Cómo cortar acciones repetibles sin fin.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-1-1", "explanation": "Si una acción puede o debe repetirse indefinidamente hay un bucle infinito; cada vuelta completa es una acción de bucle. Se procede como indican las reglas siguientes.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-1-1-1", "explanation": "Si ninguna persona puede detenerlo, la partida termina en empate.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-1-1-2", "explanation": "Si solo una puede detenerlo, declara cuántas veces hará el bucle, se ejecuta esa cantidad y se corta en un momento en que pueda detenerlo. No puede reiniciarlo, aunque el estado sea idéntico al anterior al bucle, salvo que esté obligada.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-1-1-3", "explanation": "Si ambas pueden detenerlo, primero el turn player dice cuántas veces y luego el non-turn player. Se ejecuta la cantidad menor y se corta cuando quien eligió ese número pueda detenerlo. No pueden reiniciarlo, aunque el estado sea idéntico, salvo obligación.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-2", "title": "Revelar cartas", "explanation": "Cuándo hay que mostrar una carta.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-2-1", "explanation": "Cuando haya que mover una carta de una zona secreta a otra, como al añadir del mazo a la mano una carta concreta, la carta movida siempre se revela, aunque el texto no lo pida.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-2-2", "explanation": "Una carta de zona secreta revelada por un efecto o coste vuelve a estar oculta cuando ese efecto o coste termina de resolverse.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-3", "title": "Mirar zonas secretas", "explanation": "Quién mira y qué pasa después.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-3-1", "explanation": "Si un efecto permite mirar una zona secreta, salvo indicación solo mira quien usa el efecto.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-3-2", "explanation": "Las cartas siguen en su zona mientras se miran.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"},
+    {"id": "11-3-3", "explanation": "Si después de mirarlas el texto no indica qué hacer con ellas, vuelven a su zona en el estado original.", "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto"}
+  ]
+}

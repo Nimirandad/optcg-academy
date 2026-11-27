@@ -1,0 +1,10 @@
+{
+  "term": "End of Your Opponent’s Turn",
+  "aliases": [
+    "Fin del turno rival"
+  ],
+  "ruleId": "10-2-8",
+  "definition": "Se activa en la End Phase del turno rival.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

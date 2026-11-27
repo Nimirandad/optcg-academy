@@ -1,0 +1,8 @@
+{
+  "document": "st08",
+  "entries": [
+    {"id": "st08-p1-1", "sourceHash": "b4ae7ed5e3be2a27", "question": "ST08-001: si 2 Characters sufren K.O. a la vez en mi turno, ¿su [Your Turn] da 2 DON!!?", "answer": "Sí: hasta tantos como Characters hayan sufrido K.O.", "ruleIds": ["8-1-3-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st08-p1-2", "sourceHash": "b71d2d9a1083b2cb", "question": "ST08-005: tras descartar 1 con su [On Play], ¿puedo elegir no causar K.O. a mis Characters de coste 1 o menos?", "answer": "No: afecta a todos los de coste 1 o menos de ambos.", "ruleIds": ["8-1-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st08-p1-3", "sourceHash": "a043bb68d0b0bf96", "question": "ST08-013: si pierde la batalla y queda en el Trash, ¿puedo activar su efecto [DON!! x1]?", "answer": "No.", "ruleIds": ["8-1-3-1-3", "6-5-5-4"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

@@ -1,9 +1,99 @@
 ---
-import UnderConstruction from '../../components/ui/UnderConstruction.astro';
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/paths';
+import { documents, documentTitle, errata, percent, restrictions } from '../../lib/qa';
+import { rulePath } from '../../lib/rules';
+
+const notes = await getCollection('qa');
+const entries = notes.flatMap((note) => note.data.entries.map((entry) => ({ ...entry, document: note.data.document })));
+const total = documents.reduce((sum, document) => sum + document.questions.length, 0);
+const reviewed = entries.filter((entry) => entry.reviewStatus === 'reviewed').length;
+const qaConflicts = entries.filter((entry) => entry.note || entry.reviewStatus === 'conflict');
+const ruleConflicts = (await getCollection('rules'))
+  .flatMap((chapter) => chapter.data.rules)
+  .filter((rule) => rule.note || rule.reviewStatus === 'conflict');
+const gaps = documents.flatMap((document) => document.gaps.map((gap) => ({ ...gap, document })));
+const flagged = documents.flatMap((document) => document.questions).filter((question) => question.flags.length).length;
+const retrieved = [...new Set(documents.map((document) => document.retrievedAt))].join(', ');
 ---
-<Base title="Q&A" description="Aclaraciones oficiales por set, carta y mecánica.">
+<Base title="Q&A" description="Inventario de aclaraciones oficiales por set, erratas y dudas abiertas.">
   <h1>Q&A</h1>
-  <p>Aclaraciones oficiales por set, carta y mecánica.</p>
-  <UnderConstruction />
+  <p>
+    Explicaciones propias de las aclaraciones oficiales. Siguen lo que dice cada documento: confírmalo en el original.
+  </p>
+
+  <h2>Cobertura</h2>
+  <dl>
+    <dt>Documentos oficiales inventariados</dt>
+    <dd>{documents.length} (consultados el {retrieved})</dd>
+    <dt>Preguntas detectadas automáticamente</dt>
+    <dd>{total}; {flagged} con extracción por comprobar y {gaps.length} fila sin contenido legible</dd>
+    <dt>Con explicación propia en borrador</dt>
+    <dd>{entries.length} ({percent(entries.length, total)}). Pendientes: {total - entries.length}</dd>
+    <dt>Revisadas por una persona</dt>
+    <dd>{reviewed} ({percent(reviewed, total)})</dd>
+  </dl>
+  <p>La legalidad de cada set en Standard todavía no está determinada: una aclaración puede seguir siendo útil aunque la carta haya rotado.</p>
+
+  <h2>Documentos</h2>
+  <ul>
+    {documents.map((document) => {
+      const done = entries.filter((entry) => entry.document === document.slug).length;
+      return (
+        <li>
+          <a href={withBase(`qa/${document.slug}/`)}>{documentTitle(document)}</a>
+          <span> · {document.publishedAt} · {done} de {document.questions.length} explicadas</span>
+        </li>
+      );
+    })}
+  </ul>
+
+  <h2 id="conflictos">Observaciones sobre las fuentes</h2>
+  <p>
+    Discrepancias o vacíos detectados en la documentación oficial. El sitio la sigue tal como está publicada; si un
+    punto afecta tu partida, confírmalo con un juez.
+  </p>
+  <ul>
+    {ruleConflicts.map((rule) => <li><a href={withBase(rulePath(rule.id))}>Regla {rule.id}</a>: {rule.note}</li>)}
+    {qaConflicts.map((entry) => (
+      <li><a href={withBase(`qa/${entry.document}/#${entry.id}`)}>Aclaración {entry.id}</a>: {entry.note}</li>
+    ))}
+    {gaps.map((gap) => (
+      <li><a href={withBase(`qa/${gap.document.slug}/`)}>{documentTitle(gap.document)}</a>, p. {gap.page}: {gap.reason}</li>
+    ))}
+  </ul>
+
+  <h2 id="prohibidas">Cartas prohibidas</h2>
+  <p>
+    Para torneos oficiales y sancionados, según la <a href={restrictions.sourceUrl}>lista oficial</a> consultada el
+    {restrictions.retrievedAt}, incluidas las versiones de arte alternativo. La lista puede cambiar: confírmala antes de
+    jugar.
+  </p>
+  <h3>No se pueden incluir en ningún mazo</h3>
+  <ul>
+    {restrictions.banned.map((entry) => <li>{entry.cardId}, desde el {entry.effectiveFrom}</li>)}
+  </ul>
+  <h3>Parejas que no pueden ir en el mismo mazo</h3>
+  <ul>
+    {restrictions.pairs.map((pair) => <li>{pair.cards.join(' con ')}, desde el {pair.effectiveFrom}</li>)}
+  </ul>
+  <p>No hay cartas con copias limitadas en la lista consultada.</p>
+
+  <h2 id="erratas">Erratas</h2>
+  <p>
+    Avisos consultados el {errata.retrievedAt}, resumidos con palabras propias y sin revisión humana. La
+    <a href={errata.listUrl}>lista oficial de erratas</a> se consulta aparte y no incluye todos estos avisos.
+  </p>
+  <ul>
+    {errata.notices.map((notice) => (
+      <li><a href={notice.url}><span lang="en">{notice.cardIds.join(', ')}</span>: aviso del {notice.publishedAt}</a> {notice.summary}</li>
+    ))}
+  </ul>
 </Base>
+
+<style>
+  li a { display: inline-flex; align-items: center; min-height: 44px; }
+  dd { margin-inline-start: 0; margin-bottom: 0.5rem; }
+  dt { font-weight: 700; }
+</style>

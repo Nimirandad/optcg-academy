@@ -12,6 +12,10 @@
     "check": "astro check && tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
+    "validate": "node scripts/coverage/validate.ts",
+    "sync": "node scripts/sync/run.ts",
+    "validate:decks": "node scripts/validate/decks.ts",
+    "review-sheet": "node scripts/coverage/review-sheet.ts",
     "test:e2e": "playwright test",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview"

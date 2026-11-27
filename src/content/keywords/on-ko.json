@@ -1,0 +1,10 @@
+{
+  "term": "On K.O.",
+  "aliases": [
+    "Al sufrir K.O."
+  ],
+  "ruleId": "10-2-17",
+  "definition": "Se activa en el campo al sufrir K.O. y se resuelve con la carta ya en el Trash.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

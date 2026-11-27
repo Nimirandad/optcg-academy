@@ -1,0 +1,10 @@
+{
+  "term": "On Play",
+  "aliases": [
+    "Al jugarse"
+  ],
+  "ruleId": "10-2-6",
+  "definition": "Se activa cuando la carta se juega.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

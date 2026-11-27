@@ -1,0 +1,88 @@
+{
+  "lesson": "zonas-de-juego",
+  "questions": [
+    {
+      "id": "zonas-de-juego-1",
+      "prompt": "¿Cuál de estas zonas es secreta?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El mazo.",
+          "rationale": "Nadie puede mirar su contenido u orden salvo indicación."
+        },
+        {
+          "id": "b",
+          "text": "El Trash.",
+          "rationale": "El Trash es abierto: ambos pueden revisarlo."
+        },
+        {
+          "id": "c",
+          "text": "El mazo de DON!!.",
+          "rationale": "Aunque va boca abajo, es una zona abierta."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "3-2-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "zonas-de-juego-2",
+      "prompt": "Un Character con poder aumentado vuelve a tu mano y lo juegas otra vez. ¿Conserva el aumento?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, hasta que termine el turno.",
+          "rationale": "Al cambiar de zona se pierde, aunque el plazo no haya terminado."
+        },
+        {
+          "id": "b",
+          "text": "No: se trata como una carta nueva.",
+          "rationale": "Los efectos aplicados en la zona anterior no se arrastran."
+        },
+        {
+          "id": "c",
+          "text": "Sí, si lo juegas en el mismo turno.",
+          "rationale": "El momento en que lo vuelvas a jugar no cambia la regla."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "3-1-6"
+      ],
+      "assumption": "Ningún efecto indica lo contrario.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "zonas-de-juego-3",
+      "prompt": "Reemplazas un Character porque ya tenías 5. ¿Se activa su [On K.O.]?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, porque va al Trash.",
+          "rationale": "Ir al Trash no siempre es un K.O."
+        },
+        {
+          "id": "b",
+          "text": "Sí, si tu oponente está de acuerdo.",
+          "rationale": "Las reglas no dependen de un acuerdo."
+        },
+        {
+          "id": "c",
+          "text": "No: no es un K.O.",
+          "rationale": "Es procesamiento de una regla."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "3-7-6-1-1",
+        "10-2-1-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "lesson": "don-en-combate",
+  "questions": [
+    {
+      "id": "don-en-combate-1",
+      "prompt": "Tu Leader de 5000 tiene 3 DON!!. ¿Cuánto poder tiene durante el turno rival?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5000.",
+          "rationale": "El aumento solo vale en tu turno."
+        },
+        {
+          "id": "b",
+          "text": "8000.",
+          "rationale": "Ese es su poder durante tu turno."
+        },
+        {
+          "id": "c",
+          "text": "6000.",
+          "rationale": "En el turno rival no suma por ningún DON!!."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "6-5-5-2"
+      ],
+      "assumption": "No hay otros efectos.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "don-en-combate-2",
+      "prompt": "Tu Character con 2 DON!! sufre K.O. ¿Dónde quedan los DON!!?",
+      "options": [
+        {
+          "id": "a",
+          "text": "En el Trash junto al Character.",
+          "rationale": "Los DON!! no acompañan a la carta."
+        },
+        {
+          "id": "b",
+          "text": "En tu zona de coste, Rested.",
+          "rationale": "Así lo indica la regla."
+        },
+        {
+          "id": "c",
+          "text": "En tu zona de coste, Active.",
+          "rationale": "Llegan en estado Rested."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "6-5-5-4"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "don-en-combate-3",
+      "prompt": "¿Cuándo vuelven normalmente los DON!! asignados?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Al terminar cada batalla.",
+          "rationale": "Siguen asignados tras la batalla."
+        },
+        {
+          "id": "b",
+          "text": "En la End Phase.",
+          "rationale": "La devolución no ocurre en esa fase."
+        },
+        {
+          "id": "c",
+          "text": "En tu siguiente Refresh Phase.",
+          "rationale": "Vuelven a la zona de coste y luego se activan."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "6-2-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "palabras",
+  "icon": "llave",
+  "title": "Palabras clave",
+  "question": "¿Qué significa esa palabra entre corchetes?",
+  "idea": "Atajos que resumen un efecto. Estas son algunas de las que más verás.",
+  "steps": [
+    {
+      "title": "[Rush]",
+      "text": "El Character puede atacar el mismo turno en que se juega.",
+      "ruleIds": [
+        "10-1-1-1"
+      ]
+    },
+    {
+      "title": "[Double Attack]",
+      "text": "Su ataque que daña al Leader rival hace 2 de daño en lugar de 1.",
+      "ruleIds": [
+        "10-1-2-1"
+      ]
+    },
+    {
+      "title": "[Banish]",
+      "text": "La carta de Life dañada va al Trash y su [Trigger] no se activa.",
+      "ruleIds": [
+        "10-1-3-1"
+      ]
+    },
+    {
+      "title": "[Trigger]",
+      "text": "Al tomar daño, puedes revelar esa carta de Life y activarlo en lugar de llevarla a la mano.",
+      "ruleIds": [
+        "10-1-5-1"
+      ]
+    },
+    {
+      "title": "[Rush: Character]",
+      "text": "El turno en que entra puede atacar Characters, pero no al Leader.",
+      "ruleIds": [
+        "10-1-6-1"
+      ]
+    },
+    {
+      "title": "[Unblockable]",
+      "text": "Contra su ataque no se puede usar [Blocker].",
+      "ruleIds": [
+        "10-1-7-1"
+      ]
+    }
+  ],
+  "tip": "El glosario reúne todas las palabras clave.",
+  "tipRuleIds": [
+    "10-1-4-1"
+  ],
+  "lessons": [
+    "palabras-clave"
+  ],
+  "order": 9,
+  "reviewStatus": "pending"
+}

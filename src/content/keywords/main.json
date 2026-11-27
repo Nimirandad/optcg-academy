@@ -1,0 +1,10 @@
+{
+  "term": "Main",
+  "aliases": [
+    "Fase principal"
+  ],
+  "ruleId": "10-2-3",
+  "definition": "En Events: se usa durante la Main Phase, fuera de batalla, salvo que otro efecto permita activarlo.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

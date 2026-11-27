@@ -1,0 +1,42 @@
+{
+  "id": "trigger-no-es-event",
+  "level": 4,
+  "title": "¿Activaste un Event?",
+  "mechanics": [
+    "Trigger",
+    "Activación"
+  ],
+  "prompt": "Al recibir daño activas el [Trigger] de un Event. ¿Se cumplen efectos «cuando activas un Event»?",
+  "options": [
+    {
+      "id": "a",
+      "text": "No.",
+      "rationale": "Activar un Event es usarlo desde la mano."
+    },
+    {
+      "id": "b",
+      "text": "Sí, es una carta Event.",
+      "rationale": "Importa cómo se usa, no solo su categoría."
+    },
+    {
+      "id": "c",
+      "text": "Sí, pero solo los del oponente.",
+      "rationale": "Tampoco se cumplen."
+    }
+  ],
+  "answer": "a",
+  "steps": [
+    "El [Trigger] se activa al tomar la carta de Life.",
+    "«Activar una carta» significa usar un Event desde la mano.",
+    "Por lo tanto no se activó un Event."
+  ],
+  "ruleIds": [
+    "8-5-2",
+    "8-5-4"
+  ],
+  "qaIds": [
+    "rules-p6-7"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}

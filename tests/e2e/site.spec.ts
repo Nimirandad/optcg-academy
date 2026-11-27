@@ -2,9 +2,10 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 const routes = [
-  '', 'aprende/', 'reglas/',
+  '', 'jugar/', 'aprende/', 'aprende/ataques/', 'aprende/counter/',
+  ...['ganar', 'preparar', 'mesa', 'turno', 'don', 'atacar', 'defender', 'efectos', 'palabras'].map((id) => `reglas/tema/${id}/`), 'aprende/objetivo-del-juego/', 'aprende/zonas-de-juego/', 'aprende/fases-del-turno/', 'aprende/palabras-clave/', 'aprende/casos-complejos/', 'reglas/',
   ...Array.from({ length: 11 }, (_, i) => `reglas/${i + 1}/`),
-  'mazos/', 'simuladores/', 'glosario/', 'qa/', 'casos/', 'desafios/', 'actualizaciones/', 'acerca/', 'buscar/',
+  'mazos/', 'simuladores/', 'glosario/', 'qa/', 'qa/rules/', 'qa/op18/', 'qa/op17/', 'qa/op14-eb04/', 'qa/op03/', 'casos/', 'desafios/', 'actualizaciones/', 'acerca/', 'buscar/',
 ];
 
 for (const route of routes) {
@@ -23,7 +24,8 @@ for (const route of routes) {
 
 for (const colorScheme of ['light', 'dark'] as const) {
   test(`accesibilidad automatizada en modo ${colorScheme}`, async ({ page }) => {
-    test.setTimeout(180_000);
+    // Una auditoría por ruta; en equipos cargados supera los 3 minutos.
+    test.setTimeout(420_000);
     await page.emulateMedia({ colorScheme });
     for (const route of [...routes, 'no-existe/']) {
       await page.goto(route);
@@ -66,12 +68,47 @@ test('no hay enlaces ni recursos internos rotos bajo la subruta', async ({ page,
   }
 });
 
+test('cada regla del inventario tiene ancla y explicación', async ({ page }) => {
+  let anchors = 0;
+  for (let chapter = 1; chapter <= 11; chapter++) {
+    await page.goto(`reglas/${chapter}/`);
+    anchors += await page.locator('[id^="regla-"]').count();
+    await expect(page.getByText('Explicación pendiente.')).toHaveCount(0);
+  }
+  expect(anchors).toBe(492);
+});
+
+test('Q&A: cobertura, conflictos, erratas y enlace desde la regla', async ({ page }) => {
+  await page.goto('qa/');
+  await expect(page.getByRole('main')).toContainText('Pendientes: 0');
+  await expect(page.getByRole('link', { name: 'Regla 5-1-2-4' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Aclaración rules-p3-4' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /OP13-077/ })).toBeVisible();
+
+  await page.goto('reglas/10/');
+  const rule = page.locator('section', { has: page.locator('[id="regla-10-1-4-1"]') });
+  await rule.getByText(/Aclaraciones oficiales relacionadas/).click();
+  await rule.getByRole('link', { name: /Rested\?$/ }).click();
+  await expect(page).toHaveURL(/\/qa\/rules\/#rules-p5-4$/);
+});
+
+test('Q&A señala cartas y parejas prohibidas', async ({ page }) => {
+  await page.goto('qa/');
+  await expect(page.getByRole('main')).toContainText('OP14-020, desde el 2026-10-12');
+  await expect(page.getByRole('main')).toContainText('EB05-001 con OP13-001, desde el 2026-11-27');
+  await page.goto('qa/op03/');
+  await expect(page.locator('[id="op03-p3-4"]')).toContainText('Carta prohibida: OP03-040, desde el 2025-08-30');
+  await expect(page.locator('[id="op03-p1-1"]')).not.toContainText('prohibida');
+  await page.goto('qa/op13/');
+  await expect(page.locator('[id="op13-p1-1"]')).toContainText('Pareja prohibida: OP13-001');
+});
+
 test('página 404 con enlace de regreso', async ({ page }) => {
   const response = await page.goto('no-existe/');
   expect(response?.status()).toBe(404);
   await expect(page.locator('link[rel="canonical"], meta[property="og:url"]')).toHaveCount(0);
   await page.getByRole('link', { name: 'Volver al inicio' }).click();
-  await expect(page.locator('h1')).toHaveText('OPTCG Academy');
+  await expect(page.locator('h1')).toHaveText('Zarpa hacia tu primera partida');
 });
 
 test('sitemap y metadatos usan la subruta', async ({ page, request }) => {

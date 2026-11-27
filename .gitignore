@@ -12,3 +12,8 @@ playwright-report/
 
 # ADR-006: no versionar PDF ni imagenes oficiales
 references/*.pdf
+# PDF oficiales de Q&A y texto extraido: solo local (ADR-006)
+references/qa/
+references/cards/
+# Respuestas de terceros guardadas por la sincronizacion
+references/cache/

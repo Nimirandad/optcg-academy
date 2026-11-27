@@ -1,0 +1,86 @@
+{
+  "lesson": "principios-y-excepciones",
+  "questions": [
+    {
+      "id": "principios-y-excepciones-1",
+      "prompt": "Un Character queda con −1000 de poder. ¿Qué le pasa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sigue en el campo, salvo que algo diga otra cosa.",
+          "rationale": "El poder negativo no lo mueve."
+        },
+        {
+          "id": "b",
+          "text": "Sufre K.O.",
+          "rationale": "No es una condición de K.O."
+        },
+        {
+          "id": "c",
+          "text": "Su poder pasa a 0.",
+          "rationale": "El poder sí puede ser negativo."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "1-3-6-1-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "principios-y-excepciones-2",
+      "prompt": "Coste 1 recibe −3 y después +3. ¿Resultado?",
+      "options": [
+        {
+          "id": "a",
+          "text": "3.",
+          "rationale": "Eso ignora el valor negativo."
+        },
+        {
+          "id": "b",
+          "text": "1.",
+          "rationale": "El cálculo parte de −2."
+        },
+        {
+          "id": "c",
+          "text": "0.",
+          "rationale": "Tras sumar 3 queda positivo."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "1-3-6-2-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "principios-y-excepciones-3",
+      "prompt": "«Hasta 2 Characters»: ¿puedes elegir ninguno?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, al menos 1.",
+          "rationale": "No se fija un mínimo."
+        },
+        {
+          "id": "b",
+          "text": "Solo si no hay Characters.",
+          "rationale": "Puedes elegir 0 aunque los haya."
+        },
+        {
+          "id": "c",
+          "text": "Sí.",
+          "rationale": "Sin mínimo, 0 es válido."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "1-3-5-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

@@ -1,16 +1,111 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BattleLesson from '../../features/combat/BattleLesson.svelte';
+import { lessonScenes } from '../../features/combat/lessons';
+import Quiz from '../../features/quizzes/Quiz.svelte';
+import TopicSteps from '../../features/topics/TopicSteps.svelte';
 import Base from '../../layouts/Base.astro';
+import { checkAcademy, levels, sortLessons } from '../../lib/academy';
+import { inventory } from '../../lib/inventory';
+import { withBase } from '../../lib/paths';
+import { rulePath } from '../../lib/rules';
 
 export async function getStaticPaths() {
-  const lessons = await getCollection('lessons');
-  return lessons.map((lesson) => ({ params: { leccion: lesson.id }, props: { lesson } }));
+  const lessons = sortLessons(await getCollection('lessons'));
+  const sets = (await getCollection('questions')).map((entry) => entry.data);
+  const problems = checkAcademy(lessons, sets, new Set(inventory.rules.map((rule) => rule.ruleId)));
+  if (problems.length) throw new Error(`Academia inconsistente:\n${problems.join('\n')}`);
+  const topics = (await getCollection('topics')).map((entry) => entry.data);
+  return lessons.map((lesson, index) => ({
+    params: { leccion: lesson.id },
+    props: {
+      lesson,
+      level: lessons.filter((other) => other.data.level === lesson.data.level).map((other) => other.id),
+      topic: topics.find((item) => item.lessons.includes(lesson.id)),
+      next: lessons[index + 1],
+      required: lessons.filter((other) => lesson.data.prerequisites.includes(other.id)),
+      questions: sets.find((set) => set.lesson === lesson.id)!.questions,
+    },
+  }));
 }
 
-const { lesson } = Astro.props as { lesson: CollectionEntry<'lessons'> };
+type Lesson = CollectionEntry<'lessons'>;
+interface Props {
+  lesson: Lesson;
+  level: string[];
+  topic?: CollectionEntry<'topics'>['data'];
+  next?: Lesson;
+  required: Lesson[];
+  questions: CollectionEntry<'questions'>['data']['questions'];
+}
+const { lesson, level: classmates, topic, next, required, questions } = Astro.props;
+const scenes = lessonScenes[lesson.id];
+const position = classmates.indexOf(lesson.id) + 1;
 const { Content } = await render(lesson);
+const { level, objective, ruleIds, reviewStatus } = lesson.data;
 ---
-<Base title={lesson.data.title} description={`Lección de nivel ${lesson.data.level}.`}>
-  <h1>{lesson.data.title}</h1>
-  <Content />
+<Base title={lesson.data.title} description={objective}>
+  <header class="banner">
+    <p class="eyebrow">Nivel {level}: {levels[level]} · Lección {position} de {classmates.length}</p>
+    <h1>{lesson.data.title}</h1>
+    <p class="goal"><strong>Objetivo:</strong> {objective}</p>
+    <p>
+      <strong>Antes de empezar:</strong>
+      {required.length === 0 ? ' no necesitas lecciones previas.' : required.map((other, index) => (
+        <>{index > 0 ? ', ' : ' '}<a href={withBase(`aprende/${other.id}/`)}>{other.data.title}</a></>
+      ))}
+    </p>
+  </header>
+  <p class="notice">
+    {reviewStatus === 'reviewed' ? 'Lección revisada.' : 'Borrador no oficial, pendiente de revisión.'} No reemplaza al
+    reglamento ni a un juez.
+  </p>
+
+  {scenes && (
+    <section data-pagefind-ignore>
+      <h2>Juégalo</h2>
+      <p class="meta">Cartas inventadas. Retos sin revisión humana.</p>
+      <BattleLesson base={import.meta.env.BASE_URL} only={scenes} client:visible />
+    </section>
+  )}
+
+  {!scenes && topic && (
+    <section data-pagefind-ignore>
+      <h2>Paso a paso</h2>
+      <p class="meta">Resumen del tema «{topic.title}», {topic.reviewStatus === 'reviewed' ? 'revisado' : 'sin revisión humana'}.</p>
+      <TopicSteps base={import.meta.env.BASE_URL} icon={topic.icon} steps={topic.steps} client:visible />
+    </section>
+  )}
+
+  <div class="lesson"><Content /></div>
+
+  <h2>Comprueba lo aprendido</h2>
+  <Quiz base={import.meta.env.BASE_URL} lessonId={lesson.id} questions={questions} client:load />
+
+  <h2>Reglas de esta lección</h2>
+  <ul class="refs">
+    {ruleIds.map((id) => <li><a href={withBase(rulePath(id))}>Regla {id}</a></li>)}
+  </ul>
+
+  <nav aria-label="Lecciones">
+    <a class="button" href={withBase('aprende/')}>Todas las lecciones</a>
+    {next && <a class="button primary" href={withBase(`aprende/${next.id}/`)}>Siguiente: {next.data.title}</a>}
+  </nav>
 </Base>
+
+<style>
+  .goal { font-size: 1.1rem; }
+  .banner a { display: inline-block; padding-block: 0.25rem; }
+  .meta { color: var(--muted); font-size: 0.875rem; }
+  .lesson :global(h2) { border-inline-start: 0.4rem solid var(--accent); padding-inline-start: 0.75rem; }
+  .lesson :global(table) { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: fixed; background: var(--surface); border: 2px solid var(--border); border-radius: 1rem; overflow: hidden; }
+  .lesson :global(th), .lesson :global(td) { border-block-end: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: start; vertical-align: top; overflow-wrap: anywhere; }
+  .lesson :global(thead th) { background: var(--header-bg); color: var(--header-text); }
+  .lesson :global(tbody tr:last-child > *) { border-block-end: 0; }
+  .lesson :global(caption) { text-align: start; font-weight: 700; padding-bottom: 0.25rem; }
+  .lesson :global(details) { border: 2px solid var(--border); border-radius: 1rem; background: var(--surface); padding: 0.25rem 1rem; margin-block: 0.75rem; }
+  .lesson :global(summary) { cursor: pointer; min-height: 44px; align-content: center; font-weight: 700; }
+  .refs a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 0.9rem; border: 2px solid var(--border); border-radius: 2rem; background: var(--surface); }
+  .refs { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; }
+  nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+</style>

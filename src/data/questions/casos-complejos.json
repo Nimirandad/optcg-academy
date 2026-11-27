@@ -1,0 +1,86 @@
+{
+  "lesson": "casos-complejos",
+  "questions": [
+    {
+      "id": "casos-complejos-1",
+      "prompt": "El atacante vuelve a la mano durante el Counter Step. ¿Hay Damage Step?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No: se pasa al final de la batalla.",
+          "rationale": "El atacante cambió de zona."
+        },
+        {
+          "id": "b",
+          "text": "Sí, con su último poder.",
+          "rationale": "Ya no está en la batalla."
+        },
+        {
+          "id": "c",
+          "text": "Sí, y el defensor pierde.",
+          "rationale": "No hay comparación de poder."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "7-1-3-1-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "casos-complejos-2",
+      "prompt": "Un reemplazo exige algo que no puedes hacer. ¿Qué pasa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Se aplica parcialmente.",
+          "rationale": "No puede aplicarse."
+        },
+        {
+          "id": "b",
+          "text": "No se aplica.",
+          "rationale": "Ocurre lo que iba a ocurrir."
+        },
+        {
+          "id": "c",
+          "text": "Se pospone.",
+          "rationale": "No queda pendiente."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "8-1-3-4-5"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "casos-complejos-3",
+      "prompt": "¿Dónde está la carta cuando se resuelve su [On K.O.]?",
+      "options": [
+        {
+          "id": "a",
+          "text": "En el campo.",
+          "rationale": "Allí se activa."
+        },
+        {
+          "id": "b",
+          "text": "En tu mano.",
+          "rationale": "No pasa por la mano."
+        },
+        {
+          "id": "c",
+          "text": "En el Trash.",
+          "rationale": "Se resuelve con la carta ya descartada."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "10-2-17-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

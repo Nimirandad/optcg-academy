@@ -1,0 +1,87 @@
+{
+  "lesson": "mulligan",
+  "questions": [
+    {
+      "id": "mulligan-1",
+      "prompt": "¿Cuántas veces puedes cambiar la mano inicial?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Una vez.",
+          "rationale": "Es una sola oportunidad."
+        },
+        {
+          "id": "b",
+          "text": "Hasta quedar conforme.",
+          "rationale": "No se puede repetir."
+        },
+        {
+          "id": "c",
+          "text": "Dos veces, perdiendo una carta cada vez.",
+          "rationale": "Esa mecánica no existe en estas reglas."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "5-2-1-6"
+      ],
+      "assumption": "Ningún efecto de carta modifica la preparación.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "mulligan-2",
+      "prompt": "¿Qué cartas devuelves al hacer mulligan?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Las que elijas.",
+          "rationale": "No se cambian cartas sueltas."
+        },
+        {
+          "id": "b",
+          "text": "Como máximo 3.",
+          "rationale": "No hay cambio parcial."
+        },
+        {
+          "id": "c",
+          "text": "Las 5.",
+          "rationale": "Se devuelve toda la mano."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "5-2-1-6-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "mulligan-3",
+      "prompt": "¿Quién decide primero si cambia la mano?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Quien va segundo.",
+          "rationale": "Decide después."
+        },
+        {
+          "id": "b",
+          "text": "Quien va primero.",
+          "rationale": "El proceso comienza por esa persona."
+        },
+        {
+          "id": "c",
+          "text": "Ambos a la vez, en secreto.",
+          "rationale": "La regla fija un orden."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "5-2-1-6"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

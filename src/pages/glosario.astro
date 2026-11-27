@@ -1,21 +1,39 @@
 ---
 import { getCollection } from 'astro:content';
-import UnderConstruction from '../components/ui/UnderConstruction.astro';
 import Base from '../layouts/Base.astro';
 import { withBase } from '../lib/paths';
 import { rulePath } from '../lib/rules';
 
-const keywords = await getCollection('keywords');
+const keywords = (await getCollection('keywords')).sort((a, b) =>
+  a.data.ruleId.localeCompare(b.data.ruleId, 'es', { numeric: true }),
+);
+const groups = [
+  { title: 'Efectos de palabra clave', prefix: '10-1-' },
+  { title: 'Palabras clave', prefix: '10-2-' },
+];
 ---
-<Base title="Glosario" description="Palabras clave y conceptos de ONE PIECE Card Game en inglés y español.">
+<Base title="Glosario" description="Palabras clave de ONE PIECE Card Game en inglés y español.">
   <h1>Glosario</h1>
-  <UnderConstruction>Definiciones pendientes. Los nombres en español son propios y están sin revisar.</UnderConstruction>
-  <dl>
-    {keywords.map(({ data }) => (
-      <>
-        <dt><strong lang="en">{data.term}</strong> ({data.aliases.join(', ')})</dt>
-        <dd><a href={withBase(rulePath(data.ruleId))}>Regla {data.ruleId}</a>. Definición pendiente.</dd>
-      </>
-    ))}
-  </dl>
+  <p>
+    Definiciones breves de elaboración propia. Los nombres en español no son oficiales. La definición completa está en
+    cada regla.
+  </p>
+  {groups.map((group) => (
+    <section>
+      <h2>{group.title}</h2>
+      <dl>
+        {keywords.filter(({ data }) => data.ruleId.startsWith(group.prefix)).map(({ id, data }) => (
+          <>
+            <dt id={id} data-pagefind-weight="10"><strong lang="en">{data.term}</strong> ({data.aliases.join(', ')})</dt>
+            <dd>{data.definition} <a href={withBase(rulePath(data.ruleId))}>Regla {data.ruleId}</a></dd>
+          </>
+        ))}
+      </dl>
+    </section>
+  ))}
 </Base>
+
+<style>
+  dt { margin-top: 1rem; scroll-margin-top: 1rem; }
+  dd { margin-inline-start: 0; }
+</style>

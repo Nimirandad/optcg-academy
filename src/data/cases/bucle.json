@@ -1,0 +1,38 @@
+{
+  "id": "bucle",
+  "level": 5,
+  "title": "Dos que pueden parar",
+  "mechanics": [
+    "Bucles"
+  ],
+  "prompt": "Ambas personas pueden detener un bucle. Tú, con el turno, declaras 3; tu rival declara 6. ¿Cuántas repeticiones se hacen?",
+  "options": [
+    {
+      "id": "a",
+      "text": "3.",
+      "rationale": "Se hace la menor de las dos cantidades."
+    },
+    {
+      "id": "b",
+      "text": "6.",
+      "rationale": "No se usa la mayor."
+    },
+    {
+      "id": "c",
+      "text": "9.",
+      "rationale": "No se suman."
+    }
+  ],
+  "answer": "a",
+  "steps": [
+    "Declaras primero por tener el turno.",
+    "Tu rival declara después.",
+    "Se hace la cantidad menor y se corta cuando tú puedas detenerlo."
+  ],
+  "ruleIds": [
+    "11-1-1-3"
+  ],
+  "qaIds": [],
+  "version": 1,
+  "reviewStatus": "pending"
+}

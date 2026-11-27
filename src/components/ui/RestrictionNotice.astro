@@ -1,0 +1,28 @@
+---
+/** Avisos de cartas prohibidas o parejas prohibidas entre las cartas citadas. */
+import { restrictions } from '../../lib/qa';
+import { restrictionsFor } from '../../lib/restrictions';
+import { withBase } from '../../lib/paths';
+
+const { cardIds } = Astro.props;
+const warnings = restrictionsFor(cardIds, restrictions);
+---
+{warnings.length > 0 && (
+  <ul class="restriction">
+    {warnings.map((warning) => (
+      <li>
+        {warning.kind === 'banned' ? (
+          <><strong>Carta prohibida:</strong> {warning.cardId}, desde el {warning.effectiveFrom}.</>
+        ) : (
+          <><strong>Pareja prohibida:</strong> {warning.cardId} no puede ir en el mismo mazo que {warning.partnerId}, desde el {warning.effectiveFrom}.</>
+        )}{' '}
+        <a href={withBase('qa/#prohibidas')}>Fuente y alcance</a>
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .restriction { list-style: none; padding: 0.5rem 0.75rem; margin-block: 0.4rem; border-inline-start: 4px solid var(--notice); background: var(--surface); font-size: 0.9rem; }
+  a { display: inline-block; padding-block: 0.25rem; }
+</style>

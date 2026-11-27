@@ -1,0 +1,88 @@
+{
+  "lesson": "fases-del-turno",
+  "questions": [
+    {
+      "id": "fases-del-turno-1",
+      "prompt": "¿Cuál es el orden correcto?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Draw, Refresh, DON!!, Main, End.",
+          "rationale": "Refresh va antes de Draw."
+        },
+        {
+          "id": "b",
+          "text": "Refresh, Draw, DON!!, Main, End.",
+          "rationale": "Es la secuencia del turno."
+        },
+        {
+          "id": "c",
+          "text": "Refresh, DON!!, Draw, Main, End.",
+          "rationale": "Draw va antes de DON!!."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "6-1-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "fases-del-turno-2",
+      "prompt": "Primer turno de quien va primero. ¿Qué afirmación es correcta?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Roba 1, pone 1 DON!! y puede atacar.",
+          "rationale": "No roba ni puede batallar."
+        },
+        {
+          "id": "b",
+          "text": "No roba, pone 2 DON!! y no ataca.",
+          "rationale": "Pone solo 1 DON!!."
+        },
+        {
+          "id": "c",
+          "text": "No roba, pone 1 DON!! y no puede batallar.",
+          "rationale": "Son las tres excepciones que le aplican."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "6-3-1",
+        "6-4-1",
+        "6-5-6-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "fases-del-turno-3",
+      "prompt": "Durante la Main Phase, ¿puedes jugar una carta después de una batalla?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí: las acciones se pueden alternar.",
+          "rationale": "No hay un orden fijo entre las acciones."
+        },
+        {
+          "id": "b",
+          "text": "No: primero se juega todo y luego se ataca.",
+          "rationale": "Las reglas no obligan a ese orden."
+        },
+        {
+          "id": "c",
+          "text": "Solo si la batalla causó daño.",
+          "rationale": "El resultado de la batalla no lo condiciona."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "6-5-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

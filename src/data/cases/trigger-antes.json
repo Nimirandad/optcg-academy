@@ -1,0 +1,41 @@
+{
+  "id": "trigger-antes",
+  "level": 5,
+  "title": "¿Qué va primero?",
+  "mechanics": [
+    "Trigger",
+    "Orden"
+  ],
+  "prompt": "Con el Leader OP13-002 recibes daño y la carta de Life tiene [Trigger]. ¿Puedes resolver antes el efecto del Leader?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Sí, eliges el orden.",
+      "rationale": "La aclaración de esta carta lo descarta."
+    },
+    {
+      "id": "b",
+      "text": "No: primero se procesa el [Trigger].",
+      "rationale": "Así lo indica la aclaración de OP13-002."
+    },
+    {
+      "id": "c",
+      "text": "El rival elige.",
+      "rationale": "No es una elección."
+    }
+  ],
+  "answer": "b",
+  "steps": [
+    "Revelas la carta de Life y decides si activas [Trigger].",
+    "Si lo activas, se resuelve.",
+    "Después se activa el efecto del Leader. Otras cartas tienen aclaraciones distintas: revisa las observaciones."
+  ],
+  "ruleIds": [
+    "8-6-2-1"
+  ],
+  "qaIds": [
+    "op13-p1-2"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}

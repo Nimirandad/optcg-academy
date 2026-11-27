@@ -1,0 +1,10 @@
+{
+  "document": "st33",
+  "entries": [
+    {"id": "st33-p1-1", "sourceHash": "80224fa68bb3d7d5", "question": "ST33-001: si es mi única carta y activo su [On Play], ¿puedo robar 1 sin descartar?", "answer": "No.", "ruleIds": ["8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st33-p1-2", "sourceHash": "4a7f15433a3078c8", "question": "ST33-002: sin cartas en la mano, ¿su [When Attacking] hace descartar al rival sin que yo descarte?", "answer": "No.", "ruleIds": ["8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st33-p1-3", "sourceHash": "84d88499a45b5879", "question": "ST33-002: si el rival tiene 5 cartas o menos, ¿puedo igual descartar 1 con su efecto?", "answer": "Sí; como no tiene 6 o más, el rival no descarta.", "ruleIds": ["8-3-3", "4-10-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st33-p1-4", "sourceHash": "03cb7d65a75ab3d2", "question": "ST33-003: si es mi única carta, ¿su [On Play] manda al fondo del mazo Characters rivales sin que yo descarte?", "answer": "No.", "ruleIds": ["8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st33-p1-5", "sourceHash": "238eba16ea599093", "question": "ST33-004: si un efecto rival manda esta carta de mi mano al Trash, ¿recibe −3 de coste ese turno?", "answer": "Sí.", "ruleIds": ["3-1-6", "2-7-6"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

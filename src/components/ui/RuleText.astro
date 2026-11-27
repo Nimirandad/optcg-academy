@@ -1,0 +1,11 @@
+---
+/** Texto plano con los IDs de regla convertidos en enlaces. */
+import { RULE_ID_IN_TEXT } from '../../lib/coverage';
+import { withBase } from '../../lib/paths';
+import { rulePath } from '../../lib/rules';
+
+const { text } = Astro.props;
+const ids: string[] = text.match(RULE_ID_IN_TEXT) ?? [];
+const parts: string[] = text.split(RULE_ID_IN_TEXT);
+---
+{parts.map((part, index) => <>{part}{ids[index] && <a href={withBase(rulePath(ids[index]))}>{ids[index]}</a>}</>)}

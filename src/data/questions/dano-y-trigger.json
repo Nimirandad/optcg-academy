@@ -1,0 +1,88 @@
+{
+  "lesson": "dano-y-trigger",
+  "questions": [
+    {
+      "id": "dano-y-trigger-1",
+      "prompt": "Recibes daño y la carta de Life tiene [Trigger]. ¿Estás obligado a activarlo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No: puedes añadirla a la mano sin revelarla.",
+          "rationale": "[Trigger] es opcional."
+        },
+        {
+          "id": "b",
+          "text": "Sí, siempre.",
+          "rationale": "Puedes decidir no activarlo."
+        },
+        {
+          "id": "c",
+          "text": "No, pero debes revelarla.",
+          "rationale": "Si no activas, no la revelas."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "10-1-5-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "dano-y-trigger-2",
+      "prompt": "Te dañan con [Banish]. ¿Qué pasa con la carta de Life?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Va a tu mano y puedes usar su [Trigger].",
+          "rationale": "Banish cambia el destino y anula el Trigger."
+        },
+        {
+          "id": "b",
+          "text": "Va al Trash sin activar [Trigger].",
+          "rationale": "Es el efecto de Banish."
+        },
+        {
+          "id": "c",
+          "text": "Vuelve al fondo del mazo.",
+          "rationale": "Va al Trash."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "10-1-3-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "dano-y-trigger-3",
+      "prompt": "Tienes 0 de Life y tu Leader recibe daño. ¿Qué ocurre?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Robas una carta del mazo como Life.",
+          "rationale": "No hay reposición."
+        },
+        {
+          "id": "b",
+          "text": "Nada, porque no quedan cartas.",
+          "rationale": "Es una condición de derrota."
+        },
+        {
+          "id": "c",
+          "text": "Pierdes.",
+          "rationale": "Quien ataca gana la partida."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "7-1-4-1-1-1",
+        "1-2-1-1-1"
+      ],
+      "assumption": "Ningún efecto de reemplazo interviene.",
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

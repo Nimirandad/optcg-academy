@@ -1,6 +1,10 @@
 {
   "term": "Blocker",
-  "aliases": ["Bloqueador"],
+  "aliases": [
+    "Bloqueador"
+  ],
   "ruleId": "10-1-4",
-  "reviewStatus": "pending"
+  "definition": "En el Block Step puedes ponerla Rested para que reciba el ataque dirigido a otra de tus cartas.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
 }

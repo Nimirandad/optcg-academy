@@ -1,0 +1,43 @@
+{
+  "id": "poder-negativo",
+  "level": 3,
+  "title": "Duelo en negativo",
+  "mechanics": [
+    "Combate",
+    "Poder negativo"
+  ],
+  "prompt": "Tu Character de −2000 ataca a un Character rival Rested de −2000. ¿Quién gana?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Nadie: con poder negativo no hay batalla.",
+      "rationale": "El poder negativo es válido."
+    },
+    {
+      "id": "b",
+      "text": "Gana tu Character y el rival sufre K.O.",
+      "rationale": "Hay empate, y favorece al atacante."
+    },
+    {
+      "id": "c",
+      "text": "Gana el defensor.",
+      "rationale": "Haría falta que su poder fuera mayor."
+    }
+  ],
+  "answer": "b",
+  "steps": [
+    "El poder puede ser negativo sin que las cartas salgan del campo.",
+    "En el Damage Step se compara: −2000 contra −2000.",
+    "Con poder igual o mayor gana quien ataca."
+  ],
+  "ruleIds": [
+    "1-3-6-1-1",
+    "7-1-4-1",
+    "7-1-4-1-2"
+  ],
+  "qaIds": [
+    "rules-p3-1"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}

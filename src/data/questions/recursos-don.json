@@ -1,0 +1,87 @@
+{
+  "lesson": "recursos-don",
+  "questions": [
+    {
+      "id": "recursos-don-1",
+      "prompt": "Quieres jugar un Character de coste 3. ¿Qué haces con los DON!!?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pongo Rested 3 DON!! Active de mi zona de coste.",
+          "rationale": "Pagar un coste es poner Rested esa cantidad."
+        },
+        {
+          "id": "b",
+          "text": "Devuelvo 3 DON!! al mazo de DON!!.",
+          "rationale": "Eso es DON!! −X, un coste de activación distinto."
+        },
+        {
+          "id": "c",
+          "text": "Asigno 3 DON!! al Character.",
+          "rationale": "Asignar da poder; no paga el coste de jugarlo."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "2-7-2"
+      ],
+      "assumption": "Ningún efecto modifica el coste.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "recursos-don-2",
+      "prompt": "Vas primero. ¿Cuántos DON!! pones en tu primer turno?",
+      "options": [
+        {
+          "id": "a",
+          "text": "2.",
+          "rationale": "Es lo normal, pero no en el primer turno de quien empieza."
+        },
+        {
+          "id": "b",
+          "text": "1.",
+          "rationale": "Quien va primero pone solo 1 en su primer turno."
+        },
+        {
+          "id": "c",
+          "text": "Ninguno.",
+          "rationale": "Lo que no haces es robar; sí pones 1 DON!!."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "6-4-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "recursos-don-3",
+      "prompt": "¿Un DON!! asignado cuenta como Rested?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, porque ya se usó.",
+          "rationale": "Haberlo asignado no lo deja Rested."
+        },
+        {
+          "id": "b",
+          "text": "Sí, si la carta que lo tiene está Rested.",
+          "rationale": "No hereda el estado de la carta."
+        },
+        {
+          "id": "c",
+          "text": "No: no está Active ni Rested.",
+          "rationale": "Es la excepción a los dos estados."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "4-4-2"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

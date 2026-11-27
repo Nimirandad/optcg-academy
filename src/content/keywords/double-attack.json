@@ -1,0 +1,10 @@
+{
+  "term": "Double Attack",
+  "aliases": [
+    "Doble ataque"
+  ],
+  "ruleId": "10-1-2",
+  "definition": "Su ataque causa 2 de daño al Leader rival en lugar de 1.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

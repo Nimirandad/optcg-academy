@@ -1,0 +1,42 @@
+/* Estilos compartidos por los simuladores. */
+/* Mesa oscura en ambos temas: redefine los colores solo dentro del simulador. */
+.sim {
+  --surface: #12395c; --text: #ffffff; --muted: #cfe6f7; --link: #bfe6ff; --border: #8fb4d4; --notice: #ffb4a8;
+  min-width: 0; color: var(--text); border-radius: 1.25rem; padding: 0.5rem clamp(0.5rem, 3vw, 1.25rem) 1rem;
+  background: radial-gradient(circle at 50% 0, #17507a, #082038 65%); box-shadow: var(--shadow);
+}
+.sim :focus-visible { outline: 3px solid #ffe08a; outline-offset: 2px; }
+.sim fieldset { min-width: 0; }
+.sim fieldset.root { border: 0; margin: 0; padding: 0; }
+.sim h4 { margin-block: 0.75rem 0.25rem; }
+.sim h5 { margin-block: 0.5rem 0.25rem; font-size: 0.875rem; }
+.sim .meta, .sim .rules { color: var(--muted); font-size: 0.875rem; }
+.sim .rules a { display: inline-block; padding-block: 0.25rem; }
+.sim button, .sim select, .sim input[type='number'] {
+  min-height: 44px; font: inherit; max-width: 100%; border: 1px solid var(--border); border-radius: 0.75rem;
+  background: var(--surface); color: var(--text);
+}
+.sim button { padding: 0.35rem 0.9rem; cursor: pointer; transition: transform 0.15s; }
+.sim button:enabled:hover { transform: translateY(-2px); }
+.sim .actions button:enabled { background: #ffd76a; border-color: #ffd76a; color: #2b1d00; font-weight: 700; }
+.sim button:disabled { cursor: default; opacity: 0.7; }
+.sim select, .sim input[type='number'] { padding-inline: 0.5rem; min-width: 0; }
+.sim input[type='number'] { width: 8rem; }
+.sim label { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; min-height: 44px; }
+.sim input[type='radio'], .sim input[type='checkbox'] { width: 1.25rem; height: 1.25rem; }
+.sim .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+.sim .options { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+.sim .options > label { min-width: 0; max-width: 100%; }
+.sim .boards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
+.sim .board, .sim .battle { border: 2px solid #c9a45c; border-radius: 1rem; padding: 0 0.75rem 0.75rem; min-width: 0; }
+.sim .battle { border-width: 3px; margin-block: 0.75rem; }
+.sim .zone { display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr)); list-style: none; margin: 0; padding: 0; }
+.sim .card { display: flex; flex-direction: column; gap: 0.15rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; padding: 0.5rem; min-width: 0; box-shadow: 0 0.4rem 0.8rem rgb(0 0 0 / 0.3); }
+/* El estado se indica siempre con texto; el borde discontinuo solo lo refuerza. */
+.sim .card.rested { border-style: dashed; }
+.sim .counts { display: grid; gap: 0.25rem 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr)); margin-block: 0.75rem; }
+.sim .counts dt { font-size: 0.8rem; color: var(--muted); }
+.sim .counts dd { margin: 0; }
+.sim .error { border-inline-start: 4px solid var(--notice); background: var(--surface); padding: 0.5rem 0.75rem; }
+.sim summary { cursor: pointer; min-height: 44px; align-content: center; font-weight: 700; }
+.sim .result { font-weight: 700; }

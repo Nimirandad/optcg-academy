@@ -1,0 +1,40 @@
+{
+  "id": "mazo-vacio",
+  "level": 1,
+  "title": "El último robo",
+  "mechanics": [
+    "Derrota"
+  ],
+  "prompt": "Robas la última carta de tu mazo. Ningún efecto interviene. ¿Qué ocurre?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Pierdes cuando te toque robar y no puedas.",
+      "rationale": "La condición es tener 0 cartas en el mazo, no fallar un robo."
+    },
+    {
+      "id": "b",
+      "text": "Pierdes en el siguiente procesamiento de reglas.",
+      "rationale": "Tu mazo ya tiene 0 cartas."
+    },
+    {
+      "id": "c",
+      "text": "Barajas tu Trash y sigues.",
+      "rationale": "Las reglas no permiten rehacer el mazo."
+    }
+  ],
+  "answer": "b",
+  "steps": [
+    "Tras el robo, tu mazo tiene 0 cartas.",
+    "Eso cumple una condición de derrota.",
+    "La derrota se aplica en el procesamiento de reglas, que se resuelve de inmediato."
+  ],
+  "ruleIds": [
+    "1-2-1-1-2",
+    "1-2-2",
+    "9-1-2"
+  ],
+  "qaIds": [],
+  "version": 1,
+  "reviewStatus": "pending"
+}

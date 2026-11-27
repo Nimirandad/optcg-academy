@@ -1,0 +1,10 @@
+{
+  "term": "On Your Opponent’s Attack",
+  "aliases": [
+    "Al atacar el rival"
+  ],
+  "ruleId": "10-2-16",
+  "definition": "Se activa cuando el rival declara un ataque, después de sus efectos de Attack Step.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

@@ -1,0 +1,12 @@
+{
+  "document": "st29",
+  "entries": [
+    {"id": "st29-p1-1", "sourceHash": "2d7c8b869e01d17a", "question": "ST29-007: si sufre K.O. con 0 de Life, ¿su [On K.O.] permite añadir una carta a Life y no tomar la de Life a la mano?", "answer": "No.", "ruleIds": ["8-1-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st29-p1-2", "sourceHash": "56fed578104ce676", "question": "ST29-008: con la carta superior de Life ya boca arriba, ¿puedo «ponerla boca arriba» para evitar un K.O.?", "answer": "No.", "ruleIds": ["1-3-2-1", "8-1-3-4-5"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st29-p1-3", "sourceHash": "61a1ea269761a9e3", "question": "ST29-013: ¿el total de Life de su [Trigger] cuenta esta carta?", "answer": "No, se excluye.", "ruleIds": ["10-1-5-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st29-p1-4", "sourceHash": "1e53b9ce0b6636a2", "question": "ST29-014: ¿un [Rush: Character] puede atacar un Character Active el turno en que se juega?", "answer": "No: solo Rested.", "ruleIds": ["10-1-6-1", "7-1-1-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st29-p1-5", "sourceHash": "1d463e186ff33a9a", "question": "ST29-014: si un [Rush: Character] ataca un Character al jugarse, ¿OP14-060 puede cambiar el objetivo a ese Leader?", "answer": "Sí.", "ruleIds": ["10-2-16-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st29-p1-6", "sourceHash": "bb4cd40640439cbb", "question": "ST29-016: si un [Unblockable] ataca un Character, ¿OP14-060 puede cambiar el objetivo a su Leader?", "answer": "Sí: cambiar el objetivo por efecto no es usar [Blocker].", "ruleIds": ["10-1-7-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st29-p2-1", "sourceHash": "4bb20dd0a0e53ca4", "question": "ST29-016: si un [Unblockable] ataca un Character, ¿OP14-060 o EB01-038 pueden cambiar el objetivo a un Character con [Blocker]?", "answer": "Sí: cambiar el objetivo por efecto no es bloquear.", "ruleIds": ["10-1-7-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

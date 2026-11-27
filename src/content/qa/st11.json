@@ -1,0 +1,7 @@
+{
+  "document": "st11",
+  "entries": [
+    {"id": "st11-p1-1", "sourceHash": "bd3c0908c4a1ac15", "question": "ST11-001: si su [When Attacking] añade a la mano 1 carta {FILM}, ¿qué pasa con «pon el resto al fondo del mazo»?", "answer": "No ocurre nada más tras añadirla.", "ruleIds": ["1-3-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st11-p1-2", "sourceHash": "8a45dfb496663b5c", "question": "ST11-004: si no añado una carta {FILM} con su [Main], ¿puedo poner Active 1 DON!!?", "answer": "Sí.", "ruleIds": ["4-10-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

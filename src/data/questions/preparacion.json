@@ -1,0 +1,89 @@
+{
+  "lesson": "preparacion",
+  "questions": [
+    {
+      "id": "preparacion-1",
+      "prompt": "¿Qué ocurre primero?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Se roba la mano inicial y luego se pone la Life.",
+          "rationale": "La Life va después de la mano."
+        },
+        {
+          "id": "b",
+          "text": "Se pone la Life y luego se roba la mano.",
+          "rationale": "El orden es al revés."
+        },
+        {
+          "id": "c",
+          "text": "Se pone 1 DON!! y luego se baraja.",
+          "rationale": "Los DON!! entran en la DON!! Phase."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "5-2-1-6",
+        "5-2-1-7"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "preparacion-2",
+      "prompt": "¿Quién decide si vas primero o segundo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Siempre quien tiene el Leader con menos Life.",
+          "rationale": "La Life no interviene."
+        },
+        {
+          "id": "b",
+          "text": "La persona designada por piedra, papel o tijera u otro método.",
+          "rationale": "Esa persona elige sin intervención de nadie."
+        },
+        {
+          "id": "c",
+          "text": "Se acuerda entre ambos.",
+          "rationale": "Nadie puede intervenir en la elección de la persona designada."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "5-2-1-4",
+        "5-2-1-4-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "preparacion-3",
+      "prompt": "¿Cómo se coloca la Life?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Boca arriba, a la vista de ambos.",
+          "rationale": "La Life es secreta salvo indicación."
+        },
+        {
+          "id": "b",
+          "text": "Boca abajo, después de elegir qué cartas quieres.",
+          "rationale": "No se eligen ni se miran."
+        },
+        {
+          "id": "c",
+          "text": "Boca abajo, quedando abajo la carta que estaba arriba del mazo.",
+          "rationale": "Así lo indica el orden de colocación."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "2-9-2",
+        "2-9-2-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

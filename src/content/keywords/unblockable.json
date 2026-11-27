@@ -1,0 +1,10 @@
+{
+  "term": "Unblockable",
+  "aliases": [
+    "Imbloqueable"
+  ],
+  "ruleId": "10-1-7",
+  "definition": "El rival no puede activar Blocker contra su ataque.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

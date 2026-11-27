@@ -1,0 +1,10 @@
+{
+  "term": "Your Turn",
+  "aliases": [
+    "Tu turno"
+  ],
+  "ruleId": "10-2-11",
+  "definition": "Condición que se cumple durante tu turno.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

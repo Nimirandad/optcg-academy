@@ -1,0 +1,10 @@
+{
+  "term": "Activate: Main",
+  "aliases": [
+    "Activar en la fase principal"
+  ],
+  "ruleId": "10-2-2",
+  "definition": "Efecto que puede activarse en la Main Phase, fuera de batalla.",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

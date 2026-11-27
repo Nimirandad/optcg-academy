@@ -1,0 +1,11 @@
+{
+  "document": "st36",
+  "entries": [
+    {"id": "st36-p1-1", "sourceHash": "379e0bdce4a6ab1f", "question": "ST36-001: sin cartas en la mano, ¿su [On K.O.] añade 1 carta a mi Life sin descartar?", "answer": "No.", "ruleIds": ["8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st36-p1-2", "sourceHash": "35f80ba096b833bc", "question": "ST36-002: ¿puedo activar su [On Play] en el turno rival?", "answer": "No.", "ruleIds": ["8-3-2-4"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st36-p1-3", "sourceHash": "4047acde0ad35162", "question": "ST36-003: sin un Leader {Supernovas}, ¿su [Trigger] roba 1?", "answer": "Sí, pero no puedes cambiar a 7000 el poder base de tu Leader.", "ruleIds": ["4-10-2", "8-3-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st36-p1-4", "sourceHash": "ecdef04fd3d4204b", "question": "ST36-004: sin cartas {Supernovas} en la mano, ¿su [On Play] roba 2?", "answer": "No.", "ruleIds": ["8-3-1-3"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st36-p1-5", "sourceHash": "0707a37b74738944", "question": "ST36-005: si las cartas de arriba y de abajo de mi Life ya están boca abajo, ¿puedo activar su [On Your Opponent's Attack]?", "answer": "No.", "ruleIds": ["8-3-1-3", "1-3-2-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st36-p1-6", "sourceHash": "39b4d0bc51ce815e", "question": "ST36-005: si las cartas de arriba y de abajo de mi Life ya están boca arriba, ¿puedo activar su [Activate: Main]?", "answer": "No.", "ruleIds": ["8-3-1-3", "1-3-2-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

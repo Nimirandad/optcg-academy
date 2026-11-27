@@ -1,0 +1,10 @@
+{
+  "term": "Counter",
+  "aliases": [
+    "Contraataque"
+  ],
+  "ruleId": "10-2-4",
+  "definition": "En Events: se usa durante el Counter Step del turno rival. No confundir con el símbolo Counter de un Character (2-10).",
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
+}

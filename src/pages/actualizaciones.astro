@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { inventory } from '../lib/inventory';
+import { documents, restrictions } from '../lib/qa';
 ---
 <Base title="Actualizaciones" description="Versiones y estado de las fuentes.">
   <h1>Actualizaciones</h1>
@@ -10,7 +11,11 @@ import { inventory } from '../lib/inventory';
     <dt>Última comparación con el PDF oficial</dt>
     <dd>2026-11-26 (manual).</dd>
     <dt>Revisión humana</dt>
-    <dd>Pendiente.</dd>
+    <dd>Reglas, glosario y Q&A dados por revisados por el propietario del proyecto el 2026-11-27. No es revisión de un juez. Lecciones, casos, desafíos y simuladores están pendientes.</dd>
+    <dt>Documentos de Q&A inventariados</dt>
+    <dd>{documents.length}, descargados el {documents[0].retrievedAt}.</dd>
+    <dt>Última consulta de reglas, Q&A, erratas y cartas prohibidas</dt>
+    <dd>{restrictions.retrievedAt} (manual).</dd>
     <dt>Sincronización automática</dt>
     <dd>Todavía no existe.</dd>
   </dl>

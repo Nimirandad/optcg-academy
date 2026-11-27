@@ -1,0 +1,91 @@
+name: Sincronizar formato y restricciones
+
+# Solo manual: cada ejecución consulta el sitio oficial (ADR-006, ADR-038). No añadir
+# otros disparadores sin autorización del propietario.
+# Ante diferencias o fallos abre o actualiza una incidencia pública (ADR-040).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Un solo grupo para los cuatro workflows: nunca dos consultas a la vez.
+concurrency:
+  group: sync-fuentes
+  cancel-in-progress: false
+
+jobs:
+  comparar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      estado: ${{ steps.comparar.outputs.estado }}
+      informe: ${{ steps.comparar.outputs.informe }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # Solo informa. Falla con diferencias (2) o si una fuente no responde (1).
+      - name: Comparar con el repositorio
+        id: comparar
+        run: |
+          status=0
+          node scripts/sync/run.ts format --red > informe.txt 2>&1 || status=$?
+          {
+            echo '~~~~'
+            cat informe.txt
+            echo '~~~~'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # Delimitador aleatorio: el informe incluye texto de la fuente.
+          delimiter=$(openssl rand -hex 16)
+          {
+            echo "estado=$status"
+            echo "informe<<$delimiter"
+            head -c 50000 informe.txt | iconv -c -f utf-8 -t utf-8 || true
+            echo
+            echo "$delimiter"
+          } >> "$GITHUB_OUTPUT"
+          exit "$status"
+
+  # Único trabajo que puede escribir. No descarga el repositorio ni instala dependencias.
+  avisar:
+    needs: comparar
+    if: ${{ always() && needs.comparar.result == 'failure' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    steps:
+      - name: Abrir o actualizar la incidencia
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TITLE: 'Sincronización: formato y restricciones'
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ESTADO: ${{ needs.comparar.outputs.estado }}
+          INFORME: ${{ needs.comparar.outputs.informe }}
+        run: |
+          case "$ESTADO" in
+            2) result='Hay diferencias con el repositorio.' ;;
+            1) result='Alguna fuente no se pudo comprobar.' ;;
+            *) result='La comparación no terminó.' ;;
+          esac
+          {
+            printf '%s Revisar a mano: no se cambió ningún dato.\n\n' "$result"
+            printf 'Ejecución: %s\n\n' "$RUN_URL"
+            # Con sangría, el texto de la fuente no se interpreta (ni menciona a nadie).
+            printf '%s\n' "${INFORME:-Sin informe.}" | sed 's/^/    /'
+          } > body.md
+          # Solo las incidencias creadas por Actions: nunca una abierta por otra persona.
+          number=$(gh issue list --state open --author 'app/github-actions' --limit 200 \
+            --json number,title --jq "map(select(.title == \"$TITLE\")) | .[0].number // empty")
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body-file body.md
+          else
+            gh issue create --title "$TITLE" --body-file body.md
+          fi

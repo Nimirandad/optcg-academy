@@ -1,0 +1,87 @@
+{
+  "lesson": "condiciones",
+  "questions": [
+    {
+      "id": "condiciones-1",
+      "prompt": "¿Cuándo se cumple [DON!! x2]?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Con 2 o más DON!! asignados a esa carta.",
+          "rationale": "Se cuentan los de la propia carta."
+        },
+        {
+          "id": "b",
+          "text": "Con 2 DON!! Active en la zona de coste.",
+          "rationale": "Deben estar asignados."
+        },
+        {
+          "id": "c",
+          "text": "Solo con exactamente 2.",
+          "rationale": "Más de 2 también cumple."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "8-3-2-3"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "condiciones-2",
+      "prompt": "Un efecto tiene dos condiciones y solo cumples una. ¿Se activa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sí, a medias.",
+          "rationale": "No hay activación parcial."
+        },
+        {
+          "id": "b",
+          "text": "No.",
+          "rationale": "Se exigen todas."
+        },
+        {
+          "id": "c",
+          "text": "Sí, si es la primera escrita.",
+          "rationale": "El orden no permite saltarse condiciones."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "8-3-2-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "condiciones-3",
+      "prompt": "«Robe 1. Then, descarte 1» y no puedes robar. ¿Puede resolverse el descarte?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, todo se anula.",
+          "rationale": "«Then» permite continuar."
+        },
+        {
+          "id": "b",
+          "text": "Solo si lo autoriza tu oponente.",
+          "rationale": "Las reglas no lo piden."
+        },
+        {
+          "id": "c",
+          "text": "Sí, si no quedó sin resolver un «if» anterior.",
+          "rationale": "Es lo que establece la regla de «then»."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "4-10-2"
+      ],
+      "assumption": "Texto inventado; no hay condiciones «if» previas.",
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

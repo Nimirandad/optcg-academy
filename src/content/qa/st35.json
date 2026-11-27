@@ -1,0 +1,7 @@
+{
+  "document": "st35",
+  "entries": [
+    {"id": "st35-p1-1", "sourceHash": "dfe04392f74a8fc9", "question": "ST35-003: ¿quién elige la carta que va al Trash con su [When Attacking]?", "answer": "La persona rival de quien usa el efecto elige 1 de su mano.", "ruleIds": ["10-2-14-1"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"},
+    {"id": "st35-p1-2", "sourceHash": "626f3564e574ea06", "question": "ST35-003: si el rival tiene 6 cartas o menos, ¿puedo igual mandar al Trash las 2 de arriba de mi mazo?", "answer": "Sí; como no tiene 7 o más, el rival no descarta.", "ruleIds": ["4-10-2"], "reviewStatus": "reviewed", "reviewedBy": "Propietario del proyecto", "reviewedAt": "2026-11-27"}
+  ]
+}

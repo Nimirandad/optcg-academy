@@ -1,0 +1,88 @@
+{
+  "lesson": "costes-de-activacion",
+  "questions": [
+    {
+      "id": "costes-de-activacion-1",
+      "prompt": "En «A : B», ¿qué es A?",
+      "options": [
+        {
+          "id": "a",
+          "text": "El coste de activación.",
+          "rationale": "Lo previo a los dos puntos es el coste."
+        },
+        {
+          "id": "b",
+          "text": "El efecto principal.",
+          "rationale": "El efecto es lo que sigue."
+        },
+        {
+          "id": "c",
+          "text": "Una nota sin consecuencias.",
+          "rationale": "Debe cumplirse para activar."
+        }
+      ],
+      "answer": "a",
+      "ruleIds": [
+        "8-3-1"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "costes-de-activacion-2",
+      "prompt": "El coste pide DON!! −2 y solo tienes 1 DON!! en el campo. ¿Qué pasa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Devuelves 1 y obtienes la mitad del efecto.",
+          "rationale": "No hay pagos ni efectos parciales."
+        },
+        {
+          "id": "b",
+          "text": "No puedes pagar ni activar el efecto.",
+          "rationale": "Si falta una parte, no se paga nada."
+        },
+        {
+          "id": "c",
+          "text": "Activas el efecto gratis.",
+          "rationale": "El coste es obligatorio para activarlo."
+        }
+      ],
+      "answer": "b",
+      "ruleIds": [
+        "8-3-1-3",
+        "8-3-1-6"
+      ],
+      "assumption": "Ningún efecto reemplaza el coste.",
+      "version": 1,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "costes-de-activacion-3",
+      "prompt": "¿De dónde pueden salir los DON!! de un coste DON!! −X?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo de los DON!! Active de la zona de coste.",
+          "rationale": "Esa es la regla del símbolo en círculo."
+        },
+        {
+          "id": "b",
+          "text": "Del mazo de DON!!.",
+          "rationale": "Allí es donde van."
+        },
+        {
+          "id": "c",
+          "text": "De las zonas de Leader, Characters y coste.",
+          "rationale": "Es lo que indica la regla; la aclaración general añade la zona de Stage."
+        }
+      ],
+      "answer": "c",
+      "ruleIds": [
+        "8-3-1-6"
+      ],
+      "version": 1,
+      "reviewStatus": "pending"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "doble-ataque",
+  "level": 3,
+  "title": "Dos de daño que no se detienen",
+  "mechanics": [
+    "Double Attack",
+    "Trigger"
+  ],
+  "prompt": "Un [Double Attack] te daña. El [Trigger] de la primera carta saca del campo al atacante. ¿Recibes el segundo punto?",
+  "options": [
+    {
+      "id": "a",
+      "text": "No, el atacante ya no está.",
+      "rationale": "El daño quedó fijado."
+    },
+    {
+      "id": "b",
+      "text": "Solo si tu rival lo elige.",
+      "rationale": "No hay elección."
+    },
+    {
+      "id": "c",
+      "text": "Sí.",
+      "rationale": "El daño ya se determinó en 2."
+    }
+  ],
+  "answer": "c",
+  "steps": [
+    "El ataque tiene éxito y causa 2 de daño.",
+    "Con la primera carta puedes activar su [Trigger] antes del segundo punto.",
+    "Aunque el atacante salga, el segundo punto se procesa."
+  ],
+  "ruleIds": [
+    "7-1-4-1-1-3",
+    "8-6-2-1"
+  ],
+  "qaIds": [
+    "rules-p5-7",
+    "rules-p8-4"
+  ],
+  "version": 1,
+  "reviewStatus": "pending"
+}
