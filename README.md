@@ -38,13 +38,11 @@ Por defecto: `https://nimirandad.github.io/optcg-academy/`. Se cambia con las va
 
 ## Publicación
 
-El despliegue es manual y requiere autorización del propietario:
+Cada fusión (o push) en `main` publica el sitio: el workflow **CI** verifica y, si todo pasa, despliega en GitHub Pages (ADR-042). Los PR solo se verifican. Fusionar equivale a publicar, así que las comprobaciones previas a publicar se hacen antes.
 
-1. La fuente de Pages ya está configurada como **GitHub Actions** (*Settings → Pages*).
-2. En *Actions → Desplegar en GitHub Pages*, ejecutar el workflow sobre `main`.
-3. Comprobar el sitio publicado.
-
-Para volver a una versión anterior, revertir el commit en `main` y desplegar de nuevo.
+- La fuente de Pages está configurada como **GitHub Actions** (*Settings → Pages*).
+- Para volver a publicar sin cambios: *Actions → CI → Run workflow* sobre `main`.
+- Para volver a una versión anterior: revertir el commit en `main`.
 
 ## Actualización de datos
 
@@ -60,7 +58,7 @@ Las cartas prohibidas se actualizan a mano en `src/data/restrictions/standard.js
 
 `npm run validate:decks` muestra la legalidad de cada mazo hoy y en las fechas con cambios conocidos (salida 2 si hoy no hay formato o algún mazo es ilegal; `-- --fecha AAAA-MM-DD` cambia la fecha).
 
-Ante un cambio detectado y aún sin revisar (por ejemplo, una prohibición), añadir una entrada a `src/data/safety/standard.json`, ejecutar los comandos de arriba y publicar con prioridad (el despliegue requiere autorización):
+Ante un cambio detectado y aún sin revisar (por ejemplo, una prohibición), añadir una entrada a `src/data/safety/standard.json`, ejecutar los comandos de arriba y publicar con prioridad (al fusionar en `main`):
 
 | Campo | Valor |
 |---|---|

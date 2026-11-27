@@ -6,7 +6,7 @@
 
 - **Rediseño (ADR-033, 2026-11-27):** aplicado en local a todo el sitio y diseño aprobado por el propietario. Nueve temas de reglas sin revisión humana (`src/data/topics/`).
 - **Encargo:** Fase 6 iniciada el 2026-11-27 con T6.1 (ADR-031). Sin consultas automáticas a fuentes ni commit sin preguntar.
-- **Commit local (ADR-041):** el trabajo de las Fases 2 a 6 y el rediseño está en la rama `fases-2-6`, sobre `f7b085e`; sin push ni PR. Push, PR y fusión requieren autorización.
+- **Publicado (2026-11-27):** el PR 1 (Fases 2 a 6 y rediseño) se fusionó y `f190866` se desplegó en Pages. Desde ADR-042, fusionar en `main` publica (rama `publicar-al-fusionar`).
 - **Entorno:** usar Node 24 (`PATH="$HOME/.nvm/versions/node/v24.22.3/bin:$PATH"`). Si `npm run dev` ocupa el puerto: `E2E_PORT=4322 npm run test:e2e`; con el equipo cargado, añadir `-- --workers=2`.
 - **Local, sin versionar:** `references/` (PDF oficiales, texto extraído de Q&A y `references/cards/`). Para regenerar cartas y productos: `node scripts/sync/import-cards.ts 2026-11-27`, con la fecha de descarga. No usa la red; regenerar deja las cartas en `pending`.
 - **Fase 6, siguiente:** verificar T6.5 y los workflows en GitHub. Commit, push, cada ejecución que consulte el sitio, programar los `sync-*` o una dependencia nueva (ADR-005) requieren autorización. T5.8 debe pasar las suspensiones al validador, usar `freshness` y decidir dónde persiste la última comprobación (ADR-039).
@@ -285,5 +285,5 @@ Los scripts de extracción de la Fase 0 fueron temporales; el validador permanen
 1. Fase 6: tras el commit local (ADR-041) y con autorización para push, verificar los workflows en GitHub.
 2. Fase 5 restante: revisión de cartas, interfaz de filtros (T5.6) y fichas (T5.8).
 3. Revisar la Fase 3 (T3.6).
-4. Commit y push solo con autorización; el sitio publicado sigue en `f7b085e`.
+4. Commit, push y fusión solo con autorización. Desde ADR-042, cada fusión en `main` publica el sitio.
 5. El día de publicar: repetir la comprobación de reglamento, Q&A, erratas, bloques y restricciones.

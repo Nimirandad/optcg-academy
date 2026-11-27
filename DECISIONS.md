@@ -310,6 +310,15 @@ A se aparta de `plan.md` §9, que pide PR.
 
 El propietario indicó: «integralo a la fase 6 y haz commit». El rediseño (ADR-033) se registra como T6.6. Autoriza el commit local de todo el trabajo pendiente (Fases 2 a 6), hecho en una rama nueva y sin `.claude/`. No autoriza push, PR, fusión, despliegue ni ejecutar workflows.
 
+## ADR-042 — Publicación automática al fusionar · Aceptada (2026-11-27)
+
+El propietario indicó: «La idea seria automatizarlo para que funcione en el mismo pipeline una vez mergeado».
+
+- `ci.yml` publica en Pages tras verificar, en cada push a `main` o ejecución manual sobre `main`. Los PR no publican. `deploy.yml` se elimina.
+- Sustituye la autorización por despliegue de ADR-009 y ADR-013: fusionar en `main` equivale a publicar. Las comprobaciones previas a publicar (reglamento, rotación, restricciones, erratas, Q&A) pasan a hacerse antes de fusionar; nada lo exige automáticamente.
+- `main` no tiene protección de rama: un push directo también publica si las verificaciones pasan.
+- Los agentes siguen necesitando autorización para commit, push y fusión.
+
 ## Aclaraciones de la Fase 0
 
 - Se añadieron `docs/sources/` y `docs/coverage/` (previstos en §10) para el informe y el inventario.
