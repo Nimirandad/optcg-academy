@@ -67,7 +67,8 @@
   .dots .seen { background: #2a6a94; }
   .dots button[aria-current], .controls .next:enabled { background: #ffd76a; border-color: #ffd76a; color: #2b1d00; }
   .controls button[aria-pressed='true'] { background: #bfe6ff; color: #0b1d38; }
-  .steps { display: grid; gap: 0.75rem; }
+  /* La entrada desliza el paso desde la derecha: se recorta para no ensanchar la página. */
+  .steps { display: grid; gap: 0.75rem; overflow: clip; }
   .steps li { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; border: 2px solid #c9a45c; border-radius: 1rem; background: #0e2c4a; padding: 1rem; }
   .steps li[hidden] { display: none; }
   .single li { min-height: 12rem; align-content: center; animation: enter 0.4s; }

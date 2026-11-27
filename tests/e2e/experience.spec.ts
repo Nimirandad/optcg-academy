@@ -98,3 +98,21 @@ test.describe('sin JavaScript', () => {
     await expect(page.getByRole('button', { name: 'Ver todo junto' })).toHaveCount(0);
   });
 });
+
+test.describe('con movimiento', () => {
+  test.use({ contextOptions: { reducedMotion: 'no-preference' } });
+  test('la entrada de un paso no ensancha la página', async ({ page }) => {
+    await page.goto('reglas/tema/preparar/');
+    await expect(page.getByRole('button', { name: 'Ver todo junto' })).toBeVisible();
+    await page.getByRole('button', { name: 'Siguiente paso →' }).click();
+    // Detiene las animaciones en su primer fotograma, el más desplazado.
+    const overflow = await page.evaluate(() => {
+      for (const animation of document.getAnimations()) {
+        animation.pause();
+        animation.currentTime = 0;
+      }
+      return document.documentElement.scrollWidth - window.innerWidth;
+    });
+    expect(overflow).toBeLessThanOrEqual(0);
+  });
+});
