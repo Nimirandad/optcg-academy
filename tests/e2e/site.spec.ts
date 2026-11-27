@@ -69,6 +69,7 @@ test('no hay enlaces ni recursos internos rotos bajo la subruta', async ({ page,
 test('página 404 con enlace de regreso', async ({ page }) => {
   const response = await page.goto('no-existe/');
   expect(response?.status()).toBe(404);
+  await expect(page.locator('link[rel="canonical"], meta[property="og:url"]')).toHaveCount(0);
   await page.getByRole('link', { name: 'Volver al inicio' }).click();
   await expect(page.locator('h1')).toHaveText('OPTCG Academy');
 });

@@ -1,6 +1,6 @@
 # Estado del desarrollo
 
-**Última actualización:** 2026-11-27 · **Fase actual:** 1 (Base), implementada en local; falta CI remota y despliegue de prueba.
+**Última actualización:** 2026-11-27 · **Fase actual:** 1 (Base), implementada en local; CI y despliegue de prueba hechos ([sitio](https://nimirandad.github.io/optcg-academy/)); falta publicar la corrección del 404.
 
 ## Hecho
 
@@ -36,10 +36,14 @@
 | Fase 1: `npm test` | 40 de 40 |
 | Fase 1: `npm run test:e2e` (build y subruta) | 72 de 72, Chromium escritorio y 320 px, con axe |
 | Dato inválido en una colección | `npm run check` termina con código 1 |
+| CI en GitHub, `d6916a8` (2026-11-27) | [Correcta](https://github.com/Nimirandad/optcg-academy/actions/runs/45939818536) |
+| Despliegue de prueba, `d6916a8` (2026-11-27) | [Correcto](https://github.com/Nimirandad/optcg-academy/actions/runs/45940208194) |
+| Pruebas contra el sitio publicado | 70 de 72; fallo: la 404 declaraba canonical a `/404/`, que responde 404 |
+| Corrección del 404 en local | `lint`, `check`, 40 unitarias y 72 de navegador correctas |
 
 En este equipo se necesitó configuración local de certificados para instalar herramientas; la verificación TLS no se desactivó.
 
-Sin verificar: CI en GitHub, despliegue en Pages, Firefox, Safari, lector de pantalla y Lighthouse.
+Sin verificar: Firefox, Safari, lector de pantalla y Lighthouse.
 
 Los scripts de extracción fueron temporales y no están en el repositorio; T2.1 creará el validador permanente.
 
@@ -51,8 +55,8 @@ Los scripts de extracción fueron temporales y no están en el repositorio; T2.1
 
 ## Bloqueos (requieren al propietario)
 
-1. Autorizar el primer commit y push (necesario para T1.8).
-2. Autorizar Pages y el despliegue de prueba (T1.9).
+1. Autorizar commit, push y nuevo despliegue con la corrección del 404.
+2. Aprobar la Fase 1.
 
 ## Definido por el propietario
 
@@ -64,6 +68,5 @@ Los scripts de extracción fueron temporales y no están en el repositorio; T2.1
 
 ## Próximos pasos
 
-1. T1.8: push y primera ejecución de CI.
-2. T1.9: despliegue de prueba bajo la subruta.
-3. T0.8 (antes de la Fase 2): revisión humana con `docs/coverage/revision-reglamento-T0.8.xlsx` (hoja lista, sin completar).
+1. Publicar la corrección del 404 y repetir las pruebas contra el sitio.
+2. T0.8 (antes de la Fase 2): revisión humana con `docs/coverage/revision-reglamento-T0.8.xlsx` (hoja lista, sin completar).

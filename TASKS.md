@@ -26,8 +26,8 @@
 - [x] T1.5 `site`/`base` configurables, helper de enlaces con `BASE_URL`, sitemap, metadatos. Dep.: T1.0, T1.4. Verif.: E2E bajo subruta sin enlaces rotos.
 - [x] T1.6 Pagefind tras el build; prueba de búsqueda `1-3-5-1`, "Blocker" y "Bloqueador". Dep.: T1.5.
 - [x] T1.7 Esquemas Zod y colecciones de contenido iniciales, con fixtures ficticios. Dep.: T1.2. Verif.: datos inválidos hacen fallar `check`.
-- [ ] T1.8 `ci.yml` con permisos mínimos y acciones fijadas. Dep.: T1.2, T1.7. Verif.: mismos comandos en local; ejecución remota solo con repositorio. Workflow escrito y comandos verificados en local (2026-11-27); falta la ejecución remota, que requiere push.
-- [ ] T1.9 `deploy.yml` y README. Dep.: T1.5, T1.8. 🔒 despliegue de prueba. Archivos escritos (2026-11-27); sin ejecutar.
+- [x] T1.8 `ci.yml` con permisos mínimos y acciones fijadas. Dep.: T1.2, T1.7. Verif.: mismos comandos en local; ejecución remota solo con repositorio. Ejecución remota correcta sobre `d6916a8` (2026-11-27): https://github.com/Nimirandad/optcg-academy/actions/runs/45939818536
+- [x] T1.9 `deploy.yml` y README. Dep.: T1.5, T1.8. 🔒 despliegue de prueba. Desplegado el 2026-11-27 desde `d6916a8` en https://nimirandad.github.io/optcg-academy/; 70 de 72 pruebas contra el sitio publicado. Las 2 fallidas se deben al canonical de la página 404, corregido en local y pendiente de publicar.
 
 ## Fase 2 — Reglamento (Dep.: Fase 1; T0.8; T0.11)
 

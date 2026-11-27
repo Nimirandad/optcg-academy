@@ -36,7 +36,7 @@ Por defecto: `https://nimirandad.github.io/optcg-academy/`. Se cambia con las va
 
 El despliegue es manual y requiere autorización del propietario:
 
-1. En *Settings → Pages*, elegir **GitHub Actions** como fuente (una sola vez).
+1. La fuente de Pages ya está configurada como **GitHub Actions** (*Settings → Pages*).
 2. En *Actions → Desplegar en GitHub Pages*, ejecutar el workflow sobre `main`.
 3. Comprobar el sitio publicado.
 

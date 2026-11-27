@@ -77,6 +77,8 @@ El propietario aprobó la Fase 0 para avanzar antes de completar la revisión hu
 - `deploy.yml` es solo manual (ADR-009), aunque `plan.md` §9 admite desplegar desde `main`.
 - El repositorio es `Nimirandad/optcg-academy`, público; los commits usan el correo personal, configurado solo en este repositorio (2026-11-27).
 
+El despliegue de prueba y la activación de Pages se autorizaron y ejecutaron el 2026-11-27 (ADR-009).
+
 ## Aclaraciones de la Fase 0
 
 - Se añadieron `docs/sources/` y `docs/coverage/` (previstos en §10) para el informe y el inventario.
