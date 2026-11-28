@@ -26,7 +26,8 @@
         "2-7-5"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "anatomia-de-las-cartas-2",
@@ -53,7 +54,8 @@
         "2-9-3"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "anatomia-de-las-cartas-3",
@@ -81,7 +83,8 @@
         "10-1-5-1"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

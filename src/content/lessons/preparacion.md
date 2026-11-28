@@ -6,7 +6,7 @@ order: 2
 prerequisites: ["construccion-del-mazo"]
 ruleIds: ["5-2-1-2", "5-2-1-4", "5-2-1-5-1", "5-2-1-6", "5-2-1-7"]
 exerciseIds: ["preparacion-1", "preparacion-2", "preparacion-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Orden de preparación

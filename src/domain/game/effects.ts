@@ -2,11 +2,11 @@
 import { draw, fail, log, processRules, setField, setPlayer } from './change';
 import { requireMain } from './turns';
 import { activePlayer } from './state';
-import type { ActionResult, DonSource, GameState } from './types';
+import type { Action, ActionResult, GameState } from './types';
 
-type Activate = { uid: string; effectId: string; discard?: readonly string[]; donFrom?: readonly DonSource[] };
+type Activate = Extract<Action, { type: 'activate' }>;
 
-export function activate(state: GameState, { uid, effectId, discard = [], donFrom = [] }: Activate): ActionResult {
+export function activate(state: GameState, { uid, effectId, discard = [], donFrom = [], giveRestedDon }: Activate): ActionResult {
   const blocked = requireMain(state, '8-1-3-2', '10-2-2-1');
   if (blocked) return blocked;
   const id = activePlayer(state);
@@ -62,15 +62,29 @@ export function activate(state: GameState, { uid, effectId, discard = [], donFro
     next = setPlayer(next, id, { donDeck: next.players[id].donDeck + 1 });
   }
 
+  if (giveRestedDon) {
+    const { target, count } = giveRestedDon;
+    const current = next.players[id];
+    const character = current.characters.find((item) => item.card.uid === target);
+    if (!effect.result.giveRestedDonToCharacter || !character || !Number.isInteger(count) ||
+        count < 1 || count > effect.result.giveRestedDonToCharacter || count > current.donRested) {
+      return fail('Selecciona un Character propio y una cantidad válida de DON!! Rested.', '8-4-1-5');
+    }
+    next = setField(next, target, { don: character.don + count });
+    next = setPlayer(next, id, { donRested: current.donRested - count });
+  }
   if (effect.result.draw) next = draw(next, id, effect.result.draw);
   if (effect.result.power) {
     const current = [next.players[id].leader, ...next.players[id].characters].find((item) => item.card.uid === uid);
     if (current) next = setField(next, uid, { turnPower: current.turnPower + effect.result.power });
   }
   if (effect.oncePerTurn) next = { ...next, used: [...next.used, key] };
+  const resolution = effect.result.giveRestedDonToCharacter
+    ? 'se activa y se resuelve el efecto'
+    : 'se pagan los costes, el efecto se activa y se resuelve';
   next = log(
     next,
-    `${source.card.name}: se pagan los costes, el efecto se activa y se resuelve. ${effect.text}`,
+    `${source.card.name}: ${resolution}. ${effect.text}`,
     '8-4-1-3',
     '8-4-1-5',
     ...(effect.oncePerTurn ? ['10-2-13-1'] : []),

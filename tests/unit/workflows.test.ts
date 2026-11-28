@@ -1,4 +1,4 @@
-/** Los workflows de sincronización solo se lanzan a mano y apenas pueden escribir (ADR-038, ADR-040). */
+/** Sincronización manual y casi sin escritura (ADR-038, ADR-040); publicación solo desde main (ADR-042). */
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
@@ -36,5 +36,24 @@ describe.each(['cards', 'qa', 'rules', 'format'])('sync-%s.yml', (area) => {
   it('ejecuta su área y avisa solo si falla', () => {
     expect(compare).toContain(`node scripts/sync/run.ts ${area} --red`);
     expect(notify).toContain("if: ${{ always() && needs.comparar.result == 'failure' }}");
+  });
+});
+
+describe('ci.yml: publicación', () => {
+  const text = readFileSync('.github/workflows/ci.yml', 'utf8').replace(/^\s*#.*\n/gm, '');
+  const publish = block(text, 'publicar', 2);
+  const onlyMain = "${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}";
+
+  it('publica solo main, nunca desde un PR y después de verificar', () => {
+    expect(publish).toContain('needs: verificar');
+    expect(publish).toContain(`if: ${onlyMain}`);
+    expect(text).toContain(`- if: ${onlyMain}\n        uses: actions/upload-pages-artifact@`);
+  });
+
+  it('solo el trabajo que publica puede escribir', () => {
+    expect(block(text, 'permissions').trim()).toBe('contents: read');
+    expect(block(publish, 'permissions', 4).trim().split(/\n\s*/)).toEqual(['pages: write', 'id-token: write']);
+    expect(text.match(/: write/g)).toHaveLength(2);
+    expect(publish).not.toMatch(/checkout|\brun:/);
   });
 });

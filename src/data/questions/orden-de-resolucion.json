@@ -26,7 +26,8 @@
         "8-6-1"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "orden-de-resolucion-2",
@@ -54,7 +55,8 @@
       ],
       "assumption": "No es un [Trigger] de la carta de Life.",
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "orden-de-resolucion-3",
@@ -81,7 +83,8 @@
         "1-3-3"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

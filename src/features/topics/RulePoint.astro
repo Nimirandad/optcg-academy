@@ -1,0 +1,39 @@
+---
+import RuleText from '../../components/ui/RuleText.astro';
+import { withBase } from '../../lib/paths';
+import { rulePath } from '../../lib/rules';
+import type { RuleText as RuleTextData } from '../../lib/schemas';
+interface Props {
+  rule: { ruleId: string; sourcePage: number; text?: RuleTextData };
+  clarifications: { path: string; entry: { question: string } }[];
+}
+const { rule, clarifications } = Astro.props;
+const { text, sourcePage, ruleId } = rule;
+---
+{text ? <p><RuleText text={text.explanation} /></p> : <p>Explicación pendiente.</p>}
+{text?.example && <p class="aside"><strong>Ejemplo:</strong> <RuleText text={text.example} /></p>}
+{text?.tip && <p class="aside"><strong>Consejo:</strong> <RuleText text={text.tip} /></p>}
+{text?.note && <p class="aside"><strong>Observación sobre la fuente:</strong> <RuleText text={text.note} /></p>}
+{text && text.relatedIds.length > 0 && (
+  <p class="meta">
+    Ver también: {text.relatedIds.map((id, index) => <>{index > 0 && ', '}<a href={withBase(rulePath(id))}>{id}</a></>)}
+  </p>
+)}
+{clarifications.length > 0 && (
+  <details class="meta" data-pagefind-ignore>
+    <summary>Aclaraciones oficiales relacionadas ({clarifications.length})</summary>
+    <ul>
+      {clarifications.map(({ path, entry }) => <li><a href={withBase(path)}>{entry.question}</a></li>)}
+    </ul>
+  </details>
+)}
+<p class="meta">
+  {ruleId} · PDF, p. {sourcePage}{text?.reviewStatus === 'conflict' && ' · En conflicto'}{text?.reviewStatus === 'superseded' && ' · Reemplazada'}
+</p>
+<style>
+  p { margin: 0.25rem 0; max-width: 70ch; }
+  .aside { border-inline-start: 3px solid var(--border); padding-inline-start: 0.65rem; }
+  .meta { color: var(--muted); font-size: 0.86rem; }
+  summary { cursor: pointer; min-height: 44px; align-content: center; }
+  li a { display: inline-flex; align-items: center; min-height: 44px; }
+</style>

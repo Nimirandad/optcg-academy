@@ -6,7 +6,7 @@ order: 4
 prerequisites: ["anatomia-de-las-cartas"]
 ruleIds: ["3-1-2", "3-1-5", "3-1-6", "3-7-6", "3-8-5"]
 exerciseIds: ["zonas-de-juego-1", "zonas-de-juego-2", "zonas-de-juego-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Mapa de zonas

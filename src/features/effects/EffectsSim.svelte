@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import RuleLinks from '../shared/RuleLinks.svelte';
   import GameEffects from './GameEffects.svelte';
   import OrderEffects from './OrderEffects.svelte';
   import ReplacementEffects from './ReplacementEffects.svelte';
@@ -24,6 +25,7 @@
       </select>
     </label>
     <p>{scenario.goal}</p>
+    <p><RuleLinks {base} ids={[scenario.kind === 'order' ? '8-6' : scenario.kind === 'replacement' ? '8-1-3-4' : '8-3']} /></p>
 
     {#key `${scenarioId}-${round}`}
       {#if scenario.kind === 'game'}

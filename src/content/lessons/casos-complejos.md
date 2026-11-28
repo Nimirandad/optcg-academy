@@ -6,7 +6,7 @@ order: 5
 prerequisites: ["bucles", "informacion-oculta"]
 ruleIds: ["3-1-6", "7-1-3-1-3", "10-2-17-1", "8-1-3-4-5"]
 exerciseIds: ["casos-complejos-1", "casos-complejos-2", "casos-complejos-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Un método

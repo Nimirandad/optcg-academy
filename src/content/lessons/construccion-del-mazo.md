@@ -6,7 +6,7 @@ order: 1
 prerequisites: ["colores"]
 ruleIds: ["5-1-2", "5-1-2-1", "5-1-2-2", "5-1-2-3", "5-1-2-4"]
 exerciseIds: ["construccion-del-mazo-1", "construccion-del-mazo-2", "construccion-del-mazo-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Lo que necesitas

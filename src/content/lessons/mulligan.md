@@ -6,7 +6,7 @@ order: 3
 prerequisites: ["preparacion"]
 ruleIds: ["5-2-1-6", "5-2-1-6-1"]
 exerciseIds: ["mulligan-1", "mulligan-2", "mulligan-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Una sola oportunidad

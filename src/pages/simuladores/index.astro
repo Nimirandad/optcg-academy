@@ -1,0 +1,53 @@
+---
+import SimulatorNav from '../../features/shared/SimulatorNav.astro';
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Simuladores" description="Elige qué practicar con cartas en la mesa.">
+  <h1>Simuladores</h1>
+  <SimulatorNav />
+  <details class="scope-panel">
+    <summary>Alcance de los simuladores libres</summary>
+  <h2 id="alcance">Qué cubren y qué no</h2>
+  <div class="scope">
+    <div>
+      <h3>Incluido</h3>
+      <ul>
+        <li>Fases del turno y excepciones del primer turno.</li>
+        <li>Ataque, Block, Counter, daño y fin de la batalla.</li>
+        <li>[Rush], [Rush: Character], [Double Attack], [Banish], [Blocker], [Unblockable] y un [Trigger] de robo.</li>
+        <li>Límites de 5 Characters y 1 Stage; K.O. por batalla.</li>
+        <li>Derrota por daño sin Life o por mazo vacío, y concesión.</li>
+        <li>Escenarios de efectos activados, orden de resolución y reemplazo.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>No incluido</h3>
+      <ul>
+        <li>Automatización de todos los efectos impresos en cartas oficiales.</li>
+        <li>Preparación, mulligan, barajado y validación de mazos.</li>
+        <li>Efectos automáticos de las cartas, como [On Play], [When Attacking] u [On K.O.].</li>
+        <li>Events [Main] y K.O. por efecto.</li>
+        <li>Cambios de zona del atacante o del objetivo durante una batalla.</li>
+        <li>Costes interrumpidos a mitad de pago, efectos permanentes y bucles.</li>
+        <li>Prioridad de reemplazo de la carta que lo generó.</li>
+        <li>Rival automático, partidas en línea y arrastrar cartas.</li>
+      </ul>
+    </div>
+  </div>
+
+  </details>
+</Base>
+
+<style>
+  .scope { display: grid; gap: 0 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+  .scope-panel { margin-top: 2rem; padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; }
+  .scope-panel summary { cursor: pointer; min-height: 44px; align-content: center; }
+  .scope-panel h2 { margin-top: 1rem; }
+</style>
+
+
+<script>
+  import { withBase } from '../../lib/paths';
+  const mode = location.hash.slice(1);
+  if (['combate', 'turnos', 'playmat', 'efectos'].includes(mode)) location.replace(withBase(`simuladores/${mode}/`));
+</script>

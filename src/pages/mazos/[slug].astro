@@ -1,11 +1,135 @@
 ---
 import Base from '../../layouts/Base.astro';
+import StandardStatus from '../../features/recommender/StandardStatus.astro';
+import { exportList, lists } from '../../features/recommender/catalog';
+import { colorProfiles } from '../../features/recommender/colors';
+import { earliestDate, legalityReport } from '../../domain/legality/report';
+import { formatSnapshotSchema, safetySnapshotSchema } from '../../lib/deck-schemas';
+import { oldestStandardCheck } from '../../lib/standard-checks';
+import { withBase } from '../../lib/paths';
+import { rulePath } from '../../lib/rules';
+import safety from '../../data/safety/standard.json';
 
-// Sin fichas hasta la Fase 5: no se publican mazos sin validar.
 export function getStaticPaths() {
-  return [];
+  const snapshots = Object.values(import.meta.glob<{ default: unknown }>('../../data/rotation/*.json', { eager: true }))
+    .map(({ default: data }) => formatSnapshotSchema.parse(data))
+    .filter(({ format, region }) => format === 'standard' && region === 'na-eu-oc-latam-me');
+  const cards = new Map(lists.flatMap((entry) => entry.cards.map((card) => [card.canonicalId, card] as const)));
+  const report = legalityReport({
+    decks: lists.flatMap(({ deck }) => deck ? [deck] : []),
+    cards,
+    snapshots,
+    suspensions: safetySnapshotSchema.parse(safety).suspensions,
+  }, earliestDate(oldestStandardCheck ? new Date(oldestStandardCheck) : new Date()));
+  return lists.flatMap(({ product, leader, deck, reference, leaderList }) => {
+    const starter = {
+      params: { slug: product.id.toLowerCase() },
+      props: {
+        title: product.id + ' · ' + leader.name, leader, deck, reference,
+        product, cards, snapshots, current: report.current.find(({ deckId }) => deckId === deck?.id),
+        upcoming: report.upcoming.filter(({ deckId }) => deckId === deck?.id),
+      },
+    };
+    return leaderList ? [starter, {
+      params: { slug: leader.number.toLowerCase() },
+      props: {
+        title: 'Lista de torneo · ' + leader.name, leader, reference: leaderList, cards,
+        deck: undefined, product: undefined, current: undefined, upcoming: [], snapshots: [],
+      },
+    }] : [starter];
+  });
 }
+
+type Props = ReturnType<typeof getStaticPaths>[number]['props'];
+const { title, leader, deck, reference, product, cards, current, upcoming, snapshots } = Astro.props as Props;
+const list = deck ?? reference;
+const profiles = colorProfiles.filter(({ id }) => leader.colors.includes(id));
+const statuses = { valid: 'Válida según el snapshot', invalid: 'Inválida', unknown: 'Datos insuficientes', 'pending-review': 'Pendiente de revisión' };
 ---
-<Base title="Mazo" description="Ficha de mazo.">
-  <h1>Mazo</h1>
+<Base title={title} description={`Lista, fuentes y validación de ${leader.name}.`}>
+  <p><a href={withBase('mazos/')}>Volver a Mazos</a></p>
+  <h1>{title}</h1>
+  <dl>
+    <dt>Leader</dt>
+    <dd>{leader.name} ({leader.number}) · {profiles.map(({ name }) => name).join(' / ')}</dd>
+    {product?.releaseDate && <><dt>Lanzamiento</dt><dd><time datetime={product.releaseDate}>{product.releaseDate}</time></dd></>}
+    <dt>Revisión de la lista</dt>
+    <dd>{deck?.reviewedAt ? <>Versión {deck.version}, revisada el <time datetime={deck.reviewedAt}>{deck.reviewedAt}</time>.</> : 'Referencia pendiente de revisión.'}</dd>
+    <dt>Dificultad</dt>
+    <dd>{deck?.difficulty ? ['Baja', 'Media', 'Alta'][deck.difficulty - 1] : 'Sin evaluar'}</dd>
+    <dt>Estilo</dt>
+    <dd>{deck?.styles.length ? deck.styles.join(', ') : 'Sin clasificar'}</dd>
+    <dt>Presupuesto (CLP)</dt>
+    <dd>{deck?.price ? <a href={deck.price.sourceRef.url}>{deck.price.clp.toLocaleString('es-CL')}</a> : 'Sin confirmar'}</dd>
+  </dl>
+
+  {current ? <StandardStatus {current} {upcoming} /> : <p class="notice">Lista de referencia. Vigencia en Standard sin verificar.</p>}
+  {current && (
+    <details>
+      <summary>Validación contra los snapshots del proyecto</summary>
+      <ul>
+        {[current, ...upcoming].map(({ date, validation }) => (
+          <li>
+            <time datetime={date}>{date}</time> · {validation ? `${statuses[validation.status]} (${validation.snapshotId})` : 'Sin snapshot aplicable'}
+            {validation && (validation.violations.length + validation.unknowns.length + validation.suspendedBy.length > 0) && (
+              <ul>
+                {[...validation.violations, ...validation.unknowns].map(({ message }) => <li>{message}</li>)}
+                {validation.suspendedBy.map((id) => <li>Suspensión {id}</li>)}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+
+  <h2>Lista del mazo</h2>
+  {list ? (
+    <>
+      <p>{list.entries.reduce((total, { quantity }) => total + quantity, 0)} cartas principales y 1 Leader{deck && ` · ${deck.donDeckSize} DON!!`}.</p>
+      <ul>
+        {list.entries.map(({ cardId, quantity }) => <li>{quantity} × {cards.get(cardId)?.name ?? cardId}{cards.has(cardId) && ` (${cardId})`}</li>)}
+      </ul>
+      <label for="lista-texto">Lista copiable</label>
+      <textarea id="lista-texto" readonly rows="8">{exportList(list)}</textarea>
+    </>
+  ) : <p>Cantidades pendientes de confirmar.</p>}
+
+  <h2>Mecánicas para practicar</h2>
+  <ul>{profiles.flatMap(({ mechanics }) => mechanics.map(({ label, ruleId }) => <li><a href={withBase(rulePath(ruleId))}>{label} ({ruleId})</a></li>))}</ul>
+  {deck?.strategy ? (
+    <>
+      <h2>Estrategia</h2>
+      <dl>
+        <dt>Primeros turnos</dt><dd>{deck.strategy.earlyTurns}</dd>
+        <dt>Mulligan</dt><dd>{deck.strategy.mulligan}</dd>
+        <dt>Combos</dt><dd>{deck.strategy.combos.join(' · ')}</dd>
+        <dt>Errores frecuentes</dt><dd>{deck.strategy.commonMistakes.join(' · ')}</dd>
+        <dt>Mejoras</dt><dd>{deck.strategy.upgrades.join(' · ')}</dd>
+      </dl>
+    </>
+  ) : <p>Estrategia, mejoras y sustituciones pendientes de revisión editorial.</p>}
+
+  {deck?.alternatives.length ? (
+    <>
+      <h2>Sustituciones</h2>
+      <ul>{deck.alternatives.map(({ replaces, with: replacement, note }) => <li>{replaces} → {replacement}. {note}</li>)}</ul>
+    </>
+  ) : null}
+
+  <h2>Fuentes</h2>
+  <ul>
+    {product && <li><a href={product.sourceRef.url}>Producto de Bandai</a> · <time datetime={product.sourceRef.retrievedAt}>{product.sourceRef.retrievedAt}</time></li>}
+    {deck?.listSources.filter(({ url }) => url !== product?.sourceRef.url).map((source) => <li><a href={source.url}>{new URL(source.url).hostname}</a> · <time datetime={source.retrievedAt}>{source.retrievedAt}</time></li>)}
+    {reference && <li><a href={reference.source.url}>{reference.label}</a> · <time datetime={reference.source.retrievedAt}>{reference.source.retrievedAt}</time></li>}
+    {[...new Map(snapshots.flatMap(({ sources }) => sources.map((source) => [source.url, source] as const))).values()].map((source) => (
+      <li><a href={source.url}>Formato Standard en Bandai</a> · <time datetime={source.retrievedAt}>{source.retrievedAt}</time></li>
+    ))}
+    <li><a href={withBase('actualizaciones/')}>Estado de las fuentes del sitio</a></li>
+  </ul>
 </Base>
+
+<style>
+  textarea { display: block; width: min(100%, 22rem); padding: 0.5rem; color: var(--text); background: var(--surface); border: 1px solid var(--border); }
+  summary { min-height: 44px; padding-block: 0.6rem; cursor: pointer; }
+</style>

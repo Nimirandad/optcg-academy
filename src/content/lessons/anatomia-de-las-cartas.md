@@ -6,7 +6,7 @@ order: 2
 prerequisites: ["objetivo-del-juego"]
 ruleIds: ["2-2-2", "2-6-2", "2-7-5", "2-10-1", "2-11-1"]
 exerciseIds: ["anatomia-de-las-cartas-1", "anatomia-de-las-cartas-2", "anatomia-de-las-cartas-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Cinco categorías

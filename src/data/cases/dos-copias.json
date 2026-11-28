@@ -36,5 +36,6 @@
     "rules-p4-4"
   ],
   "version": 1,
-  "reviewStatus": "pending"
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
 }

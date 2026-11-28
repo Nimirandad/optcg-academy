@@ -6,7 +6,7 @@ order: 3
 prerequisites: ["condiciones"]
 ruleIds: ["8-1-3", "8-1-3-1", "8-1-3-2", "8-1-3-3", "8-1-3-4", "8-1-3-1-3"]
 exerciseIds: ["tipos-y-momentos-1", "tipos-y-momentos-2", "tipos-y-momentos-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Cuatro clases

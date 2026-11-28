@@ -17,3 +17,6 @@ references/qa/
 references/cards/
 # Respuestas de terceros guardadas por la sincronizacion
 references/cache/
+
+# Copias autorizadas de las cartas para el servidor de desarrollo
+references/card-art/

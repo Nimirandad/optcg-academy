@@ -1,0 +1,42 @@
+---
+interface Props { target: string; label: string; hint: string }
+const { target, label, hint } = Astro.props;
+---
+<div class="quick-filter" data-filter={target} hidden data-pagefind-ignore>
+  <label>{label}
+    <input type="search" placeholder={hint} aria-controls={target} />
+  </label>
+  <p role="status"></p>
+</div>
+
+<script>
+  const normalize = (value: string) => value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim();
+  for (const filter of document.querySelectorAll<HTMLDivElement>('[data-filter]')) {
+    const collection = document.getElementById(filter.dataset.filter ?? '');
+    const input = filter.querySelector('input');
+    const status = filter.querySelector('[role="status"]');
+    if (!collection || !input || !status) continue;
+    const entries = [...collection.querySelectorAll<HTMLElement>('[data-filter-entry]')].map((entry) => ({
+      entry, value: normalize(entry.dataset.filterEntry ?? ''),
+    }));
+    const groups = [...collection.querySelectorAll<HTMLElement>('[data-filter-group]')];
+    filter.hidden = false;
+    input.addEventListener('input', () => {
+      const query = normalize(input.value);
+      let matches = 0;
+      for (const { entry, value } of entries) {
+        entry.hidden = !value.includes(query);
+        if (!entry.hidden) matches += 1;
+      }
+      for (const group of groups) group.hidden = !group.querySelector('[data-filter-entry]:not([hidden])');
+      status.textContent = query ? (matches ? `${matches} coincidencias.` : 'No encontramos coincidencias.') : '';
+    });
+  }
+</script>
+
+<style>
+  .quick-filter { margin-block: 1rem; }
+  label { display: grid; gap: 0.25rem; font-weight: 700; max-width: 29rem; }
+  input { min-width: 0; min-height: 44px; padding: 0.4rem 0.7rem; font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 0.5rem; }
+  [role='status'] { color: var(--muted); margin: 0; }
+</style>

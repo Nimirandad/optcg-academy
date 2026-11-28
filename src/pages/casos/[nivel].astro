@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import Quiz from '../../features/quizzes/Quiz.svelte';
+import CaseNav from '../../features/quizzes/CaseNav.astro';
+import { loadCaseGroups } from '../../lib/case-groups';
+
+export async function getStaticPaths() {
+  const groups = await loadCaseGroups();
+  return groups.map((group) => ({ params: { nivel: String(group.level) }, props: { group, groups } }));
+}
+
+const { group, groups } = Astro.props;
+---
+<Base title={`Casos · ${group.name}`} description={`Casos prácticos de nivel ${group.level}.`}>
+  <h1>Casos y desafíos</h1>
+  <CaseNav {groups} active={group.level} />
+  <section aria-labelledby={`nivel-${group.level}`}>
+    <h2 id={`nivel-${group.level}`}>Nivel {group.level} · {group.name}</h2>
+    <Quiz base={import.meta.env.BASE_URL} lessonId={`casos-nivel-${group.level}`} questions={group.cases} client:load />
+  </section>
+</Base>

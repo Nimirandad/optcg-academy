@@ -6,7 +6,7 @@ order: 1
 prerequisites: ["recursos-don"]
 ruleIds: ["1-3-9-1", "1-3-9-2", "8-3-1", "8-3-1-3", "8-3-1-4", "8-3-1-6"]
 exerciseIds: ["costes-de-activacion-1", "costes-de-activacion-2", "costes-de-activacion-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Dos pagos distintos

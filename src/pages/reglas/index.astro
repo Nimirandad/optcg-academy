@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Icon from '../../components/ui/Icon.astro';
 import Emblem from '../../features/art/Emblem.svelte';
 import Base from '../../layouts/Base.astro';
 import { chapters } from '../../lib/chapters';
@@ -11,14 +12,13 @@ const topics = (await getCollection('topics')).map((entry) => entry.data).sort((
 <Base title="Reglas" description="Las reglas de ONE PIECE Card Game por temas y por número.">
   <h1>Reglas</h1>
   <p>
-    Empieza por tu duda: cada tema cabe en unos pocos pasos. Son explicaciones propias, indican su estado de revisión y
-    no reemplazan al reglamento oficial ni a un juez.
+    Consulta las explicaciones por tema o busca una regla por número.
   </p>
   <ul class="topics">
     {topics.map((topic) => (
       <li>
         <a href={withBase(`reglas/tema/${topic.id}/`)}>
-          <span class="icon" aria-hidden="true"><Emblem name={topic.icon} /></span>
+          <span class="icon" aria-hidden="true"><Emblem name={`tema-${topic.icon}`} /></span>
           <strong>{topic.question}</strong>
           <span>{topic.title} · {topic.steps.length} pasos</span>
         </a>
@@ -26,11 +26,13 @@ const topics = (await getCollection('topics')).map((entry) => entry.data).sort((
     ))}
   </ul>
 
-  <h2>Referencia numerada</h2>
-  <p>El reglamento completo, regla por regla, para buscar un número concreto.</p>
-  <ol class="cards">
+  <header class="reference">
+    <h2>Referencia numerada</h2>
+    <a href={withBase('buscar/')}>Buscar un número <Icon name="search" /></a>
+  </header>
+  <ol class="chapters">
     {chapters.map((chapter) => (
-      <li><a href={withBase(`reglas/${chapter.number}/`)}>{chapter.number}. <span lang="en">{chapter.title}</span></a></li>
+      <li><a href={withBase(`reglas/${chapter.number}/`)}><span class="chapter-number">{chapter.number}</span><strong lang="en">{chapter.title}</strong><Icon name="arrow" /></a></li>
     ))}
   </ol>
   <p>Fuente: <a href="https://en.onepiece-cardgame.com/rules/">reglamento oficial</a>, versión {inventory.source.version}.</p>
@@ -43,4 +45,11 @@ const topics = (await getCollection('topics')).map((entry) => entry.data).sort((
   .icon { width: 4rem; height: 4rem; color: #ffe08a; transition: transform 0.4s; }
   a:hover .icon { transform: scale(1.15) rotate(6deg); }
   .topics strong { font-size: 1.25rem; line-height: 1.25; }
+  .reference { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; justify-content: space-between; }
+  .reference a { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; }
+  .chapters { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 0.65rem; padding: 0; list-style: none; }
+  .chapters a { display: flex; align-items: center; gap: 0.55rem; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 0.7rem; min-height: 56px; padding: 0.45rem 0.55rem; height: 100%; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .chapters a:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .chapters :global(svg) { margin-inline-start: auto; }
+  .chapter-number { display: grid; place-items: center; flex: 0 0 2rem; height: 2rem; border-radius: 0.35rem; background: var(--sea); color: white; font-weight: 800; }
 </style>

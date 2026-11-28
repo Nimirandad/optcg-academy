@@ -1,0 +1,279 @@
+---
+import Icon from '../../components/ui/Icon.astro';
+import art from '../../data/cards-art.json';
+import CatalogFilters from './CatalogFilters.astro';
+import { colorProfiles } from './colors';
+import { withBase } from '../../lib/paths';
+import { rulePath } from '../../lib/rules';
+
+import { exportList, lists } from './catalog';
+
+const images: Record<string, string> = art;
+const colors = new Map(colorProfiles.map(({ id, name }) => [id, name]));
+const filterEntries = lists.flatMap(({ anchor, product, leader, deck, leaderList }) => {
+  const starter = {
+    anchor, label: `${product.id} · ${leader.name}`, kind: 'starter' as const,
+    colors: leader.colors, styles: deck?.styles ?? [], theme: deck?.theme,
+    difficulty: deck?.difficulty ?? null, price: deck?.price ? { clp: deck.price.clp } : null,
+    releasedAt: product.releaseDate,
+  };
+  return leaderList ? [starter, {
+    anchor: `lista-${leader.number}`, label: `Lista de torneo · ${leader.name} (${leader.number})`,
+    kind: 'built' as const, colors: leader.colors, styles: [],
+    difficulty: null, price: null, releasedAt: null,
+  }] : [starter];
+});
+---
+<section aria-labelledby="cartas">
+  <h2 id="cartas">Elige un color</h2>
+  <p>Abre un color para ver un Starter Deck con el que puedes empezar a practicar.</p>
+  <nav class="color-cards" aria-label="Colores de mazo">
+    {lists.filter(({ product }) => product.id !== 'ST-35').map(({ profile, product }) => (
+      <a class:list={['color-card', profile.id]} id={`color-${profile.id}`} href={`#mazo-${profile.id}`}>
+        <Icon name={profile.id} />
+        <strong>{profile.name}</strong>
+        <span>{product.id}</span>
+      </a>
+    ))}
+  </nav>
+  <CatalogFilters entries={filterEntries} />
+  <dialog id="mazo-modal" aria-labelledby="mazo-modal-titulo">
+    <div class="modal-bar">
+      <h3 id="mazo-modal-titulo"></h3>
+      <form method="dialog">
+        <button type="submit" autofocus>Cerrar <span aria-hidden="true">×</span></button>
+      </form>
+    </div>
+  </dialog>
+  {lists.map(({ anchor, product, cards, profile, leader, deck, reference, leaderList, quantities, exportText }) => (
+    <article id={anchor} class:list={['starter', profile.id]} aria-label={product.id === 'ST-35' ? 'Mazo Rojo y Negro' : `Mazo ${profile.name}`}>
+      <div class="deck-title">
+        <div>
+          <p class="code">{product.id}</p>
+          <h3>{leader.name}</h3>
+          <p>{profile.strength}</p>
+          {reference && <p>Cantidades de una lista de referencia de terceros.</p>}
+        </div>
+        <a href={withBase(`mazos/${product.id.toLowerCase()}/`)}>Ver ficha de {product.id}</a>
+        <a href={product.sourceRef.url}>Producto de Bandai</a>
+      </div>
+      <ul class="card-grid" aria-label={`Cartas de ${product.id}`}>
+        {cards.map((card) => {
+          const source = card.printings.find((printing) => printing.productId === product.id)?.sourceRef ?? card.sourceRef;
+          const copies = card.canonicalId === leader.canonicalId ? 1 : quantities.get(card.canonicalId);
+          const image = images[card.number];
+          return (
+            <li class:list={['catalog-card', ...card.colors]}>
+              {import.meta.env.DEV && image && (
+                <a class="art" href={image} referrerpolicy="no-referrer" aria-label={`Ver imagen completa de ${card.name}, ${card.number}`}>
+                  <img src={withBase(`arte-oficial/${card.number}.png`)} width="180" height="252" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                  <span class="unavailable" hidden>Ver arte en Bandai</span>
+                </a>
+              )}
+              <div class="caption">
+                <span class="code">{card.number}{copies !== undefined && ` · ×${copies}`}</span>
+                <h4>{card.name}</h4>
+                <p><span lang="en">{card.category}</span> · {card.colors.map((color) => colors.get(color)).join(' / ')}</p>
+                {card.cost !== null && <p>Coste {card.cost}</p>}
+                <a href={source.url}>Ficha de Bandai</a>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <details class="export">
+        <summary>Cómo se juega y fuentes</summary>
+        <p>{profile.challenge}</p>
+        <ul>{profile.mechanics.map(({ label, ruleId }) => <li><a href={withBase(rulePath(ruleId))}>{label} ({ruleId})</a></li>)}</ul>
+        {exportText && (
+          <>
+            <label for={`export-${product.id}`}>Lista en texto</label>
+            <textarea id={`export-${product.id}`} rows="6" readonly>{exportText}</textarea>
+            <ul>{deck?.listSources.map((source) => <li><a href={source.url}>{new URL(source.url).hostname}</a> · <time datetime={source.retrievedAt}>{source.retrievedAt}</time></li>)}{reference && <li><a href={reference.source.url}>{reference.label}</a> · <time datetime={reference.source.retrievedAt}>{reference.source.retrievedAt}</time></li>}</ul>
+          </>
+        )}
+      </details>
+      {leaderList && (
+        <details class="export" id={`lista-${leader.number}`}>
+          <summary>Otra lista para {leader.number}</summary>
+          <p><a href={withBase(`mazos/${leader.number.toLowerCase()}/`)}>Ver ficha de la lista de torneo</a></p>
+          <p>Referencia de torneo de la fecha indicada. Confirma la vigencia en tu formato.</p>
+          <p><a href={leaderList.source.url}>{leaderList.label}</a> · Consultada el {leaderList.source.retrievedAt}.</p>
+          <label for={`leader-${leader.number}`}>Lista del Leader en texto</label>
+          <textarea id={`leader-${leader.number}`} rows="6" readonly>{exportList(leaderList)}</textarea>
+        </details>
+      )}
+    </article>
+  ))}
+</section>
+
+<style>
+  .red { --card-color: #a02d35; }
+  .green { --card-color: #286243; }
+  .blue { --card-color: #235f99; }
+  .purple { --card-color: #64368b; }
+  .black { --card-color: #36383e; }
+  .yellow { --card-color: #ffdb4c; --card-ink: #302000; }
+  .color-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.45rem, 2vw, 1rem); max-width: 42rem; margin: 1.15rem auto; }
+  .color-card { position: relative; isolation: isolate; overflow: hidden; display: grid; justify-items: center; align-content: center; gap: 0.3rem; min-height: 104px; aspect-ratio: 5 / 6; padding: 0.35rem; border-radius: 0.9rem; border: 2px solid var(--accent); background: var(--card-color); color: var(--card-ink, white); text-decoration: none; font-size: clamp(0.8rem, 3.7vw, 1.15rem); box-shadow: var(--shadow); transition: transform 0.22s, box-shadow 0.22s; }
+  .color-card::before { content: ''; position: absolute; z-index: -1; inset: 0.35rem; border: 1px solid currentColor; border-radius: 0.6rem; opacity: 0.35; }
+  .color-card :global(svg) { width: clamp(1.55rem, 5vw, 3.4rem); height: auto; transition: transform 0.25s; }
+  .color-card:hover, .color-card:focus-visible { transform: translateY(-4px); }
+  .color-card:hover :global(svg), .color-card:focus-visible :global(svg) { transform: scale(1.13) rotate(-8deg); }
+  .color-card span { font: 0.75rem ui-monospace, monospace; }
+  .starter { display: none; scroll-margin-top: 0.75rem; margin-block: 1rem; border: 1px solid var(--border); border-top: 0.4rem solid var(--card-color); border-radius: 0.85rem; background: var(--surface); }
+  .starter:target, .starter:has(details:target) { display: block; animation: deck-in 0.28s ease-out; }
+  dialog {
+    width: min(calc(100% - 1rem), 64rem);
+    max-height: calc(100dvh - 1rem);
+    padding: 0;
+    overscroll-behavior: contain;
+    scroll-padding-top: 3.75rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: var(--shadow);
+  }
+  dialog[open] { animation: modal-in 240ms cubic-bezier(.2,.75,.25,1) both; }
+  dialog::backdrop { background: rgb(4 14 17 / 0.74); }
+  dialog[open]::backdrop { animation: backdrop-in 240ms ease-out both; }
+  dialog[data-closing] { animation: modal-out 180ms ease-in both; }
+  dialog[data-closing]::backdrop { animation: backdrop-out 180ms ease-in both; }
+  @keyframes modal-in { from { opacity: 0; transform: translateY(0.65rem) scale(0.98); } }
+  @keyframes modal-out { to { opacity: 0; transform: translateY(0.5rem) scale(0.98); } }
+  @keyframes backdrop-in { from { opacity: 0; } }
+  @keyframes backdrop-out { to { opacity: 0; } }
+  :global(html:has(#mazo-modal[open])) { overflow: hidden; }
+  .modal-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .modal-bar h3 { margin: 0; font-size: 1rem; }
+  .modal-bar button {
+    min-height: 44px;
+    padding-inline: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+  }
+  .modal-bar button:hover { border-color: var(--link); color: var(--link); }
+  dialog .starter { display: block; margin: 0; border-inline: 0; border-bottom: 0; border-radius: 0; }
+  @keyframes deck-in { from { opacity: 0.4; transform: translateY(0.45rem); } }
+  summary { min-height: 44px; padding: 0.65rem 1rem; cursor: pointer; }
+  .deck-title { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; padding: 1rem; }
+  .deck-title h3 { margin: 0; font-size: 1.45rem; }
+  p { margin: 0; }
+  .code { font-family: ui-monospace, monospace; font-size: 0.8rem; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 8rem), 1fr)); gap: 0.6rem; padding: 0 1rem; list-style: none; }
+  .catalog-card { border: 1px solid var(--border); border-top: 0.3rem solid var(--card-color); border-radius: 0.6rem; background: var(--bg); min-width: 0; }
+  .catalog-card.red.black { border-top-color: #a02d35; border-inline-end-color: #36383e; }
+  .art { display: block; background: var(--card-color); border-radius: 0.3rem; }
+  .art img { display: block; width: 100%; aspect-ratio: 5 / 7; height: auto; object-fit: contain; }
+  .caption { padding: 0.45rem; font-size: 0.85rem; }
+  .caption a { display: inline-flex; align-items: center; min-height: 44px; }
+  h4 { margin: 0; font-size: 0.95rem; }
+  .export { padding: 0 1rem 0.65rem; }
+  .export summary { padding-inline: 0; font-weight: 750; }
+  textarea { display: block; width: min(100%, 20rem); padding: 0.5rem; color: var(--text); background: var(--bg); border: 1px solid var(--border); }
+  .art img[hidden] { display: none; }
+  .art .unavailable { display: block; color: var(--card-ink, white); padding: 0.5rem; }
+  .art .unavailable[hidden] { display: none; }
+</style>
+
+<script>
+  const modal = document.querySelector<HTMLDialogElement>('#mazo-modal');
+  const title = modal?.querySelector('#mazo-modal-titulo');
+  if (modal && title && typeof modal.showModal === 'function') {
+    let active: { deck: HTMLElement; placeholder: Comment; trigger: HTMLAnchorElement } | undefined;
+    function restoreDeck(restoreFocus = false) {
+      if (!active) return;
+      const { deck, placeholder, trigger } = active;
+      active = undefined;
+      placeholder.replaceWith(deck);
+      if (restoreFocus) trigger.focus({ preventScroll: true });
+    }
+    const requestClose = async () => {
+      if (!modal.open || modal.hasAttribute('data-closing')) return;
+      modal.setAttribute('data-closing', '');
+      const exit = modal.getAnimations().find((animation) =>
+        animation instanceof CSSAnimation && animation.animationName === 'modal-out');
+      if (exit) await exit.finished.catch(() => {});
+      modal.close();
+      modal.removeAttribute('data-closing');
+    };
+    modal.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      void requestClose();
+    });
+    modal.addEventListener('submit', (event) => {
+      event.preventDefault();
+      void requestClose();
+    });
+
+    const onBackdrop = (event: MouseEvent) => {
+      if (event.target !== modal) return false;
+      const { left, right, top, bottom } = modal.getBoundingClientRect();
+      return event.clientX < left || event.clientX >= right || event.clientY < top || event.clientY >= bottom;
+    };
+    let startedOutside = false;
+    modal.addEventListener('pointerdown', (event) => { startedOutside = onBackdrop(event); });
+    modal.addEventListener('click', (event) => {
+      if (startedOutside && onBackdrop(event)) void requestClose();
+      startedOutside = false;
+    });
+
+    modal.addEventListener('close', () => {
+      if (!modal.open) restoreDeck(true);
+    });
+    for (const link of document.querySelectorAll<HTMLAnchorElement>('.color-cards .color-card')) {
+      link.setAttribute('aria-haspopup', 'dialog');
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || modal.open) return;
+        // El evento close puede llegar después de que se pulse otro color.
+        restoreDeck();
+        const deck = document.getElementById(link.hash.slice(1));
+        if (!deck) return;
+
+        event.preventDefault();
+        // Mueve la ficha existente para conservar sus IDs y el estado de sus detalles.
+        const placeholder = document.createComment('');
+        deck.before(placeholder);
+        title.textContent = deck.getAttribute('aria-label');
+        modal.append(deck);
+        active = { deck, placeholder, trigger: link };
+        modal.showModal();
+        modal.scrollTop = 0;
+      });
+    }
+  }
+
+  function openReference() {
+    const reference = document.querySelector<HTMLDetailsElement>('.starter details:target');
+    if (!reference) return;
+    reference.open = true;
+    reference.scrollIntoView();
+  }
+  window.addEventListener('hashchange', openReference);
+  openReference();
+
+  for (const image of document.querySelectorAll<HTMLImageElement>('.catalog-card .art img')) {
+    const fallback = () => {
+      image.hidden = true;
+      image.nextElementSibling?.removeAttribute('hidden');
+    };
+    image.addEventListener('error', fallback, { once: true });
+    if (image.complete && !image.naturalWidth) fallback();
+  }
+</script>

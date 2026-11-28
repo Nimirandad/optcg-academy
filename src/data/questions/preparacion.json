@@ -27,7 +27,8 @@
         "5-2-1-7"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "preparacion-2",
@@ -55,7 +56,8 @@
         "5-2-1-4-1"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "preparacion-3",
@@ -83,7 +85,8 @@
         "2-9-2-1"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

@@ -1,5 +1,5 @@
 /**
- * Textos editoriales por color, sin revisión humana. La tendencia sale de `plan.md` §7:
+ * Textos editoriales por color. La tendencia sale de `plan.md` §7:
  * orienta, no es una regla ni describe cartas concretas.
  */
 import type { Color } from '../../lib/deck-schemas.ts';

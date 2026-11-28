@@ -6,7 +6,7 @@ order: 5
 prerequisites: ["zonas-de-juego"]
 ruleIds: ["2-7-2", "4-4-2", "6-2-3", "6-4-1", "6-5-5-2"]
 exerciseIds: ["recursos-don-1", "recursos-don-2", "recursos-don-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Dos usos

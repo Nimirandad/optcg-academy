@@ -6,7 +6,7 @@ order: 5
 prerequisites: ["counter"]
 ruleIds: ["7-1-4-1-1-1", "7-1-4-1-1-2", "10-1-2-1", "10-1-3-1", "10-1-5-2"]
 exerciseIds: ["dano-y-trigger-1", "dano-y-trigger-2", "dano-y-trigger-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Un punto de daño

@@ -26,7 +26,8 @@
         "8-3-2-3"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "condiciones-2",
@@ -53,7 +54,8 @@
         "8-3-2-1"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "condiciones-3",
@@ -81,7 +83,8 @@
       ],
       "assumption": "Texto inventado; no hay condiciones «if» previas.",
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

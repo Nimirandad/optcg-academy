@@ -1,0 +1,60 @@
+---
+import type { DeckReport } from '../../domain/legality/report';
+import { oldestStandardCheck, standardChecks } from '../../lib/standard-checks';
+
+interface Props {
+  current: DeckReport;
+  upcoming: DeckReport[];
+}
+const { current, upcoming } = Astro.props;
+const timeline = [current, ...upcoming].map(({ date, validation }) => ({
+  date, validation: validation?.status === 'valid' ? validation : null,
+}));
+---
+<div class="notice" data-standard={JSON.stringify({ checks: standardChecks, oldest: oldestStandardCheck, timeline })}>
+  <p><strong>Formato Standard · Latinoamérica</strong></p>
+  <p data-state>Vigencia sin confirmar. Confirma el formato con Bandai antes de jugar un torneo.</p>
+  <p>Comprobación más antigua de las fuentes:
+    {oldestStandardCheck ? <time datetime={oldestStandardCheck}>{oldestStandardCheck.slice(0, 16).replace('T', ' ')} UTC</time> : 'sin registro'}.
+  </p>
+</div>
+
+<script>
+  import { canRecommend, EXPIRY_AFTER_HOURS, freshness, WARNING_AFTER_HOURS } from '../../domain/legality/freshness';
+  import { earliestDate } from '../../domain/legality/report';
+  import type { DeckReport } from '../../domain/legality/report';
+
+  const container = document.querySelector<HTMLElement>('[data-standard]');
+  const message = container?.querySelector('[data-state]');
+  if (container && message) {
+    const { checks, oldest, timeline } = JSON.parse(container.dataset.standard!) as {
+      checks: (string | null)[];
+      oldest: string | null;
+      timeline: DeckReport[];
+    };
+    const update = () => {
+      const now = new Date();
+      const today = earliestDate(now);
+      const current = timeline.findLast(({ date }) => date <= today);
+      const state = freshness(checks, now);
+      message.textContent = canRecommend(current?.validation ?? null, state)
+        ? state === 'stale'
+          ? 'Lista apta para Standard según las fuentes registradas. La última comprobación supera las 48 horas.'
+          : 'Lista apta para Standard según las fuentes registradas.'
+        : state === 'expired'
+          ? 'Vigencia sin confirmar: las comprobaciones caducaron o faltan datos de comprobación.'
+          : 'Vigencia sin confirmar para esta fecha. Revisa los resultados de validación y el formato oficial.';
+    };
+    update();
+    window.addEventListener('pageshow', update);
+    document.addEventListener('visibilitychange', update);
+
+    const thresholds = oldest ? [WARNING_AFTER_HOURS, EXPIRY_AFTER_HOURS]
+      .map((hours) => Date.parse(oldest) + hours * 3_600_000 + 1) : [];
+    const dates = timeline.map(({ date }) => Date.parse(date) - 14 * 3_600_000);
+    for (const boundary of [...new Set([...thresholds, ...dates])]) {
+      const delay = boundary - Date.now();
+      if (delay > 0 && delay <= 2_147_483_647) window.setTimeout(update, delay);
+    }
+  }
+</script>

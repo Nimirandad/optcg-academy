@@ -6,7 +6,7 @@ order: 3
 prerequisites: ["zonas-de-juego"]
 ruleIds: ["11-2-1", "11-2-2", "11-3-1", "11-3-3", "8-4-4-2", "3-10-3"]
 exerciseIds: ["informacion-oculta-1", "informacion-oculta-2", "informacion-oculta-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Mirar y revelar

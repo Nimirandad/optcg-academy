@@ -2,6 +2,7 @@
 import { createGame, createState, type PlayerSpec } from '../../domain/game/state';
 import { run } from '../../domain/game/reducer';
 import type { CardDef, GameState } from '../../domain/game/types';
+import { officialCombatCards as real } from '../combat/official';
 import { cards, pile } from '../shared/cards';
 
 const deck = pile(
@@ -50,4 +51,17 @@ export const tables = [
       ),
   },
   { id: 'avanzada', title: 'Mesa avanzada (límites del campo)', create: advanced },
+  {
+    id: 'oficial',
+    title: 'Mesa de práctica con cartas reales',
+    create: (): GameState => createState({
+      turn: 5,
+      players: [
+        { name: 'Jugador A', leader: { card: real.zoro }, characters: [{ card: real.kawamatsu }],
+          hand: [real.kawamatsu], deck: pile([real.kawamatsu], 8), life: pile([real.kawamatsu], 3), donActive: 5, donDeck: 5 },
+        { name: 'Jugador B', leader: { card: real.kuzan }, characters: [{ card: real.jango, rested: true }],
+          hand: [real.jango], deck: pile([real.jango], 8), life: pile([real.jango], 3), donActive: 4, donDeck: 6 },
+      ],
+    }),
+  },
 ] as const;

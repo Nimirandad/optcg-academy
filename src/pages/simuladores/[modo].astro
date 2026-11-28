@@ -1,0 +1,35 @@
+---
+import CombatSim from '../../features/battle/CombatSim.svelte';
+import '../../features/shared/sim.css';
+import BattleLesson from '../../features/combat/BattleLesson.svelte';
+import type { simulatorScenes } from '../../features/combat/simulator-scenes';
+import { withBase } from '../../lib/paths';
+import SimulatorNav from '../../features/shared/SimulatorNav.astro';
+import Base from '../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { modo: 'combate' }, props: { title: 'Combate', text: 'Resuelve una batalla en la mesa de práctica.' } },
+    { params: { modo: 'turnos' }, props: { title: 'Turnos', text: 'Avanza por cada fase con cartas reales y una mesa preparada.' } },
+    { params: { modo: 'playmat' }, props: { title: 'Playmat', text: 'Juega cartas reales en una mesa preparada. Los efectos impresos quedan fuera de este ejercicio.' } },
+    { params: { modo: 'efectos' }, props: { title: 'Efectos', text: 'Activa el efecto de Monkey.D.Luffy y mueve DON!! Rested de la zona de coste a Jinbe.' } },
+    { params: { modo: 'laboratorio' }, props: { title: 'Laboratorio de combate', text: 'Cambia el poder y prueba interacciones con cartas de práctica.' } },
+  ];
+}
+
+const { title, text } = Astro.props;
+const mode = Astro.params.modo;
+const base = import.meta.env.BASE_URL;
+---
+<Base title={title} description={text}>
+  <h1>{title}</h1>
+  <SimulatorNav active={mode === 'laboratorio' ? 'combate' : mode} />
+  <p>{text}</p>
+  <noscript><p>El simulador necesita JavaScript.</p></noscript>
+  <section aria-label={title}>
+    {mode === 'laboratorio' ? <CombatSim {base} client:load /> : (
+      <BattleLesson {base} simulator={mode as keyof typeof simulatorScenes} client:load />
+    )}
+  </section>
+  {mode !== 'laboratorio' && <p><a href={withBase(`simuladores/libre/${mode}/`)}>Abrir práctica libre de {title}</a></p>}
+</Base>

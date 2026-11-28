@@ -6,7 +6,7 @@ order: 5
 prerequisites: ["palabras-clave"]
 ruleIds: ["1-3-3", "8-1-3-4-2", "8-6-1", "8-6-2", "8-6-2-1"]
 exerciseIds: ["orden-de-resolucion-1", "orden-de-resolucion-2", "orden-de-resolucion-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Cuando coinciden

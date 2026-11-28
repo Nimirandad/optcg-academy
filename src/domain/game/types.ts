@@ -6,7 +6,7 @@ export type Keyword = 'rush' | 'rush-character' | 'double-attack' | 'banish' | '
 export type Phase = 'refresh' | 'draw' | 'don' | 'main' | 'end';
 export type BattleStep = 'block' | 'counter' | 'trigger';
 
-/** Efecto [Activate: Main] de una carta ficticia. */
+/** Efecto [Activate: Main] modelado por el motor educativo. */
 export interface Effect {
   id: string;
   text: string;
@@ -19,7 +19,7 @@ export interface Effect {
   donMinus?: number;
   /** Cartas de la mano que se descartan como coste. */
   trashFromHand?: number;
-  result: { draw?: number; power?: number };
+  result: { draw?: number; power?: number; giveRestedDonToCharacter?: number };
 }
 
 export interface CardDef {
@@ -112,7 +112,7 @@ export type Action =
   | { type: 'advance' }
   | { type: 'play'; uid: string; replace?: string }
   | { type: 'attach'; uid: string }
-  | { type: 'activate'; uid: string; effectId: string; discard?: readonly string[]; donFrom?: readonly DonSource[] }
+  | { type: 'activate'; uid: string; effectId: string; discard?: readonly string[]; donFrom?: readonly DonSource[]; giveRestedDon?: { target: string; count: number } }
   | { type: 'attack'; attacker: string; target: string }
   | { type: 'block'; uid: string }
   | { type: 'skip-block' }

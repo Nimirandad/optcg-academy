@@ -4,6 +4,7 @@ import BattleLesson from '../../features/combat/BattleLesson.svelte';
 import { lessonScenes } from '../../features/combat/lessons';
 import Quiz from '../../features/quizzes/Quiz.svelte';
 import TopicSteps from '../../features/topics/TopicSteps.svelte';
+import TablePractice from '../../features/topics/TablePractice.svelte';
 import Base from '../../layouts/Base.astro';
 import { checkAcademy, levels, sortLessons } from '../../lib/academy';
 import { inventory } from '../../lib/inventory';
@@ -42,7 +43,8 @@ const { lesson, level: classmates, topic, next, required, questions } = Astro.pr
 const scenes = lessonScenes[lesson.id];
 const position = classmates.indexOf(lesson.id) + 1;
 const { Content } = await render(lesson);
-const { level, objective, ruleIds, reviewStatus } = lesson.data;
+const { level, objective, ruleIds } = lesson.data;
+const nextIsland = next && next.data.level !== level;
 ---
 <Base title={lesson.data.title} description={objective}>
   <header class="banner">
@@ -56,15 +58,11 @@ const { level, objective, ruleIds, reviewStatus } = lesson.data;
       ))}
     </p>
   </header>
-  <p class="notice">
-    {reviewStatus === 'reviewed' ? 'Lección revisada.' : 'Borrador no oficial, pendiente de revisión.'} No reemplaza al
-    reglamento ni a un juez.
-  </p>
 
   {scenes && (
     <section data-pagefind-ignore>
       <h2>Juégalo</h2>
-      <p class="meta">Cartas inventadas. Retos sin revisión humana.</p>
+      <p class="meta">Cartas oficiales en situaciones guiadas.</p>
       <BattleLesson base={import.meta.env.BASE_URL} only={scenes} client:visible />
     </section>
   )}
@@ -72,10 +70,12 @@ const { level, objective, ruleIds, reviewStatus } = lesson.data;
   {!scenes && topic && (
     <section data-pagefind-ignore>
       <h2>Paso a paso</h2>
-      <p class="meta">Resumen del tema «{topic.title}», {topic.reviewStatus === 'reviewed' ? 'revisado' : 'sin revisión humana'}.</p>
+      <p class="meta">Resumen del tema «{topic.title}».</p>
       <TopicSteps base={import.meta.env.BASE_URL} icon={topic.icon} steps={topic.steps} client:visible />
     </section>
   )}
+
+  {lesson.id === 'zonas-de-juego' && <TablePractice base={import.meta.env.BASE_URL} client:visible />}
 
   <div class="lesson"><Content /></div>
 
@@ -89,7 +89,9 @@ const { level, objective, ruleIds, reviewStatus } = lesson.data;
 
   <nav aria-label="Lecciones">
     <a class="button" href={withBase('aprende/')}>Todas las lecciones</a>
-    {next && <a class="button primary" href={withBase(`aprende/${next.id}/`)}>Siguiente: {next.data.title}</a>}
+    {next && <a class="button primary" href={withBase(nextIsland ? `aprende/islas/${next.data.level}/` : `aprende/${next.id}/`)}>
+      Siguiente: {nextIsland ? levels[next.data.level] : next.data.title}
+    </a>}
   </nav>
 </Base>
 

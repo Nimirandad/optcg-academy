@@ -288,6 +288,8 @@ El propietario respondió «A: incidencias» a la pregunta sobre qué opción ap
 
 Aplicado en los cuatro `sync-*.yml`: trabajo `avisar` solo si `comparar` falla, con `issues: write`, sin acciones, repositorio ni dependencias; informe por variable de entorno, recortado a 50.000 bytes y sangrado. Actualiza la incidencia abierta por Actions con el mismo título o crea una; editarla no genera un comentario nuevo y no se cierra sola. Modifica ADR-038: ahora hay un permiso de escritura.
 
+El propietario autorizó una sola ejecución manual del workflow de formato el 2026-11-27, incluida la incidencia pública si correspondía. [La ejecución en `main`](https://github.com/Nimirandad/optcg-academy/actions/runs/46084302100) terminó bien y omitió el trabajo de aviso. La autorización quedó consumida.
+
 ### Análisis previo
 
 Estado leído con `gh` el 2026-11-27: repositorio público; permiso por defecto de `GITHUB_TOKEN` de lectura; «Allow GitHub Actions to create and approve pull requests» desactivado; `main` sin protección ni rulesets; auto-merge desactivado; incidencias activadas.
@@ -310,7 +312,58 @@ A se aparta de `plan.md` §9, que pide PR.
 
 El propietario indicó: «integralo a la fase 6 y haz commit». El rediseño (ADR-033) se registra como T6.6. Autoriza el commit local de todo el trabajo pendiente (Fases 2 a 6), hecho en una rama nueva y sin `.claude/`. No autoriza push, PR, fusión, despliegue ni ejecutar workflows.
 
+## ADR-042 — Publicación automática al fusionar · Aceptada (2026-11-27)
+
+El propietario indicó: «La idea seria automatizarlo para que funcione en el mismo pipeline una vez mergeado».
+
+- `ci.yml` publica en Pages tras verificar, en cada push a `main` o ejecución manual sobre `main`. Los PR no publican. `deploy.yml` se elimina.
+- Sustituye la autorización por despliegue de ADR-009 y ADR-013: fusionar en `main` equivale a publicar. Las comprobaciones previas a publicar (reglamento, rotación, restricciones, erratas, Q&A) pasan a hacerse antes de fusionar; nada lo exige automáticamente.
+- `main` no tiene protección de rama: un push directo también publica si las verificaciones pasan.
+- Los agentes siguen necesitando autorización para commit, push y fusión.
+
 ## Aclaraciones de la Fase 0
 
 - Se añadieron `docs/sources/` y `docs/coverage/` (previstos en §10) para el informe y el inventario.
 - El inventario guarda IDs y páginas, sin texto del reglamento.
+
+## ADR-043 — Ilustraciones originales y aprobación editorial · Aceptada (2026-11-27)
+
+- El propietario solicitó renovar la identidad con imágenes generadas y confirmó la aprobación del contenido educativo visible y de las listas de mazos cargadas. Se registra su aprobación para lecciones, preguntas, casos, temas y los datos publicados en el catálogo de cartas de ST-31 a ST-36. Las listas ST-31 a ST-35 ya estaban aprobadas en ADR-030.
+- En la interfaz, las reglas conservan el número, página, versión y enlace oficial. Se retiran los avisos que pedían revisión del material ya aprobado.
+- El catálogo estático muestra los datos factuales con enlaces a las listas de Bandai. Para ST-31 a ST-35 muestra las cantidades registradas con sus fuentes y exportación de texto. ST-36 tiene catálogo, pero no cantidades comprobadas.
+- La portada pública de OPlayTCG se consultó como referencia para dar prioridad a la exploración por set.
+- Las ilustraciones se generaron para la academia. Sustituyen el arte SVG de la portada, el mapa, los temas y las cartas de práctica. El catálogo respeta ADR-006.
+
+## ADR-044 — Cartas oficiales en simuladores · Aceptada para el piloto por ADR-045 (2026-11-27)
+
+Evaluar primero un reto piloto con cartas reales. El piloto aprobado en ADR-045 se aparta del alcance de ADR-022 y requiere verificar en la fuente las estadísticas, restricciones y efectos que el motor necesite para ese reto. El contenido factual adicional se limitaría al piloto; el arte tendría que ser propio o tener permiso de uso. Car D. Kaizoku puede servir de referencia de presentación, pero no se ha establecido que pueda redistribuirse su contenido ni el arte que muestre.
+
+## ADR-045 — Navegación práctica y arte de cartas para el grupo local · Aceptada (2026-11-27)
+
+- El propietario pidió cartas reales en el combate guiado, con lo que aprueba el piloto de ADR-044. Los cinco retos guiados usan datos de ST-31, ST-32 y ST-33. La mesa está preparada para una sola decisión de combate; las condiciones ajenas al ejercicio no intervienen.
+- El propietario confirmó que dispone de permiso o una fuente autorizada para mostrar el arte dentro de la app. Los listados oficiales guardados el 2026-11-27 identifican cada impresión. Sus archivos se guardan en `references/card-art/` (ignorada por Git) y se sirven solo en desarrollo local porque Bandai restringe la incrustación desde otros sitios. El build estático público mantiene fichas y enlaces. No se incorporan archivos de imagen de Bandai al repositorio.
+- La práctica de zonas se basa en el [Official Rule Manual v1.11, p. 5](https://en.onepiece-cardgame.com/pdf/rule_manual.pdf#page=7), consultado el 2026-11-27. El tablero es una implementación propia y conserva las referencias del reglamento completo.
+- Los hechos del piloto se contrastaron con [ST-31](https://en.onepiece-cardgame.com/cardlist/?series=569031), [ST-32](https://en.onepiece-cardgame.com/cardlist/?series=569032) y [ST-33](https://en.onepiece-cardgame.com/cardlist/?series=569033), copias del 2026-11-27. La adaptación de los ejercicios está pendiente de revisión editorial del propietario.
+
+## ADR-046 — Acceso por modo, desafíos únicos y catálogo negro · Aceptada (2026-11-27)
+
+- Cada simulador tiene una ruta propia. Combate reutiliza el componente y los cinco retos de «Prueba un combate». Turnos y Playmat tienen mesas preparadas con cartas oficiales. Efectos combina líderes reales con cartas didácticas para los comportamientos que el motor modela. El laboratorio anterior sigue disponible desde Combate.
+- La ruta anterior de Desafíos apunta a Casos y desafíos. Los casos tienen preguntas propias y conservan el progreso guardado bajo sus claves originales.
+- La opción Negro muestra ST-27 Marshall.D.Teach, monocolor. ST-35 se conserva en los datos históricos y queda fuera del selector. ST-27 se incorporó como referencia de producto a partir de las [15 cartas distintas de Bandai](https://en.onepiece-cardgame.com/cardlist/?series=569027) y la [ficha oficial](https://en.onepiece-cardgame.com/products/decks/st27.php), consultadas el 2026-11-27. Las cantidades y una lista validable siguen sin confirmar. Las 15 imágenes nuevas usan el mismo almacenamiento local de ADR-045.
+- La referencia numerada presenta los subpuntos dentro del punto principal y conserva los enlaces profundos del reglamento. Los temas tienen nueve ilustraciones propias, distintas entre sí.
+
+## ADR-047 — Islas y casos por ruta, simulación por acción y listas de referencia · Aceptada (2026-11-27)
+
+- Aprende muestra el mapa. Cada isla abre únicamente sus lecciones. Casos y desafíos abre un nivel a la vez y conserva la clave de progreso de cada cuestionario.
+- Combate usa la selección de cartas y la resolución del simulador, independiente de los retos de `/jugar/`. Turnos, Playmat y Efectos incorporan acciones sobre las cartas y enlazan las reglas aplicables. El dominio y los límites de cada escenario se conservan.
+- Las listas de caja de ST-27 y ST-36 se cotejaron en número de cartas y coincidencia de identificadores con el catálogo. Cantidades de [FernandoTCG / OnePiece.gg](https://onepiece.gg/decks/blackbeard-st-27/) y [TCG Spikes](https://tcgspikes.com/guides/one-piece/are-the-st-31-to-st-36-six-color-starter-decks-worth-it).
+- Para OP09-081 se tomó la lista de penguino s, ChinoizeCup del 2 de noviembre de 2026, publicada por [TCGenius](https://tcgenius.gg/one-piece/tournaments/OP09-081). Para OP10-099 se tomó la lista de Ken-Chan, Asia Finals del 9 de febrero de 2025, publicada por [Egman Events](https://egmanevents.com/one-piece-op10-tournament-deck-lists). Las cuatro listas tienen 50 cartas más Leader y se consultaron el 2026-11-27. Se ofrecen como referencias con revisión editorial pendiente y sin recomendación de legalidad vigente.
+
+## ADR-048 — Mesa compartida y desbloqueo del recorrido · Aceptada (2026-11-27)
+
+- Los cuatro simuladores abren ejercicios propios en el mismo componente que usa «Prueba un combate». Comparten mesa, acciones por carta, efectos visuales, pistas y reinicio. Las herramientas anteriores siguen enlazadas como práctica libre.
+- Cada isla requiere haber terminado los cuestionarios de todas las islas anteriores según el progreso local existente. El mapa y las rutas de isla aplican la misma condición. Al pasar de una isla a otra desde una lección se visita la página de la isla. La consulta de reglas y los enlaces directos a material de referencia permanecen disponibles.
+
+## ADR-049 — Inicio de la Fase 7 · Aceptada (2026-11-27)
+
+El propietario indicó «Avanza con la fase 7» tras conocer el estado de T6.5. Se inicia el QA local de lanzamiento. La verificación remota de incidencias sigue abierta y la publicación se autoriza por separado.

@@ -38,5 +38,6 @@
     "rules-p10-1"
   ],
   "version": 1,
-  "reviewStatus": "pending"
+  "reviewStatus": "reviewed",
+  "reviewedBy": "Propietario del proyecto"
 }

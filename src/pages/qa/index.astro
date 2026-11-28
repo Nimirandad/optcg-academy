@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import QuickFilter from '../../components/ui/QuickFilter.astro';
 import Base from '../../layouts/Base.astro';
 import { withBase } from '../../lib/paths';
 import { documents, documentTitle, errata, percent, restrictions } from '../../lib/qa';
@@ -29,19 +30,20 @@ const retrieved = [...new Set(documents.map((document) => document.retrievedAt))
     <dd>{documents.length} (consultados el {retrieved})</dd>
     <dt>Preguntas detectadas automáticamente</dt>
     <dd>{total}; {flagged} con extracción por comprobar y {gaps.length} fila sin contenido legible</dd>
-    <dt>Con explicación propia en borrador</dt>
-    <dd>{entries.length} ({percent(entries.length, total)}). Pendientes: {total - entries.length}</dd>
-    <dt>Revisadas por una persona</dt>
+    <dt>Con explicación propia</dt>
+    <dd>{entries.length} ({percent(entries.length, total)})</dd>
+    <dt>Aprobadas por el propietario</dt>
     <dd>{reviewed} ({percent(reviewed, total)})</dd>
   </dl>
   <p>La legalidad de cada set en Standard todavía no está determinada: una aclaración puede seguir siendo útil aunque la carta haya rotado.</p>
 
   <h2>Documentos</h2>
-  <ul>
+  <QuickFilter target="documentos-qa" label="Busca un set o documento" hint="OP-12, ST-32, reglamento…" />
+  <ul id="documentos-qa" class="cards">
     {documents.map((document) => {
       const done = entries.filter((entry) => entry.document === document.slug).length;
       return (
-        <li>
+        <li data-filter-entry={`${documentTitle(document)} ${document.setCodes.join(' ')}`}>
           <a href={withBase(`qa/${document.slug}/`)}>{documentTitle(document)}</a>
           <span> · {document.publishedAt} · {done} de {document.questions.length} explicadas</span>
         </li>
@@ -82,7 +84,7 @@ const retrieved = [...new Set(documents.map((document) => document.retrievedAt))
 
   <h2 id="erratas">Erratas</h2>
   <p>
-    Avisos consultados el {errata.retrievedAt}, resumidos con palabras propias y sin revisión humana. La
+    Avisos consultados el {errata.retrievedAt}, resumidos con palabras propias. La
     <a href={errata.listUrl}>lista oficial de erratas</a> se consulta aparte y no incluye todos estos avisos.
   </p>
   <ul>

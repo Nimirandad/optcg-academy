@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import QuickFilter from '../components/ui/QuickFilter.astro';
 import Base from '../layouts/Base.astro';
 import { withBase } from '../lib/paths';
 import { rulePath } from '../lib/rules';
@@ -18,22 +19,26 @@ const groups = [
     Definiciones breves de elaboración propia. Los nombres en español no son oficiales. La definición completa está en
     cada regla.
   </p>
+  <QuickFilter target="terminos" label="Busca un término" hint="Blocker, bloqueo, Counter…" />
+  <div id="terminos">
   {groups.map((group) => (
-    <section>
+    <section data-filter-group>
       <h2>{group.title}</h2>
       <dl>
         {keywords.filter(({ data }) => data.ruleId.startsWith(group.prefix)).map(({ id, data }) => (
-          <>
+          <div class="entry" data-filter-entry={`${data.term} ${data.aliases.join(' ')} ${data.ruleId}`}>
             <dt id={id} data-pagefind-weight="10"><strong lang="en">{data.term}</strong> ({data.aliases.join(', ')})</dt>
             <dd>{data.definition} <a href={withBase(rulePath(data.ruleId))}>Regla {data.ruleId}</a></dd>
-          </>
+          </div>
         ))}
       </dl>
     </section>
   ))}
+  </div>
 </Base>
 
 <style>
-  dt { margin-top: 1rem; scroll-margin-top: 1rem; }
+  .entry { margin-block: 0.55rem; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: 0.65rem; background: var(--surface); }
+  dt { scroll-margin-top: 1rem; }
   dd { margin-inline-start: 0; }
 </style>

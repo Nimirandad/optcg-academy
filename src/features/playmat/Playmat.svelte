@@ -12,8 +12,8 @@
   let { base }: { base: string } = $props();
 
   let ready = $state(false);
-  let tableId = $state<string>(tables[0].id);
-  let game = $state.raw(tables[0].create());
+  let tableId = $state<string>(tables[2].id);
+  let game = $state.raw(tables[2].create());
   let error = $state.raw<RuleError | null>(null);
   let attacker = $state<string | null>(null);
   let incoming = $state.raw<Card | null>(null);
@@ -52,6 +52,26 @@
     } else act({ type: 'play', uid: card.uid });
   }
 
+  function toggleAttacker(uid: string) {
+    attacker = attacker === uid ? null : uid;
+    error = null;
+  }
+
+  function fieldTap(item: FieldCard, owner: PlayerId) {
+    const uid = item.card.uid;
+    if (!main || item.card.kind === 'stage') return;
+    if (owner === turn && !incoming) {
+      return { label: 'Seleccionar atacante', run: () => toggleAttacker(uid), selected: attacker === uid };
+    }
+    if (owner !== turn && attacker) {
+      const from = attacker;
+      return { label: 'Atacar a', run: () => act({ type: 'attack', attacker: from, target: uid }) };
+    }
+  }
+
+  const handTap = (card: Card, owner: PlayerId) =>
+    main && owner === turn ? { label: 'Jugar carta', run: () => playCard(card) } : undefined;
+
   onMount(() => (ready = true));
 </script>
 
@@ -68,10 +88,7 @@
       <button
         type="button"
         aria-pressed={attacker === item.card.uid}
-        onclick={() => {
-          attacker = attacker === item.card.uid ? null : item.card.uid;
-          error = null;
-        }}
+        onclick={() => toggleAttacker(item.card.uid)}
       >
         Atacar con {item.card.name}
       </button>
@@ -125,9 +142,10 @@
     {#if game.result}<p class="result">Partida terminada. {game.result.reason}</p>{/if}
     <GameLog {base} log={game.log} {error} />
 
+    <p class="rules"><a href={`${base.replace(/\/$/, '')}/reglas/3/#regla-3-7`}>Regla 3-7 · Characters</a></p>
     <div class="boards">
-      <Board state={game} player={1} showHand={shows(1)} {fieldActions} {handActions} />
-      <Board state={game} player={0} showHand={shows(0)} {fieldActions} {handActions} />
+      <Board state={game} player={1} showHand={shows(1)} {fieldActions} {handActions} {fieldTap} {handTap} />
+      <Board state={game} player={0} showHand={shows(0)} {fieldActions} {handActions} {fieldTap} {handTap} />
     </div>
   </fieldset>
 </div>
