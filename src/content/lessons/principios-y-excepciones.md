@@ -6,7 +6,7 @@ order: 1
 prerequisites: ["orden-de-resolucion"]
 ruleIds: ["1-3-1", "1-3-2", "1-3-5-1", "1-3-6-1", "1-3-6-2"]
 exerciseIds: ["principios-y-excepciones-1", "principios-y-excepciones-2", "principios-y-excepciones-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Principios

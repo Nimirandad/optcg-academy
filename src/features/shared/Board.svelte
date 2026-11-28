@@ -2,6 +2,8 @@
   import type { Snippet } from 'svelte';
   import { MAX_CHARACTERS, activePlayer, powerOf } from '../../domain/game/state';
   import type { Card, FieldCard, GameState, PlayerId } from '../../domain/game/types';
+  import PlayCard from '../combat/PlayCard.svelte';
+  import CardArt from '../art/CardArt.svelte';
   import { describe } from './cards';
 
   let {
@@ -10,12 +12,16 @@
     showHand = true,
     fieldActions,
     handActions,
+    fieldTap,
+    handTap,
   }: {
     state: GameState;
     player: PlayerId;
     showHand?: boolean;
     fieldActions?: Snippet<[FieldCard, PlayerId]>;
     handActions?: Snippet<[Card, PlayerId]>;
+    fieldTap?: (item: FieldCard, player: PlayerId) => { label: string; run: () => void; selected?: boolean } | undefined;
+    handTap?: (item: Card, player: PlayerId) => { label: string; run: () => void } | undefined;
   } = $props();
 
   const data = $derived(game.players[player]);
@@ -23,13 +29,18 @@
 </script>
 
 {#snippet onField(item: FieldCard)}
+  {@const tap = fieldTap?.(item, player)}
   <li class="card" class:rested={item.rested}>
-    <strong>{item.card.name}</strong>
+    {#if tap}
+      <PlayCard card={item.card} field={item} power={powerOf(game, item.card.uid)} action={tap.label} onuse={tap.run} role={tap.selected ? 'attacker' : undefined} />
+    {:else}
+    <div class="face"><span class="portrait"><CardArt id={item.card.id} /></span><strong>{item.card.name}</strong></div>
     <span>
       {item.rested ? 'Rested' : 'Active'}{item.card.power === undefined
         ? ''
         : ` · poder ${powerOf(game, item.card.uid)}`}{item.don ? ` · ${item.don} DON!!` : ''}
     </span>
+    {/if}
     <span class="meta">{describe(item.card)}</span>
     {#if fieldActions}<span class="actions">{@render fieldActions(item, player)}</span>{/if}
   </li>
@@ -68,8 +79,11 @@
   {#if showHand}
     <ul class="zone">
       {#each data.hand as card (card.uid)}
+        {@const tap = handTap?.(card, player)}
         <li class="card">
-          <strong>{card.name}</strong>
+          {#if tap}<PlayCard {card} action={tap.label} onuse={tap.run} />{:else}
+          <div class="face"><span class="portrait"><CardArt id={card.id} /></span><strong>{card.name}</strong></div>
+          {/if}
           <span class="meta">{describe(card)}</span>
           {#if handActions}<span class="actions">{@render handActions(card, player)}</span>{/if}
         </li>
@@ -81,3 +95,9 @@
     <p class="meta">Oculta: {data.hand.length} cartas.</p>
   {/if}
 </section>
+
+
+<style>
+  .face { display: flex; align-items: center; gap: 0.45rem; }
+  .portrait { flex: 0 0 3.75rem; }
+</style>

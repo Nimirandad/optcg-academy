@@ -5,6 +5,7 @@
   import type { Action, ActionResult, RuleError } from '../../domain/game/types';
   import BattleControls from '../shared/BattleControls.svelte';
   import Board from '../shared/Board.svelte';
+  import PlayCard from '../combat/PlayCard.svelte';
   import GameLog from '../shared/GameLog.svelte';
   import { declareAttack, scenarios } from './scenarios';
 
@@ -45,8 +46,7 @@
 
   const act = (action: Action) => commit(apply(game, action));
 
-  function declare(event: SubmitEvent) {
-    event.preventDefault();
+  function strike() {
     commit(
       declareAttack(game, {
         attacker,
@@ -70,9 +70,30 @@
       </select>
     </label>
     <p>{scenario.goal}</p>
+    <p class="rules"><a href={`${base.replace(/\/$/, '')}/reglas/7/#regla-7-1`}>Regla 7-1 · Pasos de la batalla</a></p>
 
     {#if !declared}
-      <form onsubmit={declare}>
+      <div class="duel" role="group" aria-label="Selecciona las cartas del combate">
+        <div>
+          <h4>Elige atacante</h4>
+          <div class="line">
+            {#each attackers as item (item.card.uid)}
+              <PlayCard card={item.card} field={item} power={item.card.uid === attacker ? (attackerPower ?? item.card.power ?? 0) + don * 1000 : item.card.power}
+                action="Elegir atacante" role={item.card.uid === attacker ? 'attacker' : undefined} onuse={() => (attacker = item.card.uid)} />
+            {/each}
+          </div>
+        </div>
+        <div>
+          <h4>Elige objetivo</h4>
+          <div class="line">
+            {#each targets as item (item.card.uid)}
+              <PlayCard card={item.card} field={item} power={item.card.uid === target ? targetPower ?? item.card.power : item.card.power}
+                action="Atacar a" role={item.card.uid === target ? 'target' : undefined} onuse={() => { target = item.card.uid; strike(); }} />
+            {/each}
+          </div>
+        </div>
+      </div>
+      <form onsubmit={(event) => { event.preventDefault(); strike(); }}>
         <div class="options">
           <label>
             Atacante
@@ -132,3 +153,11 @@
     </div>
   </fieldset>
 </div>
+
+
+<style>
+  .duel { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 0.7rem; margin-block: 0.75rem; }
+  .duel > div { border: 1px solid #a2c3b7; border-radius: 0.75rem; padding: 0.65rem; background: #10282e; }
+  .duel h4 { margin-top: 0; }
+  .line { display: flex; flex-wrap: wrap; gap: 0.45rem; padding-block: 0.25rem; }
+</style>

@@ -6,7 +6,7 @@ order: 4
 prerequisites: ["tipos-y-momentos"]
 ruleIds: ["10-1-1-1", "10-1-6-1", "10-2-1-3", "10-2-13-1", "10-2-14-1"]
 exerciseIds: ["palabras-clave-1", "palabras-clave-2", "palabras-clave-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Para no confundirse

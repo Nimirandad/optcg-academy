@@ -1,0 +1,148 @@
+---
+import type { FilterableDeck } from '../../domain/recommendation/filters';
+import { colorProfiles } from './colors';
+
+interface Props {
+  entries: (FilterableDeck & { anchor: string; label: string })[];
+}
+
+const { entries } = Astro.props;
+const styles = [...new Set(entries.flatMap(({ styles }) => styles))].sort();
+const themes = [...new Set(entries.flatMap(({ theme }) => theme ? [theme] : []))].sort();
+const hasPrice = entries.some(({ price }) => price !== null);
+const hasDifficulty = entries.some(({ difficulty }) => difficulty !== null);
+---
+<details id="filtros-mazos">
+  <summary>Filtrar mazos</summary>
+  <form hidden>
+    <fieldset>
+      <legend>Colores del Leader</legend>
+      <div class="colors">
+        {colorProfiles.map(({ id, name }) => (
+          <label><input type="checkbox" name="color" value={id} /> {name}</label>
+        ))}
+      </div>
+    </fieldset>
+    <div class="fields">
+      <label>Combinación de colores
+        <select name="colores">
+          <option value="">Cualquiera</option>
+          <option value="mono">Monocolor</option>
+          <option value="multi">Multicolor</option>
+        </select>
+      </label>
+      <label>Tipo de mazo
+        <select name="tipo">
+          <option value="">Cualquiera</option>
+          <option value="starter">Starter Deck</option>
+          <option value="built">Construido</option>
+        </select>
+      </label>
+      <label>Lanzado desde <input type="date" name="desde" /></label>
+      <label>Presupuesto máximo (CLP)
+        <input type="number" name="presupuesto" min="1" disabled={!hasPrice} />
+        {!hasPrice && <small>Precios sin confirmar</small>}
+      </label>
+      <label>Dificultad máxima
+        <select name="dificultad" disabled={!hasDifficulty}>
+          <option value="">Cualquiera</option>
+          <option value="1">Baja</option>
+          <option value="2">Media</option>
+          <option value="3">Alta</option>
+        </select>
+        {!hasDifficulty && <small>Dificultad sin evaluar</small>}
+      </label>
+      <label>Estilo
+        <select name="estilo" disabled={!styles.length}>
+          <option value="">Cualquiera</option>
+          {styles.map((style) => <option value={style}>{style}</option>)}
+        </select>
+        {!styles.length && <small>Estilos sin clasificar</small>}
+      </label>
+      <label>Temática
+        <select name="tema" disabled={!themes.length}>
+          <option value="">Cualquiera</option>
+          {themes.map((theme) => <option value={theme}>{theme}</option>)}
+        </select>
+        {!themes.length && <small>Temáticas sin clasificar</small>}
+      </label>
+    </div>
+    <div class="actions">
+      <button type="submit" class="button primary">Aplicar filtros</button>
+      <button type="reset" class="button">Limpiar filtros</button>
+    </div>
+  </form>
+  <p role="status"></p>
+  <ul aria-label="Resultados de mazos">
+    {entries.map(({ anchor, label, ...deck }) => (
+      <li data-deck={JSON.stringify(deck)}><a href={`#${anchor}`}>{label}</a></li>
+    ))}
+  </ul>
+</details>
+
+<script>
+  import { matchesFilters, parseFilters, type FilterableDeck } from '../../domain/recommendation/filters';
+
+  const panel = document.querySelector<HTMLDetailsElement>('#filtros-mazos');
+  const form = panel?.querySelector('form');
+  const status = panel?.querySelector('[role="status"]');
+  if (panel && form && status) {
+    const rows = [...panel.querySelectorAll<HTMLLIElement>('li[data-deck]')].map((row) => ({
+      row, deck: JSON.parse(row.dataset.deck!) as FilterableDeck,
+    }));
+    const render = (params: URLSearchParams) => {
+      const filters = parseFilters(params);
+      let count = 0;
+      for (const { row, deck } of rows) {
+        row.hidden = !matchesFilters(deck, filters);
+        if (!row.hidden) count++;
+      }
+      status.textContent = count === 0 ? 'Ningún mazo coincide con los filtros.' :
+        count === 1 ? '1 mazo encontrado.' : `${count} mazos encontrados.`;
+    };
+    const restore = () => {
+      const params = new URLSearchParams(location.search);
+      for (const field of form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select')) {
+        if (field instanceof HTMLInputElement && field.type === 'checkbox') {
+          field.checked = params.getAll(field.name).includes(field.value);
+        } else {
+          field.value = params.get(field.name) ?? '';
+        }
+      }
+      if (Object.keys(parseFilters(params)).length) panel.open = true;
+      render(params);
+    };
+    const apply = (params: URLSearchParams) => {
+      const url = new URL(location.href);
+      url.search = params.toString();
+      url.hash = '';
+      history.replaceState(history.state, '', url);
+      render(params);
+    };
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const params = new URLSearchParams();
+      for (const [name, value] of new FormData(form)) {
+        if (typeof value === 'string' && value) params.append(name, value);
+      }
+      apply(params);
+    });
+    form.addEventListener('reset', () => apply(new URLSearchParams()));
+    window.addEventListener('popstate', restore);
+    restore();
+    form.hidden = false;
+  }
+</script>
+
+<style>
+  details { margin-block: 1rem; }
+  summary { min-height: 44px; padding-block: 0.6rem; cursor: pointer; font-weight: 750; }
+  fieldset { margin: 0 0 0.75rem; border: 1px solid var(--border); min-width: 0; }
+  .colors, .actions { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+  .colors label { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 44px; }
+  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 0.75rem; }
+  .fields label { display: grid; align-content: start; gap: 0.25rem; min-width: 0; }
+  .fields input, select { width: 100%; min-width: 0; min-height: 44px; padding-inline: 0.5rem; font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 0.4rem; }
+  .actions { margin-top: 1rem; }
+  li a { display: inline-grid; align-items: center; min-height: 44px; }
+</style>

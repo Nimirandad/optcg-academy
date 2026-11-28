@@ -1,0 +1,22 @@
+---
+import Base from '../../../layouts/Base.astro';
+import BattleLesson from '../../../features/combat/BattleLesson.svelte';
+import { caseScenes } from '../../../features/combat/case-scenes';
+import SimulatorNav from '../../../features/shared/SimulatorNav.astro';
+
+export function getStaticPaths() {
+  return Object.values(caseScenes).map(({ id, mode, title, mission }) => ({
+    params: { modo: mode, ejercicio: id },
+    props: { title, mission },
+  }));
+}
+
+const { title, mission } = Astro.props;
+const { ejercicio } = Astro.params;
+const base = import.meta.env.BASE_URL;
+---
+<Base title={title} description={mission}>
+  <h1>Simuladores</h1>
+  <SimulatorNav active={ejercicio} />
+  <BattleLesson {base} caseId={ejercicio} client:load />
+</Base>

@@ -1,0 +1,17 @@
+---
+import Icon from '../../components/ui/Icon.astro';
+import { withBase } from '../../lib/paths';
+interface Props { previous?: number; next?: number }
+const { previous, next } = Astro.props;
+---
+<nav aria-label="Capítulos">
+  {previous && <a class="previous" href={withBase(`reglas/${previous}/`)}><Icon name="arrow" /> Capítulo {previous}</a>}
+  <a href={withBase('reglas/')}><Icon name="menu" /> Índice</a>
+  {next && <a href={withBase(`reglas/${next}/`)}>Capítulo {next} <Icon name="arrow" /></a>}
+</nav>
+<style>
+  nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-block: 0.8rem 1rem; }
+  a { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; padding: 0.25rem 0.65rem; color: var(--text); border: 1px solid var(--border); border-radius: 0.55rem; background: var(--surface); text-decoration: none; font-weight: 700; transition: transform 0.2s, border-color 0.2s; }
+  a:hover { transform: translateY(-2px); border-color: var(--link); }
+  .previous :global(svg) { transform: rotate(180deg); }
+</style>

@@ -6,7 +6,7 @@ order: 4
 prerequisites: ["procesamiento-de-reglas"]
 ruleIds: ["11-1-1", "11-1-1-1", "11-1-1-2", "11-1-1-3"]
 exerciseIds: ["bucles-1", "bucles-2", "bucles-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Tres casos

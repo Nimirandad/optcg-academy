@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
-import RuleText from '../../components/ui/RuleText.astro';
+import ChapterNav from '../../features/topics/ChapterNav.astro';
+import RulePoint from '../../features/topics/RulePoint.astro';
 import Base from '../../layouts/Base.astro';
 import { chapters } from '../../lib/chapters';
 import { inventory } from '../../lib/inventory';
 import { withBase } from '../../lib/paths';
-import { ruleAnchor, rulePath } from '../../lib/rules';
+import { ruleAnchor } from '../../lib/rules';
 
 export async function getStaticPaths() {
   const content = await getCollection('rules');
@@ -29,84 +30,112 @@ const byId = new Map(texts.map((text) => [text.id, text]));
 const rules = inventory.rules
   .filter((rule) => rule.chapter === number)
   .map((rule) => ({ ...rule, text: byId.get(rule.ruleId), depth: rule.ruleId.split('-').length }));
-const sections = rules.filter((rule) => rule.depth === 2);
+const overview = rules.filter((rule) => rule.depth === 1);
+const sections = rules.filter((rule) => rule.depth === 2).map((rule) => ({
+  ...rule,
+  points: rules.filter((item) => item.parentId === rule.ruleId).map((point) => ({
+    ...point,
+    items: rules.filter((item) => item.ruleId.startsWith(`${point.ruleId}-`)),
+  })),
+}));
 const previous = chapters[number - 2];
 const next = chapters[number];
 ---
 <Base title={`Capítulo ${number}: ${title}`} description={`Explicación en español del capítulo ${number} del reglamento.`}>
   <h1>Capítulo {number}: <span lang="en">{title}</span></h1>
+  <ChapterNav previous={previous?.number} next={next?.number} />
   <p class="notice">
-    <strong>Material no oficial.</strong> Las explicaciones son propias y las marcadas como pendientes no han sido
-    revisadas. No reemplazan al <a href="https://en.onepiece-cardgame.com/rules/">reglamento oficial</a>
-    (versión {inventory.source.version}, actualizado el {inventory.source.lastUpdated}) ni a un juez.
+    <strong>Material no oficial.</strong> Las explicaciones se basan en el <a href="https://en.onepiece-cardgame.com/rules/">reglamento oficial</a>
+    (versión {inventory.source.version}, actualizado el {inventory.source.lastUpdated}).
   </p>
 
   <p><a class="topics" href={withBase('reglas/')}>¿Prefieres verlo explicado por temas?</a></p>
 
-  <details>
-    <summary>En este capítulo</summary>
-    <ul>
-      {sections.map((rule) => (
-        <li><a href={`#${ruleAnchor(rule.ruleId)}`}>{rule.ruleId} {rule.text?.title}</a></li>
-      ))}
-    </ul>
-  </details>
-
-  {rules.map(({ ruleId, depth, sourcePage, text }) => {
-    const Heading = `h${Math.min(Math.max(depth, 2), 6)}` as 'h2';
-    return (
-      <section class={`rule depth-${depth}`}>
-        <Heading id={ruleAnchor(ruleId)}>
-          {depth === 1 ? 'Resumen del capítulo' : `Regla ${ruleId}`}{depth > 1 && text?.title ? ` · ${text.title}` : ''}
-        </Heading>
-        {text ? <p><RuleText text={text.explanation} /></p> : <p>Explicación pendiente.</p>}
-        {text?.example && <p class="aside"><strong>Ejemplo:</strong> <RuleText text={text.example} /></p>}
-        {text?.tip && <p class="aside"><strong>Consejo:</strong> <RuleText text={text.tip} /></p>}
-        {text?.note && <p class="aside"><strong>Observación sobre la fuente:</strong> <RuleText text={text.note} /></p>}
-        {text && text.relatedIds.length > 0 && (
-          <p class="meta">
-            Ver también: {text.relatedIds.map((id, index) => <>{index > 0 && ', '}<a href={withBase(rulePath(id))}>{id}</a></>)}
-          </p>
-        )}
-        {clarificationsFor(ruleId).length > 0 && (
-          <details class="meta" data-pagefind-ignore>
-            <summary>Aclaraciones oficiales relacionadas ({clarificationsFor(ruleId).length})</summary>
-            <ul>
-              {clarificationsFor(ruleId).map(({ path, entry }) => <li><a href={withBase(path)}>{entry.question}</a></li>)}
-            </ul>
-          </details>
-        )}
-        <p class="meta">
-          PDF, p. {sourcePage} · {text?.reviewStatus === 'reviewed' ? `Revisada por ${text.reviewedBy}` : text?.reviewStatus === 'conflict' ? 'En conflicto' : text?.reviewStatus === 'superseded' ? 'Reemplazada' : 'Pendiente de revisión'}
-        </p>
-      </section>
-    );
-  })}
-
-  <nav aria-label="Capítulos">
-    {previous && <a href={withBase(`reglas/${previous.number}/`)}>← Capítulo {previous.number}</a>}
-    <a href={withBase('reglas/')}>Índice</a>
-    {next && <a href={withBase(`reglas/${next.number}/`)}>Capítulo {next.number} →</a>}
+  <nav class="section-index" aria-label="En este capítulo">
+    {sections.map((rule) => (
+      <a href={`#grupo-${rule.ruleId}`}>{rule.ruleId} · {rule.text?.title ?? 'Ver reglas'}</a>
+    ))}
   </nav>
+
+  {/** La explicación y sus fuentes se muestran juntas en cada punto. */}
+  {overview.map((rule) => <section class="overview" id={ruleAnchor(rule.ruleId)}><h2>En este capítulo</h2><RulePoint {rule} clarifications={clarificationsFor(rule.ruleId)} /></section>)}
+  {sections.map((group) => (
+    <details class="rule-group" id={`grupo-${group.ruleId}`}>
+      <summary><span class="point-code">{group.ruleId}</span> <strong>{group.text?.title ?? 'Ver reglas'}</strong></summary>
+      <div class="group-content">
+        <section class="rule lead" id={ruleAnchor(group.ruleId)}>
+          <RulePoint rule={group} clarifications={clarificationsFor(group.ruleId)} />
+        </section>
+        {group.points.map((point) => (
+          <article class="point">
+            {point.items.length ? (
+              <details class="point-branch">
+                <summary id={ruleAnchor(point.ruleId)}><strong>{point.text?.title ?? 'Ver punto'}</strong> <span class="point-code">{point.ruleId}</span></summary>
+                <section class="rule"><RulePoint rule={point} clarifications={clarificationsFor(point.ruleId)} /></section>
+                <ul class="subpoints">
+                  {point.items.map((item) => (
+                    <li style={`--nest:${Math.min(item.depth - 4, 3)}`}>
+                      <section class="rule subpoint" id={ruleAnchor(item.ruleId)}>
+                        <h4>{item.text?.title}</h4>
+                        <RulePoint rule={item} clarifications={clarificationsFor(item.ruleId)} />
+                      </section>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : (
+              <section class="rule" id={ruleAnchor(point.ruleId)}>
+                <h3>{point.text?.title} <span class="point-code">{point.ruleId}</span></h3>
+                <RulePoint rule={point} clarifications={clarificationsFor(point.ruleId)} />
+              </section>
+            )}
+          </article>
+        ))}
+      </div>
+    </details>
+  ))}
+
+  <ChapterNav previous={previous?.number} next={next?.number} />
 </Base>
 
 <style>
   summary, details a, nav a, .topics { min-height: 44px; display: inline-flex; align-items: center; }
   summary { cursor: pointer; font-weight: 700; display: list-item; align-content: center; }
   details ul { list-style: none; padding: 0; }
-  .rule { margin-block: 0.75rem; border: 1px solid var(--border); border-radius: 0.9rem; background: var(--surface); padding: 0.5rem 0.9rem 0.75rem; }
-  .depth-1, .depth-2 { border-width: 2px; }
-  .depth-2 { margin-top: 2rem; border-inline-start: 0.5rem solid var(--accent); }
-  .rule p:not(.meta) { max-width: 70ch; }
-  .depth-3 { margin-inline-start: 0.75rem; }
-  .depth-4 { margin-inline-start: 1.5rem; }
-  .depth-5 { margin-inline-start: 2.25rem; }
-  h2, h3, h4, h5 { font-size: 1.05rem; margin-bottom: 0.25rem; scroll-margin-top: 1rem; }
-  h2 { font-size: 1.25rem; }
-  h2, h3, h4, h5 { margin-top: 0; }
-  h2:target, h3:target, h4:target, h5:target { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 0.25rem; }
-  p { margin-block: 0.25rem; }
-  .rule .aside { border-inline-start: 3px solid var(--border); padding-inline-start: 0.75rem; }
-  .meta { color: var(--muted); font-size: 0.875rem; }
+  .section-index { gap: 0.5rem; margin-bottom: 1rem; }
+  .section-index a { padding-inline: 0.7rem; border-radius: 0.5rem; background: var(--surface); }
+  .rule-group { margin-block: 0.65rem; padding: 0.2rem 0.9rem; border: 1px solid var(--border); border-inline-start: 0.35rem solid var(--accent); border-radius: 0.8rem; background: var(--surface); scroll-margin-top: 1rem; }
+  .rule-group > summary { font-size: 1.15rem; }
+  .overview { padding: 0.9rem 1.1rem; margin-block: 1rem; background: var(--surface); border-radius: 0.8rem; }
+  .overview h2, h3, h4 { margin: 0 0 0.4rem; }
+  .group-content { padding-block: 0.5rem; }
+  .rule-group[open] > .group-content { animation: reveal 0.25s ease-out; }
+  .rule-group > summary { background: var(--sea); color: white; padding-inline: 0.65rem; border-radius: 0.55rem; }
+  .rule-group > summary:focus-visible { outline-color: #ffe08a; }
+  .point { margin-block: 0.65rem; border: 1px solid var(--border); border-radius: 0.75rem; overflow: clip; }
+  .point > .rule, .point-branch > .rule { padding: 0.65rem 0.8rem; }
+  .point-branch > summary { padding-inline: 0.8rem; background: var(--bg); }
+  .point-code { font-family: ui-monospace, monospace; font-size: 0.75em; font-weight: 650; white-space: nowrap; }
+  .subpoints { display: grid; gap: 0.5rem; margin: 0 0.7rem 0.7rem; }
+  .subpoint { margin-inline-start: calc(var(--nest) * clamp(0.25rem, 2vw, 1rem)); border-inline-start: 3px solid var(--accent); background: var(--bg); border-radius: 0.45rem; padding: 0.55rem 0.65rem; }
+  .rule:target, summary[id]:target, .rule-group:target > summary { outline: 2px solid var(--link); outline-offset: -2px; }
+  [id] { scroll-margin-top: 1rem; }
+  @keyframes reveal { from { opacity: 0.4; transform: translateY(-0.35rem); } }
   nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
 </style>
+
+<script>
+  function revealRule() {
+    const hash = location.hash.slice(1);
+    if (!/^(regla|grupo)-[\d-]+$/.test(hash)) return;
+    const target = document.getElementById(hash);
+    if (!target) return;
+    for (let section = target.closest('details'); section; section = section.parentElement?.closest('details') ?? null) {
+      section.open = true;
+    }
+    target.scrollIntoView();
+  }
+
+  revealRule();
+  window.addEventListener('hashchange', revealRule);
+</script>

@@ -6,7 +6,7 @@ order: 2
 prerequisites: ["principios-y-excepciones"]
 ruleIds: ["9-1-1", "9-1-2", "9-2-1", "3-7-6-1-1"]
 exerciseIds: ["procesamiento-de-reglas-1", "procesamiento-de-reglas-2", "procesamiento-de-reglas-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Qué es

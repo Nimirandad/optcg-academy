@@ -6,7 +6,7 @@ order: 3
 prerequisites: ["ataques"]
 ruleIds: ["7-1-2-1", "7-1-2-2", "10-1-4-1", "10-1-7-1"]
 exerciseIds: ["blocker-1", "blocker-2", "blocker-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Cómo funciona

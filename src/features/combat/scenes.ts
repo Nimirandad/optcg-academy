@@ -2,7 +2,8 @@
 import { run } from '../../domain/game/reducer';
 import { createState, findOnField, powerOf, type PlayerSpec } from '../../domain/game/state';
 import type { Action, CardDef, GameState } from '../../domain/game/types';
-import { cards, pile } from '../shared/cards';
+import { pile } from '../shared/cards';
+import { officialCombatCards as real } from './official';
 
 export interface Choice {
   id: string;
@@ -16,6 +17,10 @@ export interface Scene {
   id: string;
   title: string;
   mission: string;
+  sources?: readonly [number, number];
+  complete?: (state: GameState) => boolean;
+  steps?: { id: string; label: string }[];
+  step?: (state: GameState) => string;
   hint: string;
   ruleIds: string[];
   create: () => GameState;
@@ -30,27 +35,26 @@ export interface Scene {
 const you = 0;
 const rival = 1;
 
-function table(first: 0 | 1, mine: Partial<PlayerSpec> = {}, theirs: Partial<PlayerSpec> = {}): GameState {
-  const player = (name: string, leader: CardDef, extra: Partial<PlayerSpec>): PlayerSpec => ({
+const on = (card: CardDef, rested = false) => ({ card, uid: card.id, rested });
+
+function player(name: string, leader: CardDef, reserves: CardDef, field: Partial<PlayerSpec> = {}): PlayerSpec {
+  return {
     name,
     leader: { card: leader },
-    deck: pile([cards.grumete], 5),
-    life: pile([cards.artillero], 3),
+    deck: pile([reserves], 5),
+    life: pile([reserves], 3),
     donDeck: 6,
     donActive: 0,
-    ...extra,
-  });
-  return createState({
-    turn: 3,
-    first,
-    players: [
-      player('Tú', { ...cards.capitana, name: 'Tu capitana' }, mine),
-      player('Rival', { ...cards.almirante, name: 'Líder rival' }, theirs),
-    ],
-  });
+    ...field,
+  };
 }
 
-const on = (card: CardDef, rested = false) => ({ card, uid: card.id, rested });
+const table = (first: 0 | 1, mine: PlayerSpec, theirs: PlayerSpec) =>
+  createState({ turn: 3, first, players: [mine, theirs] });
+
+const green = (name: string, field?: Partial<PlayerSpec>) => player(name, real.zoro, real.kawamatsu, field);
+const blue = (name: string, field?: Partial<PlayerSpec>) => player(name, real.kuzan, real.jango, field);
+const red = (name: string, field?: Partial<PlayerSpec>) => player(name, real.luffy, real.jinbe, field);
 
 export const battleOver = (state: GameState) => state.log.some((entry) => entry.text.startsWith('End of the Battle'));
 
@@ -69,10 +73,11 @@ export const scenes: Scene[] = [
   {
     id: 'primer-ataque',
     title: 'Tu primer ataque',
-    mission: 'Ataca al Líder rival con tu capitana.',
-    hint: 'Las dos tienen 5000 de poder. ¿Quién gana un empate?',
+    mission: 'Ataca a Kuzan con Roronoa Zoro.',
+    sources: [569032, 569033],
+    hint: 'Ambos Leaders tienen 5000 de poder. ¿Quién gana un empate?',
     ruleIds: ['7-1-1', '7-1-4-1', '4-6-2-1'],
-    create: () => table(you),
+    create: () => table(you, green('Tú'), blue('Rival')),
     choices: (state) => (state.battle || battleOver(state) ? [] : [attack('0-leader', '1-leader', 'Atacar al Líder rival')]),
     auto: rivalPasses,
     goal: (state) => state.players[rival].life.length === 2,
@@ -82,74 +87,78 @@ export const scenes: Scene[] = [
   {
     id: 'don',
     title: 'Súmale fuerza',
-    mission: 'Tu Vigía tiene 4000. Consigue que dañe al Líder rival.',
+    mission: 'Nico Robin tiene 4000. Asigna el DON!! disponible y ataca a Kuzan.',
+    sources: [569031, 569033],
     hint: 'Cada DON!! asignado suma 1000 durante tu turno.',
     ruleIds: ['6-5-5', '7-1-4-2'],
-    create: () => table(you, { characters: [on(cards.vigia)], donActive: 2 }),
+    create: () => table(you, red('Tú', { characters: [on(real.robin)], donActive: 1 }), blue('Rival')),
     choices: (state) => {
       if (state.battle || battleOver(state)) return [];
       const give: Choice[] = state.players[you].donActive
-        ? [{ id: 'don', label: 'Dar 1 DON!! al Vigía', action: { type: 'attach', uid: 'vigia' }, card: 'vigia' }]
+        ? [{ id: 'don', label: 'Dar 1 DON!! a Nico Robin', action: { type: 'attach', uid: real.robin.id }, card: real.robin.id }]
         : [];
-      return [...give, attack('vigia', '1-leader', 'Atacar al Líder rival')];
+      return [...give, attack(real.robin.id, '1-leader', 'Atacar al Líder rival')];
     },
     auto: rivalPasses,
     goal: (state) => state.players[rival].life.length === 2,
-    win: '¡Lo lograste! Con DON!! el Vigía alcanzó el poder del Líder y el empate le favoreció.',
-    retry: 'El ataque falló: tenía menos poder. Tu Vigía sigue en la mesa, pero quedó Rested.',
+    win: '¡Lo lograste! Con DON!! Nico Robin alcanzó el poder del Líder y el empate le favoreció.',
+    retry: 'El ataque falló: tenía menos poder. Nico Robin sigue en la mesa, pero quedó Rested.',
   },
   {
     id: 'objetivo',
     title: 'Elige tu objetivo',
-    mission: 'Haz K.O. a un personaje rival.',
+    mission: 'Haz K.O. a un personaje rival con Kawamatsu.',
+    sources: [569032, 569033],
     hint: 'No todos los personajes se pueden atacar. Fíjate en cuál está girado.',
     ruleIds: ['7-1-1-2', '7-1-4-1-2'],
     create: () =>
-      table(you, { characters: [on(cards.artillero)] }, { characters: [on(cards.vigia, true), on(cards.grumete)] }),
+      table(you, green('Tú', { characters: [on(real.kawamatsu)] }), blue('Rival', { characters: [on(real.zephyr, true), on(real.jango)] })),
     choices: (state) =>
       state.battle || battleOver(state)
         ? []
         : [
-            attack('artillero', 'vigia', 'Atacar al Vigía'),
-            attack('artillero', 'grumete', 'Atacar al Grumete'),
-            attack('artillero', '1-leader', 'Atacar al Líder'),
+            attack(real.kawamatsu.id, real.zephyr.id, 'Atacar a Zephyr'),
+            attack(real.kawamatsu.id, real.jango.id, 'Atacar a Jango'),
+            attack(real.kawamatsu.id, '1-leader', 'Atacar al Líder'),
           ],
     auto: rivalPasses,
-    goal: (state) => !findOnField(state, 'vigia'),
+    goal: (state) => !findOnField(state, real.zephyr.id),
     win: '¡K.O.! A un personaje solo se le ataca si está Rested (girado).',
     retry: 'Dañaste al Líder, pero la misión era hacer K.O. a un personaje.',
   },
   {
     id: 'blocker',
     title: '¡Bloquea!',
-    mission: 'El Artillero rival va contra tu capitana. Protege tus cartas de Life.',
-    hint: 'La Escudera tiene [Blocker]: puede ponerse en medio.',
+    mission: 'Kawamatsu ataca a tu Luffy. Protege tus cartas de Life.',
+    sources: [569031, 569032],
+    hint: 'Jinbe tiene [Blocker]: puede ponerse en medio.',
     ruleIds: ['7-1-2', '10-1-4-1'],
     create: () =>
-      run(table(rival, { characters: [on(cards.escudo)] }, { characters: [on(cards.artillero)] }), [
-        { type: 'attack', attacker: 'artillero', target: '0-leader' },
+      run(table(rival, red('Tú', { characters: [on(real.jinbe)] }), green('Rival', { characters: [on(real.kawamatsu)] })), [
+        { type: 'attack', attacker: real.kawamatsu.id, target: '0-leader' },
       ]),
     choices: (state) =>
       state.battle?.step === 'block'
         ? [
-            { id: 'bloquear', label: 'Bloquear con la Escudera', action: { type: 'block', uid: 'escudo' }, card: 'escudo' },
+            { id: 'bloquear', label: 'Bloquear con Jinbe', action: { type: 'block', uid: real.jinbe.id }, card: real.jinbe.id },
             { id: 'pasar', label: 'No bloquear', action: { type: 'skip-block' } },
           ]
         : [],
     auto: (state) => (state.battle?.step === 'counter' ? { type: 'resolve' } : null),
     goal: (state) => state.players[you].life.length === 3,
-    win: '¡Bien defendido! La Escudera recibió el ataque y tus 3 cartas de Life siguen intactas.',
+    win: '¡Bien defendido! Jinbe recibió el ataque y tus 3 cartas de Life siguen intactas.',
     retry: 'Recibiste 1 de daño. A veces conviene, pero esta misión pedía proteger tus Life.',
   },
   {
     id: 'counter',
     title: 'Contraataca con Counter',
-    mission: 'El ataque tiene 6000 y tu capitana 5000. Evita el daño.',
+    mission: 'Kawamatsu ataca con 6000 y tu Kuzan tiene 5000. Evita el daño.',
+    sources: [569033, 569032],
     hint: 'Empatar no basta: tu poder debe superar al del ataque.',
     ruleIds: ['7-1-3', '7-1-4-2'],
     create: () =>
-      run(table(rival, { hand: [cards.grumete, cards.vigia] }, { characters: [on(cards.artillero)] }), [
-        { type: 'attack', attacker: 'artillero', target: '0-leader' },
+      run(table(rival, blue('Tú', { hand: [real.jango, real.zephyr] }), green('Rival', { characters: [on(real.kawamatsu)] })), [
+        { type: 'attack', attacker: real.kawamatsu.id, target: '0-leader' },
         { type: 'skip-block' },
       ]),
     choices: (state) =>
@@ -173,7 +182,7 @@ export const scenes: Scene[] = [
 
 /** `null` mientras la batalla del reto no haya terminado. */
 export const verdict = (scene: Scene, state: GameState): 'win' | 'retry' | null =>
-  battleOver(state) ? (scene.goal(state) ? 'win' : 'retry') : null;
+  (scene.complete?.(state) ?? battleOver(state)) ? (scene.goal(state) ? 'win' : 'retry') : null;
 
 export interface Clash {
   attacker: string;

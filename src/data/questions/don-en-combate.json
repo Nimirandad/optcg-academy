@@ -27,7 +27,8 @@
       ],
       "assumption": "No hay otros efectos.",
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "don-en-combate-2",
@@ -54,7 +55,8 @@
         "6-5-5-4"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "don-en-combate-3",
@@ -81,7 +83,8 @@
         "6-2-3"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

@@ -2,6 +2,7 @@
 import { createState, type PlayerSpec } from '../../domain/game/state';
 import { apply } from '../../domain/game/reducer';
 import type { ActionResult, CardDef, GameState } from '../../domain/game/types';
+import { officialCombatCards as real } from '../combat/official';
 import { cards, pile } from '../shared/cards';
 
 export interface Scenario {
@@ -46,7 +47,10 @@ export const scenarios: readonly Scenario[] = [
     goal: 'Atacante y objetivo tienen el mismo poder: observa quién gana.',
     attacker: '0-leader',
     target: '1-leader',
-    create: () => table(),
+    create: () => table(
+      { leader: { card: real.zoro }, deck: [real.kawamatsu], life: pile([real.kawamatsu], 3) },
+      { leader: { card: real.kuzan }, deck: [real.jango], life: pile([real.jango], 3) },
+    ),
   },
   {
     id: 'fallido',

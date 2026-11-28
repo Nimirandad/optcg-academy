@@ -27,7 +27,8 @@
       ],
       "assumption": "No tiene además [Rush].",
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "palabras-clave-2",
@@ -55,7 +56,8 @@
       ],
       "assumption": "La carta no indica otra cosa.",
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "palabras-clave-3",
@@ -83,7 +85,8 @@
         "3-1-6"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

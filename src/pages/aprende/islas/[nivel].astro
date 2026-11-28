@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import IslandLessons from '../../../features/voyage/IslandLessons.svelte';
+import { islandsOf } from '../../../features/voyage/islands';
+import Base from '../../../layouts/Base.astro';
+import { levels, sortLessons } from '../../../lib/academy';
+import { withBase } from '../../../lib/paths';
+
+export async function getStaticPaths() {
+  const all = sortLessons(await getCollection('lessons'));
+  const islands = islandsOf(all);
+  return Object.entries(levels).flatMap(([key, name]) => {
+    const lessons = all.filter((lesson) => lesson.data.level === Number(key))
+      .map(({ id, data }) => ({ id, title: data.title, href: withBase(`aprende/${id}/`) }));
+    return lessons.length ? [{ params: { nivel: key }, props: { name, lessons, required: islands.filter((island) => island.level < Number(key)) } }] : [];
+  });
+}
+
+const { name, lessons, required } = Astro.props;
+---
+<Base title={name} description={`Lecciones de la isla ${name}.`}>
+  <h1>{name}</h1>
+  <p><a class="button" href={withBase('aprende/')}>← Volver a las islas</a></p>
+  <IslandLessons {lessons} {required} client:load />
+</Base>

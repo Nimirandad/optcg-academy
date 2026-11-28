@@ -38,14 +38,14 @@ describe('Starter Decks candidatos', () => {
       for (const card of cards) expect(card.printings.map((printing) => printing.productId)).toContain(products[index]!.id);
     }
     expect(all.filter((card) => card.effect !== undefined || card.trigger !== undefined)).toEqual([]);
-    expect(all.every((card) => card.reviewStatus === 'pending')).toBe(true);
+    expect(all.every((card) => card.reviewStatus === 'reviewed' && card.reviewedBy === 'Propietario del proyecto')).toBe(true);
   });
 
   it.each(snapshots)('todas están disponibles y dentro de bloque en $id', (snapshot) => {
     const lookup = new Map<string, Card>(all.map((card) => [card.canonicalId, card]));
     const date = snapshot.effectiveFrom > '2026-11-27' ? snapshot.effectiveFrom : '2026-11-27';
     for (const cards of decks) {
-      // Solo interesan los hallazgos por carta: las cantidades de cada mazo aún no se conocen.
+      // Solo interesan los hallazgos por carta: esta prueba no verifica cantidades.
       const list = {
         id: 'sin-cantidades',
         leaderId: cards.find((card) => card.category === 'leader')!.canonicalId,
@@ -78,9 +78,9 @@ describe('listas cargadas', () => {
   const check = (cardData: Map<string, Card>) =>
     lists.map((list) => ({ deck: list, validation: validateDeck(list, { cards: cardData, snapshot: snapshots[0]!, suspensions: [] }, '2026-11-27') }));
 
-  it('están aprobadas, pero no se recomiendan mientras las cartas sigan sin revisar', () => {
-    expect(lists.every((list) => list.reviewStatus === 'reviewed')).toBe(true);
-    const candidates = check(lookup);
+  it('quedan en revisión si los datos se regeneran como pendientes', () => {
+    const pending = new Map([...lookup].map(([id, card]) => [id, { ...card, reviewStatus: 'pending' as const }]));
+    const candidates = check(pending);
     for (const { validation } of candidates) {
       expect(validation).toMatchObject({ status: 'pending-review', violations: [], unknowns: [] });
       expect(validation.pendingReview.filter((item) => !item.startsWith('Carta '))).toEqual([]);
@@ -88,8 +88,8 @@ describe('listas cargadas', () => {
     expect(rankDecks(candidates)).toEqual([]);
   });
 
-  it('con las cartas revisadas (simulado) serían válidas', () => {
-    const reviewed = new Map([...lookup].map(([id, card]) => [id, { ...card, reviewStatus: 'reviewed' as const }]));
-    expect(check(reviewed).map((item) => item.validation.status)).toEqual(Array(5).fill('valid'));
+  it('las cinco listas aprobadas son válidas con el snapshot del 2026-11-27', () => {
+    expect(lists.every((list) => list.reviewStatus === 'reviewed')).toBe(true);
+    expect(check(lookup).map((item) => item.validation.status)).toEqual(Array(5).fill('valid'));
   });
 });

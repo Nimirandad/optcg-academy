@@ -2,7 +2,7 @@
 
 Plataforma educativa **no oficial** de ONE PIECE Card Game en español de Latinoamérica. No está afiliada ni respaldada por Bandai ni por los titulares de ONE PIECE.
 
-**Estado:** Fase 3 (academia) implementada, pendiente de revisión humana: 24 lecciones, casos y desafíos. Reglas, glosario y Q&A figuran como revisados (no por un juez). Fase 4 (simuladores de combate, turnos, playmat y efectos) implementada con cartas ficticias y aprobada por el propietario. Mazos todavía sin contenido. Ver [PROGRESS.md](PROGRESS.md).
+**Estado:** Fase 7 de QA de lanzamiento. El sitio reúne el reglamento y las aclaraciones de referencia, 24 lecciones, cuatro simuladores educativos y un catálogo de mazos con fichas. El seguimiento de cobertura, vigencia y verificaciones está en [PROGRESS.md](PROGRESS.md).
 
 ## Requisitos
 
@@ -42,7 +42,7 @@ Cada fusión (o push) en `main` publica el sitio: el workflow **CI** verifica y,
 
 - La fuente de Pages está configurada como **GitHub Actions** (*Settings → Pages*).
 - Para volver a publicar sin cambios: *Actions → CI → Run workflow* sobre `main`.
-- Para volver a una versión anterior: revertir el commit en `main`.
+- La [guía de mantenimiento y rollback](docs/mantenimiento.md) describe qué verificar antes de publicar y cómo restaurar una versión segura.
 
 ## Actualización de datos
 
@@ -57,6 +57,8 @@ Las cartas prohibidas se actualizan a mano en `src/data/restrictions/standard.js
 ### Mazos y suspensiones
 
 `npm run validate:decks` muestra la legalidad de cada mazo hoy y en las fechas con cambios conocidos (salida 2 si hoy no hay formato o algún mazo es ilegal; `-- --fecha AAAA-MM-DD` cambia la fecha).
+
+Las fichas Standard y el informe de legalidad toman la fecha más antigua de la comparación completa aprobada en `src/lib/standard-checks.ts`. Al aprobar una nueva comparación, guarda el informe de `--salida` en `docs/sources/` y actualiza la importación. Usa un informe de las cuatro áreas, con consulta real autorizada, todas las fuentes correctas y sin diferencias pendientes. Las fichas muestran un aviso pasadas 48 horas y dejan la vigencia sin confirmar pasados 7 días. El informe muestra por separado el resultado del validador y cuántos mazos se pueden recomendar en la fecha actual.
 
 Ante un cambio detectado y aún sin revisar (por ejemplo, una prohibición), añadir una entrada a `src/data/safety/standard.json`, ejecutar los comandos de arriba y publicar con prioridad (al fusionar en `main`):
 

@@ -6,7 +6,7 @@ order: 3
 prerequisites: ["anatomia-de-las-cartas"]
 ruleIds: ["2-3-3", "2-3-5", "5-1-2-2"]
 exerciseIds: ["colores-1", "colores-2", "colores-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Seis colores

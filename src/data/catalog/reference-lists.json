@@ -1,0 +1,282 @@
+{
+  "st-36": {
+    "label": "ST-36 · Lista de caja según TCG Spikes",
+    "source": {
+      "url": "https://tcgspikes.com/guides/one-piece/are-the-st-31-to-st-36-six-color-starter-decks-worth-it",
+      "retrievedAt": "2026-11-27",
+      "reviewStatus": "pending"
+    },
+    "leaderId": "OP10-099",
+    "entries": [
+      {
+        "cardId": "OP10-101",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-103",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-109",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-111",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-114",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP12-113",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP13-116",
+        "quantity": 4
+      },
+      {
+        "cardId": "P-085",
+        "quantity": 2
+      },
+      {
+        "cardId": "P-088",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST36-001",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST36-002",
+        "quantity": 2
+      },
+      {
+        "cardId": "ST36-003",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST36-004",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST36-005",
+        "quantity": 2
+      }
+    ]
+  },
+  "OP09-081": {
+    "label": "Marshall.D.Teach · penguino s, ChinoizeCup, 2 nov 2026",
+    "source": {
+      "url": "https://tcgenius.gg/one-piece/tournaments/OP09-081",
+      "retrievedAt": "2026-11-27",
+      "reviewStatus": "pending"
+    },
+    "leaderId": "OP09-081",
+    "entries": [
+      {
+        "cardId": "OP09-089",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-095",
+        "quantity": 3
+      },
+      {
+        "cardId": "OP11-083",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-090",
+        "quantity": 4
+      },
+      {
+        "cardId": "EB05-046",
+        "quantity": 2
+      },
+      {
+        "cardId": "OP09-086",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-083",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-084",
+        "quantity": 1
+      },
+      {
+        "cardId": "OP10-082",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST27-003",
+        "quantity": 2
+      },
+      {
+        "cardId": "ST27-005",
+        "quantity": 1
+      },
+      {
+        "cardId": "OP09-093",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP07-096",
+        "quantity": 3
+      },
+      {
+        "cardId": "OP09-096",
+        "quantity": 3
+      },
+      {
+        "cardId": "OP09-098",
+        "quantity": 3
+      },
+      {
+        "cardId": "OP09-099",
+        "quantity": 4
+      }
+    ]
+  },
+  "OP10-099": {
+    "label": "Eustass “Captain” Kid · Ken-Chan, Asia Finals, 9 feb 2025",
+    "source": {
+      "url": "https://egmanevents.com/one-piece-op10-tournament-deck-lists",
+      "retrievedAt": "2026-11-27",
+      "reviewStatus": "pending"
+    },
+    "leaderId": "OP10-099",
+    "entries": [
+      {
+        "cardId": "P-088",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-101",
+        "quantity": 2
+      },
+      {
+        "cardId": "OP10-108",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-111",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-114",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-112",
+        "quantity": 2
+      },
+      {
+        "cardId": "OP10-119",
+        "quantity": 4
+      },
+      {
+        "cardId": "EB01-057",
+        "quantity": 2
+      },
+      {
+        "cardId": "OP10-109",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP07-107",
+        "quantity": 2
+      },
+      {
+        "cardId": "OP05-102",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP05-105",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-105",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP07-119",
+        "quantity": 4
+      },
+      {
+        "cardId": "EB01-059",
+        "quantity": 2
+      }
+    ]
+  },
+  "st-27": {
+    "label": "ST-27 · Lista de caja según FernandoTCG",
+    "source": {
+      "url": "https://onepiece.gg/decks/blackbeard-st-27/",
+      "retrievedAt": "2026-11-27",
+      "reviewStatus": "pending"
+    },
+    "leaderId": "OP09-081",
+    "entries": [
+      {
+        "cardId": "OP09-089",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-095",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST27-001",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST27-002",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-090",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-091",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-088",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP09-086",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST27-004",
+        "quantity": 2
+      },
+      {
+        "cardId": "OP09-083",
+        "quantity": 4
+      },
+      {
+        "cardId": "OP10-084",
+        "quantity": 4
+      },
+      {
+        "cardId": "ST27-003",
+        "quantity": 2
+      },
+      {
+        "cardId": "ST27-005",
+        "quantity": 2
+      },
+      {
+        "cardId": "OP09-099",
+        "quantity": 4
+      }
+    ]
+  }
+}

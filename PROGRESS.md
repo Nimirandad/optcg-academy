@@ -1,18 +1,119 @@
 # Estado del desarrollo
 
-**Última actualización:** 2026-11-27 · **Fase actual:** 6 (Automatización), con T6.1 a T6.4 hechas y T6.5 solo en local; ningún workflow nuevo se ha ejecutado en GitHub. Siguen abiertas la Fase 5 (interfaz de filtros T5.6 y fichas T5.8) y T3.6 (revisión humana de la Fase 3). Todo en local, sin commit.
+**Última actualización:** 2026-11-27 · **Fase actual:** 7 (QA de lanzamiento), autorizada en ADR-049. T7.2–T7.5 hechas. Quedan pendientes la comprobación con lector de pantalla (T7.1), la verificación de incidencias en GitHub (T6.5) y la publicación (T7.6).
+
+## QA de lanzamiento (2026-11-27)
+
+- Se corrigió el nombre accesible de las cartas del combate guiado y se comprobó el flujo de foco con teclado. El árbol de accesibilidad expone acción, nombre, poder y estado. VoiceOver se activó y se restauró su ajuste inicial. Falta confirmar sus anuncios.
+- Lighthouse 13.6.0 en móvil dio 98 de rendimiento en portada y 100 en Aprende, Mazos y Combate. Las cuatro rutas obtuvieron 100 en accesibilidad y CLS 0. La portada pasó de 450 a 250 KiB transferidos tras incorporar variantes para el mapa y recomprimir la ilustración móvil.
+- Guía editorial, guía de mantenimiento y rollback, avisos y créditos actualizados. Build local sin copias oficiales de cartas, PDF ni hojas de cálculo. El [informe de QA](docs/coverage/qa-lanzamiento-2026-11-27.md) registra la evidencia y los criterios pendientes.
+- `npm run check`, `npm run lint`, `npm run validate`, `npm run validate:decks`, `npm test` (310 pruebas) y `npm run build` correctos. E2E de escritorio y 320 px: 194 de 194 antes de los ajustes y 12 de 12 dirigidas después. La repetición completa posterior se interrumpió por tiempos de espera.
+
+## Modal de mazos por color (2026-11-27)
+
+- Las cartas de color abren el mazo en un diálogo nativo con desplazamiento interno, cierre visible y devolución del foco. El diálogo y su fondo se animan al abrir y cerrar, respetando la preferencia de movimiento reducido. También se cierra al pulsar fuera. Se conservan los destinos por ancla para los filtros y la navegación sin JavaScript.
+- Verificación con check, lint, build, 310 pruebas unitarias y 10 E2E de Mazos en escritorio y móvil de 320 px, con axe y cierre por teclado.
+
+## Fichas de mazos y vigencia de Standard (2026-11-27)
+
+- Nueve fichas estáticas bajo `/mazos/[slug]/` con cantidades, exportación y fuentes. Cinco listas revisadas se evalúan con los snapshots y las suspensiones. ST-27, ST-36 y las dos listas de torneo se muestran como referencias pendientes de revisión. Los precios, la dificultad y la estrategia quedan pendientes de datos editoriales.
+- El sitio y `validate:decks` usan el informe versionado de la comparación completa autorizada (ADR-037). Manda la comprobación más antigua de las fuentes. El sitio advierte después de 48 h y deja sin confirmar la vigencia después de 7 días o si la fecha efectiva carece de snapshot aprobado. Confirmar una nueva comparación y versionar su informe son pasos manuales.
+- Verificado con `npm run check`, `npm run lint`, `npm run validate`, 310 pruebas de `npm test`, `npm run validate:decks` con y sin fecha, y `E2E_PORT=4331 npm run test:e2e -- tests/e2e/decks.spec.ts --workers=2`. Build y 10 E2E correctas en Chromium de escritorio y 320 px, con axe y reloj simulado para vigencia, aviso y caducidad. El informe de legalidad detectó ausencia de snapshot aprobado desde el 2028-04-01.
+- T6.5: la [ejecución autorizada del workflow de formato en `main`](https://github.com/Nimirandad/optcg-academy/actions/runs/46084302100) completó la comparación sin diferencias ni fallos. GitHub omitió `avisar`. Permanece pendiente verificar el permiso de escritura. La comparación de una sola área no actualiza la evidencia de la comparación completa.
+
+## Cabecera en una fila (2026-11-27)
+
+- Desde más de 56 rem, el logo, la navegación y los controles comparten una fila. La cabecera usa Avenir Next cuando está disponible, con respaldo del sistema, subrayado animado y apertura escalonada del menú compacto. El teclado y la preferencia de movimiento reducido se respetan.
+- Verificación con check, lint, build, 310 pruebas unitarias y 10 pruebas E2E de cabecera, navegación, modo oscuro y funcionamiento sin JavaScript. Se comprobó la distribución a 908 y 320 px.
+
+## Identidad gráfica de OPTCG Academy (2026-11-27)
+
+- La cabecera usa una marca compuesta con dos cartas, una rosa de los vientos y «OPTCG Academy» en Avenir Next. El favicon usa el mismo símbolo. Los PNG finales se dibujaron y compusieron con tipografía para obtener contornos limpios.
+- Prompt del boceto exploratorio con ImageGen integrado: Design a polished, original horizontal brand lockup for OPTCG Academy, an independent Spanish-language trading-card learning platform. Transparent background. One compact icon at left, one aligned two-line wordmark at right. Create a single upright playing card using a distinctive squared-off top-right clipped corner; the card is solid muted champagne gold (#DBBE80), holding one large deep evergreen (#10292B) four-point compass cutout with an elongated northern point. Make the outer card silhouette bold and extremely clean at favicon sizes, no circular enclosure, no secondary cards. The wordmark reads exactly “OPTCG” on the first line and “Academy” on the second line. “OPTCG” in warm ivory (#F4EFE6), strong humanist uppercase sans with controlled letter spacing. “Academy” in muted champagne gold (#DBBE80), same sans family, bold title case with excellent visibility at small sizes, slightly smaller than the first line. Keep both baselines and left edges carefully aligned. Generous clean separation between card and words, vertically centered optically. Overall aspect ratio around 3:1 and tight transparent bounds. Use only solid flat fills, no outlines around letters, no black drop shadow, no gradients, no shading, no textures, no extraneous highlights, no mockup, no badges, no external franchise branding, no extra text. Finished brand identity artwork, calibrated for a dark evergreen header viewed at 128px width.
+- Verificación: check, lint, build, 310 pruebas unitarias y 2 E2E para la cabecera en escritorio y móvil de 320 px.
+
+## Logo con el nombre de la academia (2026-11-27)
+
+- La cabecera usa `public/arte/logo-optcg-academy.png`, una versión horizontal generada con ImageGen integrado. El favicon usa el emblema circular.
+- Prompt de generación: Extend the reference logo into a compact horizontal header lockup on transparent background. Keep the existing circular gold/navy card-and-teal-compass emblem intact on the left. To its right put exactly "OPTCG Academy", ideally stacked as "OPTCG" in heavy warm ivory capitals and "Academy" in bold warm gold title case, with no other text. Keep the wordmark as tall as the emblem, bold and highly legible when the whole lockup is displayed at 52px tall. Tight bounding box around the full design, simple clean typography, no shadows, extra ornament, border, texture, or watermark.
+- Verificación: check, lint, build, 310 pruebas unitarias y 2 E2E con el logo y los controles en la misma fila en escritorio y móvil de 320 px.
+
+## Emblema y navegación de Simuladores (2026-11-27)
+
+- El emblema generado con ImageGen integrado se usa en la cabecera y como favicon. El enlace de inicio conserva su nombre accesible. Archivo: `public/arte/logo-academy.png`.
+- Prompt de generación: Logo-brand for OPTCG Academy, a community trading card game academy with a modern nautical theme. Single original wordless emblem for a web header and favicon. A bold warm ivory playing card with one centered teal four-point compass needle, framed in a circular deep navy badge with a thick antique-gold rim. An offset second card edge suggests a deck. Centered, nearly fill square with 6% clear margin, isolated on genuinely transparent background. Flat graphic, strong silhouette, clean edges, simple enough to read at 44 pixels. No typography, numerals, skulls, external logos, characters, textures, or watermark.
+- El último robo, Bloqueo y Counter y Duelo en negativo aparecen en la misma navegación que los cuatro modos originales, con iconos de cartas, escudo y trofeo.
+- Verificación: `npm run check`, `npm run lint`, 310 pruebas unitarias, build y 4 pruebas E2E de navegación, carga del logo y simulación en escritorio y móvil de 320 px.
+
+## Ejercicios en Simuladores (2026-11-27)
+
+- El último robo se abre desde Turnos. Bloqueo y Counter y Duelo en negativo se abren desde Combate. Los tres tienen una ruta propia y también aparecen en el índice de Simuladores. Casos y desafíos conserva su cuestionario por nivel.
+- Verificación con `npm run check`, `npm run lint`, `npm test` (310 pruebas), compilación de producción y 6 pruebas E2E de navegación y resolución en escritorio y 320 px.
+
+## Carta oficial en el simulador guiado de Efectos (2026-11-27)
+
+- El ejercicio usa a Monkey.D.Luffy (ST21-001) y Jinbe (ST31-002), con el efecto de asignar DON!! Rested cotejado en [la lista oficial ST-31](https://en.onepiece-cardgame.com/cardlist/?series=569031) el 2026-11-27.
+- El motor conserva el DON!! que cumple la condición del Leader y transfiere los DON!! Rested elegidos al Character. Verificación en Chromium desktop y 320 px, compilación de producción y respuesta PNG local para ambas cartas.
+
+## Distribución de la mesa y barra de acciones (2026-11-27)
+
+- El campo rival se refleja: sus recursos quedan encima del líder y sus cartas jugadas miran al centro de la mesa. Los recursos propios quedan debajo del líder. Ambos tienen una pila de vida lateral con contador. Los controles quedan dentro de la mesa compartida, anclados al borde inferior visible mientras se recorre.
+- Verificación: `check`, `lint`, build, 310 pruebas unitarias y 4 pruebas E2E de los cuatro simuladores guiados y los cinco retos, en escritorio y móvil de 320 px.
+
+## Zonas y fases visibles en la mesa (2026-11-27)
+
+- La mesa compartida de retos y simuladores muestra los mazos, la zona de coste, los DON!! Active/Rested y la mano propia. Del rival se muestra el tamaño de la mano.
+- Turnos parte del End Phase rival. Al entrar en Refresh, Jinbe se endereza y devuelve el DON!! asignado a coste. Draw añade a Nico Robin a la mano y DON!! Phase añade dos recursos. En Main se puede asignar DON!!, jugar desde la mano o combinar ambas acciones antes de pasar a End.
+- Verificación: lint, check, build, 310 pruebas unitarias y 6 pruebas E2E dirigidas en escritorio y móvil de 320 px.
+
+## Mesa compartida y desbloqueo (2026-11-27)
+
+- Combate, Turnos, Playmat y Efectos comparten la mesa, los controles por carta y la retroalimentación de los retos con ejercicios propios. Los simuladores originales se conservan como práctica libre.
+- El mapa, las páginas de cada isla y el enlace a la siguiente isla respetan el progreso registrado en este navegador. Las reglas y las referencias directas siguen disponibles. Ver ADR-048.
+- Verificación: `check`, `lint`, `validate`, build, 310 pruebas unitarias y 10 E2E dirigidas. Chromium de escritorio y 320 px recorrió las 24 lecciones, verificó el bloqueo por enlace directo y completó los ejercicios de los cuatro simuladores.
+
+## Islas, simuladores y listas de referencia (2026-11-27)
+
+- Mapa en zigzag con conectores curvos continuos, cinco islas ilustradas y ruta propia de lecciones para cada una. Casos por nivel. Accesos con iconos al índice, capítulo anterior y siguiente.
+- Combate independiente de los retos. Las cartas admiten acciones directas de combate, turno, mesa y activación de efectos, con enlaces a las reglas correspondientes.
+- Cuatro listas con cantidades y exportación: ST-27 y ST-36 de caja según fuentes de terceros, y una lista de torneo para OP09-081 y OP10-099. Se comprobó que cada lista suma 50 cartas principales y la correspondencia de las listas de caja con el catálogo de Bandai. Ver ADR-047.
+
+## Ajustes de navegación y presentación (2026-11-27)
+
+- Simuladores separados por ruta; Combate comparte los retos del sitio. Turnos y Playmat usan cartas oficiales en sus mesas nuevas; Efectos conserva cartas didácticas para aislar los casos.
+- Ruta del curso con conectores continuos. Casos y desafíos comparte una sola sección con los 12 casos prácticos, sin repetir los cuestionarios de Aprende.
+- Referencia numerada agrupada por punto, 9 ilustraciones de temas, controles con iconos y animaciones compatibles con reducción de movimiento.
+- Selector de mazos de 3 × 2, amarillo brillante y ST-27 Negro con 15 imágenes para uso local; cantidades sin confirmar. ADR-046 registra fuentes y alcance.
+- Node 24: `check` sin errores, `lint`, `validate`, `build`, 310 pruebas unitarias y 20 E2E dirigidas correctas. Comprobación local a 1280 y 320 px: dos filas de tres cartas, 15 imágenes para ST-27, arte real en Combate, Turnos y Playmat, cero incidencias de axe en Mazos. Se verificaron las 492 anclas únicas y que el build excluye el arte oficial.
+
+## Interactividad para principiantes (2026-11-27)
+
+- Reglas numeradas agrupadas y plegadas con enlaces que abren la regla exacta. «La mesa» y la lección de zonas incluyen una práctica de colocación basada en el manual oficial simplificado.
+- Simuladores con accesos directos, cartas ilustradas y selección visual de atacante y objetivo en combate libre. Los cinco retos de combate emplean cartas oficiales.
+- Mazos por color con acceso directo al producto y sus cartas, referencias y exportación. El arte oficial se sirve desde copias de Bandai guardadas fuera de Git para el uso local autorizado. ST-36 conserva las cantidades como desconocidas.
+- Glosario y Q&A con filtros locales. Casos y desafíos tienen accesos por nivel. Arte náutico original renovado con estética manga.
+- Verificación: `npm run check`, `npm run lint`, `npm run validate`, 310 pruebas unitarias y build de producción con 18 E2E dirigidas en Chromium (escritorio y 320 px). Se comprobaron las 492 anclas únicas y las 90 respuestas PNG en desarrollo. Se inspeccionó la carga del arte en Mazos y Jugar; el build queda sin copias de arte oficial. La primera prueba contra el servidor de desarrollo incluyó fallos por el reinicio, cambios de escenario durante la ejecución y el selector de la barra de Astro; la pasada estática posterior verifica los recorridos principales sobre el estado final.
+
+## Identidad y catálogo (2026-11-27)
+
+- Portada, cabecera, mapa, temas, cartas de práctica y favicon con ilustraciones originales generadas. Recursos locales en `public/arte/`; portada con una variante para pantallas pequeñas. La portada pública de OPlayTCG sirvió como referencia de navegación por set.
+- `/mazos/` muestra 90 cartas de las listas oficiales ST-31 a ST-36. ST-31 a ST-35 incluyen cantidades por carta, fuentes y listas copiables; ST-36 sigue sin cantidades confirmadas.
+- Aprobación del propietario registrada en ADR-043. Se aplicó a fichas de carta, lecciones, cuestionarios, casos y temas. Se retiraron los avisos de revisión de las páginas educativas y se mantuvieron enlaces, versiones e identificadores de las fuentes.
+- `npm run validate:decks -- --fecha 2026-11-27` devuelve cinco listas `valid` para esa fecha con las fuentes locales. Falta snapshot aprobado desde el 2028-04-01. Las fichas no muestran un distintivo de vigencia automática.
+- ADR-044 propone usar cartas oficiales en un reto piloto. El piloto de retos guiados se autorizó después en ADR-045.
+- Verificación con Node 24: `npm run check` (0 errores), `npm run lint`, `npm run validate`, `npm test` (310/310) y `npm run build` (paso previo de Playwright). E2E dirigido: 20/20, incluye escritorio y 320 px, catálogo, portada, combate y recorrido de 24 lecciones. La primera pasada completa se interrumpió tras tiempos de espera y dos selectores desactualizados que pasaron en el segundo intento. Se inspeccionó la portada en claro y oscuro.
 
 ## Relevo para la próxima sesión
 
-- **Rediseño (ADR-033, 2026-11-27):** aplicado en local a todo el sitio y diseño aprobado por el propietario. Nueve temas de reglas sin revisión humana (`src/data/topics/`).
+- **Rediseño (ADR-033, 2026-11-27):** aplicado en local a todo el sitio y diseño aprobado por el propietario. Nueve temas de reglas aprobados en ADR-043 (`src/data/topics/`).
 - **Encargo:** Fase 6 iniciada el 2026-11-27 con T6.1 (ADR-031). Sin consultas automáticas a fuentes ni commit sin preguntar.
 - **Publicado (2026-11-27):** el PR 1 (Fases 2 a 6 y rediseño) se fusionó y `f190866` se desplegó en Pages. Desde ADR-042, fusionar en `main` publica (rama `publicar-al-fusionar`).
 - **Entorno:** usar Node 24 (`PATH="$HOME/.nvm/versions/node/v24.22.3/bin:$PATH"`). Si `npm run dev` ocupa el puerto: `E2E_PORT=4322 npm run test:e2e`; con el equipo cargado, añadir `-- --workers=2`.
 - **Local, sin versionar:** `references/` (PDF oficiales, texto extraído de Q&A y `references/cards/`). Para regenerar cartas y productos: `node scripts/sync/import-cards.ts 2026-11-27`, con la fecha de descarga. No usa la red; regenerar deja las cartas en `pending`.
-- **Fase 6, siguiente:** verificar T6.5 y los workflows en GitHub. Commit, push, cada ejecución que consulte el sitio, programar los `sync-*` o una dependencia nueva (ADR-005) requieren autorización. T5.8 debe pasar las suspensiones al validador, usar `freshness` y decidir dónde persiste la última comprobación (ADR-039).
+- **Fase 6, siguiente:** verificar T6.5 y los workflows en GitHub. Commit, push, cada ejecución que consulte el sitio, programar los `sync-*` o una dependencia nueva (ADR-005) requieren autorización. Las fichas ya integran suspensiones y caducidad con el informe versionado del ADR-037.
 - **Copias para T6.2:** las 8 páginas de `references/cache/consulta-2026-11-27/` (ADR-034). Consultar de nuevo requiere autorización.
 - **Datos para la Fase 6:** snapshots aprobados en `src/data/rotation/`, listas en `src/data/decks/`, cartas en `src/data/cards/`. Una prueba exige que las prohibiciones de los snapshots coincidan con `src/data/restrictions/standard.json`.
-- **Pendiente del propietario:** revisar los datos de las 90 cartas (sin eso ningún mazo es `valid`), cantidades de ST-36 y revisión de la Fase 3 (T3.6). ADR-022, 025, 026, 032, 035, 036 y 039 siguen en «Propuesta».
+- **Pendiente del propietario:** revisar las cantidades de referencia de ST-36 (ADR-047). ADR-022, 025, 026, 032, 035, 036 y 039 siguen en «Propuesta».
 
 ## Hecho
 
@@ -253,11 +354,10 @@ Los scripts de extracción de la Fase 0 fueron temporales; el validador permanen
 - **2026-12-18:** ST-37 y ST-38. Reglas, Q&A y restricciones deben revisarse de nuevo antes de publicar.
 - **2027-04-01:** bloques 1 y 2 salen de Standard, salvo excepciones.
 
-## Bloqueos (requieren al propietario)
+## Pendientes de datos y alcance
 
-1. Revisar los datos de las cartas de ST-31 a ST-35 (necesario para recomendar).
-2. Cantidades de ST-36.
-3. Revisión humana de lecciones, preguntas y casos (T3.6).
+- Revisión de las cantidades de referencia de ST-36 (ADR-047).
+- Confirmar condiciones antes de usar imágenes oficiales en un despliegue público.
 
 ## Definido por el propietario
 
@@ -282,8 +382,7 @@ Los scripts de extracción de la Fase 0 fueron temporales; el validador permanen
 
 ## Próximos pasos
 
-1. Fase 6: tras el commit local (ADR-041) y con autorización para push, verificar los workflows en GitHub.
-2. Fase 5 restante: revisión de cartas, interfaz de filtros (T5.6) y fichas (T5.8).
-3. Revisar la Fase 3 (T3.6).
-4. Commit, push y fusión solo con autorización. Desde ADR-042, cada fusión en `main` publica el sitio.
-5. El día de publicar: repetir la comprobación de reglamento, Q&A, erratas, bloques y restricciones.
+1. Fase 6: verificar el trabajo de aviso y su permiso `issues: write` ante una diferencia o fallo autorizado. La comparación de formato ya pasó en GitHub.
+2. Completar la prueba de lector de pantalla (T7.1) y revisar las cantidades de referencia de ST-36.
+3. Commit, push y fusión solo con autorización. Desde ADR-042, cada fusión en `main` publica el sitio.
+4. El día de publicar: repetir la comprobación de reglamento, Q&A, erratas, bloques y restricciones.

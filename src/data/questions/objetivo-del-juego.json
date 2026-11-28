@@ -26,7 +26,8 @@
         "1-2-1-1-1"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "objetivo-del-juego-2",
@@ -53,7 +54,8 @@
         "1-2-1-1-2"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "objetivo-del-juego-3",
@@ -81,7 +83,8 @@
         "1-2-4"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

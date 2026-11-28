@@ -15,6 +15,6 @@ export const islandsOf = (lessons: { id: string; data: { level: number } }[]) =>
     const level = Number(key);
     const own = lessons.filter((lesson) => lesson.data.level === level).map((lesson) => lesson.id);
     return own.length
-      ? [{ level, name, teaser: teasers[level]!, href: withBase(`aprende/${own[0]}/`), lessons: own }]
+      ? [{ level, name, teaser: teasers[level]!, href: withBase(`aprende/islas/${level}/`), lessons: own }]
       : [];
   });

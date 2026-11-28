@@ -14,8 +14,7 @@ const extras = [
   { path: 'reglas/', label: 'Reglas', text: 'Resuelve una duda' },
   { path: 'glosario/', label: 'Glosario', text: '¿Qué significa?' },
   { path: 'mazos/', label: 'Mazos', text: 'Encuentra tu color' },
-  { path: 'casos/', label: 'Casos', text: 'Resuelve situaciones' },
-  { path: 'desafios/', label: 'Desafíos', text: 'Ponte a prueba' },
+  { path: 'casos/', label: 'Casos y desafíos', text: 'Resuelve situaciones' },
   { path: 'qa/', label: 'Q&A', text: 'Aclaraciones oficiales' },
   { path: 'actualizaciones/', label: 'Actualizaciones', text: 'Estado de las fuentes' },
 ];
@@ -23,27 +22,14 @@ const extras = [
 <Base title="OPTCG Academy" description="Plataforma educativa no oficial de ONE PIECE Card Game en español.">
   <section class="hero">
     <div class="words">
-      <p class="eyebrow">OPTCG Academy</p>
       <h1>Zarpa hacia tu primera partida</h1>
-      <p>Aprende ONE PIECE Card Game en español, paso a paso y jugando. No necesitas saber nada.</p>
+      <p>Aprende ONE PIECE Card Game en español, paso a paso y jugando.</p>
       <p class="buttons">
-        <a class="main" href={withBase('jugar/')}>⚔ Prueba un combate</a>
+        <a class="main" href={withBase('jugar/')}>Prueba un combate</a>
         <a href="#mapa">Ver el recorrido</a>
       </p>
     </div>
-    <svg class="scene" viewBox="0 0 320 220" aria-hidden="true" focusable="false">
-      <circle class="sun" cx="245" cy="62" r="36" fill="#ffd76a" />
-      <g class="ship">
-        <path d="M70 140h150l-24 36H96Z" fill="#8a4b2a" />
-        <path d="M70 140h150" stroke="#e8cd8c" stroke-width="5" />
-        <path d="M143 140V30" stroke="#e8cd8c" stroke-width="5" />
-        <path d="M149 38q62 36 0 88Z" fill="#fffaf0" />
-        <path d="M136 52q-48 34 0 70Z" fill="#d8e9f5" />
-        <path d="M143 30l30 9-30 9Z" fill="#e0484d" />
-      </g>
-      <path class="wave back" d="M-80 172q20-16 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0V230H-80Z" fill="#1c6f9e" />
-      <path class="wave front" d="M-80 190q20-14 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0V230H-80Z" fill="#0f4f78" />
-    </svg>
+    <img class="scene" src={withBase('arte/travesia.webp')} srcset={`${withBase('arte/travesia-720.webp')} 720w, ${withBase('arte/travesia.webp')} 1440w`} sizes="(max-width: 44rem) calc(100vw - 2rem), 34rem" width="1440" height="960" alt="" fetchpriority="high" />
   </section>
 
   <section class="map" id="mapa" aria-labelledby="mapa-titulo">
@@ -61,32 +47,29 @@ const extras = [
 
   <h2>Estado de actualización</h2>
   <p class="notice">
-    Sitio en construcción. Reglamento de referencia: versión {inventory.source.version}, fechada el {inventory.source.lastUpdated} y comparada con el PDF oficial el 2026-11-26. Cada explicación indica su estado de revisión. Todavía no hay sincronización automática.
+    Sitio en construcción. Reglamento de referencia: versión {inventory.source.version}, fechada el {inventory.source.lastUpdated} y comparada con el PDF oficial el 2026-11-26. Todavía no hay sincronización automática.
   </p>
 </Base>
 
 <style>
-  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); align-items: center; gap: 1rem; overflow: hidden; border-radius: 1.5rem; background: linear-gradient(170deg, #0b1d38 20%, #1d5c88); color: #fff; box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 0.3); }
-  .words { padding: clamp(1rem, 4vw, 2.5rem); }
-  h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin: 0; line-height: 1.05; }
-  .words p { font-size: 1.15rem; }
-  .buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .buttons a { display: inline-flex; align-items: center; min-height: 52px; padding-inline: 1.4rem; border-radius: 3rem; border: 2px solid #ffe08a; color: #fff; font-weight: 800; text-decoration: none; transition: transform 0.2s; }
-  .buttons .main { background: #ffd76a; color: #2b1d00; box-shadow: 0 0.3rem 0 #9a7415; }
-  .buttons a:hover { transform: translateY(-3px); }
-  .hero :focus-visible, .map :focus-visible { outline: 3px solid #ffe08a; outline-offset: 3px; }
-  .scene { width: 100%; align-self: end; display: block; }
-  .ship { transform-origin: 145px 160px; animation: sail 4s ease-in-out infinite; }
-  .wave.back { animation: drift 7s linear infinite; }
-  .wave.front { animation: drift 4.5s linear infinite reverse; }
-  .sun { animation: glow 5s ease-in-out infinite; }
-  .map { margin-top: 1.5rem; border-radius: 1.5rem; padding: 1rem clamp(0.75rem, 4vw, 2rem) 2rem; background: radial-gradient(circle at 20% 10%, #1d5c88, #0b2440 70%); color: #fff; }
+  .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: stretch; overflow: hidden; border-radius: var(--panel-radius); background: var(--sea); color: #fff; box-shadow: var(--shadow); }
+  .words { align-self: center; padding: clamp(1.2rem, 4vw, 3rem); }
+  h1 { font-size: clamp(2.35rem, 5vw, 4.3rem); margin: 0; line-height: 0.99; }
+  .words p { font-size: 1.1rem; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.25rem; }
+  .buttons a { display: inline-flex; align-items: center; min-height: 48px; padding: 0.45rem 1rem; border-radius: 0.5rem; border: 1px solid var(--accent); color: #fff; font-weight: 750; text-decoration: none; }
+  .buttons .main { background: var(--sun); color: var(--sun-text); }
+  .buttons a:hover { box-shadow: inset 0 0 0 1px var(--accent); }
+  .hero :focus-visible, .map :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .scene { display: block; width: 100%; height: 100%; min-height: 22rem; object-fit: cover; object-position: 55% center; }
+  .map { margin-top: 2rem; border-radius: var(--panel-radius); padding: 1rem clamp(0.75rem, 4vw, 2rem) 2rem; background: var(--sea); color: #fff; }
+  @media (max-width: 44rem) {
+    .hero { grid-template-columns: 1fr; }
+    .scene { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
+  }
   .map h2 { font-size: 1.75rem; margin-bottom: 0; }
   .extras { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 0.75rem; list-style: none; padding: 0; }
   .extras a { display: flex; flex-direction: column; min-height: 44px; padding: 0.75rem 1rem; border: 2px solid var(--border); border-radius: 1rem; background: var(--surface); text-decoration: none; transition: transform 0.2s; }
   .extras a:hover { transform: translateY(-3px); border-color: var(--link); }
   .extras span { color: var(--muted); }
-  @keyframes sail { 50% { transform: translateY(-8px) rotate(2.5deg); } }
-  @keyframes drift { to { transform: translateX(80px); } }
-  @keyframes glow { 50% { opacity: 0.75; } }
 </style>

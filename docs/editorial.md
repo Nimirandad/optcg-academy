@@ -77,6 +77,7 @@ Carga manual de respaldo: si una tabla se extrae mal, crear `references/qa/manua
 - Preguntas: `src/data/questions/<id>.json`. Al menos tres opciones, una correcta, y cada una con el motivo (`rationale`).
 - Cada lección lleva explicación breve, un ejemplo visual en tabla o lista, una práctica y preguntas.
 - Declarar los supuestos en `assumption` cuando una carta podría cambiar la respuesta.
-- Separar los consejos de las reglas. No usar cartas reales como ejemplo.
+- Separar consejos de reglas. Cuando se use una carta real en un ejercicio aprobado (ADR-045 y ADR-047), conservar el código, enlace oficial, fecha de consulta y estado de revisión. Verificar el efecto exacto y los límites del escenario.
 - Al cambiar una pregunta, subir su `version`. El build falla si hay referencias rotas.
 - Casos: `src/data/cases/<id>.json`, con nivel, mecánicas, pasos, reglas y las aclaraciones (`qaIds`) en que se apoyan.
+- Antes de publicar, volver a contrastar reglamento, restricciones, rotación, erratas, lanzamientos y Q&A. Los cambios de interpretación se registran como pendientes hasta revisión humana.

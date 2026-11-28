@@ -26,7 +26,8 @@
         "2-3-3"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "colores-2",
@@ -54,7 +55,8 @@
       ],
       "assumption": "Ninguna carta modifica las reglas de construcción.",
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "colores-3",
@@ -81,7 +83,8 @@
         "2-3-5"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

@@ -5,7 +5,7 @@ const routes = [
   '', 'jugar/', 'aprende/', 'aprende/ataques/', 'aprende/counter/',
   ...['ganar', 'preparar', 'mesa', 'turno', 'don', 'atacar', 'defender', 'efectos', 'palabras'].map((id) => `reglas/tema/${id}/`), 'aprende/objetivo-del-juego/', 'aprende/zonas-de-juego/', 'aprende/fases-del-turno/', 'aprende/palabras-clave/', 'aprende/casos-complejos/', 'reglas/',
   ...Array.from({ length: 11 }, (_, i) => `reglas/${i + 1}/`),
-  'mazos/', 'simuladores/', 'glosario/', 'qa/', 'qa/rules/', 'qa/op18/', 'qa/op17/', 'qa/op14-eb04/', 'qa/op03/', 'casos/', 'desafios/', 'actualizaciones/', 'acerca/', 'buscar/',
+  'mazos/', 'simuladores/', 'simuladores/combate/', 'simuladores/turnos/', 'simuladores/playmat/', 'simuladores/efectos/', 'glosario/', 'qa/', 'qa/rules/', 'qa/op18/', 'qa/op17/', 'qa/op14-eb04/', 'qa/op03/', 'casos/', 'actualizaciones/', 'acerca/', 'buscar/',
 ];
 
 for (const route of routes) {
@@ -80,13 +80,13 @@ test('cada regla del inventario tiene ancla y explicación', async ({ page }) =>
 
 test('Q&A: cobertura, conflictos, erratas y enlace desde la regla', async ({ page }) => {
   await page.goto('qa/');
-  await expect(page.getByRole('main')).toContainText('Pendientes: 0');
+  await expect(page.getByRole('main')).toContainText('Con explicación propia');
   await expect(page.getByRole('link', { name: 'Regla 5-1-2-4' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Aclaración rules-p3-4' })).toBeVisible();
   await expect(page.getByRole('link', { name: /OP13-077/ })).toBeVisible();
 
-  await page.goto('reglas/10/');
-  const rule = page.locator('section', { has: page.locator('[id="regla-10-1-4-1"]') });
+  await page.goto('reglas/10/#regla-10-1-4-1');
+  const rule = page.locator('#regla-10-1-4-1');
   await rule.getByText(/Aclaraciones oficiales relacionadas/).click();
   await rule.getByRole('link', { name: /Rested\?$/ }).click();
   await expect(page).toHaveURL(/\/qa\/rules\/#rules-p5-4$/);
@@ -143,6 +143,33 @@ test('teclado: saltar al contenido y navegar', async ({ page, isMobile }, info) 
   await nav.getByRole('link', { name: 'Reglas' }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('h1')).toHaveText('Reglas');
+});
+
+test('cabecera: navegación junto al logo y menú compacto', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setViewportSize({ width: 908, height: 720 });
+  await page.goto('');
+  const brand = page.getByRole('link', { name: 'Inicio de OPTCG Academy' });
+  const nav = page.getByRole('navigation', { name: 'Principal' });
+  const search = page.getByRole('banner').getByRole('link', { name: 'Buscar' });
+  const menu = page.getByRole('button', { name: 'Menú' });
+  const brandBox = (await brand.boundingBox())!;
+  const navBox = (await nav.boundingBox())!;
+  const last = (await nav.getByRole('link', { name: 'Acerca' }).boundingBox())!;
+  const searchBox = (await search.boundingBox())!;
+  expect(brandBox.x + brandBox.width).toBeLessThan(navBox.x);
+  expect(Math.abs(brandBox.y - navBox.y)).toBeLessThan(12);
+  expect(last.x + last.width).toBeLessThan(searchBox.x);
+  await expect(menu).toBeHidden();
+
+  await page.setViewportSize({ width: 320, height: 640 });
+  await expect(nav).toBeHidden();
+  await menu.click();
+  await expect(nav.getByRole('link', { name: 'Aprende' })).toBeFocused();
+  expect(await nav.evaluate((element) => getComputedStyle(element).animationName)).toBe('none');
+  await page.keyboard.press('Escape');
+  await expect(menu).toBeFocused();
+  await expect(nav).toBeHidden();
 });
 
 test('el modo oscuro se conserva entre páginas', async ({ page }) => {

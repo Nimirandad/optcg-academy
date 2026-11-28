@@ -6,7 +6,7 @@ order: 1
 prerequisites: []
 ruleIds: ["1-1-1", "1-2-1", "1-2-1-1", "1-2-3", "1-3-1"]
 exerciseIds: ["objetivo-del-juego-1", "objetivo-del-juego-2", "objetivo-del-juego-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## La idea central

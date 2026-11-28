@@ -14,8 +14,8 @@ test('la portada lleva al combate y al recorrido', async ({ page }) => {
   await page.goto('');
   await expect(page.getByText('⛵ Estás aquí')).toHaveCount(1);
   await check(page, 'portada');
-  await page.getByRole('link', { name: '⚔ Prueba un combate' }).click();
-  await expect(page.locator('h1')).toHaveText('Aprende a atacar jugando');
+  await page.getByRole('link', { name: 'Prueba un combate' }).click();
+  await expect(page.getByRole('main').getByRole('heading', { level: 1 })).toHaveText('Aprende a atacar jugando');
 });
 
 test('los cinco retos se superan', async ({ page }) => {
@@ -30,22 +30,22 @@ test('los cinco retos se superan', async ({ page }) => {
   await check(page, 'reto superado');
   await next();
 
-  await press('Dar 1 DON!! al Vigía');
+  await press('Dar 1 DON!! a Nico Robin');
   await press('Atacar al Líder rival');
   await won();
   await next();
 
-  await press('Atacar al Grumete');
+  await press('Atacar a Jango');
   await expect(main.getByText('Esa jugada no se puede.')).toBeVisible();
-  await press('Atacar al Vigía');
+  await press('Atacar a Zephyr');
   await won();
   await next();
 
-  await press('Bloquear con la Escudera');
+  await press('Bloquear con Jinbe');
   await won();
   await next();
 
-  await press('Usar Vigía (+2000)');
+  await press('Usar Zephyr(Navy) (+2000)');
   await press('Resolver el ataque');
   await won();
   await expect(page.getByRole('heading', { name: '¡Superaste los 5 retos!' })).toBeVisible();
@@ -53,7 +53,8 @@ test('los cinco retos se superan', async ({ page }) => {
 
 test('se juega tocando cartas con teclado y se puede repetir', async ({ page }) => {
   await page.goto('jugar/');
-  const card = page.getByRole('button', { name: 'Atacar al Líder rival: Líder rival' });
+  const card = page.getByRole('button', { name: 'Atacar al Líder rival: Kuzan' });
+  await expect(card).toHaveAccessibleName('Atacar al Líder rival: Kuzan 5000 Active');
   await card.focus();
   await page.keyboard.press('Enter');
   await expect(page.getByText('★ Reto superado.')).toBeVisible();
@@ -67,9 +68,9 @@ test('la lección de ataques incluye solo sus retos', async ({ page }) => {
   const stage = page.getByRole('group', { name: 'Mesa de juego' });
   await stage.scrollIntoViewIfNeeded();
   await expect(page.getByText('Reto 1 de 2')).toBeVisible();
-  await page.getByRole('button', { name: 'Atacar al Líder rival: Líder rival' }).click();
+  await page.getByRole('button', { name: 'Atacar al Líder rival: Kuzan' }).click();
   await page.locator('.actions').getByRole('button', { name: 'Siguiente reto →' }).click();
-  await page.locator('.actions').getByRole('button', { name: 'Atacar al Vigía' }).click();
+  await page.locator('.actions').getByRole('button', { name: 'Atacar a Zephyr' }).click();
   await expect(page.getByRole('heading', { name: '¡Superaste los 2 retos!' })).toBeVisible();
   await check(page, 'lección jugada');
 });
@@ -115,4 +116,25 @@ test.describe('con movimiento', () => {
     });
     expect(overflow).toBeLessThanOrEqual(0);
   });
+});
+
+test('mesa: coloca una carta y abre la regla de su zona', async ({ page }) => {
+  await page.goto('reglas/tema/mesa/');
+  const practice = page.getByRole('region', { name: 'Práctica de zonas' });
+  await practice.getByRole('button', { name: 'Stage', exact: true }).click();
+  await expect(practice.getByRole('status')).toContainText('Prueba otra zona');
+  await practice.getByRole('button', { name: 'Leader', exact: true }).click();
+  await expect(practice.getByRole('status')).toContainText('¡Correcto!');
+  await practice.getByRole('link', { name: 'Regla 3-6' }).click();
+  await expect(page.locator('#regla-3-6')).toBeVisible();
+  await expect(page.locator('#grupo-3-6')).toHaveAttribute('open', '');
+  await expect(page.locator('#grupo-3-7')).not.toHaveAttribute('open', '');
+});
+
+test('glosario: filtra por alias en español', async ({ page }) => {
+  await page.goto('glosario/');
+  await page.getByRole('searchbox', { name: 'Busca un término' }).fill('bloqueador');
+  await expect(page.getByRole('status')).toContainText('coincidencias');
+  await expect(page.locator('#blocker')).toBeVisible();
+  await expect(page.locator('#double-attack')).toBeHidden();
 });

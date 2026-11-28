@@ -48,10 +48,10 @@ Aprobada por el propietario el 2026-11-27.
 
 - [x] T3.1 Progreso en `localStorage` versionado con migración, borrado y errores. Verif.: unitarias. `src/lib/progress.ts`; unitarias el 2026-11-27.
 - [x] T3.2 Componente de cuestionario con retroalimentación por opción. Verif.: unitarias y E2E. Unitarias y E2E el 2026-11-27.
-- [x] T3.3 Lecciones niveles 1–2. Dep.: T3.1, T3.2. 9 lecciones y 27 preguntas en `pending`, sin revisión humana.
-- [x] T3.4 Lecciones niveles 3–5. Dep.: T3.3. 15 lecciones más (24 en total), en `pending`.
-- [x] T3.5 Casos y desafíos. Dep.: T3.2, T2.8. 12 casos y 5 desafíos; casos en `pending`.
-- [ ] T3.6 🔒 Revisión humana y recorrido completo E2E. Recorrido E2E completo ejecutado el 2026-11-27 (112 de 112); falta la revisión humana.
+- [x] T3.3 Lecciones niveles 1–2. Dep.: T3.1, T3.2. 9 lecciones y 27 preguntas, aprobadas por el propietario (ADR-043).
+- [x] T3.4 Lecciones niveles 3–5. Dep.: T3.3. 15 lecciones más (24 en total), aprobadas por el propietario (ADR-043).
+- [x] T3.5 Casos y desafíos. Dep.: T3.2, T2.8. 12 casos y 5 desafíos, aprobados por el propietario (ADR-043).
+- [x] T3.6 🔒 Aprobación editorial y recorrido completo E2E. Recorrido E2E previo ejecutado el 2026-11-27 (112 de 112). El propietario confirmó la aprobación en ADR-043.
 
 ## Fase 4 — Simuladores (Dep.: Fase 1; reglas de caps. 3, 6–8, 10 revisadas)
 
@@ -72,9 +72,9 @@ Iniciada el 2026-11-27 (ADR-024).
 - [x] T5.3 Snapshots de formato vigente y futuro con fuentes. Dep.: T5.1, T0.9. 🔒 aprobación. `src/data/rotation/`; aprobados por el propietario el 2026-11-27 (ADR-028).
 - [x] T5.4 Datos mínimos de cartas y productos para los mazos candidatos, bloque verificado por carta; revisar la categoría "others" de productos. Dep.: T5.1. ST-31 a ST-36: 90 cartas con 202 impresiones y bloque por impresión (ADR-028); "others" (13 páginas) revisada sin mazos preconstruidos. Unitarias el 2026-11-27; datos en `pending`.
 - [x] T5.5 Rúbrica y puntuación con renormalización. Dep.: T5.1. `docs/rubrica.md` (propuesta, ADR-026); unitarias el 2026-11-27.
-- [ ] T5.6 Test de preferencias, colores y filtros. Dep.: T5.5. Hechos el 2026-11-27: colores y test en `/mazos/` (unitarias y E2E) y lógica de filtros (unitarias). **Falta** la interfaz de filtros, que espera al catálogo (T5.7).
+- [x] T5.6 Test de preferencias, colores y filtros. Dep.: T5.5. En `/mazos/`: siete Starter Decks y dos referencias construidas, filtros combinables en la URL y seis accesos directos por color (ADR-045). Presupuesto, dificultad, estilo y temática se habilitan al contar con datos. E2E de Mazos: 8 de 8 en Chromium de escritorio y 320 px el 2026-11-27, con axe para los filtros.
 - [x] T5.7 🔒 Listas de mazos revisadas por una persona. Dep.: T5.2–T5.5. No elegir líderes antes. Falta la cantidad de cada carta: no aparece en las páginas oficiales consultadas. ST-31 a ST-35 cargadas en `pending` desde fuentes de terceros (ADR-029; `docs/coverage/listas-starter-T5.7.md`); ST-31 a ST-35 aprobadas por el propietario el 2026-11-27 sin cotejo físico (ADR-030). ST-36 pendiente, sin cantidades.
-- [ ] T5.8 Fichas, exportación en texto y avisos de caducidad (48 h / 7 días). Dep.: T5.7.
+- [x] T5.8 Fichas, exportación en texto y avisos de caducidad (48 h / 7 días). Dep.: T5.7. Nueve fichas en `/mazos/[slug]/`. Cinco listas revisadas pasan por el validador con suspensiones. Las cuatro listas del ADR-047 se identifican como referencias. Fuentes y simulación de caducidad verificadas en escritorio y a 320 px. Los datos estratégicos, precios y la revisión de ST-36 siguen pendientes.
 
 ## Fase 6 — Automatización (Dep.: T2.1, T5.2; ADR-006)
 
@@ -84,16 +84,18 @@ Iniciada el 2026-11-27 (ADR-031).
 - [x] T6.2 `sync-cards`, `sync-qa`, `sync-rules`, `sync-format`. Dep.: T6.1. 🔒 acceso real a fuentes. `npm run sync` (ADR-035), ejecutado el 2026-11-27 contra el sitio sin PDF: 76 de 76 fuentes, 0 diferencias (ADR-037). Workflows solo manuales (ADR-038), simulados en local sin red; **no ejecutados en GitHub**. Sin programación diaria ni PR. Cada nueva consulta requiere autorización.
 - [x] T6.3 `validate-decks` y snapshot de seguridad. Dep.: T5.2. `npm run validate:decks`, `src/data/safety/` y `validate-decks.yml` (ADR-036); `tests/unit/safety.test.ts` y ejecución local, 2026-11-27. El workflow no se ha ejecutado en GitHub.
 - [x] T6.4 Simulaciones de rotación, prohibición y fallo de fuente. Dep.: T6.2, T6.3. `tests/integration/simulations.test.ts` con datos ficticios y sitio simulado, en local el 2026-11-27 (ADR-039).
-- [ ] T6.5 🔒 Permisos de GitHub para crear PR. Sustituida por incidencias (ADR-040): hecho en local el 2026-11-27, con simulación sin red y `gh` ficticio. **Falta** comprobar en GitHub el permiso `issues: write` y la incidencia (requiere commit, push y una ejecución autorizada).
-- [x] T6.6 Rediseño visual e interactivo (ADR-033), incorporado a esta fase por el propietario el 2026-11-27. Portada, `/jugar/`, retos en cuatro lecciones, nueve temas de reglas y estilo común; diseño aprobado. `tests/unit/{combat,topics}.test.ts` y `tests/e2e/experience.spec.ts`. Los temas siguen sin revisión humana; sin prueba con lector de pantalla.
+- [ ] T6.5 🔒 Verificar la incidencia y el permiso `issues: write` en GitHub (ADR-040). Simulación local aprobada con `gh` ficticio. El [workflow de formato en `main`](https://github.com/Nimirandad/optcg-academy/actions/runs/46084302100) se ejecutó con autorización el 2026-11-27. La comparación pasó sin diferencias ni fallos y GitHub omitió `avisar`. Falta verificar el camino de escritura de la incidencia.
+- [x] T6.6 Rediseño visual e interactivo (ADR-033), incorporado a esta fase por el propietario el 2026-11-27. Portada, `/jugar/`, retos en cuatro lecciones, nueve temas de reglas y estilo común; diseño aprobado. `tests/unit/{combat,topics}.test.ts` y `tests/e2e/experience.spec.ts`. Temas aprobados en ADR-043; sin prueba con lector de pantalla.
 
 ## Fase 7 — Lanzamiento (Dep.: Fases 2–6)
 
-- [ ] T7.1 Accesibilidad automatizada y manual (teclado y lector).
-- [ ] T7.2 Lighthouse en laboratorio e imágenes.
-- [ ] T7.3 Guías editorial, de mantenimiento y de rollback.
-- [ ] T7.4 Revisión de permisos, créditos y ausencia de datos personales.
-- [ ] T7.5 Checklist de `plan.md` §13.
+Inicio de QA autorizado el 2026-11-27 (ADR-049). T6.5 sigue abierta.
+
+- [ ] T7.1 Accesibilidad automatizada y manual. Axe y teclado comprobados en los recorridos principales. Pendiente confirmar la salida de VoiceOver.
+- [x] T7.2 Lighthouse en laboratorio e imágenes. Cuatro rutas medidas después de optimizar el mapa y la portada. Ver informe de QA.
+- [x] T7.3 Guías editorial, de mantenimiento y de rollback. `docs/editorial.md`, `docs/mantenimiento.md` y README actualizados.
+- [x] T7.4 Revisión de permisos, créditos y datos personales en el artefacto local. Avisos y atribuciones comprobados. Ver informe de QA.
+- [x] T7.5 Checklist de `plan.md` §13 revisado. Evidencia y pendientes en [el informe de QA](docs/coverage/qa-lanzamiento-2026-11-27.md).
 - [ ] T7.6 🔒 Publicación.
 
 ## Fuera de alcance

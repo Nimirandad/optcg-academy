@@ -27,7 +27,8 @@
       ],
       "assumption": "Ningún efecto modifica el coste.",
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "recursos-don-2",
@@ -54,7 +55,8 @@
         "6-4-1"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     },
     {
       "id": "recursos-don-3",
@@ -81,7 +83,8 @@
         "4-4-2"
       ],
       "version": 1,
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed",
+      "reviewedBy": "Propietario del proyecto"
     }
   ]
 }

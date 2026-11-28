@@ -1,4 +1,6 @@
 <script lang="ts">
+  import RuleLinks from '../shared/RuleLinks.svelte';
+  import PlayCard from '../combat/PlayCard.svelte';
   import { onMount } from 'svelte';
   import { apply } from '../../domain/game/reducer';
   import { activePlayer, other } from '../../domain/game/state';
@@ -6,13 +8,13 @@
   import type { Action, Phase, PlayerId, RuleError } from '../../domain/game/types';
   import BattleControls from '../shared/BattleControls.svelte';
   import GameLog from '../shared/GameLog.svelte';
-  import { newGame } from './setup';
+  import { trainingTurn } from './setup';
 
   let { base }: { base: string } = $props();
 
   let ready = $state(false);
   let first = $state<PlayerId>(0);
-  let game = $state.raw(newGame(0));
+  let game = $state.raw(trainingTurn(0));
   let error = $state.raw<RuleError | null>(null);
 
   const id = $derived(activePlayer(game));
@@ -26,7 +28,7 @@
   }
 
   function reset() {
-    game = newGame(first);
+    game = trainingTurn(first);
     error = null;
   }
 
@@ -57,6 +59,7 @@
     </div>
 
     <p><strong>Turno {game.turn} de la partida: {player.name}.</strong></p>
+    <p><RuleLinks {base} ids={[`6-${phases.indexOf(game.phase) + 2}`]} /></p>
     <ol class="phases" aria-label="Fases del turno">
       {#each phases as phase (phase)}
         <li aria-current={phase === game.phase ? 'step' : undefined}>
@@ -89,6 +92,14 @@
       {#each game.players as data, index (data.name)}
         <section class="board" aria-label="Recursos de {data.name}">
           <h4>{data.name}{index === id ? ' · su turno' : ''}</h4>
+          <div class="crew">
+            <PlayCard card={data.leader.card} field={data.leader} power={data.leader.card.power}
+              action={index === id ? 'Asignar DON!! a' : 'Atacar a'}
+              onuse={index === id ? () => act({ type: 'attach', uid: player.leader.card.uid }) : attackLeader} />
+            {#each data.characters as character (character.card.uid)}
+              <PlayCard card={character.card} field={character} power={character.card.power} />
+            {/each}
+          </div>
           <dl class="counts">
             <div><dt>Mano</dt><dd>{data.hand.length}</dd></div>
             <div><dt>Mazo</dt><dd>{data.deck.length}</dd></div>
@@ -109,5 +120,7 @@
 <style>
   .phases { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; }
   .phases li { border: 1px solid var(--border); border-radius: 0.4rem; padding: 0.25rem 0.6rem; }
-  .phases li[aria-current] { border-width: 3px; font-weight: 700; }
+  .phases li[aria-current] { border: 2px solid #ffd76a; color: #221800; background: #ffd76a; font-weight: 700; animation: phase-flash 0.3s ease-out; }
+  @keyframes phase-flash { from { transform: scale(0.94); } }
+  .crew { display: flex; flex-wrap: wrap; gap: 0.55rem; }
 </style>

@@ -2,6 +2,7 @@
 import { createState } from '../../domain/game/state';
 import type { PendingEffect, Replacement } from '../../domain/game/order';
 import type { GameState, PlayerId } from '../../domain/game/types';
+import { officialCombatCards as real } from '../combat/official';
 import { cards, pile } from '../shared/cards';
 
 interface Common {
@@ -25,7 +26,7 @@ const field = (list: (typeof cards.cronista)[]): GameState =>
     players: [
       {
         name: 'Jugador A',
-        leader: { card: cards.capitana },
+        leader: { card: real.zoro },
         characters: list.map((card, index) => ({ card, uid: `${card.id}-${index + 1}` })),
         hand: [cards.grumete, cards.vigia],
         deck: pile([cards.artillero, cards.grumete], 20),
@@ -33,7 +34,7 @@ const field = (list: (typeof cards.cronista)[]): GameState =>
         donActive: 3,
         donRested: 1,
       },
-      { name: 'Jugador B', leader: { card: cards.almirante }, deck: pile([cards.grumete], 20) },
+      { name: 'Jugador B', leader: { card: real.kuzan }, deck: pile([cards.grumete], 20) },
     ],
   });
 

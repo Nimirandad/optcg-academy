@@ -3,8 +3,9 @@ import { expect, test, type Locator, type Page } from '@playwright/test';
 
 /** Abre la página e hidrata la isla de la sección indicada. */
 async function open(page: Page, heading: string): Promise<Locator> {
-  await page.goto('simuladores/');
-  const section = page.locator('section', { has: page.getByRole('heading', { level: 2, name: heading, exact: true }) });
+  const routes: Record<string, string> = { Combate: 'laboratorio', Turnos: 'turnos', Playmat: 'playmat', Efectos: 'efectos' };
+  await page.goto(heading === 'Combate' ? 'simuladores/laboratorio/' : `simuladores/libre/${routes[heading]}/`);
+  const section = page.getByRole('region', { name: heading === 'Combate' ? 'Laboratorio de combate' : heading, exact: true });
   await section.scrollIntoViewIfNeeded();
   await expect(section.locator('fieldset.root')).toBeEnabled();
   return section;
@@ -14,15 +15,15 @@ const button = (scope: Locator, name: string | RegExp) => scope.getByRole('butto
 
 async function check(page: Page) {
   const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
-  expect(axe.violations.map((violation) => violation.id)).toEqual([]);
+  expect(axe.violations.map(({ id, nodes }) => ({ id, targets: nodes.map((node) => node.target) }))).toEqual([]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
 }
 
 test('alcance visible', async ({ page }) => {
   await page.goto('simuladores/');
+  await page.getByText('Alcance de los simuladores libres').click();
   await expect(page.getByRole('heading', { name: 'Qué cubren y qué no' })).toBeVisible();
-  await expect(page.getByRole('main')).toContainText('Cartas oficiales y sus textos.');
-  await expect(page.getByRole('main')).toContainText('pendiente de revisión');
+  await expect(page.getByRole('main')).toContainText('Automatización de todos los efectos impresos en cartas oficiales.');
 });
 
 test('combate: Counter, resolución, referencias y reinicio', async ({ page }) => {
@@ -151,4 +152,95 @@ test('efectos: orden de resolución y reemplazo', async ({ page }) => {
   await button(sim, 'No usarlo').click();
   await button(sim, 'Usar el reemplazo').click();
   await expect(sim).toContainText('En lugar de «el Vigía sufre K.O.»: el Vigía queda Rested.');
+});
+
+test('simuladores: la mesa guiada comparte los controles del reto en los cuatro modos', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('simuladores/');
+  const nav = page.getByRole('navigation', { name: 'Simuladores' });
+  const table = page.getByRole('group', { name: 'Mesa de juego' });
+  const play = (name: string) => table.getByRole('button', { name }).click();
+  const won = () => expect(page.getByText('★ Reto superado.')).toBeVisible();
+
+  await nav.getByRole('link', { name: 'Combate', exact: true }).click();
+  await play('Atacar a Jango: Jango');
+  await expect(page.getByText('Esa jugada no se puede.')).toBeVisible();
+  await play('Atacar a Zephyr: Zephyr(Navy)');
+  await page.getByRole('button', { name: 'Pasar bloqueo' }).click();
+  await page.getByRole('button', { name: 'Resolver daño' }).click();
+  await won();
+
+  await nav.getByRole('link', { name: 'Turnos', exact: true }).click();
+  const field = table.getByRole('group', { name: 'Tu campo' });
+  const hand = table.getByRole('group', { name: 'Tu mano' });
+  const resources = table.locator('dl[aria-label="Recursos de Tú"]');
+  const jinbe = field.locator('[data-uid="ST31-002"]');
+  await expect(jinbe).toContainText('Rested');
+  await expect(hand).toContainText('Tu mano · 1');
+  const refresh = table.getByRole('button', { name: 'Enderezar cartas · Refresh' });
+  for (const side of ['Tu campo', 'Campo rival']) {
+    const playerField = table.getByRole('group', { name: side });
+    const leader = playerField.getByRole('group', { name: 'Líder', exact: true });
+    const y = await leader.evaluate((element) => {
+      const side = element.closest('.side')!;
+      return {
+        leader: element.getBoundingClientRect().top,
+        cards: side.querySelector('[aria-label="Cartas jugadas"]')?.getBoundingClientRect().top,
+        resources: side.querySelector('dl')!.getBoundingClientRect().top,
+        fieldRight: element.getBoundingClientRect().right,
+        lifeLeft: side.querySelector('.life-pile')!.getBoundingClientRect().left,
+      };
+    });
+    expect(y.fieldRight).toBeLessThan(y.lifeLeft);
+    if (side === 'Campo rival') {
+      expect(y.resources).toBeLessThan(y.leader);
+      if (y.cards !== undefined) expect(y.leader).toBeLessThan(y.cards);
+    } else {
+      expect(y.leader).toBeLessThan(y.resources);
+      if (y.cards !== undefined) expect(y.cards).toBeLessThan(y.leader);
+    }
+  }
+  await table.evaluate((element) => element.scrollIntoView({ block: 'start' }));
+  await expect(refresh).toBeInViewport({ ratio: 1 });
+  await refresh.click();
+  await expect(jinbe).toContainText('Active');
+  await expect(jinbe).not.toContainText('Rested');
+  await expect(jinbe).not.toContainText('+1 DON!!');
+  await page.getByRole('button', { name: 'Robar 1 carta' }).click();
+  await expect(hand).toContainText('Tu mano · 2');
+  await expect(hand).toContainText('Nico Robin');
+  await expect(resources.locator('.deck + strong')).toHaveText('2');
+  await page.getByRole('button', { name: 'Añadir 2 DON!!' }).click();
+  await expect(resources.locator('.don-deck + strong')).toHaveText('6');
+  await expect(resources).toContainText('4 Active · 0 Rested');
+  await page.getByRole('button', { name: 'Entrar a Main Phase' }).click();
+  await play('Asignar DON!! al Leader: Monkey.D.Luffy');
+  await expect(field).toContainText('+1 DON!!');
+  await play('Jugar Nico Robin: Nico Robin');
+  await expect(field).toContainText('Nico Robin');
+  await expect(hand).toContainText('Tu mano · 1');
+  await expect(hand).not.toContainText('Nico Robin');
+  await expect(resources).toContainText('0 Active · 3 Rested');
+  await page.getByRole('button', { name: 'Terminar el turno' }).click();
+  await won();
+
+  await nav.getByRole('link', { name: 'Playmat', exact: true }).click();
+  await play('Jugar Jinbe: Jinbe');
+  await expect(page.getByText('Esa jugada no se puede.')).toBeVisible();
+  await play('Jugar Nico Robin: Nico Robin');
+  await won();
+
+  await nav.getByRole('link', { name: 'Efectos', exact: true }).click();
+  await table.getByRole('button', { name: 'Activar efecto de Luffy y dar 2 DON!! a Jinbe', exact: true }).click();
+  await expect(page.getByText('Esa jugada no se puede.')).toBeVisible();
+  await expect(resources).toContainText('1 Active · 2 Rested');
+  await play('Asignar 1 DON!! al Leader: Monkey.D.Luffy');
+  await play('Activar efecto de Luffy y dar 2 DON!! a Jinbe: Jinbe');
+  await expect(field.locator('[data-uid="0-leader"]')).toContainText('+1 DON!!');
+  await expect(field.locator('[data-uid="ST31-002"]')).toContainText('+2 DON!!');
+  await expect(resources).toContainText('0 Active · 0 Rested');
+  await won();
+  await check(page);
+  await table.getByRole('button', { name: 'Repetir reto' }).click();
+  await expect(table.getByRole('button', { name: 'Asignar 1 DON!! al Leader: Monkey.D.Luffy' })).toBeVisible();
 });

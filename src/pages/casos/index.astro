@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseNav from '../../features/quizzes/CaseNav.astro';
+import { loadCaseGroups } from '../../lib/case-groups';
+const groups = await loadCaseGroups();
+---
+<Base title="Casos y desafíos" description="Situaciones prácticas con resolución paso a paso.">
+  <h1>Casos y desafíos</h1>
+  <p>Elige un nivel para resolver sus situaciones de partida.</p>
+  <CaseNav {groups} />
+</Base>

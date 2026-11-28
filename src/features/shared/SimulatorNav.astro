@@ -1,0 +1,30 @@
+---
+import Emblem from '../art/Emblem.svelte';
+import { caseScenes } from '../combat/case-scenes';
+import { withBase } from '../../lib/paths';
+const { active } = Astro.props;
+const modes = [
+  { id: 'combate', title: 'Combate', icon: 'canon' },
+  { id: 'turnos', title: 'Turnos', icon: 'reloj' },
+  { id: 'playmat', title: 'Playmat', icon: 'mapa' },
+  { id: 'efectos', title: 'Efectos', icon: 'destello' },
+].map((mode) => ({ ...mode, path: mode.id }));
+const links = [
+  ...modes,
+  ...Object.values(caseScenes).map(({ id, mode, title, icon }) => ({ id, path: `${mode}/${id}`, title, icon })),
+];
+---
+<nav aria-label="Simuladores">
+  {links.map(({ id, path, title, icon }) => (
+    <a href={withBase(`simuladores/${path}/`)} aria-current={active === id ? 'page' : undefined}>
+      <span><Emblem name={`tema-${icon}`} /></span>{title}
+    </a>
+  ))}
+</nav>
+<style>
+  nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr)); gap: 0.65rem; margin-block: 0.8rem 1.25rem; }
+  a { display: flex; align-items: center; gap: 0.45rem; min-height: 52px; padding: 0.45rem; border: 1px solid var(--border); border-radius: 0.75rem; color: var(--text); background: var(--surface); text-decoration: none; font-weight: 750; transition: transform 0.2s, box-shadow 0.2s; }
+  a:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  a[aria-current] { border: 2px solid var(--link); }
+  span { width: 2rem; height: 2rem; flex: none; }
+</style>

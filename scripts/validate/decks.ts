@@ -8,10 +8,14 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 import { z } from 'zod';
 import { earliestDate, legalityReport, needsAttention, type DeckReport } from '../../src/domain/legality/report.ts';
+import { canRecommend, freshness } from '../../src/domain/legality/freshness.ts';
+import { oldestStandardCheck, standardChecks } from '../../src/lib/standard-checks.ts';
 import { cardSchema, deckSchema, formatSnapshotSchema, safetySnapshotSchema } from '../../src/lib/deck-schemas.ts';
 
 const { values } = parseArgs({ options: { fecha: { type: 'string' } } });
-const today = z.iso.date().parse(values.fecha ?? earliestDate(new Date()));
+const now = new Date();
+const effectiveToday = earliestDate(now);
+const today = z.iso.date().parse(values.fecha ?? effectiveToday);
 
 const root = new URL('../../', import.meta.url);
 const read = (path: string): unknown => JSON.parse(readFileSync(new URL(path, root), 'utf8'));
@@ -49,12 +53,19 @@ function table(rows: DeckReport[]): string {
   return ['| Mazo | Fecha | Snapshot | Estado | Detalle |', '|---|---|---|---|---|', ...lines].join('\n');
 }
 
-const recommendable = report.current.filter((row) => row.validation?.status === 'valid').length;
+const valid = report.current.filter((row) => row.validation?.status === 'valid').length;
+const freshnessStatus = freshness(standardChecks, now);
+const freshnessLabel = { fresh: 'vigentes', stale: 'más de 48 h sin comprobación', expired: 'caducadas o sin comprobación' };
+const recommendation = today === effectiveToday
+  ? `${report.current.filter(({ validation }) => canRecommend(validation, freshnessStatus)).length} aptos para recomendar como Standard.`
+  : 'Fecha de simulación. La vigencia de las fuentes se informa para el momento de la ejecución.';
 console.log(
   [
     `# Legalidad de mazos al ${today}`,
-    `${report.current.length} mazos; ${recommendable} con estado \`valid\`. Suspensiones registradas: ${safety.suspensions.length}.`,
-    '## Hoy',
+    `${report.current.length} mazos; ${valid} con estado \`valid\`. Suspensiones registradas: ${safety.suspensions.length}.`,
+    `Fuentes ${freshnessLabel[freshnessStatus]}. Comprobación más antigua: ${oldestStandardCheck ?? 'sin registro'}.`,
+    recommendation,
+    '## Fecha evaluada',
     table(report.current),
     '## Fechas con cambios conocidos',
     report.upcoming.length ? table(report.upcoming) : 'Ninguna.',

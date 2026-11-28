@@ -6,7 +6,7 @@ order: 4
 prerequisites: ["recursos-don", "mulligan"]
 ruleIds: ["6-1-1", "6-3-1", "6-4-1", "6-5-2", "6-5-6-1", "6-6-1"]
 exerciseIds: ["fases-del-turno-1", "fases-del-turno-2", "fases-del-turno-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Cinco fases, siempre en orden

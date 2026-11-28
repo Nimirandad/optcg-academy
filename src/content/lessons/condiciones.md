@@ -6,7 +6,7 @@ order: 2
 prerequisites: ["costes-de-activacion"]
 ruleIds: ["4-10-1", "4-10-2", "8-3-2-1", "8-3-2-3", "8-3-2-4", "8-3-3"]
 exerciseIds: ["condiciones-1", "condiciones-2", "condiciones-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Marcas de condición

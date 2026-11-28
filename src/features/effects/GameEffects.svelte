@@ -38,6 +38,12 @@
       discard: effect.trashFromHand ? discard : [],
       donFrom: effect.donMinus ? (sources.filter(Boolean) as DonSource[]) : [],
     });
+  function fieldTap(item: FieldCard, owner: 0 | 1) {
+    const [effect] = item.card.effects ?? [];
+    if (owner === activePlayer(game) && effect) {
+      return { label: 'Probar efecto de', run: () => use(item.card.uid, effect) };
+    }
+  }
 </script>
 
 {#snippet fieldActions(item: FieldCard, owner: 0 | 1)}
@@ -88,4 +94,4 @@
 
 <div class="actions"><button type="button" onclick={() => act({ type: 'advance' })}>Avanzar fase</button></div>
 <GameLog {base} log={game.log} {error} />
-<div class="boards"><Board state={game} player={0} {fieldActions} /></div>
+<div class="boards"><Board state={game} player={0} {fieldActions} {fieldTap} /></div>

@@ -6,7 +6,7 @@ order: 4
 prerequisites: ["blocker"]
 ruleIds: ["2-10-4", "7-1-3-1", "7-1-3-1-1", "7-1-3-1-2", "10-2-4-1"]
 exerciseIds: ["counter-1", "counter-2", "counter-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Dos formas distintas

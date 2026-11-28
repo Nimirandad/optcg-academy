@@ -26,7 +26,7 @@ function play(scene: Scene, picks: string[]): GameState {
 const paths: Record<string, { win: string[]; retry: string[] | null }> = {
   'primer-ataque': { win: ['atacar-1-leader'], retry: null },
   don: { win: ['don', 'atacar-1-leader'], retry: ['atacar-1-leader'] },
-  objetivo: { win: ['atacar-vigia'], retry: ['atacar-1-leader'] },
+  objetivo: { win: ['atacar-OP12-046'], retry: ['atacar-1-leader'] },
   blocker: { win: ['bloquear'], retry: ['pasar'] },
   counter: { win: ['counter-0-hand1', 'resolver'], retry: ['counter-0-hand0', 'resolver'] },
 };
@@ -41,7 +41,7 @@ describe('retos de combate', () => {
 
   it('atacar a un personaje Active se rechaza con su regla', () => {
     const scene = scenes.find((item) => item.id === 'objetivo')!;
-    const choice = scene.choices(scene.create()).find((item) => item.id === 'atacar-grumete')!;
+    const choice = scene.choices(scene.create()).find((item) => item.id === 'atacar-OP12-045')!;
     expect(apply(scene.create(), choice.action)).toMatchObject({ ok: false, error: { ruleIds: ['7-1-1-2'] } });
   });
 

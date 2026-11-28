@@ -31,7 +31,7 @@
   <ol class="steps" class:single aria-live="polite">
     {#each steps as step, i (step.title)}
       <li hidden={single && i !== index}>
-        <span class="icon" aria-hidden="true"><Emblem name={icon} /></span>
+        <span class="icon" aria-hidden="true"><Emblem name={`tema-${icon}`} /></span>
         <div>
           <h3>{step.title}</h3>
           <p>{step.text}</p>

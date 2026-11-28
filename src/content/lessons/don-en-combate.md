@@ -6,7 +6,7 @@ order: 2
 prerequisites: ["ataques"]
 ruleIds: ["6-5-5-1", "6-5-5-2", "6-5-5-4", "6-2-3"]
 exerciseIds: ["don-en-combate-1", "don-en-combate-2", "don-en-combate-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## +1000, solo en tu turno

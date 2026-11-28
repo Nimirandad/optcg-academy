@@ -6,7 +6,7 @@ order: 1
 prerequisites: ["fases-del-turno"]
 ruleIds: ["3-7-4", "7-1", "7-1-1-1", "7-1-1-2", "7-1-4-1", "7-1-4-2"]
 exerciseIds: ["ataques-1", "ataques-2", "ataques-3"]
-reviewStatus: pending
+reviewStatus: reviewed
 ---
 
 ## Quién puede atacar a quién
