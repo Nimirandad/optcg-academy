@@ -101,9 +101,11 @@ const current = Astro.url.pathname;
   @keyframes icon-in { from { opacity: 0; transform: rotate(-35deg) scale(0.65); } }
   @keyframes nav-in { from { opacity: 0; transform: translateY(-0.45rem); } }
   @media (56rem < width <= 68rem) {
-    .bar { gap: 0.6rem; }
-    nav a { font-size: 0.8rem; padding-inline: 0.32rem; }
-    nav a::after { inset-inline: 0.32rem; }
+    .bar { gap: 0.5rem; }
+    .brand img { width: 6.5rem; }
+    /* Con fuentes anchas las etiquetas largas pasan a dos líneas en lugar de solaparse. */
+    nav a { font-size: 0.8rem; padding-inline: 0.25rem; white-space: normal; text-align: center; }
+    nav a::after { inset-inline: 0.25rem; }
   }
   @media (max-width: 56rem) {
     .bar { grid-template-columns: 1fr auto; grid-template-areas: 'brand actions' 'nav nav'; column-gap: 0.5rem; row-gap: 0; }

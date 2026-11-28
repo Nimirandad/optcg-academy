@@ -172,6 +172,22 @@ test('cabecera: navegación junto al logo y menú compacto', async ({ page }) =>
   await expect(nav).toBeHidden();
 });
 
+test('cabecera: no se solapa con una fuente más ancha', async ({ page }) => {
+  await page.goto('');
+  // Las fuentes disponibles cambian entre sistemas; Verdana o su sustituta es de las anchas.
+  await page.addStyleTag({ content: 'header, header * { font-family: Verdana, "DejaVu Sans", sans-serif !important; }' });
+  const nav = page.getByRole('navigation', { name: 'Principal' });
+  for (const width of [897, 960, 1088, 1089]) {
+    await page.setViewportSize({ width, height: 720 });
+    const brand = (await page.getByRole('link', { name: 'Inicio de OPTCG Academy' }).boundingBox())!;
+    const first = (await nav.getByRole('link', { name: 'Aprende' }).boundingBox())!;
+    const last = (await nav.getByRole('link', { name: 'Acerca' }).boundingBox())!;
+    const search = (await page.getByRole('banner').getByRole('link', { name: 'Buscar' }).boundingBox())!;
+    expect(first.x, `${width}: logo`).toBeGreaterThanOrEqual(brand.x + brand.width);
+    expect(last.x + last.width, `${width}: acciones`).toBeLessThanOrEqual(search.x);
+  }
+});
+
 test('el modo oscuro se conserva entre páginas', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' });
   await page.goto('');
