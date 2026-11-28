@@ -2,6 +2,11 @@
 
 **Última actualización:** 2026-11-27 · **Fase actual:** 7 (QA de lanzamiento), autorizada en ADR-049. T7.2–T7.5 hechas. Quedan pendientes la comprobación con lector de pantalla (T7.1), la verificación de incidencias en GitHub (T6.5) y la publicación (T7.6).
 
+## Corrección de cabecera para CI (2026-11-27)
+
+- En GitHub Actions, la fuente de respaldo hizo que el último enlace de la cabecera se solapara con Buscar. En anchos intermedios, el logo ocupa menos espacio y las etiquetas pueden repartirse en dos líneas.
+- Se verificaron cuatro E2E de cabecera en Chromium de escritorio y de 320 px, incluido el caso con fuentes anchas entre 897 y 1089 px.
+
 ## QA de lanzamiento (2026-11-27)
 
 - Se corrigió el nombre accesible de las cartas del combate guiado y se comprobó el flujo de foco con teclado. El árbol de accesibilidad expone acción, nombre, poder y estado. VoiceOver se activó y se restauró su ajuste inicial. Falta confirmar sus anuncios.
